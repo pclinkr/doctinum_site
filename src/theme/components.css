@@ -1,0 +1,198 @@
+/* Buttons */
+.ds-btn,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) var(--ease-spring), background var(--duration-fast) ease;
+}
+
+.ds-btn--primary,
+.btn-primary {
+  background: var(--action-primary-bg);
+  color: var(--action-primary-fg);
+}
+
+.ds-btn--outline,
+.btn-outline {
+  background: var(--action-secondary-bg);
+  color: var(--action-secondary-fg);
+  border-color: var(--border-strong);
+}
+
+.ds-btn--light,
+.btn-light {
+  background: var(--text-inverse);
+  color: var(--text-primary);
+}
+
+.ds-btn--lg,
+.btn-lg {
+  padding: 16px 30px;
+  font-size: 15px;
+}
+
+.ds-btn--full,
+.btn-full {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.ds-btn:hover,
+.btn:hover {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Badges */
+.ds-badge,
+.page-badge,
+.contact-faq-label,
+.mission-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-fg);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+}
+
+/* Cards */
+.ds-card,
+.help-card,
+.cs-card,
+.blog-card,
+.contact-faq-card,
+.mission-card {
+  background: var(--card-bg);
+  color: var(--card-fg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+/* Inputs */
+.ds-input,
+.ds-textarea,
+.form-input {
+  width: 100%;
+  background: var(--control-bg);
+  color: var(--control-fg);
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.ds-textarea,
+textarea.form-input {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.ds-input::placeholder,
+.ds-textarea::placeholder,
+.form-input::placeholder {
+  color: var(--control-placeholder);
+}
+
+.ds-input:focus,
+.ds-textarea:focus,
+.form-input:focus {
+  outline: none;
+  border-color: var(--control-focus-border);
+  box-shadow: 0 0 0 3px var(--control-focus-ring);
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Accordion */
+.ds-accordion,
+.faq-list {
+  max-width: 660px;
+  margin-inline: auto;
+}
+
+.ds-accordion-item,
+.faq-item {
+  border-bottom: 1px solid var(--border-default);
+}
+
+.ds-accordion-item:first-child,
+.faq-item:first-child {
+  border-top: 1px solid var(--border-default);
+}
+
+.ds-accordion-trigger,
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) ease;
+  cursor: pointer;
+}
+
+.ds-accordion-icon,
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--action-primary-bg);
+  color: var(--action-primary-fg);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.ds-accordion-icon svg,
+.ds-accordion-glyph {
+  display: block;
+  stroke: currentColor;
+  shape-rendering: geometricPrecision;
+}
+
+.ds-accordion-content,
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-mid) var(--ease-out);
+}
+
+.ds-accordion-item.is-open .ds-accordion-content,
+.faq-item.open .faq-body {
+  max-height: 280px;
+}
