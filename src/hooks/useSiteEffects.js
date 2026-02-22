@@ -90,7 +90,7 @@ export function useRevealAnimation(currentPage) {
 
     observerRef.current = revealObserver;
     const timerId = window.setTimeout(() => {
-      document.querySelectorAll('.page.active .rev:not(.in)').forEach((element) => revealObserver.observe(element));
+      document.querySelectorAll('.page.active .rev:not(.in), .page.active .rev-no-scale:not(.in)').forEach((element) => revealObserver.observe(element));
     }, observeDelayMs);
 
     hasPlayedInitialRevealRef.current = true;

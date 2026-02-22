@@ -57,12 +57,12 @@ input,textarea,select{@apply text-sm outline-none}
 #ls.hide{@apply opacity-0 invisible pointer-events-none animate-curtainLiftLong}
 #ls.hide .ls-logo{@apply animate-lsLogoOut}
 .ls-logo{@apply flex items-center gap-[10px] animate-lsPulse}
-.ls-icon{@apply w-[52px] h-[52px] bg-white rounded-[14px] flex items-center justify-center}
+.ls-icon{@apply w-[52px] h-[52px] bg-white radius-lg flex items-center justify-center}
 .ls-icon svg{@apply w-[26px] h-[26px]}
 .ls-word{@apply text-[28px] font-[var(--w500)] tracking-[var(--track-tight)] text-white leading-none}
 .ls-wordmark{@apply w-[var(--ls-logo-w)] h-auto block}
-.ls-bar-wrap{@apply w-[var(--ls-logo-w)] h-[2px] bg-[var(--white-14)] rounded-[2px] overflow-hidden}
-.ls-bar{@apply h-full bg-white rounded-[2px] w-0 animate-lsBar}
+.ls-bar-wrap{@apply w-[var(--ls-logo-w)] h-[2px] bg-[var(--white-14)] radius-xs overflow-hidden}
+.ls-bar{@apply h-full bg-white radius-xs w-0 animate-lsBar}
 @keyframes lsPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.93)}}
 @keyframes lsBar{to{width:100%}}
 @keyframes lsLogoOut{
@@ -71,10 +71,10 @@ input,textarea,select{@apply text-sm outline-none}
 }
 
 /* ============================================================ BUTTONS - Converti en classes Tailwind ============================================================ */
-.btn{@apply inline-flex items-center justify-center px-[22px] py-3 rounded-full font-[var(--sans)] font-[var(--w500)] text-sm tracking-[var(--track)] cursor-pointer whitespace-nowrap border-none transition-opacity transition-transform duration-150 ease-spring}
+.btn{@apply inline-flex items-center justify-center px-[22px] py-3 rounded-full font-[var(--sans)] font-[var(--w500)] text-sm tracking-[var(--track)] cursor-pointer whitespace-nowrap border-none transition-interactive}
 .btn-primary{@apply bg-[var(--cta-bg)] text-[var(--cta-text)]}
 .btn-primary:hover{@apply opacity-80 scale-[0.97]}
-.btn-outline{@apply bg-transparent text-[var(--color-primary)] border border-[var(--border-mid)]}
+.btn-outline{@apply bg-transparent text-[var(--color-primary)] border border-[var(--border-mid)] transition-colors-quick}
 .btn-outline:hover{@apply bg-[var(--ink-05)]}
 .btn-lg{@apply px-[30px] py-4 text-[15px]}
 .btn-light{@apply bg-[var(--cta-text)] text-[var(--color-primary)]}
@@ -113,30 +113,30 @@ input,textarea,select{@apply text-sm outline-none}
 .nav.scrolled{@apply bg-transparent border-b-0}
 .nav-logo-row{@apply relative z-[3] flex items-center w-full h-[var(--nav-h)] max-w-[1200px] mx-auto px-16}
 .nav-logo{@apply flex items-center gap-[6px] flex-shrink-0 cursor-pointer}
-.nav-logo-icon{@apply w-[27px] h-[27px] bg-[var(--color-primary)] rounded-lg flex items-center justify-center}
+.nav-logo-icon{@apply w-[27px] h-[27px] bg-[var(--color-primary)] radius-lg flex items-center justify-center}
 .nav-logo-icon svg{@apply w-[15px] h-[15px]}
 .nav-logo-text{@apply text-[20px] font-[var(--w500)] tracking-[-0.03em] leading-none}
 .nav-logo-wordmark{@apply h-6 w-auto block}
 .nav-links{@apply flex items-center gap-5 flex-1 justify-end h-full}
-.nav-link{@apply inline-flex items-center gap-[6px] text-sm leading-[21px] font-medium tracking-[-0.56px] text-[var(--color-primary)] transition-colors duration-150 ease-out whitespace-nowrap cursor-pointer}
+.nav-link{@apply inline-flex items-center gap-[6px] text-sm leading-[21px] font-medium tracking-[-0.56px] text-[var(--color-primary)] transition-colors-quick whitespace-nowrap cursor-pointer}
 .nav-link:hover{@apply text-[var(--subtle)]}
 .nav-link.active-link{@apply text-[var(--color-primary)]}
-.nav-link.has-mega .nav-link-caret{@apply text-[10px] leading-none translate-y-px transition-transform duration-150 ease-out transition-opacity duration-150 ease-out opacity-[0.62]}
+.nav-link.has-mega .nav-link-caret{@apply text-[10px] leading-none translate-y-px transition-transform-quick transition-opacity-quick opacity-[0.62]}
 .nav-link.has-mega.open .nav-link-caret{@apply translate-y-px rotate-180 opacity-100}
 .lang-selector{@apply relative flex items-center self-stretch h-full}
 .lang-trigger{@apply flex items-center justify-center h-full p-0 border-none bg-transparent}
-.lang-trigger-flag{@apply w-[26px] h-auto block grayscale-[16%] saturate-[86%] opacity-[0.90] rounded-[3px] border border-[var(--ink-16)] shadow-[0_0_0_var(--ink-00)] transition-all duration-150 ease-out transition-opacity duration-150 ease-out transition-transform duration-150 ease-spring transition-all duration-150 ease-out transition-shadow duration-150 ease-out}
-.lang-trigger:hover .lang-trigger-flag,.lang-selector.open .lang-trigger-flag{@apply grayscale-0 saturate-[105%] opacity-100 -translate-y-2 scale-[1.04] shadow-[0_10px_20px_var(--ink-20)]}
-.lang-menu{@apply absolute top-[calc(100%+10px)] right-0 min-w-[168px] p-2 bg-[var(--bg-overlay-95)] backdrop-blur-[10px] border border-[var(--border)] rounded-[14px] shadow-[0_16px_32px_var(--ink-10)] flex flex-col gap-[3px] opacity-0 translate-y-px scale-[0.98] pointer-events-none transition-opacity duration-150 ease-out transition-transform duration-200 ease-out}
+.lang-trigger-flag{@apply w-[26px] h-auto block grayscale-[16%] saturate-[86%] opacity-[0.90] radius-sm border border-[var(--ink-16)] shadow-[0_0_0_var(--ink-00)] transition-interactive}
+.lang-trigger:hover .lang-trigger-flag,.lang-selector.open .lang-trigger-flag{@apply grayscale-0 saturate-[105%] opacity-100 -translate-y-2 scale-[1.04] shadow-md}
+.lang-menu{@apply absolute top-[calc(100%+10px)] right-0 min-w-[168px] p-2 bg-[var(--bg-overlay-95)] backdrop-blur-[10px] border border-[var(--border)] radius-lg shadow-lg flex flex-col gap-[3px] opacity-0 translate-y-px scale-[0.98] pointer-events-none transition-opacity-quick transition-transform-quick}
 .lang-menu.open{@apply opacity-100 translate-y-0 scale-100 pointer-events-auto}
-.lang-option{@apply flex items-center gap-[10px] p-2 p-2 rounded-[10px] transition-all duration-150 ease-out transition-colors duration-150 ease-out text-left}
+.lang-option{@apply flex items-center gap-[10px] p-2 p-2 radius-md transition-interactive transition-colors-quick text-left}
 .lang-option:hover{@apply bg-[var(--ink-05)]}
 .lang-option.active{@apply bg-[var(--ink-08)]}
-.lang-option-flag{@apply w-[22px] h-auto block opacity-100 rounded-[3px] border border-[var(--ink-14)] transition-transform duration-150 ease-spring transition-shadow duration-150 ease-out transition-all duration-150 ease-out}
-.lang-option:hover .lang-option-flag,.lang-option.active .lang-option-flag{@apply translate-y-px shadow-[0_6px_12px_var(--ink-14)]}
-.lang-option-label{@apply text-[13px] font-[var(--w500)] tracking-[var(--track)]}
+.lang-option-flag{@apply w-[22px] h-auto block opacity-100 radius-sm border border-[var(--ink-14)] transition-transform-quick transition-interactive}
+.lang-option:hover .lang-option-flag,.lang-option.active .lang-option-flag{@apply translate-y-px shadow-sm}
+.lang-option-label{@apply text-body-medium}
 .nav-burger{@apply hidden w-[44px] h-[44px] relative items-center justify-center flex-shrink-0}
-.nav-bar{@apply absolute w-[20px] h-[2px] bg-[var(--color-primary)] rounded-[2px] transition-transform duration-300 ease-spring transition-all duration-300 ease-spring}
+.nav-bar{@apply absolute w-[20px] h-[2px] bg-[var(--color-primary)] radius-xs transition-transform-quick transition-interactive}
 .nav-bar-top{@apply top-[calc(42%-1px)]}
 .nav-bar-bot{@apply top-[calc(58%-1px)]}
 .nav.open .nav-bar-top{@apply rotate-45 top-[calc(50%-1px)]}
@@ -144,33 +144,33 @@ input,textarea,select{@apply text-sm outline-none}
 .nav-drawer{@apply hidden flex-col gap-[10px] w-full pb-6 max-h-0 overflow-hidden transition-all duration-300 ease-out transition-opacity duration-300 ease-out opacity-0}
 .nav.open .nav-drawer{@apply max-h-[620px] opacity-100}
 .nav-drawer-item{@apply flex flex-col}
-.nav-drawer-link{@apply flex items-center justify-between gap-[10px] w-full text-[15px] font-[var(--w500)] text-[var(--color-primary)] py-2 transition-colors duration-150 ease-out cursor-pointer}
+.nav-drawer-link{@apply flex items-center justify-between gap-[10px] w-full text-nav text-[var(--color-primary)] py-2 transition-colors-quick cursor-pointer}
 .nav-drawer-link:hover{@apply text-[var(--subtle)]}
-.nav-drawer-link.has-mega .nav-drawer-caret{@apply text-[11px] leading-none transition-transform duration-150 ease-out transition-opacity duration-150 ease-out opacity-[0.62]}
+.nav-drawer-link.has-mega .nav-drawer-caret{@apply text-[11px] leading-none transition-transform-quick transition-opacity-quick opacity-[0.62]}
 .nav-drawer-item.open .nav-drawer-link.has-mega .nav-drawer-caret{@apply rotate-180 opacity-100}
 .nav-drawer-sub{@apply grid grid-rows-[0fr] transition-all duration-300 ease-out}
 .nav-drawer-sub.open{@apply grid-rows-[1fr]}
 .nav-drawer-sub > *{@apply overflow-hidden}
 .nav-drawer-sub-group{@apply py-2 pl-3}
-.nav-drawer-sub-title{@apply text-[11px] font-[var(--w500)] tracking-[0.07em] uppercase text-[var(--muted)] my-2}
-.nav-drawer-sub-link{@apply flex items-center justify-between w-full text-[13px] text-[var(--color-primary)] py-2 text-left}
+.nav-drawer-sub-title{@apply text-eyebrow my-2}
+.nav-drawer-sub-link{@apply flex items-center justify-between w-full text-body-medium text-[var(--color-primary)] py-2 text-left}
 .nav-drawer-sub-link.is-soon{@apply text-[var(--muted)] cursor-not-allowed}
 .nav-drawer-sub-badge{@apply text-[10px] tracking-[0.04em] uppercase text-[var(--muted)]}
 .mega-panel-shell{@apply absolute left-1/2 top-full w-screen -translate-x-1/2 pt-0 z-[25] opacity-0 pointer-events-none transition-opacity duration-200 ease-out}
 .mega-panel-shell.open{@apply opacity-100 pointer-events-auto}
-.mega-panel{@apply relative bg-[var(--bg-overlay-94)] backdrop-blur-[12px] border-t border-[var(--border)] border-b border-[var(--border)] shadow-[0_24px_60px_var(--ink-08)]}
+.mega-panel{@apply relative bg-[var(--bg-overlay-94)] backdrop-blur-[12px] border-t border-[var(--border)] border-b border-[var(--border)] shadow-xl}
 .mega-panel-inner{@apply max-w-[1200px] mx-auto px-16 py-[34px] grid grid-cols-[320px_1fr] gap-10}
 .mega-intro{@apply flex flex-col gap-[14px]}
-.mega-eyebrow{@apply text-[11px] font-[var(--w500)] tracking-[0.07em] uppercase text-[var(--muted)]}
+.mega-eyebrow{@apply text-eyebrow}
 .mega-title{@apply text-[30px] font-[var(--w500)] tracking-[-0.05em] leading-[1.08]}
 .mega-body{@apply text-[14px] leading-[1.6] text-[var(--muted)] max-w-[30ch]}
-.mega-cta{@apply w-fit px-4 py-3 border border-[var(--border-mid)] rounded-full text-[13px] font-[var(--w500)] transition-all duration-150 ease-out}
+.mega-cta{@apply w-fit px-4 py-3 border border-[var(--border-mid)] rounded-full text-body-medium transition-interactive}
 .mega-cta:hover{@apply bg-[var(--ink-04)]}
 .mega-grid{@apply grid grid-cols-3 gap-4}
-.mega-group{@apply bg-[var(--white-54)] border border-[var(--ink-05)] rounded-[16px] p-4 p-4}
-.mega-group-title{@apply text-[11px] font-[var(--w500)] tracking-[0.07em] uppercase text-[var(--muted)] px-1 pb-3}
+.mega-group{@apply bg-[var(--white-54)] border border-[var(--ink-05)] radius-xl p-4 p-4}
+.mega-group-title{@apply text-eyebrow px-1 pb-3}
 .mega-links{@apply flex flex-col gap-[6px]}
-.mega-link{@apply flex flex-col items-start gap-1 w-full text-left p-2 rounded-[12px] transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
+.mega-link{@apply flex flex-col items-start gap-1 w-full text-left p-2 radius-md transition-interactive transition-transform-quick}
 .mega-link:hover{@apply bg-[var(--ink-04)] translate-y-px}
 .mega-link.is-soon{@apply cursor-not-allowed opacity-60}
 .mega-link-top{@apply flex items-center gap-2}
@@ -188,6 +188,16 @@ input,textarea,select{@apply text-sm outline-none}
              transform 0.82s cubic-bezier(0.16,1,0.3,1);
 }
 
+/* Version sans scale pour les éléments qui ne doivent pas réduire */
+.rev-no-scale{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.82s cubic-bezier(0.16,1,0.3,1), 
+             transform 0.82s cubic-bezier(0.16,1,0.3,1);
+}
+
+.rev-no-scale.in{opacity:1;transform:translateY(0)}
+
 /* Classes qui utilisent reveal */
 .rev{@apply rev-base}
 .rev.in{opacity:1;transform:translateY(0)}
@@ -195,6 +205,32 @@ input,textarea,select{@apply text-sm outline-none}
 .rev.in.d2{transition-delay:220ms}
 .rev.in.d3{transition-delay:320ms}
 .rev.in.d4{transition-delay:420ms}
+
+/* ============================================================ UTILITAIRES DRY - Classes réutilisables sans impact design ============================================================ */
+
+/* Border radius - Classes utilitaires */
+.radius-xs{@apply rounded-[2px]}
+.radius-sm{@apply rounded-[3px]}
+.radius-md{@apply rounded-[10px]}
+.radius-lg{@apply rounded-[14px]}
+.radius-xl{@apply rounded-[16px]}
+
+/* Transitions - Classes utilitaires (même comportement, code plus court) */
+.transition-interactive{@apply transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
+.transition-colors-quick{@apply transition-colors duration-150 ease-out}
+.transition-opacity-quick{@apply transition-opacity duration-150 ease-out}
+.transition-transform-quick{@apply transition-transform duration-150 ease-spring}
+
+/* Typography - Classes utilitaires */
+.text-eyebrow{@apply text-[11px] font-[var(--w500)] tracking-[0.07em] uppercase text-[var(--muted)]}
+.text-body-medium{@apply text-[13px] font-[var(--w500)] tracking-[var(--track)]}
+.text-nav{@apply text-[15px] font-[var(--w500)] tracking-[var(--track)]}
+
+/* Shadows - Classes utilitaires */
+.shadow-sm{@apply shadow-[0_6px_12px_var(--ink-14)]}
+.shadow-md{@apply shadow-[0_10px_20px_var(--ink-20)]}
+.shadow-lg{@apply shadow-[0_16px_32px_var(--ink-10)]}
+.shadow-xl{@apply shadow-[0_24px_60px_var(--ink-08)]}
 
 /* Card hover animation - Applique à toutes les cartes */
 .card-hover{
@@ -204,6 +240,19 @@ input,textarea,select{@apply text-sm outline-none}
 .card-hover:hover{
   transform:translateY(4px);
 }
+
+/* Form base classes - Applique à tous les formulaires */
+.form-input-base{@apply bg-[var(--surface)] border border-[var(--border-mid)] rounded-[var(--r-md)] px-[18px] py-[14px] text-[14px] text-[var(--color-primary)] transition-interactive resize-none leading-[1.5]}
+.form-input-base:focus{@apply border-[var(--ink-30)] shadow-[0_0_0_3px_var(--ink-05)]}
+.form-input-base::placeholder{@apply text-[var(--muted)]}
+
+/* Card base classes - Applique à toutes les cartes */
+.card-base{@apply bg-[var(--surface)] rounded-[var(--r-md)]}
+.card-base-overflow{@apply card-base overflow-hidden}
+.card-base-cursor{@apply card-base-overflow cursor-pointer}
+.card-hover-translate{@apply translate-y-px}
+.card-shadow-sm{@apply shadow-[0_12px_40px_var(--ink-07)]}
+.card-shadow-md{@apply shadow-[0_16px_48px_var(--ink-10)]}
 
 /* Classes qui utilisent card-hover */
 .help-card{@apply card-hover}
@@ -240,7 +289,7 @@ input,textarea,select{@apply text-sm outline-none}
 .voice-demo-shell{@apply relative w-full max-w-[1200px] h-[min(820px,calc(100vh-var(--nav-h)-26px))] rounded-[34px] px-10 py-10 bg-gradient-to-br from-[rgba(180,190,255,.18)] via-transparent via-[36%] from-[rgba(190,170,255,.16)] via-transparent via-[36%] from-[rgba(246,246,250,.95)] to-[rgba(236,236,245,.9)] border border-[var(--ink-06)] shadow-[inset_0_1px_0_var(--white-65),0_25px_60px_rgba(33,43,78,.08)]}
 .voice-demo-shell::before{content:'';@apply absolute inset-0 pointer-events-none bg-[radial-gradient(rgba(154,164,215,.18)_1px,transparent_1.2px)] bg-[length:8px_8px] opacity-55}
 .voice-demo-head{@apply relative z-[2] max-w-[620px] mx-auto text-center mb-6}
-.voice-demo-label{@apply text-[11px] font-[var(--w500)] tracking-[0.08em] uppercase text-[rgba(32,40,66,.62)] mb-2}
+.voice-demo-label{@apply text-eyebrow text-[rgba(32,40,66,.62)] mb-2}
 .voice-demo-title{@apply text-[clamp(28px,3.9vw,44px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.06] text-[#1c2334]}
 .voice-demo-sub{@apply text-[14px] leading-[1.65] text-[rgba(28,35,52,.66)] max-w-[520px] mx-auto mt-4}
 .voice-demo-stage{@apply relative z-[2] grid grid-cols-[minmax(180px,240px)_minmax(240px,360px)_minmax(190px,280px)] gap-6 items-center justify-center min-h-[420px]}
@@ -250,7 +299,7 @@ input,textarea,select{@apply text-sm outline-none}
 .voice-dialog-dot{@apply w-[9px] h-[9px] rounded-full bg-[#ff2f75] shadow-[0_0_0_6px_rgba(255,47,117,.15)]}
 .voice-goal-card{@apply max-w-[240px] p-[14px] p-4 rounded-[14px] bg-[var(--white-46)] border border-[rgba(70,82,122,.11)] text-[15px] leading-[1.55] text-[rgba(28,35,52,.74)] backdrop-blur-[7px]}
 .voice-test-button{@apply mt-1}
-.voice-phone-wrap{@apply relative flex items-center justify-center transition-transform duration-200 ease-linear origin-[50%_55%]}
+.voice-phone-wrap{@apply relative flex items-center justify-center transition-transform duration-220 ease-linear origin-[50%_55%]}
 .voice-phone-glow{@apply absolute w-[82%] h-[48%] bottom-[8%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(177,133,255,.55)_0%,rgba(177,133,255,.24)_42%,transparent_74%)] blur-[9px] opacity-[0.90]}
 .voice-phone-frame{@apply relative w-[min(340px,30vw)] min-w-[248px] aspect-[0.53/1] rounded-[40px] p-[14px] bg-gradient-to-b from-[var(--white-96)] to-[rgba(244,240,255,.92)] border border-[rgba(86,94,128,.13)] shadow-[0_24px_65px_rgba(26,40,85,.14),inset_0_0_0_1px_var(--white-72)] flex flex-col justify-between}
 .voice-phone-notch{@apply w-[82px] h-[8px] rounded-full bg-[rgba(120,126,158,.24)] mx-auto mt-1}
@@ -265,28 +314,28 @@ input,textarea,select{@apply text-sm outline-none}
 .voice-transcript-text{@apply text-[31px] font-[var(--w500)] tracking-[-0.05em] leading-[1.08] text-[#303850]}
 
 /* ============================================================ MEDICAL VOICE WEB-CALL SECTION - Converti en classes Tailwind ============================================================ */
-.medical-voice-scroll{@apply relative h-[294vh] max-h-[3200px] my-6 mx-0 mt-6 mb-4}
-.medical-voice-sticky{@apply sticky top-[calc(var(--nav-h)+12px)] h-[calc(100vh-var(--nav-h)-18px)] flex items-center justify-center px-16 py-5 overflow-visible}
-.medical-voice-shell{@apply relative w-full max-w-[1200px] h-[min(920px,calc(100vh-var(--nav-h)-40px))] rounded-[32px] px-11 py-7 bg-gradient-to-br from-[rgba(178,197,255,.22)] via-transparent via-[36%] from-[rgba(216,198,255,.2)] via-transparent via-[40%] from-[rgba(249,249,253,.95)] to-[rgba(236,238,247,.9)] border border-[var(--ink-08)] shadow-[inset_0_1px_0_var(--white-78),0_28px_64px_rgba(31,47,76,.1)] overflow-hidden grid grid-rows-[auto_auto_minmax(0,1fr)]}
+.medical-voice-scroll{@apply relative h-[800px] my-6 mx-0 mt-6 mb-4}
+.medical-voice-sticky{@apply sticky top-[calc(var(--nav-h)+12px)] h-[700px] flex items-center justify-center px-16 py-5 overflow-visible}
+.medical-voice-shell{@apply relative w-full max-w-[1200px] h-[680px] rounded-[32px] px-11 py-7 bg-gradient-to-br from-[rgba(178,197,255,.22)] via-transparent via-[36%] from-[rgba(216,198,255,.2)] via-transparent via-[40%] from-[rgba(249,249,253,.95)] to-[rgba(236,238,247,.9)] border border-[var(--ink-08)] shadow-[inset_0_1px_0_var(--white-78),0_28px_64px_rgba(31,47,76,.1)] overflow-hidden grid grid-rows-[auto_auto_minmax(0,1fr)]}
 .medical-voice-shell::before{content:'';@apply absolute inset-0 pointer-events-none bg-[radial-gradient(rgba(153,170,224,.2)_1px,transparent_1.3px)] bg-[length:8px_8px] opacity-55}
 .medical-voice-header{@apply relative z-[2] max-w-[760px] mb-2 mx-auto text-center transition-transform duration-300 ease-out}
-.medical-voice-head-label,.medical-voice-head-title{@apply opacity-0}
+.medical-voice-head-label,.medical-voice-head-title{@apply opacity-0 translate-y-[18px]}
 .medical-voice-shell.in .medical-voice-head-label{@apply animate-fadeUpVoice}
 .medical-voice-shell.in .medical-voice-head-title{@apply animate-fadeUpTitle}
-.medical-voice-sub{@apply text-[15px] leading-[1.7] text-[var(--muted)] max-w-[620px] mt-4}
+.medical-voice-sub{@apply text-body-medium text-[var(--muted)] max-w-[620px] mt-4}
 .medical-voice-selector-wrap{@apply relative z-[2] mt-6 mb-2 transition-transform duration-300 ease-out transition-opacity duration-300 ease-out}
 .medical-domain-selector{@apply relative z-[2] flex flex-wrap gap-[10px] mb-1 justify-center transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear}
 .medical-domain-chip{@apply p-2 p-4 rounded-full border border-[var(--ink-16)] bg-transparent text-[var(--color-primary)] text-[13px] font-[var(--w500)] tracking-[var(--track)] transition-all duration-150 ease-out transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
 .medical-domain-chip:hover{@apply bg-[var(--ink-05)] translate-y-px}
 .medical-domain-chip.active{@apply bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] border-[var(--action-primary-bg)]}
-.medical-voice-stage{@apply relative z-[2] h-full min-h-0 pt-[var(--medical-stage-top-offset)] pb-[clamp(64px,8vh,122px)] box-border flex items-start justify-center}
-.medical-voice-phone-col{@apply relative z-[2] h-[var(--medical-phone-visible-height)] flex items-start transition-transform duration-200 ease-linear origin-[50%_0]}
+.medical-voice-stage{--medical-stage-top-offset:clamp(0px,.55vh,6px);--medical-phone-frame-width:min(246px,20vw);--medical-phone-frame-height:calc(var(--medical-phone-frame-width) * 1.8868);--medical-phone-bottom-pad:34px;--medical-phone-display-scale:.84;--medical-phone-visible-height:calc((var(--medical-phone-frame-height) + var(--medical-phone-bottom-pad)) * var(--medical-phone-display-scale));@apply relative z-[2] h-full min-h-0 pt-[var(--medical-stage-top-offset)] pb-[clamp(64px,8vh,122px)] box-border flex items-start justify-center}
+.medical-voice-phone-col{@apply relative z-[2] h-[var(--medical-phone-visible-height)] flex items-start transition-transform duration-220 ease-linear origin-[50%_0]}
 .medical-voice-transcript-col{@apply absolute right-11 top-[var(--medical-stage-top-offset)] bottom-auto h-[var(--medical-phone-visible-height)] w-[min(44%,430px)] flex items-start transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear pointer-events-none}
 .medical-voice-stage.conversation-active .medical-voice-transcript-col{@apply pointer-events-auto}
 .medical-phone-wrap{@apply relative flex items-start justify-center px-3 pb-[var(--medical-phone-bottom-pad)] h-[calc(var(--medical-phone-frame-height)+var(--medical-phone-bottom-pad))] min-h-0}
 .medical-phone-frame{@apply w-[var(--medical-phone-frame-width)] min-w-[168px]}
 .medical-phone-visual-stack{@apply relative w-[66%] aspect-square flex items-center justify-center isolate}
-.medical-phone-avatar-layer,.medical-phone-orb-layer{@apply absolute inset-0 flex items-center justify-center transition-opacity duration-500 ease-out transition-transform duration-500 ease-out}
+.medical-phone-avatar-layer,.medical-phone-orb-layer{@apply absolute inset-0 flex items-center justify-center transition-opacity duration-420 ease-out transition-transform duration-420 ease-out}
 .medical-phone-avatar-layer.is-visible,.medical-phone-orb-layer.is-visible{@apply opacity-100 scale-100}
 .medical-phone-avatar-layer.is-hidden,.medical-phone-orb-layer.is-hidden{@apply opacity-0 scale-[0.96] pointer-events-none}
 .medical-phone-avatar-shell{@apply relative w-full aspect-square flex items-center justify-center isolate}
@@ -296,11 +345,11 @@ input,textarea,select{@apply text-sm outline-none}
 .medical-phone-avatar-shell.pre-call .medical-phone-avatar-wave.wave-3{animation-delay:1.5s}
 @keyframes medicalWavePulse{
   0%{opacity:0;transform:scale(.82)}
-  24%{opacity:.4}
+  24%{opacity:.8}
   100%{opacity:0;transform:scale(1.42)}
 }
 .medical-phone-avatar{@apply w-full aspect-square rounded-full bg-[var(--medical-avatar-image,none),radial-gradient(circle_at_52%_26%,var(--white-84),var(--white-20)_45%,transparent_62%),radial-gradient(circle_at_46%_88%,rgba(170,126,255,.62),rgba(170,126,255,.07)_66%,transparent_100%),linear-gradient(160deg,#f2c6a7_0%,#dbb093_36%,#c89683_62%,#b38373_100%)] bg-[length:cover,auto,auto,auto] bg-[center,center,center,center] shadow-[0_22px_45px_rgba(87,56,141,.2)] relative z-[2]}
-.voice-call-orb-host{@apply relative w-full h-full rounded-full overflow-hidden flex items-center justify-center transition-transform duration-200 ease-out transition-opacity duration-200 ease-out}
+.voice-call-orb-host{@apply relative w-full h-full rounded-full overflow-hidden flex items-center justify-center transition-transform duration-240 ease-out transition-opacity duration-240 ease-out}
 .voice-call-orb-host > *{@apply w-full h-full}
 .voice-call-orb-canvas{@apply relative w-full h-full}
 .voice-call-orb-canvas canvas{@apply w-full h-full scale-[1.14] origin-center}
@@ -311,7 +360,7 @@ input,textarea,select{@apply text-sm outline-none}
 .phone-call-control{@apply w-[calc(100%-12px)] mx-auto mb-1}
 .phone-call-slider{--slide-progress:0;--slider-knob-size:48px;@apply relative h-[60px] rounded-full p-2 border border-[rgba(31,39,61,.12)] bg-gradient-to-b from-[rgba(240,237,248,.95)] to-[rgba(227,223,240,.92)] flex items-center overflow-hidden touch-none select-none}
 .phone-call-slider:focus-visible{@apply outline-2 outline-[rgba(42,56,98,.35)] outline-offset-2}
-.phone-call-slider-label{@apply pl-16 pr-[74px] text-[14px] font-[var(--w500)] tracking-[var(--track)] text-[#2f3752] whitespace-nowrap text-ellipsis overflow-hidden opacity-[calc(1-var(--slide-progress)*.84)] translate-x-[calc(var(--slide-progress)*8px)] transition-opacity duration-200 ease-out transition-transform duration-200 ease-out}
+.phone-call-slider-label{@apply pl-16 pr-[74px] text-body-medium text-[#2f3752] whitespace-nowrap text-ellipsis overflow-hidden opacity-[calc(1-var(--slide-progress)*.84)] translate-x-[calc(var(--slide-progress)*8px)] transition-opacity-quick transition-transform-quick}
 .phone-call-slider-hint{@apply absolute right-[18px] flex gap-[5px] opacity-[calc(1-var(--slide-progress)*1.4)] transition-opacity duration-200 ease-out}
 .phone-call-slider-hint span{@apply w-[7px] h-[7px] border-r-[1.6px] border-r-[rgba(47,55,82,.34)] border-t-[1.6px] border-t-[rgba(47,55,82,.34)] rotate-45 opacity-[0.18] animate-pulse}
 .phone-call-slider-hint span:nth-child(2){animation-delay:.2s}
@@ -321,10 +370,8 @@ input,textarea,select{@apply text-sm outline-none}
   45%{opacity:.44}
   100%{opacity:.12;transform:translateX(5px) rotate(45deg)}
 }
-.phone-call-slider-knob{@apply absolute top-2 left-[calc(6px+var(--slide-progress)*(100%-var(--slider-knob-size)-12px))] w-[var(--slider-knob-size)] h-[calc(100%-12px)] rounded-full bg-[#19a85f] border border-[#12854a] flex items-center justify-center transition-all duration-300 ease-out transition-shadow duration-200 ease-out transition-all duration-150 ease-out shadow-[0_10px_20px_rgba(20,95,58,.28)] cursor-grab}
-.phone-call-slider.dragging .phone-call-slider-knob{@apply cursor-grabbing}
-.phone-call-slider.idle .phone-call-slider-knob{@apply animate-callKnobBreath}
-.phone-call-slider.dragging .phone-call-slider-knob{@apply cursor-grabbing}
+.phone-call-slider-knob{@apply absolute top-2 left-[calc(6px+var(--slide-progress)*(100%-var(--slider-knob-size)-12px))] w-[var(--slider-knob-size)] h-[calc(100%-12px)] rounded-full bg-[#19a85f] border border-[#12854a] flex items-center justify-center transition-transform duration-280 ease-out transition-shadow duration-220 ease-out transition-all duration-150 ease-out shadow-[0_10px_20px_rgba(20,95,58,.28)] cursor-grab}
+.phone-call-slider.dragging .phone-call-slider-knob{@apply cursor-grabbing transition-none}
 @keyframes callKnobBreath{
   0%,100%{box-shadow:0 9px 18px rgba(20,95,58,.22)}
   50%{box-shadow:0 14px 26px rgba(20,95,58,.38)}
@@ -347,9 +394,9 @@ input,textarea,select{@apply text-sm outline-none}
 .medical-transcript-title{@apply text-[15px] font-[var(--w500)] tracking-[-0.02em]}
 .medical-transcript-sub{@apply text-[11px] text-[var(--muted)]}
 .medical-transcript-status{@apply text-[10px] font-[var(--w500)] tracking-[0.07em] uppercase text-[rgba(34,41,63,.52)] text-right}
-.medical-transcript-body-free{@apply overflow-auto flex flex-col gap-[10px] flex-1 max-h-none pr-2 items-start justify-start}
+.medical-transcript-body-free{@apply overflow-auto flex flex-col gap-[10px] flex-1 max-h-none pr-2 items-start justify-start;scrollbar-width:thin}
 .medical-transcript-empty{@apply m-0 text-[var(--muted)] text-[13px] leading-[1.6]}
-.medical-transcript-line{@apply max-w-[94%] flex flex-col gap-1 opacity-0 animate-medicalLineIn}
+.medical-transcript-line{max-width:94%;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translate3d(0,10px,0);animation:medicalLineIn .42s var(--ease-out) forwards;animation-delay:var(--entry-stagger,0ms)}
 .medical-transcript-line.agent{@apply self-start}
 .medical-transcript-line.patient{@apply self-start text-left}
 .medical-transcript-speaker{@apply text-[10px] font-[var(--w500)] tracking-[0.12em] uppercase text-[rgba(29,37,56,.44)]}
@@ -430,8 +477,8 @@ input,textarea,select{@apply text-sm outline-none}
 
 /* Home sections - Converti en classes Tailwind */
 .help-grid{@apply grid grid-cols-3 gap-5 text-left}
-.help-card{@apply bg-[var(--surface)] rounded-[var(--r-md)] p-8 flex flex-col gap-[14px]}
-.help-card:hover{@apply translate-y-px shadow-[0_12px_40px_var(--ink-07)]}
+.help-card{@apply card-base p-8 flex flex-col gap-[14px]}
+.help-card:hover{@apply card-hover-translate card-shadow-sm}
 .help-card.rev.in.d1{transition-delay:120ms}
 .help-card.rev.in.d2{transition-delay:220ms}
 .help-card.rev.in.d3{transition-delay:320ms}
@@ -610,8 +657,8 @@ input,textarea,select{@apply text-sm outline-none}
 
 /* ============================================================ ===== CASE STUDIES PAGE - Converti en classes Tailwind ===== ============================================================ */
 .cases-grid{@apply grid grid-cols-2 gap-5}
-.cs-card{@apply bg-[var(--surface)] rounded-[var(--r-md)] overflow-hidden cursor-pointer}
-.cs-card:hover{@apply translate-y-px shadow-[0_16px_48px_var(--ink-10)]}
+.cs-card{@apply card-base-cursor}
+.cs-card:hover{@apply card-hover-translate card-shadow-md}
 .cs-card.rev.in.d1{transition-delay:120ms}
 .cs-card.rev.in.d2{transition-delay:220ms}
 .cs-card.rev.in.d3{transition-delay:320ms}
@@ -656,8 +703,8 @@ input,textarea,select{@apply text-sm outline-none}
 
 /* ============================================================ ===== BLOG PAGE - Converti en classes Tailwind ===== ============================================================ */
 .blog-grid{@apply grid grid-cols-2 gap-5}
-.blog-card{@apply bg-[var(--surface)] rounded-[var(--r-md)] overflow-hidden cursor-pointer}
-.blog-card:hover{@apply translate-y-px shadow-[0_16px_48px_var(--ink-10)]}
+.blog-card{@apply card-base-cursor}
+.blog-card:hover{@apply card-hover-translate card-shadow-md}
 .blog-card.rev.in.d1{transition-delay:120ms}
 .blog-card.rev.in.d2{transition-delay:220ms}
 .blog-card.rev.in.d3{transition-delay:320ms}
@@ -667,7 +714,7 @@ input,textarea,select{@apply text-sm outline-none}
 .blog-card:hover .blog-thumb-bg{@apply scale-[1.04]}
 .blog-card-body{@apply px-5 px-6 py-5 py-6 flex flex-col gap-2}
 .blog-card-title{@apply text-[16px] font-[var(--w500)] tracking-[-0.04em] leading-[1.35]}
-.blog-card-sub{@apply text-[13px] leading-[1.6] text-[var(--muted)]}
+.blog-card-sub{@apply text-body-medium leading-[1.6] text-[var(--muted)]}
 .blog-card-footer{@apply flex items-center justify-between mt-1}
 .blog-card-date{@apply text-[12px] text-[var(--muted)]}
 .blog-card-arrow{@apply w-[24px] h-[24px] bg-[var(--color-primary)] rounded-full flex items-center justify-center}
@@ -700,22 +747,22 @@ input,textarea,select{@apply text-sm outline-none}
 .contact-sub{@apply text-[16px] leading-[1.65] text-[var(--muted)] max-w-[380px]}
 .contact-form{@apply flex flex-col gap-5}
 .form-group{@apply flex flex-col gap-[6px]}
-.form-label{@apply text-[14px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)]}
+.form-label{@apply text-body-medium text-[var(--color-primary)]}
 .form-label sup{@apply text-[var(--muted)]}
-.form-input{@apply bg-[var(--surface)] border border-[var(--border-mid)] rounded-[var(--r-md)] px-[18px] py-[14px] text-[14px] text-[var(--color-primary)] transition-all duration-150 ease-out transition-shadow duration-150 ease-out resize-none leading-[1.5]}
+.form-input{@apply form-input-base}
 .form-input:focus{@apply border-[var(--ink-30)] shadow-[0_0_0_3px_var(--ink-05)]}
 .form-input::placeholder{@apply text-[var(--muted)]}
 textarea.form-input{@apply min-h-[110px]}
 .form-radio-group{@apply flex flex-wrap gap-2}
 .form-radio{@apply flex items-center gap-[7px] cursor-pointer}
 .form-radio-input{@apply w-[14px] h-[14px] accent-[var(--color-primary)] cursor-pointer}
-.form-radio-label{@apply text-[14px] tracking-[var(--track)] cursor-pointer}
+.form-radio-label{@apply text-body-medium cursor-pointer}
 /* Contact FAQ section - Converti en classes Tailwind */
 .contact-faq{@apply px-16 pb-20 max-w-[1200px] mx-auto grid grid-cols-2 gap-16 items-start}
-.contact-faq-card{@apply bg-[var(--surface)] rounded-[28px] p-12 relative}
-.contact-faq-badge{@apply absolute -top-6 left-6 w-[52px] h-[52px] bg-[var(--ink-08)] rounded-[15px] flex items-center justify-center}
+.contact-faq-card{@apply card-base p-12 relative}
+.contact-faq-badge{@apply absolute -top-6 left-6 w-[52px] h-[52px] bg-[var(--ink-08)] radius-xl flex items-center justify-center}
 .contact-faq-badge svg{@apply w-[24px] h-[24px]}
-.contact-faq-label{@apply inline-block bg-[var(--ink-06)] rounded-full px-3 py-1 text-[12px] font-[var(--w500)] mb-4}
+.contact-faq-label{@apply inline-block bg-[var(--ink-06)] rounded-full px-3 py-1 text-eyebrow mb-4}
 .contact-faq-h{@apply text-[clamp(26px,3.5vw,36px)] font-[var(--w500)] tracking-[-0.055em] leading-[var(--lh-head)] mb-6}
 
 /* ============================================================ ===== LEGAL PAGES - Converti en classes Tailwind ===== ============================================================ */
@@ -723,7 +770,7 @@ textarea.form-input{@apply min-h-[110px]}
 .legal-h1{@apply text-[88px] font-medium tracking-[-6px] leading-none mb-10}
 .legal-content{@apply max-w-[660px] flex flex-col gap-[18px]}
 .legal-content p{@apply text-[15px] leading-[1.8] text-[var(--muted)]}
-.legal-content a{@apply text-[var(--color-primary)] border-b border-[var(--border-mid)] transition-all duration-150 ease-out}
+.legal-content a{@apply text-[var(--color-primary)] border-b border-[var(--border-mid)] transition-colors-quick}
 .legal-content a:hover{@apply border-[var(--color-primary)]}
 
 /* ============================================================ ===== 404 PAGE - Converti en classes Tailwind ===== ============================================================ */

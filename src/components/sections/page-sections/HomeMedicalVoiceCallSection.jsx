@@ -202,7 +202,7 @@ export default function HomeMedicalVoiceCallSection() {
     endResetTimerIdRef.current = null;
   };
 
-  const scheduleReturnToIdle = (delayMs = 1050) => {
+  const scheduleReturnToIdle = (delayMs = 2500) => {
     clearEndResetTimer();
     endResetTimerIdRef.current = window.setTimeout(() => {
       setCallState('idle');
@@ -319,7 +319,7 @@ export default function HomeMedicalVoiceCallSection() {
     const endTimerId = window.setTimeout(() => {
       setCallState('ended');
       setCallStatusLabel(t('sections.medicalVoice.status.fallbackCompleted'));
-      scheduleReturnToIdle(950);
+      scheduleReturnToIdle(2000);
     }, (lastEntry?.delayMs || 0) + finalTypingTailMs);
 
     fallbackTimerIdsRef.current.push(endTimerId);
@@ -492,7 +492,7 @@ export default function HomeMedicalVoiceCallSection() {
   return (
     <section className="medical-voice-scroll" id="medicalVoiceDemo" ref={sectionRef}>
       <div className="medical-voice-sticky">
-        <div className="medical-voice-shell rev">
+        <div className="medical-voice-shell rev-no-scale">
           <div
             className="medical-voice-header"
             style={{ transform: `translate3d(0,${headerTranslateY}px,0)` }}

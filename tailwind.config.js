@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindcssAnimate from "tailwindcss-animate";
+
 const config = {
   darkMode: "class",
   content: [
@@ -190,6 +192,10 @@ const config = {
       transitionDuration: {
         "fast": "var(--duration-fast)",
         "mid": "var(--duration-mid)",
+        "220": "220ms",
+        "240": "240ms", 
+        "280": "280ms",
+        "420": "420ms",
       },
       transitionTimingFunction: {
         "spring": "var(--ease-spring)",
@@ -274,7 +280,7 @@ const config = {
         // Medical animations
         "medicalWavePulse": {
           "0%": { opacity: "0", transform: "scale(.82)" },
-          "24%": { opacity: ".4" },
+          "24%": { opacity: ".8" },
           "100%": { opacity: "0", transform: "scale(1.42)" },
         },
         "slideHintFlow": {
@@ -300,7 +306,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fadeIn": "fadeIn 0.3s ease-out",
         "marquee": "marquee 20s linear infinite",
-        "medicalLineIn": "medicalLineIn 0.5s ease-out",
+        "medicalLineIn": "medicalLineIn 0.5s ease-out forwards",
         "fadeUp": "fadeUp 0.5s ease-out forwards",
         "none": "none",
         // Hero animations avec delays originaux
@@ -340,7 +346,7 @@ const config = {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
+    tailwindcssAnimate,
     // Plugin pour ajouter les utilitaires personnalisés
     function({ addUtilities }) {
       addUtilities({
