@@ -1,6 +1,5 @@
 /* Buttons */
-.ds-btn,
-.btn {
+.ds-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -12,45 +11,39 @@
   font-size: 14px;
   line-height: 1;
   font-weight: var(--font-weight-medium);
-  letter-spacing: -0.03em;
+  letter-spacing: var(--track);
   cursor: pointer;
   white-space: nowrap;
   transition: opacity var(--duration-fast) ease, transform var(--duration-fast) var(--ease-spring), background var(--duration-fast) ease;
 }
 
-.ds-btn--primary,
-.btn-primary {
+.ds-btn--primary {
   background: var(--action-primary-bg);
   color: var(--action-primary-fg);
 }
 
-.ds-btn--outline,
-.btn-outline {
+.ds-btn--outline {
   background: var(--action-secondary-bg);
   color: var(--action-secondary-fg);
   border-color: var(--border-strong);
 }
 
-.ds-btn--light,
-.btn-light {
+.ds-btn--light {
   background: var(--text-inverse);
   color: var(--text-primary);
 }
 
-.ds-btn--lg,
-.btn-lg {
+.ds-btn--lg {
   padding: 16px 30px;
   font-size: 15px;
 }
 
-.ds-btn--full,
-.btn-full {
+.ds-btn--full {
   width: 100%;
   border-radius: var(--radius-md);
 }
 
-.ds-btn:hover,
-.btn:hover {
+.ds-btn:hover {
   transform: scale(0.98);
   opacity: 0.9;
 }

@@ -14,6 +14,7 @@ import TestimonialSection from '../components/sections/page-sections/Testimonial
 import WhyChooseSection from '../components/sections/page-sections/WhyChooseSection';
 import { getHelpItems, getHomeFaqItems, getStoryGradients } from '../constants/content';
 import { getCtaSubtitleFull, getStoryDurationMs } from '../constants/site';
+import ProblemCard from '../components/sections/ProblemCard';
 
 export default function HomePage({ active, onNavigate, storyStarted, instantHero }) {
   const { t } = useTranslation();
@@ -26,7 +27,8 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
   return (
     <div id="page-home" className={`page ${active ? 'active' : ''}`.trim()}>
       <HomeHeroSection onNavigate={onNavigate} storyStarted={storyStarted} storyGradients={storyGradients} storyDurationMs={storyDurationMs} instant={instantHero} />
-      <HomeProblemSection backgroundImageUrl="/assets/images/man_pain_stomach2.png" />
+      {/* <HomeProblemSection backgroundImageUrl="/assets/images/man_pain_stomach2.png" /> */}
+      <section className="mission-section"><ProblemCard /></section>
       <HomeMarqueeSection />
       {/* <HomeVoiceAgentSection onNavigate={onNavigate} /> */}
       <HomeServicesSection items={helpItems} />

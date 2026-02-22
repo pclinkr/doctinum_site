@@ -87,7 +87,7 @@ export default function LanguageSelector() {
             <button
               key={option.code}
               type="button"
-              className={`flex items-center gap-[10px] p-2 p-2 radius-md transition-interactive transition-colors-quick text-left ${isCurrent ? 'bg-[var(--ink-08)]' : 'hover:bg-[var(--ink-05)]'}`.trim()}
+              className={`flex items-center gap-[10px] p-2 radius-md transition-interactive transition-colors-quick text-left ${isCurrent ? 'bg-[var(--ink-08)]' : 'hover:bg-[var(--ink-05)]'}`.trim()}
               onClick={() => handleSelect(option.code)}
             >
               <img

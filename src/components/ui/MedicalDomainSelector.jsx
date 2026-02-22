@@ -9,7 +9,7 @@ export default function MedicalDomainSelector({ options, selectedId, onSelect })
             type="button"
             role="tab"
             aria-selected={isSelected}
-            className={`p-2 p-4 rounded-full border border-[var(--ink-16)] bg-transparent text-[var(--color-primary)] text-[13px] font-[var(--w500)] tracking-[var(--track)] transition-all duration-150 ease-out transition-all duration-150 ease-out transition-transform duration-150 ease-spring hover:bg-[var(--ink-05)] hover:translate-y-px ${isSelected ? 'bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] border-[var(--action-primary-bg)]' : ''}`.trim()}
+            className={`p-4 rounded-full border border-[var(--ink-16)] bg-transparent text-[var(--color-primary)] text-[13px] font-[var(--w500)] tracking-[var(--track)] transition-all duration-150 ease-out transition-transform duration-150 ease-spring hover:bg-[var(--ink-05)] hover:translate-y-px ${isSelected ? 'bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] border-[var(--action-primary-bg)]' : ''}`.trim()}
             onClick={() => onSelect(option.id)}
           >
             {option.label}

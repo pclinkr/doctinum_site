@@ -1,8 +1,9 @@
 import SectionHeading from '../SectionHeading';
+import Container from '../../layout/Container';
 
 export default function HomeProblemSection() {
   return (
-    <section className="mx-auto max-w-[1200px] px-16 py-[var(--space-10)] max-[900px]:px-8 max-[700px]:px-5">
+    <Container as="section" className="py-[var(--space-10)]">
       <div className="mx-auto max-w-[900px] px-[var(--space-6)] max-[700px]:px-[var(--space-4)]">
         <SectionHeading
           className="text-center"
@@ -39,6 +40,6 @@ export default function HomeProblemSection() {
           </p>
         </div>
       </div>
-    </section>
+    </Container>
   );
 }

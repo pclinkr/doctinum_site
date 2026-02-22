@@ -1,0 +1,107 @@
+:root {
+  --nav-opaque-threshold: 15px;
+
+  /* Navigation / overlays */
+  --gradient-nav-fade-dynamic: linear-gradient(
+    180deg,
+    rgba(239, 235, 229, calc(0.82 + var(--nav-scroll-progress) * 0.1)) 0%,
+    rgba(239, 235, 229, calc(0.62 + var(--nav-scroll-progress) * 0.12)) 34%,
+    rgba(239, 235, 229, calc(0.28 + var(--nav-scroll-progress) * 0.1)) 62%,
+    rgba(239, 235, 229, calc(0.1 + var(--nav-scroll-progress) * 0.06)) 80%,
+    transparent 100%
+  );
+  --nav-glass-bg: rgba(239, 235, 229, 0.03);
+  --gradient-nav-mask-soft: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.95) 34%,
+    rgba(0, 0, 0, 0.62) 66%,
+    transparent 100%
+  );
+  --gradient-nav-mask-strong: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.96) 30%,
+    rgba(0, 0, 0, 0.72) 58%,
+    rgba(0, 0, 0, 0.34) 78%,
+    transparent 100%
+  );
+
+  /* Marquee */
+  --gradient-marquee-rail: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--border) var(--marquee-edge-fade),
+    var(--border) calc(100% - var(--marquee-edge-fade)),
+    transparent 100%
+  );
+  --gradient-marquee-fade-left: linear-gradient(
+    to right,
+    var(--bg) 0%,
+    var(--bg) 34%,
+    var(--bg-overlay-92) 56%,
+    var(--bg-overlay-00) 100%
+  );
+  --gradient-marquee-fade-right: linear-gradient(
+    to left,
+    var(--bg) 0%,
+    var(--bg) 34%,
+    var(--bg-overlay-92) 56%,
+    var(--bg-overlay-00) 100%
+  );
+
+  /* Core surfaces */
+  --gradient-surface-medical-premium: linear-gradient(
+    146deg,
+    #b8caf0 0%,
+    #d2def8 22%,
+    #e5ecfc 46%,
+    #f1f5ff 74%,
+    #f8fbff 100%
+  );
+  --gradient-surface-soft: var(--gradient-surface-medical-premium);
+  --gradient-surface-dots: radial-gradient(rgba(154, 164, 215, 0.18) 1px, transparent 1.2px);
+  --gradient-accent-warm-previous: linear-gradient(
+    160deg,
+    #f3d8c6 0%,
+    #e9c0ab 36%,
+    #d9a895 62%,
+    #c89282 100%
+  );
+  --gradient-accent-warm: linear-gradient(
+    160deg,
+    rgb(240, 232, 216),
+    rgb(216, 200, 168),
+    rgb(192, 168, 120)
+  );
+  --gradient-overlay-top: linear-gradient(to top, var(--ink-60), transparent);
+  --gradient-problem-surface: linear-gradient(
+    145deg,
+    var(--bg-surface) 0%,
+    color-mix(in srgb, var(--bg-surface) 82%, #c4d7ff 18%) 56%,
+    color-mix(in srgb, var(--bg-surface) 78%, #d6c6ff 22%) 100%
+  );
+
+  /* Backward-compatible aliases */
+  --gradient-medical-voice-shell: var(--gradient-surface-medical-premium);
+  --gradient-voice-demo-shell: var(--gradient-surface-medical-premium);
+  --gradient-medical-voice-dots: var(--gradient-surface-dots);
+  --gradient-voice-demo-dots: var(--gradient-surface-dots);
+
+  /* Voice / medical */
+  --gradient-voice-phone-glow: radial-gradient(
+    ellipse at center,
+    rgba(177, 133, 255, 0.55) 0%,
+    rgba(177, 133, 255, 0.24) 42%,
+    transparent 74%
+  );
+  --gradient-voice-avatar-base: linear-gradient(
+    160deg,
+    #efc7ad 0%,
+    #c8927f 100%
+  );
+  --gradient-medical-avatar-composite: var(--medical-avatar-image, none),
+    radial-gradient(circle at 52% 26%, var(--white-84), var(--white-20) 45%, transparent 62%),
+    radial-gradient(circle at 46% 88%, rgba(170, 126, 255, 0.62), rgba(170, 126, 255, 0.07) 66%, transparent 100%),
+    var(--gradient-voice-avatar-base);
+}

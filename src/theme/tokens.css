@@ -1,18 +1,15 @@
 :root {
   /* Color tokens */
-  /* --color-bg: #dfe7ee; */
-  --color-bg: #e7e4de;
-  --color-surface: #f4f2ee;
-  /* --color-surface: #353c46; */
-  --color-surface-2: #dadee4;
-  --color-text: #0f2032;
-  --color-white: #f1f3f5;
-  --color-muted: rgb(19, 47, 75, 0.55);
-  --color-subtle: rgb(19, 47, 75, 0.32);
-  --color-border: rgb(19, 47, 75, 0.08);
-  --color-border-strong: rgb(19, 47, 75, 0.12);
+  --color-bg: #d0e1ee;
+  --color-surface: #dee9f1;
+  --color-white: #f5f6f7;
+  --color-text: rgb(14, 27, 41);
+  --color-muted: rgb(12, 36, 60, 0.55);
+  --color-subtle: rgb(12, 36, 60, 0.32);
+  --color-border: rgb(12, 36, 60, 0.08);
+  --color-border-strong: rgb(12, 36, 60, 0.12);
   --color-primary: #0c243c;
-  --color-primary-contrast: #ecf0f4;
+  --color-primary-contrast: var(--color-white);
   --logo-normal: var(--color-primary);
   --logo-contrast: var(--color-primary-contrast);
 
@@ -35,7 +32,7 @@
   --line-height-body: normal;
   --letter-spacing-body: normal;
 
-  --font-size-h1: 72px;
+  --font-size-h1: 88px;
   --line-height-h1: normal;
   --letter-spacing-h1: -6px;
   --font-weight-h1: 500;
@@ -89,7 +86,7 @@
   --layout-nav-h: 80px;
 
   /* Additional variables for Tailwind */
-  --background: var(--bg-page);
+  --background: var(--color-bg);
   --foreground: var(--text-primary);
   --card: var(--card-bg);
   --card-foreground: var(--card-fg);

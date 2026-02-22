@@ -8,14 +8,14 @@ export default function HomeCasesSection({ onNavigate }) {
   return (
     <section className="sec" id="homeCase">
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', marginBottom: '44px', flexWrap: 'wrap' }} className="rev">
-        <div><p className="mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">{t('sections.homeCases.label')}</p><h2 className="text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.055em] text-[var(--color-primary)]">{t('sections.homeCases.titlePrefix')} <span className="si">{t('sections.homeCases.titleAccent')}</span></h2></div>
+        <div><p className="ds-text-label mb-3">{t('sections.homeCases.label')}</p><h2 className="text-[var(--color-primary)]">{t('sections.homeCases.titlePrefix')} <span className="si">{t('sections.homeCases.titleAccent')}</span></h2></div>
         <Button variant="outline" onClick={() => onNavigate('case-studies')} style={{ flexShrink: 0 }}>{t('sections.homeCases.viewAll')}</Button>
       </div>
       <CaseRow
         onNavigate={onNavigate}
         navigateTo="case-detail"
         imagePosition="right"
-        imageGradient="linear-gradient(135deg,#f5c5a8,#e8a090,#d48880)"
+        imageGradient="var(--gradient-accent-warm-previous)"
         brand="Glowhaus"
         tag={t('sections.homeCases.case1.tag')}
         titlePrefix={t('sections.homeCases.case1.titlePrefix')}
@@ -30,7 +30,7 @@ export default function HomeCasesSection({ onNavigate }) {
         onNavigate={onNavigate}
         navigateTo="case-detail"
         imagePosition="right"
-        imageGradient="linear-gradient(135deg,#e8d0b8,#c8b090,#a89080)"
+        imageGradient="var(--gradient-accent-warm)"
         brand="Athena"
         tag={t('sections.homeCases.case2.tag')}
         titlePrefix={t('sections.homeCases.case2.titlePrefix')}

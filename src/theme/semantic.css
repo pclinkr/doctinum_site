@@ -2,7 +2,7 @@
   /* Semantic aliases */
   --bg-page: var(--color-bg);
   --bg-surface: var(--color-surface);
-  --bg-surface-2: var(--color-surface-2);
+  --bg-white: var(--color-white);
 
   --text-primary: var(--color-text);
   --text-muted: var(--color-muted);
