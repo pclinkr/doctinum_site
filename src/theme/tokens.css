@@ -22,6 +22,15 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
 
+  /* Variables pour compatibilité avec l'original */
+  --sans: 'Inter', sans-serif;
+  --serif: 'Source Serif 4', serif;
+  --w400: 400;
+  --w500: 500;
+  --track: -0.04em;
+  --track-tight: -0.06em;
+  --track-serif: -0.08em;
+
   --font-size-body: 18px;
   --line-height-body: normal;
   --letter-spacing-body: normal;
@@ -78,4 +87,26 @@
   /* Layout */
   --layout-max: 1072px;
   --layout-nav-h: 80px;
+
+  /* Additional variables for Tailwind */
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+  --card: var(--card-bg);
+  --card-foreground: var(--card-fg);
+  --popover: var(--bg-surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--action-primary-bg);
+  --primary-foreground: var(--action-primary-fg);
+  --secondary: var(--action-secondary-bg);
+  --secondary-foreground: var(--action-secondary-fg);
+  --muted: var(--text-muted);
+  --muted-foreground: var(--text-subtle);
+  --accent: var(--badge-bg);
+  --accent-foreground: var(--badge-fg);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--border-default);
+  --input: var(--control-bg);
+  --ring: var(--control-focus-ring);
+  --radius: var(--radius-md);
 }
