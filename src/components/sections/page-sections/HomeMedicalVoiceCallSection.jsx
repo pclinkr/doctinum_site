@@ -497,8 +497,8 @@ export default function HomeMedicalVoiceCallSection() {
             className="medical-voice-header"
             style={{ transform: `translate3d(0,${headerTranslateY}px,0)` }}
           >
-            <p className="sec-label medical-voice-head-label">{t('sections.medicalVoice.headLabel')}</p>
-            <h2 className="sec-h medical-voice-head-title">
+            <p className="medical-voice-head-label mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">{t('sections.medicalVoice.headLabel')}</p>
+            <h2 className="medical-voice-head-title text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.055em] text-[var(--color-primary)]">
               {t('sections.medicalVoice.headTitlePrefix')} <span className="si">{t('sections.medicalVoice.headTitleAccent')}</span>
             </h2>
           </div>

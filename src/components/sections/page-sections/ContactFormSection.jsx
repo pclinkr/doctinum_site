@@ -10,7 +10,7 @@ export default function ContactFormSection({ socialProofText }) {
 
   return (
     <div className="contact-grid">
-      <div className="contact-left rev"><Badge className="page-badge">{t('contactForm.badge')}</Badge><h1 className="contact-h ds-text-h1">{t('contactForm.titleLine1')}<br />{t('contactForm.titleLine2')}</h1><p className="contact-sub">{t('contactForm.subtitle')}</p><SocialProofRow style={{ marginTop: '24px' }} initials={['S', 'J', 'M', 'A', '+']} text={socialProofText} /></div>
+      <div className="contact-left rev"><Badge className="mb-6 inline-block rounded-full border border-[var(--border-mid)] bg-[var(--surface)] px-[14px] py-2 text-[13px] font-[var(--w500)] tracking-[var(--track)]">{t('contactForm.badge')}</Badge><h1 className="contact-h ds-text-h1">{t('contactForm.titleLine1')}<br />{t('contactForm.titleLine2')}</h1><p className="contact-sub">{t('contactForm.subtitle')}</p><SocialProofRow style={{ marginTop: '24px' }} initials={['S', 'J', 'M', 'A', '+']} text={socialProofText} /></div>
       <div className="contact-form rev">
         <div className="form-group"><label className="form-label">{t('contactForm.nameLabel')} <sup>*</sup></label><TextInput placeholder={t('contactForm.namePlaceholder')} /></div>
         <div className="form-group"><label className="form-label">{t('contactForm.emailLabel')} <sup>*</sup></label><TextInput type="email" placeholder={t('contactForm.emailPlaceholder')} /></div>

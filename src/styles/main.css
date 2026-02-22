@@ -409,8 +409,6 @@ input,textarea,select{@apply text-sm outline-none}
 /* ============================================================ SECTION COMMONS - Converti en classes Tailwind ============================================================ */
 .sec{@apply px-16 py-24 max-w-[1200px] mx-auto}
 .sec-sm{@apply px-16 py-14 max-w-[1200px] mx-auto}
-.sec-label{@apply text-[12px] font-[var(--w500)] tracking-[0.06em] uppercase text-[var(--muted)] mb-3}
-.sec-h{@apply text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] tracking-[-0.055em] leading-[var(--lh-head)] text-[var(--color-primary)]}
 
 /* Section reveal animations */
 .sec.rev{@apply rev-base}
@@ -419,20 +417,6 @@ input,textarea,select{@apply text-sm outline-none}
 .sec.rev.in.d2{transition-delay:220ms}
 .sec.rev.in.d3{transition-delay:320ms}
 .sec.rev.in.d4{transition-delay:420ms}
-
-/* Page hero (used by inner pages) */
-.page-hero{@apply px-16 py-16 pt-[calc(var(--nav-h)+56px)] max-w-[1200px] mx-auto}
-.page-badge{@apply inline-block bg-[var(--surface)] border border-[var(--border-mid)] rounded-full px-[14px] py-2 text-[13px] font-[var(--w500)] tracking-[var(--track)] mb-6}
-.page-h1{@apply text-[88px] font-medium tracking-[-6px] leading-none mb-5}
-.page-sub{@apply text-[16px] leading-[1.65] text-[var(--muted)] max-w-[520px] mb-7}
-
-/* Social proof row (avatars + stars) - Converti en classes Tailwind */
-.proof-row{@apply flex items-center gap-[10px] mt-2}
-.proof-avatars{@apply flex}
-.proof-avatar{@apply w-[28px] h-[28px] rounded-full border-2 border-[var(--bg)] -ml-2 bg-[var(--surface2)] overflow-hidden flex items-center justify-center text-[10px] font-[var(--w500)] text-[var(--muted)]}
-.proof-avatar:first-child{@apply ml-0}
-.proof-stars{@apply flex gap-[2px] text-[#f59e0b] text-[13px]}
-.proof-text{@apply text-[12px] text-[var(--muted)] tracking-[var(--track)]}
 
 /* ============================================================ ===== HOME PAGE - Converti en classes Tailwind ===== ============================================================ */
 /* Hero */
@@ -489,17 +473,6 @@ input,textarea,select{@apply text-sm outline-none}
 
 /* Mission card - Converti en classes Tailwind */
 .mission-section{@apply px-16 py-10 pb-24 max-w-[1200px] mx-auto}
-.mission-card{@apply relative bg-[var(--surface)] rounded-[28px] p-14 max-w-[660px] mx-auto shadow-[0_2px_24px_var(--ink-04)]}
-.mission-badge{@apply absolute -top-5 -right-5 w-[58px] h-[58px] bg-[var(--color-primary)] rounded-[17px] flex items-center justify-center shadow-[0_8px_24px_var(--ink-20)]}
-.mission-badge svg{@apply w-[28px] h-[28px]}
-.mission-label{@apply inline-block bg-[var(--ink-06)] rounded-full px-[13px] py-2 text-[12px] font-[var(--w500)] mb-5}
-.mission-h{@apply text-[clamp(24px,3.5vw,38px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.1] mb-6}
-.mission-body{@apply flex flex-col gap-[13px] mb-9}
-.mission-body p{@apply text-[14px] leading-[1.7] text-[var(--muted)]}
-.mission-logo{@apply flex items-center gap-[7px]}
-.mission-logo-icon{@apply w-[22px] h-[22px] bg-[var(--color-primary)] rounded-[6px] flex items-center justify-center}
-.mission-logo-icon svg{@apply w-[12px] h-[12px]}
-.mission-logo-text{@apply text-[16px] font-[var(--w500)] tracking-[var(--track-tight)]}
 
 /* Case rows on home - Converti en classes Tailwind */
 .case-row{@apply grid grid-cols-2 gap-10 items-center mb-12 pb-12 border-b border-[var(--border)]}
@@ -518,55 +491,9 @@ input,textarea,select{@apply text-sm outline-none}
 .kpi-num{@apply text-[28px] font-[var(--w500)] tracking-[-0.06em] leading-none tabular-nums}
 .kpi-lbl{@apply text-[11px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)] mt-1}
 
-/* Process - Converti en classes Tailwind */
-.proc-grid{@apply grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-px bg-[var(--border)] border border-[var(--border)] rounded-[var(--r-md)] overflow-hidden}
-.proc-card{@apply bg-[var(--bg)] px-8 py-11 text-left flex flex-col gap-[14px] transition-all duration-150 ease-out}
-.proc-card:hover{@apply bg-[var(--white-55)]}
-.proc-icon-wrapper{@apply flex justify-center mb-2}
-.proc-icon{@apply w-[72px] h-[72px] bg-transparent rounded-[var(--radius-sm)] flex items-center justify-center}
-.proc-icon svg{@apply w-[36px] h-[36px] stroke-white fill-none stroke-[2px] [stroke-linecap:round] [stroke-linejoin:round]}
-.proc-title{@apply text-[20px] font-semibold}
-.proc-body{@apply text-[16px]}
-.proc-content{@apply flex-1}
-
-/* Problem Section - Clean Text-Based Design - Converti en classes Tailwind */
-.problem-section{@apply py-[var(--space-10)]}
-.problem-section .container-sm{@apply max-w-[900px] mx-auto px-0 px-[var(--space-6)]}
-.problem-intro{@apply text-[20px] leading-[1.6] text-[var(--color-muted)] text-center my-[var(--space-8)] max-w-[720px] mx-auto}
-.problem-grid{@apply grid grid-cols-2 gap-[var(--space-8)] my-[var(--space-10)]}
-.problem-card{@apply bg-[var(--color-surface)] rounded-[var(--radius-lg)] p-[var(--space-8)] border border-[var(--color-border)] transition-transform duration-300 ease-out transition-shadow duration-300 ease-out}
-.problem-card:hover{@apply translate-y-px shadow-[0_12px_32px_rgba(19,47,75,0.06)]}
-.problem-title{@apply text-[24px] font-semibold tracking-[-0.02em] leading-[1.3] text-[var(--color-text)] mb-[var(--space-4)]}
-.problem-body{@apply text-[16px] leading-[1.6] text-[var(--color-muted)] font-normal}
-.problem-quote{@apply text-center my-[var(--space-12)] p-[var(--space-8)]}
-.quote-text{@apply text-[28px] font-medium tracking-[-0.03em] leading-[1.4] text-[var(--color-text)] italic}
-
 .quote-inner-left{@apply bg-[var(--surface)] rounded-[28px] p-14 grid grid-cols-[220px_1fr] gap-11 items-center}
 .quote-q{@apply text-[clamp(20px,2.5vw,28px)] font-[var(--w500)] tracking-[-0.04em] leading-[1.45] mb-5}
-/* Testimonial spotlight - Converti en classes Tailwind */
-.testi-inner{@apply bg-[var(--surface)] rounded-[28px] p-14 grid grid-cols-[1fr_220px] gap-11 items-center}
-.testi-mark{@apply text-[60px] leading-none text-[var(--border-mid)] font-serif}
-.testi-q{@apply text-[clamp(17px,2.5vw,22px)] font-[var(--w500)] tracking-[-0.04em] leading-[1.45] mb-5}
-.testi-author{@apply flex items-center gap-3}
-.testi-av{@apply w-[36px] h-[36px] rounded-full bg-[var(--border-mid)] flex items-center justify-center text-[12px] font-[var(--w500)] text-[var(--muted)]}
-.testi-name{@apply text-[14px] font-[var(--w500)] tracking-[var(--track)]}
-.testi-role{@apply text-[12px] text-[var(--muted)]}
-.testi-visual{@apply rounded-[var(--r-md)] overflow-hidden aspect-[3/4] relative}
-.testi-visual::after{content:'';@apply absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-t from-white/90 via-white/70 to-transparent pointer-events-none z-[1]}
 .testi-vis-bg{@apply w-full h-full bg-gradient-to-br from-[#e8c5b5] via-[#d4a090] to-[#c08878]}
-
-/* Why table - Converti en classes Tailwind */
-.why-grid{@apply grid grid-cols-2 gap-5 text-left}
-.why-col{@apply bg-[var(--surface)] rounded-[var(--r-md)] p-8 relative}
-.why-col-title{@apply text-[12px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)] pb-3 border-b border-[var(--border)]}
-.why-badge{@apply absolute -top-3 right-5 bg-[var(--color-primary)] text-[var(--cta-text)] rounded-full px-[13px] py-1 text-[12px] font-[var(--w500)]}
-.why-item{@apply flex items-center gap-[10px] py-3 text-[14px] text-[var(--muted)] border-b border-[var(--border)]}
-.why-item:last-child{@apply border-b-0}
-.why-item.yes{@apply text-[var(--color-primary)]}
-.why-dot{@apply w-[19px] h-[19px] rounded-full flex-shrink-0 flex items-center justify-center}
-.yes-dot{@apply bg-[var(--color-primary)]}
-.no-dot{@apply bg-[var(--ink-06)]}
-.why-dot svg{@apply w-[10px] h-[10px]}
 
 /* Team - Converti en classes Tailwind */
 .team-grid{@apply grid grid-cols-4 gap-5}
@@ -780,30 +707,6 @@ textarea.form-input{@apply min-h-[110px]}
 
 /* ============================================================ FOOTER - Converti en classes Tailwind ============================================================ */
 footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t border-[var(--border)]}
-.footer-inner{@apply w-full max-w-[var(--max)] flex flex-col gap-14}
-.footer-grid{@apply grid grid-cols-6 gap-11 gap-6}
-.footer-main{@apply col-span-2 flex flex-col gap-[22px] self-start}
-.footer-logo{@apply flex items-center gap-[7px] cursor-pointer}
-.footer-logo-icon{@apply w-[25px] h-[25px] bg-[var(--color-primary)] rounded-[7px] flex items-center justify-center}
-.footer-logo-icon svg{@apply w-[13px] h-[13px]}
-.footer-logo-text{@apply text-[20px] font-[var(--w500)] tracking-[var(--track-tight)]}
-.footer-logo-wordmark{@apply h-[22px] w-auto block}
-.footer-tagline{@apply text-[22px] font-[var(--w500)] tracking-[var(--track-tight)] leading-[1.2]}
-.footer-tagline-sub{@apply text-[13px] text-[var(--muted)] mt-2}
-.footer-socials{@apply flex gap-2}
-.footer-soc-btn{@apply w-[32px] h-[32px] rounded-[var(--r-sm)] border border-[var(--border)] flex items-center justify-center transition-all duration-150 ease-out transition-transform duration-150 ease-spring cursor-pointer}
-.footer-soc-btn svg{@apply w-[13px] h-[13px]}
-.footer-soc-btn:hover{@apply bg-[var(--ink-06)] translate-y-px}
-.footer-links-group{@apply col-span-4 grid grid-cols-3 gap-[22px] self-start}
-.footer-col{@apply flex flex-col gap-[14px]}
-.footer-col-title{@apply text-[13px] font-[var(--w500)] tracking-[var(--track)] pb-2 border-b border-[var(--border)]}
-.footer-col-links{@apply flex flex-col gap-[10px]}
-.footer-col-link{@apply text-[13px] text-[var(--muted)] transition-colors duration-150 ease-out cursor-pointer}
-.footer-col-link:hover{@apply text-[var(--color-primary)]}
-.footer-bottom{@apply flex items-end justify-between flex-wrap gap-2 pt-5 border-t border-[var(--border)]}
-.footer-copy,.footer-built{@apply text-[12px] text-[var(--muted)]}
-.footer-built a{@apply text-inherit border-b border-transparent transition-all duration-150 ease-out}
-.footer-built a:hover{@apply border-current}
 
 /* ============================================================ FLOATING CTA - Converti en classes Tailwind ============================================================ */
 .float-cta{@apply fixed bottom-6 right-6 z-[50] opacity-0 translate-y-[10px] transition-opacity duration-1000 ease-out transition-transform duration-1000 ease-spring pointer-events-none}
@@ -812,16 +715,10 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
 
 /* ============================================================ RESPONSIVE LARGE DESKTOP ≤1400 - Converti en classes Tailwind ============================================================ */
 @media(max-width:1400px){
-  .proc-icon-wrapper{@apply mb-3}
-  .proc-icon{@apply w-[42px] h-[42px]}
-  .proc-icon svg{@apply w-[21px] h-[21px]}
-  .proc-card{@apply text-center}
 }
 
 /* ============================================================ RESPONSIVE TABLET ≤1200 - Converti en classes Tailwind ============================================================ */
 @media(max-width:1200px){
-  .proc-grid{@apply grid-cols-2}
-  .problem-grid{@apply grid-cols-2}
 }
 
 /* ============================================================ RESPONSIVE TABLET ≤1199 - Converti en classes Tailwind ============================================================ */
@@ -829,7 +726,7 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .nav{@apply px-8}
   .hero{@apply px-8 grid-cols-[1fr_360px] gap-10}
   .phone-shell{@apply w-[240px] h-[460px]}
-  .sec,.sec-sm,.page-hero,.post-hero,.case-body-section,.case-detail-hero,.post-body-wrap,.mission-section{@apply px-8}
+  .sec,.sec-sm,.post-hero,.case-body-section,.case-detail-hero,.post-body-wrap,.mission-section{@apply px-8}
   .contact-grid{@apply px-8 gap-12}
   .contact-faq{@apply px-8}
   .legal-body{@apply px-8}
@@ -853,8 +750,6 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
 
 /* ============================================================ RESPONSIVE SMALL TABLET ≤1000 - Converti en classes Tailwind ============================================================ */
 @media(max-width:1000px){
-  .proc-grid{@apply grid-cols-2}
-  .problem-grid{@apply grid-cols-2}
 }
 
 /* ============================================================ RESPONSIVE PHONE ≤809 - Converti en classes Tailwind ============================================================ */
@@ -874,33 +769,13 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .hero-cta-row{@apply flex-col items-stretch}
   .hero-phone{@apply justify-center}
   .phone-shell{@apply w-[230px] h-[440px]}
-  .sec,.sec-sm,.page-hero,.post-hero,.case-body-section,.case-detail-hero,.post-body-wrap,.mission-section{@apply px-5}
-  .help-grid,.proc-grid,.why-grid,.cases-grid,.blog-grid{@apply grid-cols-1}
-  .problem-grid{@apply grid-cols-1}
-  .proc-card{@apply flex flex-row items-center gap-[var(--space-5)] p-[var(--space-6)] text-left}
-  .proc-icon-wrapper{@apply mb-0 mr-0 flex-shrink-0}
-  .proc-icon{@apply w-[56px] h-[56px]}
-  .proc-icon svg{@apply w-[28px] h-[28px]}
-  .proc-title{@apply text-[20px] font-semibold}
-  .proc-body{@apply text-[16px]}
-  .proc-content{@apply flex-1}
-  .problem-section .container-sm{@apply p-0 px-[var(--space-4)]}
-  .problem-intro{@apply text-[18px] mb-[var(--space-6)]}
-  .problem-grid{@apply grid-cols-1 gap-[var(--space-6)] mt-[var(--space-8)] mb-[var(--space-8)]}
-  .problem-card{@apply p-[var(--space-6)]}
-  .problem-title{@apply text-[20px]}
-  .problem-quote{@apply mt-[var(--space-8)] mb-[var(--space-8)] p-[var(--space-6)]}
-  .quote-text{@apply text-[22px] leading-[1.5]}
+  .sec,.sec-sm,.post-hero,.case-body-section,.case-detail-hero,.post-body-wrap,.mission-section{@apply px-5}
+  .help-grid,.cases-grid,.blog-grid{@apply grid-cols-1}
   .team-grid,.about-team-grid{@apply grid-cols-2}
-  .testi-inner{@apply grid-cols-1 px-9 px-7}
   .case-row,.case-row.case-row--image-right{@apply flex flex-col direction-ltr}
   .case-body-row{@apply grid-cols-1 gap-4}
   .case-results-row{@apply gap-8}
   .cta-block-left{@apply px-10 px-7}
-  .footer-grid{@apply grid-cols-1}
-  .footer-main,.footer-links-group{@apply col-span-1}
-  .footer-links-group{@apply grid-cols-2}
-  .footer-bottom{@apply flex flex-col items-start}
   .contact-grid{@apply grid-cols-1 gap-9 px-5}
   .contact-faq{@apply grid-cols-1 px-5}
   .legal-body{@apply px-5}
@@ -927,15 +802,10 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .voice-transcript-speaker{@apply text-[16px]}
   .voice-transcript-text{@apply text-[22px]}
   .voice-test-button{@apply w-full}
-  .testi-inner{@apply grid-cols-1 px-9 px-7}
   .case-row,.case-row.case-row--image-right{@apply flex flex-col direction-ltr}
   .case-body-row{@apply grid-cols-1 gap-4}
   .case-results-row{@apply gap-8}
   .cta-block-left{@apply px-10 px-7}
-  .footer-grid{@apply grid-cols-1}
-  .footer-main,.footer-links-group{@apply col-span-1}
-  .footer-links-group{@apply grid-cols-2}
-  .footer-bottom{@apply flex flex-col items-start}
   .contact-grid{@apply grid-cols-1 gap-9 px-5}
   .contact-faq{@apply grid-cols-1 px-5}
   .legal-body{@apply px-5}

@@ -8,7 +8,7 @@ export default function HomeCasesSection({ onNavigate }) {
   return (
     <section className="sec" id="homeCase">
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '24px', marginBottom: '44px', flexWrap: 'wrap' }} className="rev">
-        <div><p className="sec-label">{t('sections.homeCases.label')}</p><h2 className="sec-h">{t('sections.homeCases.titlePrefix')} <span className="si">{t('sections.homeCases.titleAccent')}</span></h2></div>
+        <div><p className="mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">{t('sections.homeCases.label')}</p><h2 className="text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.055em] text-[var(--color-primary)]">{t('sections.homeCases.titlePrefix')} <span className="si">{t('sections.homeCases.titleAccent')}</span></h2></div>
         <Button variant="outline" onClick={() => onNavigate('case-studies')} style={{ flexShrink: 0 }}>{t('sections.homeCases.viewAll')}</Button>
       </div>
       <CaseRow
