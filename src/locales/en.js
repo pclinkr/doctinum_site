@@ -24,6 +24,7 @@ const en = {
     try: 'Try',
     demo: 'Demo',
     bookDemo: 'Book a demo',
+    contactUs: 'Contact us',
     mobileMenu: 'Menu'
   },
   megaMenu: {
@@ -69,7 +70,7 @@ const en = {
           ]
         }
       ],
-      cta: { label: 'Explore a use case', page: 'case-studies' }
+      cta: { label: 'Discuss a pilot project', page: 'contact' }
     },
     functioning: {
       eyebrow: 'How it works',
@@ -108,7 +109,8 @@ const en = {
           links: [
             { label: 'Vision', description: 'Product direction and deployment principles.', page: 'about' },
             { label: 'Careers', description: 'Roles and product culture.', page: 'about' },
-            { label: 'Blog', description: 'Articles and perspectives.', page: 'blog' }
+            { label: 'Blog', description: 'Articles and perspectives.', page: 'blog' },
+            { label: 'Styleguide', description: 'Internal UI reference.', page: 'styleguide', devOnly: true }
           ]
         },
         {
@@ -117,16 +119,9 @@ const en = {
             { label: 'Experimentation & partnerships', description: 'Pilots, protocols, and collaborations.', page: 'case-studies' },
             { label: 'Investors', description: 'Strategic discussions and information.', page: 'case-studies' }
           ]
-        },
-        {
-          title: 'Contact',
-          links: [
-            { label: 'Contact', description: 'Talk with our team.', page: 'contact' },
-            { label: 'Styleguide', description: 'Internal UI reference.', page: 'styleguide', devOnly: true }
-          ]
         }
       ],
-      cta: { label: 'Talk to the team', page: 'contact' }
+      cta: { label: 'Contact us', page: 'contact' }
     }
   },
   site: {
@@ -373,6 +368,31 @@ const en = {
         }
       },
       reassurance: 'No autonomous medical decision. AI organizes, the team arbitrates.'
+    },
+    voiceChannel: {
+      eyebrow: 'Voice channel',
+      title: 'Why the voice channel works in healthcare',
+      coreEyebrow: 'Real-world adoption',
+      coreText: 'The voice channel fits naturally into patient routines without adding friction.',
+      items: [
+        {
+          title: 'Universal',
+          body: 'No app to download, no account to create, no friction.'
+        },
+        {
+          title: 'Natural',
+          body: 'Patients answer as they would speak with a care team.'
+        },
+        {
+          title: 'Regular',
+          body: 'A scheduled call creates rhythm and secures the care pathway.'
+        },
+        {
+          title: 'Inclusive',
+          body: 'Especially suited for fragile or low-digital-literacy patients.'
+        }
+      ],
+      closing: 'A protocol is only effective if the channel is truly used.'
     }
   },
   content: {

@@ -42,10 +42,14 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
   );
   const mobileSections = useMemo(() => {
     if (navItems.length === 1 && navItems[0]?.id === 'mainMenu' && navItems[0]?.megaMenu) {
-      return (navItems[0].megaMenu.groups || []).map((group, index) => ({
-        id: `group-${index}`,
-        label: group.title,
-        links: group.links || []
+      const fullNavItems = getNavItems(t, { density: 'full' });
+      return fullNavItems.map((item) => ({
+        id: item.id,
+        label: item.label,
+        page: item.page,
+        groups: item.megaMenu?.groups || [],
+        links: [],
+        hasMega: Boolean(item.megaMenu)
       }));
     }
 
@@ -164,8 +168,8 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
             />
             <Button onClick={() => handleNavigate('contact')}>{t('nav.demo')}</Button>
             <button className="relative h-[44px] w-[44px] shrink-0 items-center justify-center flex" id="navBurger" aria-label={t('nav.mobileMenu')} aria-expanded={isMenuOpen} onClick={onToggleMenu} type="button">
-              <span className={`absolute h-[2px] w-[20px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] rotate-45' : 'top-[calc(42%-1px)]'}`.trim()} />
-              <span className={`absolute h-[2px] w-[20px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] -rotate-45' : 'top-[calc(58%-1px)]'}`.trim()} />
+              <span className={`absolute right-[12px] h-[2px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] w-[20px] rotate-45' : 'top-[calc(40%-1px)] w-[14px]'}`.trim()} />
+              <span className={`absolute right-[12px] h-[2px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] w-[20px] -rotate-45' : 'top-[calc(58%-1px)] w-[20px]'}`.trim()} />
             </button>
           </div>
         </div>
@@ -211,18 +215,26 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
         </div>
       )}
 
-      <div className={`${isDrawerMode ? 'flex' : 'hidden'} fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[55] w-full max-w-none flex-col gap-3 border-t border-[var(--border)] bg-[var(--bg-overlay-95)] px-5 shadow-[0_18px_40px_var(--ink-16)] backdrop-blur-[12px] transition-all duration-300 ease-out ${isMenuOpen ? 'overflow-y-auto overscroll-contain pb-6 pt-4 opacity-100' : 'pointer-events-none overflow-hidden pb-0 pt-0 opacity-0'}`.trim()} id="navDrawer">
+      <div className={`${isDrawerMode ? 'flex' : 'hidden'} fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[55] w-full max-w-none flex-col border-t border-[var(--border)] bg-[var(--bg-overlay-95)] px-5 shadow-[0_18px_40px_var(--ink-16)] backdrop-blur-[12px] transition-all duration-300 ease-out ${isMenuOpen ? 'overflow-hidden opacity-100' : 'pointer-events-none overflow-hidden opacity-0'}`.trim()} id="navDrawer">
+        <div className="sticky top-0 z-[2] -mx-5 border-b border-[var(--ink-08)] bg-[var(--bg-overlay-95)] px-5 py-3 backdrop-blur-[10px]">
+          <p className="text-[12px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">{t('nav.mobileMenu')}</p>
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain pt-2">
+        <div className="flex flex-col">
         {mobileSections.map((section) => {
           const isOpen = openMobileMegaId === section.id;
-          const isSingleMegaSection = navItems.length === 1 && navItems[0]?.id === 'mainMenu';
+          const hasNestedContent = Boolean(
+            section.hasMega && (((section.groups || []).length > 0) || ((section.links || []).length > 0))
+          );
 
           return (
-            <div key={section.id} className="flex flex-col rounded-[12px] border border-[var(--ink-08)] bg-[var(--white-54)] px-3 py-1">
+            <div key={section.id} className="flex flex-col border-b border-[var(--ink-08)] py-1 last:border-b-0">
               <button
-                className="flex w-full items-center justify-between gap-[10px] py-3 text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-colors duration-150 ease-out cursor-pointer hover:text-[var(--subtle)]"
+                className="flex w-full items-center justify-between gap-[10px] rounded-[12px] px-2 py-3 text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-all duration-150 ease-out cursor-pointer hover:bg-[var(--ink-05)] hover:shadow-[inset_0_0_0_1px_var(--ink-08)]"
                 type="button"
                 onClick={() => {
-                  if (!section.hasMega && !isSingleMegaSection && section.page) {
+                  if (!hasNestedContent && section.page) {
                     handleNavigate(section.page);
                     return;
                   }
@@ -230,40 +242,43 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
                 }}
               >
                 <span>{section.label}</span>
-                {(section.hasMega || isSingleMegaSection) && <span className={`text-[11px] leading-none transition-all duration-150 ease-out ${isOpen ? 'rotate-180 opacity-100' : 'opacity-[0.62]'}`.trim()}>▾</span>}
+                {hasNestedContent && <span className={`text-[11px] leading-none transition-all duration-150 ease-out ${isOpen ? 'rotate-180 opacity-100' : 'opacity-[0.62]'}`.trim()}>▾</span>}
               </button>
 
-              {(section.hasMega || isSingleMegaSection) && (
+              {hasNestedContent && (
                 <div className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] pb-2' : 'grid-rows-[0fr]'}`.trim()}>
                   <div className="overflow-hidden">
-                    {(section.groups || []).map((group) => (
-                      <div key={group.title} className="mb-2 rounded-[10px] border border-[var(--ink-08)] bg-[var(--surface)] px-3 py-2">
-                        <p className="my-1 text-[10px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">{group.title}</p>
-                        {group.links.map((link) => {
-                          if (link.devOnly && !isDev) return null;
-                          return (
-                            <button
-                              key={`${group.title}-${link.label}`}
-                              className={`flex w-full items-center justify-between py-2 text-left text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] ${link.isSoon ? 'cursor-not-allowed text-[var(--muted)]' : ''}`.trim()}
-                              type="button"
-                              onClick={() => link.page && handleNavigate(link.page)}
-                              disabled={link.isSoon || !link.page}
-                            >
-                              <span>{link.label}</span>
-                              {link.isSoon && <span className="text-[10px] uppercase tracking-[0.04em] text-[var(--muted)]">{t('megaMenu.soon')}</span>}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    ))}
-
-                    {isSingleMegaSection &&
-                      (section.links || []).map((link) => {
+                    <div className="ml-3 border-l border-[var(--ink-08)] pl-3">
+                      {(section.groups || []).map((group, groupIndex) => (
+                        <div
+                          key={group.title}
+                          className={`${groupIndex > 0 ? 'mt-2 border-t border-[var(--ink-08)] pt-2' : ''}`.trim()}
+                          style={isOpen ? { transitionDelay: `${groupIndex * 45}ms` } : undefined}
+                        >
+                          <p className="mb-1 text-[11px] font-[var(--w500)] tracking-[var(--track)] text-[var(--muted)]">{group.title}</p>
+                          {group.links.map((link, linkIndex) => {
+                            if (link.devOnly && !isDev) return null;
+                            return (
+                              <button
+                                key={`${group.title}-${link.label}`}
+                                className={`flex min-h-[44px] w-full items-center justify-between rounded-[10px] px-2 py-[10px] pr-2 text-left text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-all duration-200 ease-out ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-1 opacity-0'} hover:bg-[var(--ink-05)] hover:shadow-[inset_0_0_0_1px_var(--ink-08)] ${link.isSoon ? 'cursor-not-allowed text-[var(--muted)]' : ''}`.trim()}
+                                type="button"
+                                onClick={() => link.page && handleNavigate(link.page)}
+                                disabled={link.isSoon || !link.page}
+                              >
+                                <span>{link.label}</span>
+                                {link.isSoon && <span className="text-[10px] uppercase tracking-[0.04em] text-[var(--muted)]">{t('megaMenu.soon')}</span>}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ))}
+                      {(section.links || []).map((link) => {
                         if (link.devOnly && !isDev) return null;
                         return (
                           <button
                             key={`${section.id}-${link.label}`}
-                            className={`flex w-full items-center justify-between py-2 text-left text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] ${link.isSoon ? 'cursor-not-allowed text-[var(--muted)]' : ''}`.trim()}
+                            className={`flex min-h-[44px] w-full items-center justify-between rounded-[10px] px-2 py-[10px] pr-2 text-left text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-all duration-200 ease-out ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-1 opacity-0'} hover:bg-[var(--ink-05)] hover:shadow-[inset_0_0_0_1px_var(--ink-08)] ${link.isSoon ? 'cursor-not-allowed text-[var(--muted)]' : ''}`.trim()}
                             type="button"
                             onClick={() => link.page && handleNavigate(link.page)}
                             disabled={link.isSoon || !link.page}
@@ -273,12 +288,26 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
                           </button>
                         );
                       })}
+                    </div>
                   </div>
                 </div>
               )}
             </div>
           );
         })}
+        </div>
+        </div>
+
+        <div className="pointer-events-none z-[3] -mx-5 border-t border-[var(--ink-08)] bg-[var(--bg-overlay-95)] px-5 pb-4 pt-3 shadow-[0_-8px_20px_var(--ink-10)] backdrop-blur-[10px]">
+          <div className="pointer-events-auto grid grid-cols-2 gap-2">
+            <Button variant="outline" onClick={() => handleNavigate('blog')}>
+              {t('nav.try')}
+            </Button>
+            <Button onClick={() => handleNavigate('contact')}>
+              {t('nav.bookDemo')}
+            </Button>
+          </div>
+        </div>
       </div>
 
       <div className={`absolute left-1/2 top-full z-[25] w-screen -translate-x-1/2 pt-0 transition-opacity duration-200 ease-out ${!isDrawerMode && openMegaMenu ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`.trim()} onMouseLeave={() => setOpenMegaId('')}>

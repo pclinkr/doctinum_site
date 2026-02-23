@@ -24,6 +24,7 @@ const fr = {
     try: 'Essayer',
     demo: 'Démo',
     bookDemo: 'Réserver une démo',
+    contactUs: 'Nous contacter',
     mobileMenu: 'Menu'
   },
   megaMenu: {
@@ -69,7 +70,7 @@ const fr = {
           ]
         }
       ],
-      cta: { label: 'Découvrir un cas d’usage', page: 'case-studies' }
+      cta: { label: 'Discuter d’un projet pilote', page: 'contact' }
     },
     functioning: {
       eyebrow: 'Fonctionnement',
@@ -108,7 +109,8 @@ const fr = {
           links: [
             { label: 'Vision', description: 'Cap produit et logique de déploiement.', page: 'about' },
             { label: 'Nous rejoindre', description: 'Opportunités et culture produit.', page: 'about' },
-            { label: 'Blog', description: 'Articles et points de vue.', page: 'blog' }
+            { label: 'Blog', description: 'Articles et points de vue.', page: 'blog' },
+            { label: 'Styleguide', description: 'Référentiel UI interne.', page: 'styleguide', devOnly: true }
           ]
         },
         {
@@ -117,16 +119,9 @@ const fr = {
             { label: 'Expérimentation & partenariats', description: 'Pilotes, protocoles et collaborations.', page: 'case-studies' },
             { label: 'Investisseurs', description: 'Échanges stratégiques et informations.', page: 'case-studies' }
           ]
-        },
-        {
-          title: 'Contact',
-          links: [
-            { label: 'Contact', description: 'Échanger avec notre équipe.', page: 'contact' },
-            { label: 'Styleguide', description: 'Référentiel UI interne.', page: 'styleguide', devOnly: true }
-          ]
         }
       ],
-      cta: { label: 'Parler à l’équipe', page: 'contact' }
+      cta: { label: 'Nous contacter', page: 'contact' }
     }
   },
   site: {
@@ -374,6 +369,31 @@ const fr = {
         }
       },
       reassurance: "Aucune décision médicale autonome. L'IA organise, l'équipe arbitre."
+    },
+    voiceChannel: {
+      eyebrow: 'Canal vocal',
+      title: 'Pourquoi le canal vocal fonctionne en santé',
+      coreEyebrow: 'Usage réel',
+      coreText: 'Le canal vocal s’intègre au quotidien du patient sans complexifier le parcours.',
+      items: [
+        {
+          title: 'Universel',
+          body: 'Pas d’application à télécharger, pas de compte à créer, pas de friction.'
+        },
+        {
+          title: 'Naturel',
+          body: 'Le patient répond comme il parlerait à une équipe soignante.'
+        },
+        {
+          title: 'Régulier',
+          body: 'Un appel programmé installe un rythme et sécurise le parcours.'
+        },
+        {
+          title: 'Inclusif',
+          body: 'Particulièrement adapté aux patients fragilisés ou peu “digital”.'
+        }
+      ],
+      closing: 'Un protocole n’est efficace que si le canal est réellement utilisé.'
     }
   },
   content: {

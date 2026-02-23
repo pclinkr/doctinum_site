@@ -7,6 +7,7 @@ import HomeHeroSection from '../components/sections/page-sections/HomeHeroSectio
 import HomeSlidingBanner from '../components/sections/page-sections/HomeSlidingBanner';
 import HomeMedicalVoiceCallSection from '../components/sections/page-sections/HomeMedicalVoiceCallSection';
 import NotCallbotSectionAlt from '../components/sections/page-sections/NotCallbotSectionAlt';
+import HomeVoiceChannelSection from '../components/sections/page-sections/HomeVoiceChannelSection';
 import TestimonialSection from '../components/sections/page-sections/TestimonialSection';
 import WhyChooseSection from '../components/sections/page-sections/WhyChooseSection';
 import { getHelpItems, getHomeFaqItems, getStoryGradients } from '../constants/content';
@@ -28,6 +29,7 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
       <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><ProblemCard /></section>
       <HomeOurSolutionSection onNavigate={onNavigate} />
       <NotCallbotSectionAlt />
+      <HomeVoiceChannelSection />
       <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><MissionCard /></section>
       <TestimonialSection initials="EK" />
       <WhyChooseSection />
