@@ -1,5 +1,9 @@
 const en = {
+  common: {
+    close: 'Close'
+  },
   language: {
+    title: 'Language',
     currentFlag: '🇬🇧',
     options: [
       { code: 'en', label: 'English', flag: '🇬🇧' },
@@ -7,70 +11,122 @@ const en = {
     ]
   },
   nav: {
-    cta: 'Book a call',
+    cta: 'Book a demo',
     home: 'Home',
     solutions: 'Solutions',
-    about: 'About',
-    resources: 'Resources',
+    functioning: 'How it works',
+    editorsApi: 'Editors & API',
+    pharmaResearch: 'Pharma & Research',
+    security: 'Security',
+    enterprise: 'Enterprise',
+    mainMenu: 'Menu',
+    quickAccess: 'Quick access',
+    try: 'Try',
+    demo: 'Demo',
+    bookDemo: 'Book a demo',
     mobileMenu: 'Menu'
   },
   megaMenu: {
     soon: 'Soon',
+    grouped: {
+      sectionEntry: 'Open this section',
+      goHome: 'Go back to home'
+    },
+    main: {
+      title: 'Reach key sections quickly',
+      body: 'Use a single mega menu to access solutions, resources, and enterprise pathways.'
+    },
     solutions: {
       eyebrow: 'Solutions',
-      title: 'Everything to scale your social growth',
-      body: 'Build your stack by channel, execution model, and growth stage.',
+      title: 'Follow-up paths adapted to each clinical context',
+      body: 'Structure care journeys by specialty, coordination needs, and vigilance level.',
       groups: [
         {
-          title: 'By Need',
+          title: 'Pre and post intervention follow-up',
           links: [
-            { label: 'Content Studio', description: 'Short-form production and creative ops.', page: 'case-studies' },
-            { label: 'Social Management', description: 'Calendars, posting flow, and reporting.', page: 'about' },
-            { label: 'Paid Social', description: 'Performance campaigns and creative testing.', page: 'contact' }
+            { label: 'Surgery & aesthetic medicine', description: 'Guided pathways before and after procedures.', page: 'case-studies' },
+            { label: 'Sports medicine', description: 'Symptom monitoring and return-to-activity tracking.', page: 'about' },
+            { label: 'Dermatology', description: 'Regular follow-up for progression and tolerance.', page: 'blog' },
+            { label: 'PROMS / post-procedure questionnaires', description: 'Structured collection of patient feedback.', page: 'blog-post' }
           ]
         },
         {
-          title: 'By Outcome',
+          title: 'Chronic follow-up & coordination',
           links: [
-            { label: 'Launch Campaigns', description: 'Go-to-market social systems for new offers.', page: 'contact' },
-            { label: 'Retention Engine', description: 'Content loops to improve repeat purchase.', page: 'blog' },
-            { label: 'Creator Partnerships', description: 'Influencer workflows and UGC sourcing.', isSoon: true }
+            { label: 'Patient support programs', description: 'Cadenced follow-up with clinical scripts.', page: 'contact' },
+            { label: 'Prevention & workplace health', description: 'Population-level prevention and engagement.', page: 'about' },
+            { label: 'Coordinated chronic pathways', description: 'Shared visibility across care teams.', page: 'case-studies' }
           ]
         },
         {
-          title: 'By Industry',
+          title: 'Specialized high-vigilance pathways',
           links: [
-            { label: 'Beauty & Skincare', description: 'Playbooks validated by client case studies.', page: 'case-studies' },
-            { label: 'Fashion & Lifestyle', description: 'Formats optimized for visual-first brands.', page: 'case-studies' },
-            { label: 'Wellness', description: 'Editorial plus conversion-focused storytelling.', isSoon: true }
+            { label: 'Transplantation', description: 'Critical checkpoints and early warning signals.', page: 'blog' },
+            { label: 'Oncology', description: 'Follow-up on side effects and red flags.', page: 'contact' },
+            { label: 'Chronic cardiology', description: 'Longitudinal monitoring of key indicators.', page: 'privacy' },
+            { label: 'Rare diseases', description: 'Coordination across complex care journeys.', page: 'case-studies' },
+            { label: 'Mental health', description: 'Conversational follow-up with supervised escalation.', page: 'about' }
           ]
         }
       ],
-      cta: { label: 'Book a strategy call', page: 'contact' }
+      cta: { label: 'Explore a use case', page: 'case-studies' }
     },
-    resources: {
-      eyebrow: 'Resources',
-      title: 'Learn from case studies and tactical content',
-      body: 'Browse practical frameworks and proof from real social growth projects.',
+    functioning: {
+      eyebrow: 'How it works',
+      title: 'Understand implementation end to end',
+      body: 'Explore the product demo, core features, and agent resources.',
       groups: [
         {
-          title: 'Explore',
+          title: 'Demo',
           links: [
-            { label: 'Case Studies', description: 'Wins, process breakdowns, and outcomes.', page: 'case-studies' },
-            { label: 'Blog Insights', description: 'Tactical social strategy content.', page: 'blog' },
-            { label: 'Methodology', description: 'How we design and run growth systems.', page: 'about' }
+            { label: 'Demo', description: 'See follow-up workflows in realistic conditions.', page: 'blog' }
           ]
         },
         {
-          title: 'Popular',
+          title: 'Product',
           links: [
-            { label: 'Organic Growth Blueprint', description: 'How to structure a monthly content engine.', page: 'blog-post' },
-            { label: 'Creative Testing Loop', description: 'A repeatable method for iteration speed.', page: 'blog-post' },
-            { label: 'Reporting Dashboard', description: 'A KPI structure for content and paid social.', isSoon: true }
+            { label: 'Features', description: 'Core capabilities and configuration options.', page: 'about' }
+          ]
+        },
+        {
+          title: 'Resources',
+          links: [
+            { label: 'Model agents', description: 'Ready-to-adapt agent examples.', page: 'case-studies' },
+            { label: 'PROMS agents', description: 'Templates for post-procedure questionnaires.', page: 'blog-post' }
           ]
         }
       ],
-      cta: { label: 'See all resources', page: 'blog' }
+      cta: { label: 'Book a demo', page: 'contact' }
+    },
+    enterprise: {
+      eyebrow: 'Enterprise',
+      title: 'Build deployments for high-stakes environments',
+      body: 'Work with us on product vision, experimentation, and strategic partnerships.',
+      groups: [
+        {
+          title: 'Vision & team',
+          links: [
+            { label: 'Vision', description: 'Product direction and deployment principles.', page: 'about' },
+            { label: 'Careers', description: 'Roles and product culture.', page: 'about' },
+            { label: 'Blog', description: 'Articles and perspectives.', page: 'blog' }
+          ]
+        },
+        {
+          title: 'Partnerships',
+          links: [
+            { label: 'Experimentation & partnerships', description: 'Pilots, protocols, and collaborations.', page: 'case-studies' },
+            { label: 'Investors', description: 'Strategic discussions and information.', page: 'case-studies' }
+          ]
+        },
+        {
+          title: 'Contact',
+          links: [
+            { label: 'Contact', description: 'Talk with our team.', page: 'contact' },
+            { label: 'Styleguide', description: 'Internal UI reference.', page: 'styleguide', devOnly: true }
+          ]
+        }
+      ],
+      cta: { label: 'Talk to the team', page: 'contact' }
     }
   },
   site: {

@@ -1,5 +1,9 @@
 const fr = {
+  common: {
+    close: 'Fermer'
+  },
   language: {
+    title: 'Langue',
     currentFlag: '🇫🇷',
     options: [
       { code: 'en', label: 'English', flag: '🇬🇧' },
@@ -7,70 +11,122 @@ const fr = {
     ]
   },
   nav: {
-    cta: 'Réserver un appel',
+    cta: 'Réserver une démo',
     home: 'Accueil',
     solutions: 'Solutions',
-    about: 'À propos',
-    resources: 'Ressources',
+    functioning: 'Fonctionnement',
+    editorsApi: 'Éditeurs & API',
+    pharmaResearch: 'Pharma & Recherche',
+    security: 'Sécurité',
+    enterprise: 'Entreprise',
+    mainMenu: 'Menu',
+    quickAccess: 'Accès rapides',
+    try: 'Essayer',
+    demo: 'Démo',
+    bookDemo: 'Réserver une démo',
     mobileMenu: 'Menu'
   },
   megaMenu: {
     soon: 'Bientôt',
+    grouped: {
+      sectionEntry: 'Accéder à cette section',
+      goHome: "Retourner à l'accueil"
+    },
+    main: {
+      title: 'Accéder rapidement aux rubriques clés',
+      body: 'Retrouvez en un seul mega menu les solutions, ressources et parcours entreprise.'
+    },
     solutions: {
       eyebrow: 'Solutions',
-      title: 'Tout ce qu’il faut pour accélérer votre croissance sociale',
-      body: 'Construisez votre stack selon les canaux, le modèle d’exécution et votre stade de croissance.',
+      title: 'Parcours de suivi adaptés à chaque contexte clinique',
+      body: 'Structurez vos parcours par spécialité, niveau de coordination et niveau de vigilance.',
       groups: [
         {
-          title: 'Par besoin',
+          title: 'Suivi pré et post intervention',
           links: [
-            { label: 'Studio de contenu', description: 'Production short-form et opérations créatives.', page: 'case-studies' },
-            { label: 'Gestion social media', description: 'Calendriers, publication et reporting.', page: 'about' },
-            { label: 'Paid Social', description: 'Campagnes performance et tests créatifs.', page: 'contact' }
+            { label: 'Chirurgie & médecine esthétique', description: 'Parcours guidés avant et après acte.', page: 'case-studies' },
+            { label: 'Médecine du sport', description: 'Suivi des symptômes et reprise progressive.', page: 'about' },
+            { label: 'Dermatologie', description: 'Suivi régulier des évolutions et tolérance.', page: 'blog' },
+            { label: 'PROMS / questionnaires post-acte', description: 'Collecte structurée des retours patients.', page: 'blog-post' }
           ]
         },
         {
-          title: 'Par objectif',
+          title: 'Suivi chronique & coordination',
           links: [
-            { label: 'Campagnes de lancement', description: 'Systèmes social go-to-market pour les nouvelles offres.', page: 'contact' },
-            { label: 'Moteur de rétention', description: 'Boucles de contenu pour améliorer le réachat.', page: 'blog' },
-            { label: 'Partenariats créateurs', description: 'Workflows influence et sourcing UGC.', isSoon: true }
+            { label: 'Programmes d’accompagnement patient', description: 'Cadence de suivi avec scripts cliniques.', page: 'contact' },
+            { label: 'Prévention & santé au travail', description: 'Actions de prévention et suivi de population.', page: 'about' },
+            { label: 'Parcours chroniques coordonnés', description: 'Vision partagée entre intervenants.', page: 'case-studies' }
           ]
         },
         {
-          title: 'Par secteur',
+          title: 'Parcours spécialisés à haute vigilance',
           links: [
-            { label: 'Beauté & Skincare', description: 'Playbooks validés par des cas clients.', page: 'case-studies' },
-            { label: 'Mode & Lifestyle', description: 'Formats optimisés pour les marques visuelles.', page: 'case-studies' },
-            { label: 'Bien-être', description: 'Éditorial et storytelling orienté conversion.', isSoon: true }
+            { label: 'Transplantation', description: 'Points critiques et signaux précoces.', page: 'blog' },
+            { label: 'Oncologie', description: 'Suivi des effets et points de vigilance.', page: 'contact' },
+            { label: 'Cardiologie chronique', description: 'Suivi longitudinal des indicateurs.', page: 'privacy' },
+            { label: 'Maladies rares', description: 'Coordination sur parcours complexes.', page: 'case-studies' },
+            { label: 'Santé mentale', description: 'Suivi conversationnel et escalade encadrée.', page: 'about' }
           ]
         }
       ],
-      cta: { label: 'Réserver un appel stratégie', page: 'contact' }
+      cta: { label: 'Découvrir un cas d’usage', page: 'case-studies' }
     },
-    resources: {
-      eyebrow: 'Ressources',
-      title: 'Apprenez via des cas concrets et du contenu actionnable',
-      body: 'Parcourez des frameworks pratiques et des résultats issus de vrais projets de croissance sociale.',
+    functioning: {
+      eyebrow: 'Fonctionnement',
+      title: 'Comprendre la mise en oeuvre',
+      body: 'Explorez la démo produit, les fonctionnalités et les ressources agents.',
       groups: [
         {
-          title: 'Explorer',
+          title: 'Démo',
           links: [
-            { label: 'Cas clients', description: 'Résultats, process et décryptages.', page: 'case-studies' },
-            { label: 'Insights blog', description: 'Contenu tactique sur la stratégie social.', page: 'blog' },
-            { label: 'Méthodologie', description: 'Comment nous concevons nos systèmes de croissance.', page: 'about' }
+            { label: 'Démo', description: 'Voir le flux de suivi en conditions réelles.', page: 'blog' }
           ]
         },
         {
-          title: 'Populaire',
+          title: 'Produit',
           links: [
-            { label: 'Blueprint croissance organique', description: 'Structurer un moteur de contenu mensuel.', page: 'blog-post' },
-            { label: 'Boucle de test créatif', description: 'Méthode répétable pour itérer vite.', page: 'blog-post' },
-            { label: 'Dashboard de reporting', description: 'Structure KPI pour contenu et paid social.', isSoon: true }
+            { label: 'Fonctionnalités', description: 'Capacités coeur et options de configuration.', page: 'about' }
+          ]
+        },
+        {
+          title: 'Ressources',
+          links: [
+            { label: 'Agents modèles', description: 'Exemples d’agents prêts à adapter.', page: 'case-studies' },
+            { label: 'Agents PROMS', description: 'Modèles orientés questionnaires post-acte.', page: 'blog-post' }
           ]
         }
       ],
-      cta: { label: 'Voir toutes les ressources', page: 'blog' }
+      cta: { label: 'Réserver une démo', page: 'contact' }
+    },
+    enterprise: {
+      eyebrow: 'Entreprise',
+      title: 'Construire des déploiements en environnement exigeant',
+      body: 'Travaillez avec nous sur la vision produit, les expérimentations et les partenariats.',
+      groups: [
+        {
+          title: 'Vision & équipe',
+          links: [
+            { label: 'Vision', description: 'Cap produit et logique de déploiement.', page: 'about' },
+            { label: 'Nous rejoindre', description: 'Opportunités et culture produit.', page: 'about' },
+            { label: 'Blog', description: 'Articles et points de vue.', page: 'blog' }
+          ]
+        },
+        {
+          title: 'Partenariats',
+          links: [
+            { label: 'Expérimentation & partenariats', description: 'Pilotes, protocoles et collaborations.', page: 'case-studies' },
+            { label: 'Investisseurs', description: 'Échanges stratégiques et informations.', page: 'case-studies' }
+          ]
+        },
+        {
+          title: 'Contact',
+          links: [
+            { label: 'Contact', description: 'Échanger avec notre équipe.', page: 'contact' },
+            { label: 'Styleguide', description: 'Référentiel UI interne.', page: 'styleguide', devOnly: true }
+          ]
+        }
+      ],
+      cta: { label: 'Parler à l’équipe', page: 'contact' }
     }
   },
   site: {
