@@ -7,9 +7,9 @@ export default function VoiceCallOrb({ mode = 'listening', isActive = false }) {
   const agentState = isActive ? (normalizedMode === 'speaking' ? 'talking' : 'listening') : null;
 
   return (
-    <div className={`voice-call-orb-host ${normalizedMode} ${isActive ? 'is-active' : 'is-inactive'}`.trim()} aria-hidden="true">
+    <div className={`relative flex h-full w-full items-center justify-center overflow-hidden rounded-full transition-all duration-240 ease-out ${normalizedMode === 'speaking' ? 'scale-[1.01]' : 'scale-[0.996]'}`.trim()} aria-hidden="true">
       <Orb
-        className="voice-call-orb-canvas"
+        className="relative h-full w-full overflow-hidden rounded-full [&_canvas]:!block [&_canvas]:!h-full [&_canvas]:!w-full [&_canvas]:!rounded-[9999px] [&_canvas]:!transform-none"
         colors={ORB_COLORS}
         agentState={agentState}
       />

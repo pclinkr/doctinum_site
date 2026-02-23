@@ -54,25 +54,92 @@ input,textarea,select{@apply text-sm outline-none}
 .si.si{font-family:var(--serif)!important;font-style:italic;font-weight:var(--w500);letter-spacing:var(--track-serif)}
 
 /* ============================================================ LOADING SCREEN - Converti en classes Tailwind ============================================================ */
-#ls{--ls-logo-w:clamp(240px,38vw,430px);@apply fixed inset-0 z-[9999] flex items-center justify-center flex-col gap-[28px] bg-[var(--color-primary)] transition-all duration-500 ease-out}
-#ls.hide{@apply opacity-0 invisible pointer-events-none animate-curtainLiftLong}
-#ls.hide .ls-logo{@apply animate-lsLogoOut}
-.ls-logo{@apply flex items-center gap-[10px] animate-lsPulse}
-.ls-icon{@apply w-[52px] h-[52px] bg-white radius-lg flex items-center justify-center}
-.ls-icon svg{@apply w-[26px] h-[26px]}
-.ls-word{@apply text-[28px] font-[var(--w500)] tracking-[var(--track-tight)] text-white leading-none}
-.ls-wordmark{@apply w-[var(--ls-logo-w)] h-auto block}
-.ls-bar-wrap{@apply w-[var(--ls-logo-w)] h-[2px] bg-[var(--white-14)] radius-xs overflow-hidden}
-.ls-bar{@apply h-full bg-white radius-xs w-0 animate-lsBar}
-@keyframes lsPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.93)}}
-@keyframes lsBar{to{width:100%}}
+#ls{
+  --ls-logo-w:clamp(240px,38vw,430px);
+  @apply fixed inset-0 z-[9999] grid place-items-center bg-[var(--color-primary)] overflow-hidden;
+  transform:translateY(0);
+  will-change:transform;
+}
+#ls::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:40px;
+  background:linear-gradient(to bottom,var(--ink-30),transparent);
+  opacity:0;
+}
+#ls.hide{
+  pointer-events:none;
+  animation:curtainLift .88s cubic-bezier(.19,1,.22,1) .46s forwards;
+}
+#ls.hide::after{opacity:1}
+.ls-curtain{@apply absolute inset-0 bg-[var(--color-primary)] will-change-transform}
+.ls-content{@apply relative z-[1] flex flex-col items-center justify-center gap-[40px]}
+.ls-logo-wrap{@apply flex items-center justify-center}
+.ls-progress-wrap{@apply w-[var(--ls-logo-w)]}
+.ls-progress-track{@apply relative h-[6px] w-full overflow-hidden rounded-full bg-[var(--white-28)]}
+.ls-progress-fill{
+  width:100%;
+  transform-origin:left center;
+  transform:scaleX(0);
+  @apply relative h-full rounded-full;
+  animation:lsBar .66s cubic-bezier(.22,.61,.36,1) 1.22s forwards;
+  background:linear-gradient(90deg,var(--white-75) 0%,var(--white-96) 52%,var(--white-75) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 3px 10px rgba(255,255,255,.26);
+}
+.ls-progress-fill::after{
+  content:'';
+  @apply absolute top-0 right-0 h-full w-[18%] rounded-full;
+  background:linear-gradient(90deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.72) 100%);
+  opacity:.8;
+}
+#ls.hide .ls-logo-wrap{animation:lsLogoOut .56s cubic-bezier(.35,0,.9,.28) .12s forwards}
+#ls.hide .ls-progress-wrap{animation:lsProgressFadeOut .42s cubic-bezier(.22,.61,.36,1) 0s forwards}
+@keyframes lsPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(.975)}}
+@keyframes curtainLift{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-104%)}
+}
+@keyframes lsBar{to{transform:scaleX(1)}}
+@keyframes lsLogoDrop{
+  0%{opacity:0;transform:translate3d(0,-110vh,0) scale(.9)}
+  72%{opacity:1}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes lsProgressIntro{
+  0%{opacity:0}
+  100%{opacity:1}
+}
 @keyframes lsLogoOut{
-  0%{opacity:1;transform:translateY(0) scale(1)}
-  100%{opacity:0;transform:translateY(-30px) scale(.8)}
+  0%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+  100%{opacity:0;transform:translate3d(0,-120vh,0) scale(.94)}
+}
+@keyframes lsProgressFadeOut{
+  0%{opacity:1}
+  22%{opacity:1}
+  68%{opacity:.42}
+  100%{opacity:0}
+}
+.ls-logo-wrap{
+  opacity:0;
+  transform:translate3d(0,-110vh,0) scale(.9);
+  animation:
+    lsLogoDrop .68s cubic-bezier(.18,.88,.28,1) .5s both,
+    lsPulse 1.6s ease-in-out 1.18s infinite;
+  will-change:transform,opacity;
+}
+.ls-progress-wrap{
+  opacity:0;
+  transform:translate3d(0,0,0);
+  animation:
+    lsProgressIntro .24s ease-in-out 1.16s forwards,
+    lsPulse 1.6s ease-in-out 1.18s infinite;
+  will-change:transform,opacity;
 }
 
 /* ============================================================ LAYOUT - Converti en classes Tailwind ============================================================ */
-.wrap{@apply w-full max-w-[var(--max)] mx-auto}
 .page{@apply hidden min-h-screen}
 .page.active{@apply block}
 .page-transition-layer{@apply relative}
@@ -101,72 +168,6 @@ input,textarea,select{@apply text-sm outline-none}
 .nav::before{content:'';@apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] backdrop-blur-[calc(24px+var(--nav-scroll-progress)*-8px)] bg-[var(--bg-overlay-10)] pointer-events-none z-[2] transition-opacity duration-200 ease-out;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.82) 60%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.82) 60%,transparent 100%)}
 .nav::after{content:'';@apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] pointer-events-none z-[1] transition-opacity duration-200 ease-out;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.9) 10%,rgba(0,0,0,.46) 56%,transparent 96%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.9) 10%,rgba(0,0,0,.46) 56%,transparent 96%,transparent 100%);background:linear-gradient(180deg,var(--bg-page) 0%,var(--bg-page) calc(var(--nav-h) - var(--nav-opaque-threshold)),var(--bg-overlay-92) calc(var(--nav-h) + 8px),var(--bg-overlay-00) 100%)}
 .nav.scrolled{@apply bg-transparent border-b-0}
-.nav-logo-row{@apply relative z-[3] flex items-center w-full h-[var(--nav-h)] max-w-[1200px] mx-auto px-16}
-.nav-logo{@apply flex items-center gap-[6px] flex-shrink-0 cursor-pointer}
-.nav-logo-icon{@apply w-[27px] h-[27px] bg-[var(--color-primary)] radius-lg flex items-center justify-center}
-.nav-logo-icon svg{@apply w-[15px] h-[15px]}
-.nav-logo-text{@apply text-[20px] font-[var(--w500)] tracking-[-0.03em] leading-none}
-.nav-logo-wordmark{@apply h-6 w-auto block}
-.nav-links{@apply flex items-center gap-5 flex-1 justify-end h-full}
-.nav-link{@apply inline-flex items-center gap-[6px] text-sm leading-[21px] font-medium tracking-[-0.56px] text-[var(--color-primary)] transition-colors-quick whitespace-nowrap cursor-pointer}
-.nav-link:hover{@apply text-[var(--subtle)]}
-.nav-link.active-link{@apply text-[var(--color-primary)]}
-.nav-link.has-mega .nav-link-caret{@apply text-[10px] leading-none translate-y-px transition-transform-quick transition-opacity-quick opacity-[0.62]}
-.nav-link.has-mega.open .nav-link-caret{@apply translate-y-px rotate-180 opacity-100}
-.lang-selector{@apply relative flex items-center self-stretch h-full}
-.lang-trigger{@apply flex items-center justify-center h-full p-0 border-none bg-transparent}
-.lang-trigger-flag{@apply w-[26px] h-auto block grayscale-[16%] saturate-[86%] opacity-[0.90] radius-sm border border-[var(--ink-16)] shadow-[0_0_0_var(--ink-00)] transition-interactive}
-.lang-trigger:hover .lang-trigger-flag,.lang-selector.open .lang-trigger-flag{@apply grayscale-0 saturate-[105%] opacity-100 -translate-y-2 scale-[1.04] shadow-md}
-.lang-menu{@apply absolute top-[calc(100%+10px)] right-0 min-w-[168px] p-2 bg-[var(--bg-overlay-95)] backdrop-blur-[10px] border border-[var(--border)] radius-lg shadow-lg flex flex-col gap-[3px] opacity-0 translate-y-px scale-[0.98] pointer-events-none transition-opacity-quick transition-transform-quick}
-.lang-menu.open{@apply opacity-100 translate-y-0 scale-100 pointer-events-auto}
-.lang-option{@apply flex items-center gap-[10px] p-2 radius-md transition-interactive transition-colors-quick text-left}
-.lang-option:hover{@apply bg-[var(--ink-05)]}
-.lang-option.active{@apply bg-[var(--ink-08)]}
-.lang-option-flag{@apply w-[22px] h-auto block opacity-100 radius-sm border border-[var(--ink-14)] transition-transform-quick transition-interactive}
-.lang-option:hover .lang-option-flag,.lang-option.active .lang-option-flag{@apply translate-y-px shadow-sm}
-.lang-option-label{@apply text-body-medium}
-.nav-burger{@apply hidden w-[44px] h-[44px] relative items-center justify-center flex-shrink-0}
-.nav-bar{@apply absolute w-[20px] h-[2px] bg-[var(--color-primary)] radius-xs transition-transform-quick transition-interactive}
-.nav-bar-top{@apply top-[calc(42%-1px)]}
-.nav-bar-bot{@apply top-[calc(58%-1px)]}
-.nav.open .nav-bar-top{@apply rotate-45 top-[calc(50%-1px)]}
-.nav.open .nav-bar-bot{@apply -rotate-45 top-[calc(50%-1px)]}
-.nav-drawer{@apply hidden flex-col gap-[10px] w-full pb-6 max-h-0 overflow-hidden transition-all duration-300 ease-out transition-opacity duration-300 ease-out opacity-0}
-.nav.open .nav-drawer{@apply max-h-[620px] opacity-100}
-.nav-drawer-item{@apply flex flex-col}
-.nav-drawer-link{@apply flex items-center justify-between gap-[10px] w-full text-nav text-[var(--color-primary)] py-2 transition-colors-quick cursor-pointer}
-.nav-drawer-link:hover{@apply text-[var(--subtle)]}
-.nav-drawer-link.has-mega .nav-drawer-caret{@apply text-[11px] leading-none transition-transform-quick transition-opacity-quick opacity-[0.62]}
-.nav-drawer-item.open .nav-drawer-link.has-mega .nav-drawer-caret{@apply rotate-180 opacity-100}
-.nav-drawer-sub{@apply grid grid-rows-[0fr] transition-all duration-300 ease-out}
-.nav-drawer-sub.open{@apply grid-rows-[1fr]}
-.nav-drawer-sub > *{@apply overflow-hidden}
-.nav-drawer-sub-group{@apply py-2 pl-3}
-.nav-drawer-sub-title{@apply text-eyebrow my-2}
-.nav-drawer-sub-link{@apply flex items-center justify-between w-full text-body-medium text-[var(--color-primary)] py-2 text-left}
-.nav-drawer-sub-link.is-soon{@apply text-[var(--muted)] cursor-not-allowed}
-.nav-drawer-sub-badge{@apply text-[10px] tracking-[0.04em] uppercase text-[var(--muted)]}
-.mega-panel-shell{@apply absolute left-1/2 top-full w-screen -translate-x-1/2 pt-0 z-[25] opacity-0 pointer-events-none transition-opacity duration-200 ease-out}
-.mega-panel-shell.open{@apply opacity-100 pointer-events-auto}
-.mega-panel{@apply relative bg-[var(--bg-overlay-94)] backdrop-blur-[12px] border-t border-[var(--border)] border-b border-[var(--border)] shadow-xl}
-.mega-panel-inner{@apply max-w-[1200px] mx-auto px-16 py-[34px] grid grid-cols-[320px_1fr] gap-10}
-.mega-intro{@apply flex flex-col gap-[14px]}
-.mega-eyebrow{@apply text-eyebrow}
-.mega-title{@apply text-[30px] font-[var(--w500)] tracking-[-0.05em] leading-[1.08]}
-.mega-body{@apply text-[14px] leading-[1.6] text-[var(--muted)] max-w-[30ch]}
-.mega-cta{@apply w-fit px-4 py-3 border border-[var(--border-mid)] rounded-full text-body-medium transition-interactive}
-.mega-cta:hover{@apply bg-[var(--ink-04)]}
-.mega-grid{@apply grid grid-cols-3 gap-4}
-.mega-group{@apply bg-[var(--white-54)] border border-[var(--ink-05)] radius-xl p-4}
-.mega-group-title{@apply text-eyebrow px-1 pb-3}
-.mega-links{@apply flex flex-col gap-[6px]}
-.mega-link{@apply flex flex-col items-start gap-1 w-full text-left p-2 radius-md transition-interactive transition-transform-quick}
-.mega-link:hover{@apply bg-[var(--ink-04)] translate-y-px}
-.mega-link.is-soon{@apply cursor-not-allowed opacity-60}
-.mega-link-top{@apply flex items-center gap-2}
-.mega-link-label{@apply text-[14px] font-[var(--w500)] tracking-[var(--track)]}
-.mega-link-badge{@apply text-[10px] tracking-[0.05em] uppercase text-[var(--muted)]}
-.mega-link-desc{@apply text-[12px] leading-[1.5] text-[var(--muted)]}
 
 /* ============================================================ ANIMATIONS RÉUTILISABLES - CODE DRY ============================================================ */
 
@@ -195,59 +196,6 @@ input,textarea,select{@apply text-sm outline-none}
 .rev.in.d2{transition-delay:220ms}
 .rev.in.d3{transition-delay:320ms}
 .rev.in.d4{transition-delay:420ms}
-
-/* ============================================================ UTILITAIRES DRY - Classes réutilisables sans impact design ============================================================ */
-
-/* Border radius - Classes utilitaires */
-.radius-xs{@apply rounded-[2px]}
-.radius-sm{@apply rounded-[3px]}
-.radius-md{@apply rounded-[10px]}
-.radius-lg{@apply rounded-[14px]}
-.radius-xl{@apply rounded-[16px]}
-
-/* Transitions - Classes utilitaires (même comportement, code plus court) */
-.transition-interactive{@apply transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
-.transition-colors-quick{@apply transition-colors duration-150 ease-out}
-.transition-opacity-quick{@apply transition-opacity duration-150 ease-out}
-.transition-transform-quick{@apply transition-transform duration-150 ease-spring}
-
-/* Typography - Classes utilitaires */
-.text-eyebrow{@apply text-[11px] font-[var(--w500)] tracking-[0.07em] uppercase text-[var(--muted)]}
-.text-body-medium{@apply text-[13px] font-[var(--w500)] tracking-[var(--track)]}
-.text-nav{@apply text-[15px] font-[var(--w500)] tracking-[var(--track)]}
-
-/* Shadows - Classes utilitaires */
-.shadow-sm{@apply shadow-[0_6px_12px_var(--ink-14)]}
-.shadow-md{@apply shadow-[0_10px_20px_var(--ink-20)]}
-.shadow-lg{@apply shadow-[0_16px_32px_var(--ink-10)]}
-.shadow-xl{@apply shadow-[0_24px_60px_var(--ink-08)]}
-
-/* Card hover animation - Applique à toutes les cartes */
-.card-hover{
-  transition:transform 0.3s var(--ease-spring), 
-             box-shadow 0.3s ease;
-}
-.card-hover:hover{
-  transform:translateY(4px);
-}
-
-/* Form base classes - Applique à tous les formulaires */
-.form-input-base{@apply bg-[var(--surface)] border border-[var(--border-mid)] rounded-[var(--r-md)] px-[18px] py-[14px] text-[14px] text-[var(--color-primary)] transition-interactive resize-none leading-[1.5]}
-.form-input-base:focus{@apply border-[var(--ink-30)] shadow-[0_0_0_3px_var(--ink-05)]}
-.form-input-base::placeholder{@apply text-[var(--muted)]}
-
-/* Card base classes - Applique à toutes les cartes */
-.card-base{@apply bg-[var(--surface)] rounded-[var(--r-md)]}
-.card-base-overflow{@apply card-base overflow-hidden}
-.card-base-cursor{@apply card-base-overflow cursor-pointer}
-.card-hover-translate{@apply translate-y-px}
-.card-shadow-sm{@apply shadow-[0_12px_40px_var(--ink-07)]}
-.card-shadow-md{@apply shadow-[0_16px_48px_var(--ink-10)]}
-
-/* Classes qui utilisent card-hover */
-.help-card{@apply card-hover}
-.cs-card{@apply card-hover}
-.blog-card{@apply card-hover}
 
 /* ============================================================ REVEAL ANIMATIONS - Converti en classes Tailwind ============================================================ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -279,7 +227,7 @@ input,textarea,select{@apply text-sm outline-none}
 .voice-demo-shell{@apply relative w-full max-w-[1200px] h-[min(820px,calc(100vh-var(--nav-h)-26px))] rounded-[34px] px-10 py-10 border border-[var(--ink-06)] shadow-[inset_0_1px_0_var(--white-65),0_25px_60px_rgba(33,43,78,.08)];background:var(--gradient-surface-medical-premium)}
 .voice-demo-shell::before{content:'';@apply absolute inset-0 pointer-events-none bg-[length:8px_8px] opacity-55;background-image:var(--gradient-surface-dots)}
 .voice-demo-head{@apply relative z-[2] max-w-[620px] mx-auto text-center mb-6}
-.voice-demo-label{@apply text-eyebrow text-[rgba(32,40,66,.62)] mb-2}
+.voice-demo-label{@apply mb-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[rgba(32,40,66,.62)]}
 .voice-demo-title{@apply text-[clamp(28px,3.9vw,44px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.06] text-[#1c2334]}
 .voice-demo-sub{@apply text-[14px] leading-[1.65] text-[rgba(28,35,52,.66)] max-w-[520px] mx-auto mt-4}
 .voice-demo-stage{@apply relative z-[2] grid grid-cols-[minmax(180px,240px)_minmax(240px,360px)_minmax(190px,280px)] gap-6 items-center justify-center min-h-[420px]}
@@ -312,153 +260,37 @@ input,textarea,select{@apply text-sm outline-none}
 .medical-voice-head-label,.medical-voice-head-title{@apply opacity-0 translate-y-[18px]}
 .medical-voice-shell.in .medical-voice-head-label{@apply animate-fadeUpVoice}
 .medical-voice-shell.in .medical-voice-head-title{@apply animate-fadeUpTitle}
-.medical-voice-sub{@apply text-body-medium text-[var(--muted)] max-w-[620px] mt-4}
 .medical-voice-selector-wrap{@apply relative z-[2] mt-6 mb-2 transition-transform duration-300 ease-out transition-opacity duration-300 ease-out}
-.medical-domain-selector{@apply relative z-[2] flex flex-wrap gap-[10px] mb-1 justify-center transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear}
-.medical-domain-chip{@apply p-4 rounded-full border border-[var(--ink-16)] bg-transparent text-[var(--color-primary)] text-[13px] font-[var(--w500)] tracking-[var(--track)] transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
-.medical-domain-chip:hover{@apply bg-[var(--ink-05)] translate-y-px}
-.medical-domain-chip.active{@apply bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] border-[var(--action-primary-bg)]}
 .medical-voice-stage{--medical-stage-top-offset:clamp(0px,.55vh,6px);--medical-phone-frame-width:min(246px,20vw);--medical-phone-frame-height:calc(var(--medical-phone-frame-width) * 1.8868);--medical-phone-bottom-pad:34px;--medical-phone-display-scale:.84;--medical-phone-visible-height:calc((var(--medical-phone-frame-height) + var(--medical-phone-bottom-pad)) * var(--medical-phone-display-scale));@apply relative z-[2] h-full min-h-0 pt-[var(--medical-stage-top-offset)] pb-[clamp(64px,8vh,122px)] box-border flex items-start justify-center}
 .medical-voice-phone-col{@apply relative z-[2] h-[var(--medical-phone-visible-height)] flex items-start transition-transform duration-220 ease-linear origin-[50%_0]}
 .medical-voice-transcript-col{@apply absolute right-11 top-[var(--medical-stage-top-offset)] bottom-auto h-[var(--medical-phone-visible-height)] w-[min(44%,430px)] flex items-start transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear pointer-events-none}
 .medical-voice-stage.conversation-active .medical-voice-transcript-col{@apply pointer-events-auto}
 .medical-phone-wrap{@apply relative flex items-start justify-center px-3 pb-[var(--medical-phone-bottom-pad)] h-[calc(var(--medical-phone-frame-height)+var(--medical-phone-bottom-pad))] min-h-0}
 .medical-phone-frame{@apply w-[var(--medical-phone-frame-width)] min-w-[168px]}
-.medical-phone-visual-stack{@apply relative w-[66%] aspect-square flex items-center justify-center isolate}
-.medical-phone-avatar-layer,.medical-phone-orb-layer{@apply absolute inset-0 flex items-center justify-center transition-opacity duration-420 ease-out transition-transform duration-420 ease-out}
-.medical-phone-avatar-layer.is-visible,.medical-phone-orb-layer.is-visible{@apply opacity-100 scale-100}
-.medical-phone-avatar-layer.is-hidden,.medical-phone-orb-layer.is-hidden{@apply opacity-0 scale-[0.96] pointer-events-none}
-.medical-phone-avatar-shell{@apply relative w-full aspect-square flex items-center justify-center isolate}
-.medical-phone-avatar-wave{@apply absolute inset-0 rounded-full border border-[rgba(133,102,214,.28)] opacity-0 scale-[0.82] pointer-events-none}
-.medical-phone-avatar-shell.pre-call .medical-phone-avatar-wave{@apply animate-medicalWavePulse}
-.medical-phone-avatar-shell.pre-call .medical-phone-avatar-wave.wave-2{animation-delay:.75s}
-.medical-phone-avatar-shell.pre-call .medical-phone-avatar-wave.wave-3{animation-delay:1.5s}
 @keyframes medicalWavePulse{
   0%{opacity:0;transform:scale(.82)}
   24%{opacity:.8}
   100%{opacity:0;transform:scale(1.42)}
 }
-.medical-phone-avatar{@apply w-full aspect-square rounded-full bg-[length:cover,auto,auto,auto] bg-[center,center,center,center] shadow-[0_22px_45px_rgba(87,56,141,.2)] relative z-[2];background:var(--gradient-medical-avatar-composite)}
-.voice-call-orb-host{@apply relative w-full h-full rounded-full overflow-hidden flex items-center justify-center transition-transform duration-240 ease-out transition-opacity duration-240 ease-out}
-.voice-call-orb-host > *{@apply w-full h-full}
-.voice-call-orb-canvas{@apply relative w-full h-full rounded-full overflow-hidden}
-.voice-call-orb-canvas canvas{width:100%!important;height:100%!important;display:block;transform:none!important;border-radius:9999px}
-.voice-call-orb-host.listening{@apply scale-[0.996]}
-.voice-call-orb-host.speaking{@apply scale-[1.01]}
-.medical-phone-frame .voice-agent-name{@apply text-[34px]}
-.medical-phone-frame .voice-agent-role{@apply text-[16px]}
-.phone-call-control{@apply w-[calc(100%-12px)] mx-auto mb-1}
-.phone-call-slider{--slide-progress:0;--slider-knob-size:48px;@apply relative h-[60px] rounded-full p-2 border border-[rgba(31,39,61,.12)] flex items-center overflow-hidden touch-none select-none;background:var(--gradient-surface-soft)}
-.phone-call-slider:focus-visible{@apply outline-2 outline-[rgba(42,56,98,.35)] outline-offset-2}
-.phone-call-slider-label{@apply pl-16 pr-[74px] text-body-medium text-[#2f3752] whitespace-nowrap text-ellipsis overflow-hidden opacity-[calc(1-var(--slide-progress)*.84)] translate-x-[calc(var(--slide-progress)*8px)] transition-opacity-quick transition-transform-quick}
-.phone-call-slider-hint{@apply absolute right-[18px] flex gap-[5px] opacity-[calc(1-var(--slide-progress)*1.4)] transition-opacity duration-200 ease-out}
-.phone-call-slider-hint span{@apply w-[7px] h-[7px] border-r-[1.6px] border-r-[rgba(47,55,82,.34)] border-t-[1.6px] border-t-[rgba(47,55,82,.34)] rotate-45 opacity-[0.18] animate-pulse}
-.phone-call-slider-hint span:nth-child(2){animation-delay:.2s}
-.phone-call-slider-hint span:nth-child(3){animation-delay:.4s}
 @keyframes slideHintFlow{
   0%{opacity:.12;transform:translateX(-4px) rotate(45deg)}
   45%{opacity:.44}
   100%{opacity:.12;transform:translateX(5px) rotate(45deg)}
 }
-.phone-call-slider-knob{@apply absolute top-2 left-[calc(6px+var(--slide-progress)*(100%-var(--slider-knob-size)-12px))] w-[var(--slider-knob-size)] h-[calc(100%-12px)] rounded-full bg-[#19a85f] border border-[#12854a] flex items-center justify-center transition-transform duration-280 ease-out transition-shadow duration-220 ease-out transition-all duration-150 ease-out shadow-[0_10px_20px_rgba(20,95,58,.28)] cursor-grab}
-.phone-call-slider.dragging .phone-call-slider-knob{@apply cursor-grabbing transition-none}
 @keyframes callKnobBreath{
   0%,100%{box-shadow:0 9px 18px rgba(20,95,58,.22)}
   50%{box-shadow:0 14px 26px rgba(20,95,58,.38)}
 }
-.phone-call-slider-knob-icon{@apply inline-flex items-center justify-center w-[20px] h-[20px] text-white}
-.phone-call-slider-knob-icon svg{@apply w-[20px] h-[20px] block}
-.phone-call-icon{@apply w-[20px] h-[20px] block origin-center}
-.phone-call-icon-answer{@apply rotate-0}
-.phone-call-icon-hangup{@apply rotate-[135deg]}
-.phone-call-hangup{@apply w-full h-[60px] rounded-full border border-[#d5b0b0] text-[#7f2d2d] text-[15px] font-[var(--w500)] tracking-[var(--track)] flex items-center justify-center gap-[10px] transition-transform duration-150 ease-spring transition-opacity duration-150 ease-out transition-shadow duration-150 ease-out bg-[#f0e4e4]}
-.phone-call-hangup:hover{@apply translate-y-px shadow-[0_10px_20px_rgba(127,45,45,.16)]}
-.phone-call-hangup-icon{@apply inline-flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#d94f4f] text-white text-[16px] leading-none}
-.phone-call-hangup-icon svg{@apply w-[22px] h-[22px] block}
-.phone-call-hangup-icon-only{@apply w-[48px] h-[48px] rounded-full mx-auto p-0 gap-0 border border-[#be3232] text-white shadow-[0_12px_24px_rgba(178,43,43,.3)] bg-[#dc4343]}
-.phone-call-hangup-icon-only:hover{@apply translate-y-px scale-[1.03] shadow-[0_14px_30px_rgba(178,43,43,.35)]}
-.phone-call-hangup-icon-only .phone-call-hangup-icon{@apply w-[30px] h-[30px] rounded-none bg-transparent text-white}
 .medical-phone-state{@apply text-[12px] tracking-[0.04em] uppercase text-[rgba(34,41,63,.56)] text-center}
-.medical-transcript-free{@apply flex flex-col gap-2 h-full min-h-0}
-.medical-transcript-head-free{@apply flex items-start justify-between gap-[10px]}
-.medical-transcript-title{@apply text-[15px] font-[var(--w500)] tracking-[-0.02em]}
-.medical-transcript-sub{@apply text-[11px] text-[var(--muted)]}
-.medical-transcript-status{@apply text-[10px] font-[var(--w500)] tracking-[0.07em] uppercase text-[rgba(34,41,63,.52)] text-right}
-.medical-transcript-body-free{@apply overflow-auto flex flex-col gap-[10px] flex-1 max-h-none pr-2 items-start justify-start;scrollbar-width:thin}
-.medical-transcript-empty{@apply m-0 text-[var(--muted)] text-[13px] leading-[1.6]}
-.medical-transcript-line{max-width:94%;display:flex;flex-direction:column;gap:4px;opacity:0;transform:translate3d(0,10px,0);animation:medicalLineIn .42s var(--ease-out) forwards;animation-delay:var(--entry-stagger,0ms)}
-.medical-transcript-line.agent{@apply self-start}
-.medical-transcript-line.patient{@apply self-start text-left}
-.medical-transcript-speaker{@apply text-[10px] font-[var(--w500)] tracking-[0.12em] uppercase text-[rgba(29,37,56,.44)]}
-.medical-transcript-text{@apply text-[clamp(13px,1.08vw,16px)] font-[var(--w500)] tracking-[-0.012em] leading-[1.56] text-[#35405b]}
 @keyframes medicalLineIn{
   0%{opacity:0;transform:translate3d(0,10px,0)}
   100%{opacity:1;transform:translate3d(0,0,0)}
 }
 
-/* ============================================================ SECTION COMMONS - Converti en classes Tailwind ============================================================ */
-.sec{@apply px-16 py-24 max-w-[1200px] mx-auto}
-.sec-sm{@apply px-16 py-14 max-w-[1200px] mx-auto}
-
-/* Section reveal animations */
-.sec.rev{@apply rev-base}
-.sec.rev.in{opacity:1;transform:translateY(0)}
-.sec.rev.in.d1{transition-delay:120ms}
-.sec.rev.in.d2{transition-delay:220ms}
-.sec.rev.in.d3{transition-delay:320ms}
-.sec.rev.in.d4{transition-delay:420ms}
-
 /* ============================================================ ===== HOME PAGE - Converti en classes Tailwind ===== ============================================================ */
 @keyframes barProg{from{width:0}to{width:100%}}
-/* Home sections - Converti en classes Tailwind */
-.help-grid{@apply grid grid-cols-3 gap-5 text-left}
-.help-card{@apply card-base p-8 flex flex-col gap-[14px]}
-.help-card:hover{@apply card-hover-translate card-shadow-sm}
-.help-card.rev.in.d1{transition-delay:120ms}
-.help-card.rev.in.d2{transition-delay:220ms}
-.help-card.rev.in.d3{transition-delay:320ms}
-.help-card.rev.in.d4{transition-delay:420ms}
-.help-thumb{@apply w-full h-[150px] rounded-[var(--r-sm)] flex items-center justify-center text-[42px] mb-1}
-.help-title{@apply text-[17px] font-[var(--w500)] tracking-[var(--track)]}
-.help-body{@apply text-[14px] leading-[1.65] text-[var(--muted)]}
 
-/* Process section (restored from initial design) */
-.proc-grid{@apply grid grid-cols-3 gap-px bg-[var(--border)] border border-[var(--border)] rounded-[var(--r-md)] overflow-hidden}
-.proc-card{@apply bg-[var(--bg)] p-[44px] px-8 text-left flex flex-col gap-[14px] transition-colors duration-200 ease-out}
-.proc-card:hover{@apply bg-[var(--white-55)]}
-.proc-icon{@apply w-[34px] h-[34px] bg-[var(--black)] rounded-[var(--r-sm)] flex items-center justify-center}
-.proc-icon svg{@apply w-[17px] h-[17px] stroke-white fill-none stroke-[2px] [stroke-linecap:round] [stroke-linejoin:round]}
-.proc-title{@apply text-[17px] font-[var(--w500)] tracking-[var(--track)]}
-.proc-body{@apply text-[14px] leading-[1.65] text-[var(--muted)]}
-
-/* Mission card - Converti en classes Tailwind */
-.mission-section{@apply px-16 py-10 pb-24 max-w-[1200px] mx-auto}
-
-.quote-inner-left{@apply bg-[var(--surface)] rounded-[28px] p-14 grid grid-cols-[220px_1fr] gap-11 items-center}
-.quote-q{@apply text-[clamp(20px,2.5vw,28px)] font-[var(--w500)] tracking-[-0.04em] leading-[1.45] mb-5}
 .testi-vis-bg{@apply w-full h-full; background:var(--gradient-accent-warm)}
-
-/* Team - Converti en classes Tailwind */
-.team-grid{@apply grid grid-cols-4 gap-5}
-.team-card{@apply flex flex-col gap-[10px]}
-.team-photo{@apply rounded-[var(--r-md)] overflow-hidden aspect-[3/4]}
-.team-photo-bg{@apply w-full h-full}
-.team-name{@apply text-[15px] font-[var(--w500)] tracking-[var(--track)]}
-.team-role{@apply text-[13px] text-[var(--muted)] -mt-1}
-
-/* FAQ - Converti en classes Tailwind */
-.faq-list{@apply max-w-[660px] mx-auto}
-.faq-item{@apply border-b border-[var(--border)]}
-.faq-item:first-child{@apply border-t border-[var(--border)]}
-.faq-trigger{@apply w-full flex items-center justify-between gap-4 py-5 bg-none border-none text-left font-[var(--sans)] text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[var(--text-primary)] transition-colors duration-150 ease-out cursor-pointer}
-.faq-trigger:hover{@apply text-[var(--subtle)]}
-.faq-icon{@apply w-[24px] h-[24px] rounded-full bg-[var(--action-primary-bg)] flex items-center justify-center flex-shrink-0 transition-all duration-150 ease-out}
-.faq-icon svg{@apply w-[12px] h-[12px] stroke-[var(--action-primary-fg)] transition-transform duration-300 ease-spring [stroke-linecap:round]}
-.faq-item.open .faq-icon{@apply bg-[var(--muted)]}
-.faq-item.open .faq-icon svg{@apply rotate-45}
-.faq-body{@apply max-h-0 overflow-hidden transition-all duration-300 ease-out}
-.faq-item.open .faq-body{@apply max-h-[240px]}
-.faq-body p{@apply pb-5 text-[14px] leading-[1.7] text-[var(--muted)]}
 
 /* DS Accordion reveal animations */
 .ds-accordion{@apply rev-base}
@@ -468,9 +300,6 @@ input,textarea,select{@apply text-sm outline-none}
 .ds-accordion.in.d3{transition-delay:320ms}
 .ds-accordion.in.d4{transition-delay:420ms}
 
-/* Logos strip - Converti en classes Tailwind */
-.logos-strip{@apply flex items-center gap-10 flex-wrap justify-center py-8 border-t border-[var(--border)] border-b border-[var(--border)]}
-.logos-label{@apply text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)] text-center mb-5}
 .logo-item{@apply text-[18px] font-[var(--w500)] tracking-[-0.04em] text-[var(--subtle)] transition-colors duration-150 ease-out}
 .logo-item:hover{@apply text-[var(--color-primary)]}
 .logo-item.rev{transform:translateY(22px) translateX(var(--logo-x,0)) scale(0.992);transition-duration:var(--logo-dur,700ms)}
@@ -480,42 +309,7 @@ input,textarea,select{@apply text-sm outline-none}
 .logo-item.rev.in.d3{transition-delay:320ms}
 .logo-item.rev.in.d4{transition-delay:420ms}
 
-/* Final CTA block - Converti en classes Tailwind */
-.cta-block{@apply bg-[var(--surface)] rounded-[28px] p-0 grid grid-cols-[1fr_320px] overflow-hidden min-h-[320px]}
-.cta-block-left{@apply p-16 flex flex-col items-start gap-1}
-.cta-block-label{@apply text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)] mb-2 flex items-center gap-2}
-.cta-block-badge{@apply w-[32px] h-[32px] bg-[var(--ink-08)] rounded-[9px] flex items-center justify-center}
-.cta-block-badge svg{@apply w-[16px] h-[16px]}
-.cta-block-h{@apply text-[clamp(32px,4vw,48px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.05] text-[var(--color-primary)] mb-3 mt-2}
-.cta-block-sub{@apply text-[14px] leading-[1.65] text-[var(--muted)] mb-6}
-.cta-block-right{@apply bg-[var(--surface2)] flex items-center justify-center relative overflow-hidden}
-/* Phone illustration in CTA - Converti en classes Tailwind */
-.cta-phone-illo{@apply w-[200px] h-[380px] bg-[#1a1a2a] rounded-[28px] shadow-[0_20px_60px_var(--ink-30)] relative overflow-hidden rotate-[8deg] translate-y-5}
-.cta-phone-screen{@apply w-full h-full; background:var(--gradient-accent-warm)}
-.cta-phone-notch{@apply absolute top-3 left-6 w-[60px] h-[6px] bg-[var(--ink-50)] rounded-[3px]}
-.cta-phone-ui{@apply absolute bottom-0 left-0 right-0 p-4; background:var(--gradient-overlay-top)}
-.cta-phone-ui-dots{@apply flex gap-[6px] justify-center mb-2}
-.cta-phone-ui-dot{@apply w-[6px] h-[6px] rounded-full bg-[var(--white-50)]}
-.cta-phone-ui-dot.on{@apply bg-white}
-.cta-phone-ui-icons{@apply flex justify-around}
-.cta-phone-ui-icon{@apply w-[28px] h-[28px] bg-[var(--white-15)] rounded-[8px] flex items-center justify-center}
-.cta-phone-ui-icon span{@apply text-[14px]}
-.cta-block-asterisk{@apply absolute -top-5 left-6 w-[54px] h-[54px] bg-[var(--ink-10)] rounded-[15px] flex items-center justify-center}
-.cta-block-asterisk svg{@apply w-[26px] h-[26px]}
-
-/* ============================================================ ===== BLOG POST PAGE - Converti en classes Tailwind ===== ============================================================ */
-.social-btn{@apply w-[32px] h-[32px] rounded-[var(--r-sm)] border border-[var(--border)] flex items-center justify-center transition-all duration-150 ease-out transition-transform duration-150 ease-spring}
-.social-btn svg{@apply w-[14px] h-[14px]}
-.social-btn:hover{@apply bg-[var(--ink-06)] translate-y-px}
-
 /* ============================================================ ===== CONTACT PAGE - Converti en classes Tailwind ===== ============================================================ */
-.form-label{@apply text-body-medium text-[var(--color-primary)]}
-.form-label sup{@apply text-[var(--muted)]}
-.form-input{@apply form-input-base}
-.form-input:focus{@apply border-[var(--ink-30)] shadow-[0_0_0_3px_var(--ink-05)]}
-.form-input::placeholder{@apply text-[var(--muted)]}
-textarea.form-input{@apply min-h-[110px]}
-/* Contact FAQ section - Converti en classes Tailwind */
 
 /* ============================================================ ===== LEGAL PAGES - Converti en classes Tailwind ===== ============================================================ */
 
@@ -538,10 +332,6 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
 /* ============================================================ RESPONSIVE TABLET ≤1199 - Converti en classes Tailwind ============================================================ */
 @media(max-width:1199px){
   .nav{@apply px-8}
-  .sec,.sec-sm,.mission-section{@apply px-8}
-  .team-grid{@apply grid-cols-3}
-  .cta-block{@apply grid-cols-1 min-h-0}
-  .cta-block-right{@apply hidden}
   .voice-demo-sticky{@apply px-8}
   .voice-demo-shell{@apply px-7 py-7}
   .voice-demo-stage{@apply grid-cols-[minmax(160px,210px)_minmax(220px,320px)_minmax(170px,240px)]}
@@ -553,7 +343,6 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .medical-voice-transcript-col{@apply right-6 top-[var(--medical-stage-top-offset)] bottom-[clamp(20px,3vh,30px)] w-[min(45%,370px)]}
   .medical-phone-wrap{@apply h-full min-h-0}
   .medical-phone-frame{@apply w-[min(226px,22vw)] min-w-[172px]}
-  .medical-transcript-text{@apply text-[16px]}
 }
 
 /* ============================================================ RESPONSIVE SMALL TABLET ≤1000 - Converti en classes Tailwind ============================================================ */
@@ -566,19 +355,6 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .nav{@apply p-0 h-auto flex-col items-stretch w-full gap-0}
   .nav::before{@apply top-0 h-[var(--nav-h)]}
   .nav::after{@apply top-0 h-[calc(var(--nav-h)+104px)]}
-  .nav-logo-row{@apply h-16 flex items-center justify-between w-full max-w-none px-5}
-  .nav-links{@apply hidden}
-  .nav-burger{@apply flex}
-  .nav-drawer{@apply flex}
-  .mega-panel-shell{@apply hidden}
-  .lang-selector{@apply self-start}
-  .lang-trigger-flag{@apply w-6}
-  .lang-menu{@apply top-[calc(100%+8px)] right-auto left-0}
-  .sec,.sec-sm,.mission-section{@apply px-5}
-  .help-grid,.proc-grid{@apply grid-cols-1}
-  .team-grid,.about-team-grid{@apply grid-cols-2}
-  .cta-block-left{@apply px-10 px-7}
-  .logos-strip{@apply gap-6}
   .float-cta{@apply bottom-4 right-6}
   .voice-demo-scroll{@apply h-auto max-h-none mt-4 mb-1}
   .voice-demo-sticky{@apply relative top-auto h-auto p-0 overflow-visible}
@@ -597,42 +373,13 @@ footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t b
   .voice-transcript-text{@apply text-[22px]}
   .voice-test-button{@apply w-full}
   .case-row,.case-row.case-row--image-right{@apply flex flex-col direction-ltr}
-  .cta-block-left{@apply px-10 px-7}
-  .logos-strip{@apply gap-6}
-  .float-cta{@apply bottom-4 right-6}
-  .voice-demo-scroll{@apply h-auto max-h-none mt-4 mb-1}
-  .voice-demo-sticky{@apply relative top-auto h-auto px-5 overflow-visible}
-  .voice-demo-shell{@apply h-auto min-h-0 rounded-[24px] px-7 px-5}
-  .voice-demo-head{@apply mb-4}
-  .voice-demo-title{@apply text-[clamp(26px,9vw,36px)]}
-  .voice-demo-sub{@apply text-[13px]}
-  .voice-demo-stage{@apply min-h-0 grid-cols-1 gap-[18px]}
-  .voice-demo-side.left,.voice-demo-side.right{@apply items-stretch opacity-100 translate-y-0}
-  .voice-goal-card,.voice-transcript-line{@apply max-w-none}
-  .voice-phone-wrap{@apply translate-y-0}
-  .voice-phone-frame{@apply w-[min(88vw,300px)]}
-  .voice-agent-name{@apply text-[34px]}
-  .voice-agent-role{@apply text-[17px]}
-  .voice-transcript-speaker{@apply text-[16px]}
-  .voice-transcript-text{@apply text-[22px]}
-  .voice-test-button{@apply w-full}
   .medical-voice-scroll{@apply h-auto max-h-none mt-6 mb-2}
   .medical-voice-sticky{@apply relative top-auto h-auto px-5 overflow-visible}
   .medical-voice-shell{@apply h-auto min-h-0 px-6 px-5 rounded-[24px]}
-  .medical-voice-sub{@apply text-[14px]}
-  .medical-domain-selector{@apply gap-2 mb-[18px]}
-  .medical-domain-chip{@apply text-[12px] px-2 py-2}
   .medical-voice-stage{@apply h-auto min-h-0 grid grid-cols-1 gap-[14px]}
   .medical-voice-phone-col,.medical-voice-transcript-col{@apply transform-none opacity-100}
   .medical-voice-transcript-col{@apply static w-full}
   .medical-phone-wrap{@apply h-auto min-h-0 p-0}
   .medical-phone-frame{@apply w-full max-w-[286px] max-h-none h-auto min-w-0 mx-auto}
-  .phone-call-control{@apply w-full}
-  .phone-call-slider{@apply h-[56px]}
-  .phone-call-slider-label{@apply text-[13px]}
-  .phone-call-hangup{@apply h-[56px]}
-  .medical-transcript-body-free{@apply max-h-[340px]}
-  .medical-transcript-line{@apply max-w-[92%]}
-  .medical-transcript-text{@apply text-[15px]}
   .cursor-dot{@apply hidden}
   }

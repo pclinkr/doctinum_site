@@ -69,7 +69,7 @@ export default function LocaleShell({ locale, children }) {
 
   useEffect(() => {
     if (!isLoaderDone) return undefined;
-    const startTimerId = window.setTimeout(() => setIsStorySliderStarted(true), 300);
+    const startTimerId = window.setTimeout(() => setIsStorySliderStarted(true), 0);
     return () => window.clearTimeout(startTimerId);
   }, [isLoaderDone]);
 

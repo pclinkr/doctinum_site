@@ -85,8 +85,9 @@ const fr = {
       titlePrefix: 'Le suivi patient',
       titleMiddle: 'ne doit pas rester',
       titleAccent: 'silencieux',
-      subtitle: 'Une infrastructure d’IA vocale qui applique vos protocoles et organise un suivi structuré, sous supervision médicale',
-      cta: 'Demandez une démo'
+      subtitle: "Une infrastructure d’IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.",
+      cta: 'Evaluez un projet pilote',
+      cta2: 'Planifier un échange confidentiel'
     },
     services: {
       titlePrefix: 'Comment nous pouvons vous aider à',
@@ -237,6 +238,86 @@ const fr = {
           { role: 'agent', text: 'Très bien, je prépare un résumé et les créneaux disponibles.', delayMs: 8100 }
         ]
       }
+    },
+    problemCard: {
+      badge: 'Constat terrain',
+      titlePrefix: 'Le suivi repose encore largement sur la',
+      titleAccent: 'réactivité',
+      titleSuffix: 'du patient',
+      intro: "Dans de nombreux parcours ambulatoires, chroniques ou spécialisés, le suivi repose sur des relances manuelles et des outils hétérogènes, souvent dépendants de l'initiative du patient ou de la disponibilité des équipes.",
+      problems: [
+        {
+          title: 'Questionnaires peu complétés',
+          description: "Les PROMS et ePRO sont fréquemment sous-remplis, limitant la visibilité continue sur l'évolution clinique."
+        },
+        {
+          title: 'Temps soignant mobilisé',
+          description: 'Infirmiers coordinateurs, ARC et équipes médicales consacrent une part importante de leur temps à relancer et documenter manuellement les échanges.'
+        },
+        {
+          title: 'Retours non structurés',
+          description: 'Les informations remontent par des canaux variés (appels spontanés, emails, SMS), difficiles à consolider et à tracer de manière homogène.'
+        },
+        {
+          title: 'Engagement numérique hétérogène',
+          description: 'Les applications et portails patients nécessitent une disponibilité et une aisance numérique qui ne sont pas toujours compatibles avec certains parcours de soins, notamment chez les patients fragilisés.'
+        }
+      ],
+      outroLine1: 'Certains signaux précoces restent silencieux.',
+      outroLine2: "Et c'est souvent là que le risque apparaît."
+    },
+    homeOurSolution: {
+      eyebrow: 'Notre approche',
+      title: 'Un suivi actif, déclenché par vos équipes.',
+      statementLine1: 'Vous définissez le protocole.',
+      statementLine2: "L'IA vocale exécute le suivi.",
+      statementBody: "Chaque échange est structuré et restitué sous forme de compte-rendu utile à l'équipe.",
+      impactTitle: 'Ce que ça change',
+      impactItems: [
+        'un suivi régulier, non dépendant du "patient qui pense à appeler"',
+        'une information homogène, comparable dans le temps',
+        'une remontée des situations à risque selon vos critères'
+      ],
+      workflow: {
+        eyebrow: 'Fonctionnement',
+        title: 'Comment ça marche',
+        chip: 'Cadre structuré et supervision clinique',
+        steps: [
+          {
+            title: 'Vos protocoles',
+            body: "Vous définissez les questions, la fréquence, les seuils d'alerte, et les règles d'escalade."
+          },
+          {
+            title: 'Consentement patient',
+            body: 'Le patient accepte explicitement le suivi et le canal vocal.'
+          },
+          {
+            title: 'Appels vocaux structurés',
+            body: 'Appels programmés, guidés, avec un entretien court et cadré.'
+          },
+          {
+            title: 'Structuration et synthèse',
+            body: 'Les réponses sont organisées et résumées en informations exploitables.'
+          },
+          {
+            title: 'Alertes sous supervision',
+            body: "Les alertes suivent vos critères. L'équipe reste décisionnaire."
+          }
+        ]
+      },
+      visual: {
+        alertTitle: 'Signalement clinique',
+        alertBody: "Les alertes sont priorisées selon vos seuils, puis transmises de façon lisible à l'équipe.",
+        chartTitle: 'Visualisation simplifiée',
+        chartLineLabel: 'Évolution symptômes (J+1 à J+7)',
+        chartBarsLabel: 'Indicateurs déclaratifs',
+        badges: {
+          lowAlert: 'Alerte faible',
+          stable: 'Stable',
+          monitoring: 'Surveillance'
+        }
+      },
+      reassurance: "Aucune décision médicale autonome. L'IA organise, l'équipe arbitre."
     }
   },
   content: {

@@ -6,7 +6,7 @@ export default function WhyChooseSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="sec" style={{ textAlign: 'center' }}>
+    <section className="mx-auto w-full max-w-[1200px] px-16 py-24 text-center max-[1024px]:px-8 max-[768px]:px-5">
       <SectionHeading className="rev" title={<>{t('sections.whyChoose.titlePrefix')}<br />{t('sections.whyChoose.titleMiddle')} <span className="si">{t('sections.whyChoose.titleAccent')}</span> {t('sections.whyChoose.titleSuffix')}</>} style={{ marginBottom: '48px' }} />
       <div className="rev grid grid-cols-2 gap-5 text-left max-[809px]:grid-cols-1">
         <div className="relative rounded-[var(--r-md)] bg-[var(--surface)] p-8">

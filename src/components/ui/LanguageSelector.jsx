@@ -67,7 +67,7 @@ export default function LanguageSelector() {
         onClick={() => setIsOpen((currentValue) => !currentValue)}
       >
         <img
-          className="w-[26px] h-auto block grayscale-[16%] saturate-[86%] opacity-[0.90] radius-sm border border-[var(--ink-16)] shadow-[0_0_0_var(--ink-00)] transition-interactive"
+          className="block h-auto w-[26px] rounded-[3px] border border-[var(--ink-16)] opacity-[0.90] grayscale-[16%] saturate-[86%] shadow-[0_0_0_var(--ink-00)] transition-all duration-150 ease-out"
           src={getFlagAssetPath(currentCode)}
           alt={currentLanguage?.label || 'Language'}
           loading="lazy"
@@ -80,18 +80,18 @@ export default function LanguageSelector() {
         />
       </button>
 
-      <div className={`absolute top-[calc(100%+10px)] right-0 min-w-[168px] p-2 bg-[var(--bg-overlay-95)] backdrop-blur-[10px] border border-[var(--border)] radius-lg shadow-lg flex flex-col gap-[3px] opacity-0 translate-y-px scale-[0.98] pointer-events-none transition-opacity-quick transition-transform-quick ${isOpen ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' : ''}`.trim()}>
+      <div className={`absolute right-0 top-[calc(100%+10px)] flex min-w-[168px] flex-col gap-[3px] rounded-[14px] border border-[var(--border)] bg-[var(--bg-overlay-95)] p-2 opacity-0 shadow-lg backdrop-blur-[10px] pointer-events-none translate-y-px scale-[0.98] transition-all duration-150 ease-out ${isOpen ? 'pointer-events-auto translate-y-0 scale-100 opacity-100' : ''}`.trim()}>
         {orderedOptions.map((option) => {
           const isCurrent = normalizeLanguageCode(option.code) === currentCode;
           return (
             <button
               key={option.code}
               type="button"
-              className={`flex items-center gap-[10px] p-2 radius-md transition-interactive transition-colors-quick text-left ${isCurrent ? 'bg-[var(--ink-08)]' : 'hover:bg-[var(--ink-05)]'}`.trim()}
+              className={`flex items-center gap-[10px] rounded-[10px] p-2 text-left transition-all duration-150 ease-out ${isCurrent ? 'bg-[var(--ink-08)]' : 'hover:bg-[var(--ink-05)]'}`.trim()}
               onClick={() => handleSelect(option.code)}
             >
               <img
-                className="w-[22px] h-auto block opacity-100 radius-sm border border-[var(--ink-14)] transition-transform-quick transition-interactive"
+                className="block h-auto w-[22px] rounded-[3px] border border-[var(--ink-14)] opacity-100 transition-all duration-150 ease-out"
                 src={getFlagAssetPath(normalizeLanguageCode(option.code))}
                 alt=""
                 aria-hidden="true"

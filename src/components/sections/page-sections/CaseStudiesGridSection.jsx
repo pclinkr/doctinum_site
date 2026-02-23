@@ -2,7 +2,7 @@ import Card from '../../ui/Card';
 
 export default function CaseStudiesGridSection({ cards, onNavigate }) {
   return (
-    <section className="sec" style={{ paddingTop: 0 }}>
+    <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-0 max-[1024px]:px-8 max-[768px]:px-5">
       <div className="grid grid-cols-2 gap-5 max-[809px]:grid-cols-1">
         {cards.map((caseItem) => (
           <Card key={caseItem.name} className={`group rev cursor-pointer overflow-hidden rounded-[var(--r-md)] bg-[var(--surface)] transition-transform duration-300 ease-spring transition-shadow duration-300 ease-out hover:translate-y-px hover:shadow-[0_16px_48px_var(--ink-10)] ${caseItem.delayClass}`.trim()} onClick={() => onNavigate('case-detail')}>

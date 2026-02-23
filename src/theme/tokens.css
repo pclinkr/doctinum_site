@@ -1,7 +1,7 @@
 :root {
   /* Color tokens */
-  --color-bg: #d0e1ee;
-  --color-surface: #dee9f1;
+  --color-bg: #e2ebf3;
+  --color-surface: #ebf0f4;
   --color-white: #f5f6f7;
   --color-text: rgb(14, 27, 41);
   --color-muted: rgb(12, 36, 60, 0.55);
@@ -10,6 +10,8 @@
   --color-border-strong: rgb(12, 36, 60, 0.12);
   --color-primary: #0c243c;
   --color-primary-contrast: var(--color-white);
+  --color-accent-1: #d8c8a8;
+  --color-accent-2: #d9a895;
   --logo-normal: var(--color-primary);
   --logo-contrast: var(--color-primary-contrast);
 
@@ -28,7 +30,7 @@
   --track-tight: -0.06em;
   --track-serif: -0.08em;
 
-  --font-size-body: 18px;
+  --font-size-body: 20px;
   --line-height-body: normal;
   --letter-spacing-body: normal;
 

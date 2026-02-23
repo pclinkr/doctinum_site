@@ -2,14 +2,11 @@ import { useTranslation } from 'react-i18next';
 import FinalCtaSection from '../components/sections/FinalCtaSection';
 import MissionCard from '../components/sections/MissionCard';
 import FaqSection from '../components/sections/page-sections/FaqSection';
-import HomeCasesSection from '../components/sections/page-sections/HomeCasesSection';
+import HomeOurSolutionSection from '../components/sections/page-sections/HomeOurSolutionSection';
 import HomeHeroSection from '../components/sections/page-sections/HomeHeroSection';
-import HomeProblemSection from '../components/sections/page-sections/HomeProblemSection';
-import HomeMarqueeSection from '../components/sections/page-sections/HomeMarqueeSection';
+import HomeSlidingBanner from '../components/sections/page-sections/HomeSlidingBanner';
 import HomeMedicalVoiceCallSection from '../components/sections/page-sections/HomeMedicalVoiceCallSection';
-import HomeServicesSection from '../components/sections/page-sections/HomeServicesSection';
-import HomeVoiceAgentSection from '../components/sections/page-sections/HomeVoiceAgentSection';
-import ProcessSection from '../components/sections/page-sections/ProcessSection';
+import NotCallbotSectionAlt from '../components/sections/page-sections/NotCallbotSectionAlt';
 import TestimonialSection from '../components/sections/page-sections/TestimonialSection';
 import WhyChooseSection from '../components/sections/page-sections/WhyChooseSection';
 import { getHelpItems, getHomeFaqItems, getStoryGradients } from '../constants/content';
@@ -27,14 +24,11 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
   return (
     <div id="page-home" className={`page ${active ? 'active' : ''}`.trim()}>
       <HomeHeroSection onNavigate={onNavigate} storyStarted={storyStarted} storyGradients={storyGradients} storyDurationMs={storyDurationMs} instant={instantHero} />
-      {/* <HomeProblemSection backgroundImageUrl="/assets/images/man_pain_stomach2.png" /> */}
-      <section className="mission-section"><ProblemCard /></section>
-      <HomeMarqueeSection />
-      {/* <HomeVoiceAgentSection onNavigate={onNavigate} /> */}
-      <HomeServicesSection items={helpItems} />
-      <section className="mission-section"><MissionCard /></section>
-      <HomeCasesSection onNavigate={onNavigate} />
-      <ProcessSection />
+      {/* <HomeSlidingBanner /> */}
+      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><ProblemCard /></section>
+      <HomeOurSolutionSection onNavigate={onNavigate} />
+      <NotCallbotSectionAlt />
+      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><MissionCard /></section>
       <TestimonialSection initials="EK" />
       <WhyChooseSection />
       <FaqSection items={homeFaqItems} />

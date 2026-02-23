@@ -20,7 +20,7 @@ export default function AboutPage({ active, onNavigate }) {
     <div id="page-about" className={`page ${active ? 'active' : ''}`.trim()}>
       <PageHero className="rev" badge={t('pages.about.badge')} title={t('pages.about.title')} description={t('pages.about.description')} showReveal={false} showProof proofText={socialProofText} />
       <AboutTeamSection members={aboutTeamMembers} />
-      <section className="mission-section"><MissionCard /></section>
+      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><MissionCard /></section>
       <TestimonialSection initials="EC" visualStyle={{ background: 'linear-gradient(160deg,#c8b888,#b0a070)' }} visualText="Bloom" />
       <AwardsSection awards={aboutAwards} />
       <LogosStripSection />

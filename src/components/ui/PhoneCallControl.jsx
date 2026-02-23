@@ -141,10 +141,10 @@ export default function PhoneCallControl({ state, onStartCall, onHangupCall }) {
 
   if (isCallActive) {
     return (
-      <div className="phone-call-control">
-        <button type="button" className="phone-call-hangup phone-call-hangup-icon-only" onClick={onHangupCall} aria-label="Hang up call">
-          <span className="phone-call-hangup-icon" aria-hidden="true">
-            <PhoneHandsetIcon className="phone-call-icon phone-call-icon-hangup" />
+      <div className="mx-auto mb-1 w-[calc(100%-12px)]">
+        <button type="button" className="mx-auto flex h-[48px] w-[48px] items-center justify-center rounded-full border border-[#be3232] bg-[#dc4343] p-0 text-white shadow-[0_12px_24px_rgba(178,43,43,.3)] transition-all duration-150 ease-out hover:translate-y-px hover:scale-[1.03] hover:shadow-[0_14px_30px_rgba(178,43,43,.35)]" onClick={onHangupCall} aria-label="Hang up call">
+          <span className="inline-flex h-[30px] w-[30px] items-center justify-center text-white" aria-hidden="true">
+            <PhoneHandsetIcon className="block h-[20px] w-[20px] origin-center rotate-[135deg]" />
           </span>
         </button>
       </div>
@@ -152,31 +152,35 @@ export default function PhoneCallControl({ state, onStartCall, onHangupCall }) {
   }
 
   return (
-    <div className="phone-call-control">
+    <div className="mx-auto mb-1 w-[calc(100%-12px)]">
       <div
         ref={sliderTrackRef}
-        className={`phone-call-slider ${isDragging ? 'dragging' : 'idle'}`.trim()}
-        style={{ '--slide-progress': sliderProgress }}
+        className={`relative flex h-[60px] touch-none select-none items-center overflow-hidden rounded-full border border-[rgba(31,39,61,.12)] p-2 ${isDragging ? 'cursor-grabbing' : ''}`.trim()}
+        style={{ '--slide-progress': sliderProgress, background: 'var(--gradient-surface-soft)' }}
+        onPointerDown={(event) => {
+          if (event.target === sliderTrackRef.current) beginDrag(event);
+        }}
         role="button"
         tabIndex={0}
         aria-label={t('sections.medicalVoice.controls.slideToCall')}
         onKeyDown={handleSliderKeyboard}
       >
-        <p className="phone-call-slider-label">{t('sections.medicalVoice.controls.slideToCall')}</p>
-        <div className="phone-call-slider-hint" aria-hidden="true">
-          <span />
-          <span />
-          <span />
+        <p className="overflow-hidden whitespace-nowrap text-ellipsis pl-16 pr-[74px] text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[#2f3752] opacity-[calc(1-var(--slide-progress)*.84)] translate-x-[calc(var(--slide-progress)*8px)] transition-all duration-150 ease-out">{t('sections.medicalVoice.controls.slideToCall')}</p>
+        <div className="absolute right-[18px] flex gap-[5px] opacity-[calc(1-var(--slide-progress)*1.4)] transition-opacity duration-200 ease-out" aria-hidden="true">
+          <span className="h-[7px] w-[7px] rotate-45 border-r-[1.6px] border-t-[1.6px] border-r-[rgba(47,55,82,.34)] border-t-[rgba(47,55,82,.34)] opacity-[0.18] animate-pulse" />
+          <span className="h-[7px] w-[7px] rotate-45 border-r-[1.6px] border-t-[1.6px] border-r-[rgba(47,55,82,.34)] border-t-[rgba(47,55,82,.34)] opacity-[0.18] animate-pulse [animation-delay:.2s]" />
+          <span className="h-[7px] w-[7px] rotate-45 border-r-[1.6px] border-t-[1.6px] border-r-[rgba(47,55,82,.34)] border-t-[rgba(47,55,82,.34)] opacity-[0.18] animate-pulse [animation-delay:.4s]" />
         </div>
         <div
-          className="phone-call-slider-knob"
+          className={`absolute top-2 flex h-[calc(100%-12px)] w-[48px] items-center justify-center rounded-full border border-[#12854a] bg-[#19a85f] text-white shadow-[0_10px_20px_rgba(20,95,58,.28)] transition-all duration-150 ease-out ${isDragging ? 'cursor-grabbing transition-none' : 'cursor-grab'}`.trim()}
+          style={{ left: 'calc(6px + var(--slide-progress) * (100% - 48px - 12px))' }}
           role="button"
           tabIndex={-1}
           aria-hidden="true"
           onPointerDown={beginDrag}
         >
-          <span className="phone-call-slider-knob-icon" aria-hidden="true">
-            <PhoneHandsetIcon className="phone-call-icon phone-call-icon-answer" />
+          <span className="inline-flex h-[20px] w-[20px] items-center justify-center text-white" aria-hidden="true">
+            <PhoneHandsetIcon className="block h-[20px] w-[20px] origin-center rotate-0" />
           </span>
         </div>
       </div>

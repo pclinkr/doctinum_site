@@ -237,6 +237,86 @@ const en = {
           { role: 'agent', text: "Perfect, I'll prepare a summary and available slots.", delayMs: 8100 }
         ]
       }
+    },
+    problemCard: {
+      badge: 'Field insight',
+      titlePrefix: 'Follow-up still depends heavily on patient',
+      titleAccent: 'responsiveness',
+      titleSuffix: '',
+      intro: 'In many ambulatory, chronic, and specialized care pathways, follow-up still relies on manual outreach and fragmented tools, often dependent on patient initiative or team availability.',
+      problems: [
+        {
+          title: 'Low questionnaire completion',
+          description: 'PROMS and ePROs are often under-completed, limiting continuous visibility into clinical evolution.'
+        },
+        {
+          title: 'Clinical team time consumed',
+          description: 'Care coordinators, CRAs, and medical teams spend a significant part of their time relaunching and documenting exchanges manually.'
+        },
+        {
+          title: 'Unstructured feedback',
+          description: 'Information comes through varied channels (spontaneous calls, emails, SMS), making consolidation and consistent traceability difficult.'
+        },
+        {
+          title: 'Uneven digital engagement',
+          description: 'Apps and patient portals require availability and digital confidence that are not always compatible with every care journey, especially for vulnerable patients.'
+        }
+      ],
+      outroLine1: 'Some early warning signals stay silent.',
+      outroLine2: 'And that is often where risk appears.'
+    },
+    homeOurSolution: {
+      eyebrow: 'Our approach',
+      title: 'Active follow-up, triggered by your teams.',
+      statementLine1: 'You define the protocol.',
+      statementLine2: 'Voice AI executes the follow-up.',
+      statementBody: 'Each exchange is structured and returned as a concise report useful to the care team.',
+      impactTitle: 'What this changes',
+      impactItems: [
+        'regular follow-up, not dependent on patients remembering to call',
+        'homogeneous information, comparable over time',
+        'escalation of at-risk situations based on your criteria'
+      ],
+      workflow: {
+        eyebrow: 'Workflow',
+        title: 'How it works',
+        chip: 'Structured framework and clinical supervision',
+        steps: [
+          {
+            title: 'Your protocols',
+            body: 'You define questions, cadence, alert thresholds, and escalation rules.'
+          },
+          {
+            title: 'Patient consent',
+            body: 'The patient explicitly agrees to follow-up and the voice channel.'
+          },
+          {
+            title: 'Structured voice calls',
+            body: 'Scheduled, guided calls with a short, framed conversation.'
+          },
+          {
+            title: 'Structuring and synthesis',
+            body: 'Responses are organized and summarized into actionable information.'
+          },
+          {
+            title: 'Supervised alerts',
+            body: 'Alerts follow your criteria. The team remains the decision-maker.'
+          }
+        ]
+      },
+      visual: {
+        alertTitle: 'Clinical signaling',
+        alertBody: 'Alerts are prioritized by your thresholds and delivered to the team in a readable format.',
+        chartTitle: 'Simplified visualization',
+        chartLineLabel: 'Symptom trend (Day 1 to Day 7)',
+        chartBarsLabel: 'Self-reported indicators',
+        badges: {
+          lowAlert: 'Low alert',
+          stable: 'Stable',
+          monitoring: 'Monitoring'
+        }
+      },
+      reassurance: 'No autonomous medical decision. AI organizes, the team arbitrates.'
     }
   },
   content: {

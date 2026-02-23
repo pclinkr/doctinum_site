@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import BrandIcon from './BrandIcon';
 
-export default function StorySliderPhone({ start, videos, storyDurationMs, username, timeLabel = '6h', phoneSize = { width: '380px', height: '640px' }, borderThickness = '0px', borderColor = '#fff', borderRadius = '10px', instant = false }) {
+export default function StorySliderPhone({ start, videos, storyDurationMs, username, timeLabel = '6h', phoneSize = { width: '380px', height: '640px' }, borderThickness = '0px', borderColor = '#fff', borderRadius = '10px', instant = false, reveal = true }) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function StorySliderPhone({ start, videos, storyDurationMs, usern
   }, [start, videos, storyDurationMs]);
 
   return (
-    <div className={`relative flex items-start justify-end pt-5 opacity-0 animate-fadeUp max-[809px]:justify-center ${instant ? 'animate-none opacity-100 translate-y-0' : ''}`.trim()}>
+    <div className={`relative flex items-start justify-end pt-5 max-[809px]:justify-center ${instant ? 'animate-none opacity-100 translate-y-0' : reveal ? 'opacity-0 animate-fadeUp' : 'opacity-0'}`.trim()} style={!instant && reveal ? { animationDelay: '300ms' } : undefined}>
       <div className="relative overflow-hidden bg-white shadow-[0_40px_100px_var(--ink-15),0_2px_8px_var(--ink-07)]" id="phoneShell" style={{
           width: phoneSize.width,
           height: phoneSize.height,

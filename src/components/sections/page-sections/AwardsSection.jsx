@@ -2,7 +2,7 @@ import SectionHeading from '../SectionHeading';
 
 export default function AwardsSection({ awards }) {
   return (
-    <section className="sec rev">
+    <section className="rev mx-auto w-full max-w-[1200px] px-16 py-24 max-[1024px]:px-8 max-[768px]:px-5">
       <SectionHeading label="Recognition" title={<>Awards that reflect<br />our <span className="si">commitment</span></>} style={{ textAlign: 'center', marginBottom: '44px' }} />
       <table className="mt-2 w-full border-collapse">
         <thead><tr><th className="border-b border-[var(--border)] pb-3 text-left text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">Award</th><th className="border-b border-[var(--border)] pb-3 text-left text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">Description</th><th className="border-b border-[var(--border)] pb-3 text-left text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">Year</th></tr></thead>

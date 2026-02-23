@@ -7,7 +7,7 @@ export default function PageHero({ badge, title, description, className = '', sh
 
   return (
     <Container className={`pb-16 pt-[calc(var(--nav-h)+56px)] ${className}`.trim()}>
-      <Badge className={`mb-6 inline-block rounded-full border border-[var(--border-mid)] bg-[var(--surface)] px-[14px] py-2 text-body-medium ${revealClass}`.trim()}>{badge}</Badge>
+      <Badge className={`mb-6 inline-block rounded-full border border-[var(--border-mid)] bg-[var(--surface)] px-[14px] py-2 text-[13px] font-[var(--w500)] tracking-[var(--track)] ${revealClass}`.trim()}>{badge}</Badge>
       <h1 className={`mb-5 ${revealClass}`.trim()}>{title}</h1>
       {description ? <p className={`mb-7 max-w-[520px] text-[var(--muted)] ${revealClass}`.trim()}>{description}</p> : null}
       {showProof ? (

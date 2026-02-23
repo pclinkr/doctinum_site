@@ -61,7 +61,7 @@
   );
   --gradient-surface-soft: var(--gradient-surface-medical-premium);
   --gradient-surface-dots: radial-gradient(rgba(154, 164, 215, 0.18) 1px, transparent 1.2px);
-  --gradient-accent-warm-previous: linear-gradient(
+  --gradient-accent-warm-terra: linear-gradient(
     160deg,
     #f3d8c6 0%,
     #e9c0ab 36%,
@@ -79,7 +79,7 @@
     145deg,
     var(--bg-surface) 0%,
     color-mix(in srgb, var(--bg-surface) 82%, #c4d7ff 18%) 56%,
-    color-mix(in srgb, var(--bg-surface) 78%, #d6c6ff 22%) 100%
+    color-mix(in srgb, var(--bg-surface) 78%, var(--color-primary) 22%) 100%
   );
 
   /* Backward-compatible aliases */

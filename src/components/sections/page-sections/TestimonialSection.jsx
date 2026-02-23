@@ -4,7 +4,7 @@ export default function TestimonialSection({ initials = 'EK', visualStyle, visua
   const { t } = useTranslation();
 
   return (
-    <section className="sec rev">
+    <section className="rev mx-auto w-full max-w-[1200px] px-16 py-24 max-[1024px]:px-8 max-[768px]:px-5">
       <div className="grid grid-cols-[1fr_220px] items-center gap-11 rounded-[28px] bg-[var(--surface)] p-14 max-[809px]:grid-cols-1 max-[809px]:px-7">
         <div>
           <div className="font-serif text-[60px] leading-none text-[var(--border-mid)]">&ldquo;</div>

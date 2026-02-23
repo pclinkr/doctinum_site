@@ -104,14 +104,14 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
       id="mainNav"
       style={{ '--nav-scroll-progress': Math.min(1, Math.max(0, blurProgress)) }}
     >
-      <div className="nav-logo-row">
-        <div className="nav-logo" onClick={() => handleNavigate('home')}>
-          <BrandWordmark className="nav-logo-wordmark" color="var(--logo-normal)" symbolColor="var(--logo-normal)" alt="Darkteam" />
+      <div className="relative z-[3] mx-auto flex h-[var(--nav-h)] w-full max-w-[1200px] items-center px-16 max-[809px]:h-16 max-[809px]:max-w-none max-[809px]:justify-between max-[809px]:px-5">
+        <div className="flex cursor-pointer items-center gap-[6px] shrink-0" onClick={() => handleNavigate('home')}>
+          <BrandWordmark className="block h-6 w-auto" color="var(--logo-normal)" symbolColor="var(--logo-normal)" alt="Darkteam" />
         </div>
-        <div className="nav-links" id="navLinks">
+        <div className="flex h-full flex-1 items-center justify-end gap-5 max-[809px]:hidden" id="navLinks">
           {isDev ? (
             <button
-              className={`nav-link ${currentPage === 'styleguide' ? 'active-link' : ''}`.trim()}
+              className={`inline-flex items-center gap-[6px] whitespace-nowrap text-sm font-medium leading-[21px] tracking-[-0.56px] text-[var(--color-primary)] transition-colors duration-150 ease-out cursor-pointer ${currentPage === 'styleguide' ? 'text-[var(--color-primary)]' : ''}`.trim()}
               type="button"
               onClick={() => handleNavigate('styleguide')}
               title="Open design system style guide"
@@ -125,14 +125,16 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
             return (
               <button
                 key={item.id}
-                className={`nav-link ${isActive ? 'active-link' : ''} ${item.megaMenu ? 'has-mega' : ''} ${isOpen ? 'open' : ''}`.trim()}
+                className={`inline-flex items-center gap-[6px] whitespace-nowrap text-sm font-medium leading-[21px] tracking-[-0.56px] text-[var(--color-primary)] transition-colors duration-150 ease-out cursor-pointer ${isActive ? 'text-[var(--color-primary)]' : ''}`.trim()}
                 type="button"
                 aria-expanded={item.megaMenu ? isOpen : undefined}
                 onMouseEnter={() => handleDesktopItemHover(item)}
                 onClick={() => handleDesktopItemClick(item)}
               >
                 {item.label}
-                {item.megaMenu && <span className="nav-link-caret">▾</span>}
+                {item.megaMenu && (
+                  <span className={`text-[10px] leading-none translate-y-px transition-all duration-150 ease-out ${isOpen ? 'rotate-180 opacity-100' : 'opacity-[0.62]'}`.trim()}>▾</span>
+                )}
               </button>
             );
           })}
@@ -143,14 +145,14 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
             <Button onClick={() => handleNavigate('contact')}>{t('nav.cta')}</Button>
           </div>
         </div>
-        <button className="nav-burger" id="navBurger" aria-label={t('nav.mobileMenu')} aria-expanded={isMenuOpen} onClick={onToggleMenu} type="button">
-          <span className="nav-bar nav-bar-top" />
-          <span className="nav-bar nav-bar-bot" />
+        <button className="relative hidden h-[44px] w-[44px] shrink-0 items-center justify-center max-[809px]:flex" id="navBurger" aria-label={t('nav.mobileMenu')} aria-expanded={isMenuOpen} onClick={onToggleMenu} type="button">
+          <span className={`absolute h-[2px] w-[20px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] rotate-45' : 'top-[calc(42%-1px)]'}`.trim()} />
+          <span className={`absolute h-[2px] w-[20px] rounded-[2px] bg-[var(--color-primary)] transition-all duration-150 ease-out ${isMenuOpen ? 'top-[calc(50%-1px)] -rotate-45' : 'top-[calc(58%-1px)]'}`.trim()} />
         </button>
       </div>
-      <div className="nav-drawer" id="navDrawer">
+      <div className={`hidden w-full flex-col gap-[10px] overflow-hidden pb-6 transition-all duration-300 ease-out max-[809px]:flex ${isMenuOpen ? 'max-h-[620px] opacity-100' : 'max-h-0 opacity-0'}`.trim()} id="navDrawer">
         {isDev ? (
-          <button className="nav-drawer-link" type="button" onClick={() => handleNavigate('styleguide')}>
+          <button className="flex w-full items-center justify-between gap-[10px] py-2 text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-colors duration-150 ease-out cursor-pointer hover:text-[var(--subtle)]" type="button" onClick={() => handleNavigate('styleguide')}>
             <span>Styleguide</span>
           </button>
         ) : null}
@@ -158,31 +160,33 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
           const isOpen = openMobileMegaId === item.id;
 
           return (
-            <div key={item.id} className={`nav-drawer-item ${isOpen ? 'open' : ''}`.trim()}>
-              <button className={`nav-drawer-link ${item.megaMenu ? 'has-mega' : ''}`.trim()} type="button" onClick={() => handleMobileItemClick(item)}>
+            <div key={item.id} className="flex flex-col">
+              <button className="flex w-full items-center justify-between gap-[10px] py-2 text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] transition-colors duration-150 ease-out cursor-pointer hover:text-[var(--subtle)]" type="button" onClick={() => handleMobileItemClick(item)}>
                 <span>{item.label}</span>
-                {item.megaMenu && <span className="nav-drawer-caret">▾</span>}
+                {item.megaMenu && <span className={`text-[11px] leading-none transition-all duration-150 ease-out ${isOpen ? 'rotate-180 opacity-100' : 'opacity-[0.62]'}`.trim()}>▾</span>}
               </button>
 
               {item.megaMenu && (
-                <div className={`nav-drawer-sub ${isOpen ? 'open' : ''}`.trim()}>
+                <div className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`.trim()}>
+                  <div className="overflow-hidden">
                   {item.megaMenu.groups.map((group) => (
-                    <div key={group.title} className="nav-drawer-sub-group">
-                      <p className="nav-drawer-sub-title">{group.title}</p>
+                    <div key={group.title} className="py-2 pl-3">
+                      <p className="my-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">{group.title}</p>
                       {group.links.map((link) => (
                         <button
                           key={link.label}
-                          className={`nav-drawer-sub-link ${link.isSoon ? 'is-soon' : ''}`.trim()}
+                          className={`flex w-full items-center justify-between py-2 text-left text-[13px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)] ${link.isSoon ? 'cursor-not-allowed text-[var(--muted)]' : ''}`.trim()}
                           type="button"
                           onClick={() => link.page && handleNavigate(link.page)}
                           disabled={link.isSoon || !link.page}
                         >
                           <span>{link.label}</span>
-                          {link.isSoon && <span className="nav-drawer-sub-badge">{t('megaMenu.soon')}</span>}
+                          {link.isSoon && <span className="text-[10px] uppercase tracking-[0.04em] text-[var(--muted)]">{t('megaMenu.soon')}</span>}
                         </button>
                       ))}
                     </div>
                   ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -193,7 +197,7 @@ export default function NavBar({ currentPage, isMenuOpen, isScrolled, blurProgre
         </div>
         <Button onClick={() => handleNavigate('contact')} style={{ marginTop: '8px' }}>{t('nav.cta')}</Button>
       </div>
-      <div className={`mega-panel-shell ${openMegaMenu ? 'open' : ''}`.trim()} onMouseLeave={() => setOpenMegaId('')}>
+      <div className={`absolute left-1/2 top-full z-[25] w-screen -translate-x-1/2 pt-0 transition-opacity duration-200 ease-out max-[809px]:hidden ${openMegaMenu ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`.trim()} onMouseLeave={() => setOpenMegaId('')}>
         <NavMegaMenu menu={openMegaMenu} onNavigate={handleNavigate} />
       </div>
       {isMenuOpen && <button type="button" aria-label="Close menu" onClick={onCloseMenu} style={{ display: 'none' }} />}

@@ -68,9 +68,6 @@
 
 /* Cards */
 .ds-card,
-.help-card,
-.cs-card,
-.blog-card,
 .contact-faq-card,
 .mission-card {
   background: var(--card-bg);
@@ -82,8 +79,7 @@
 
 /* Inputs */
 .ds-input,
-.ds-textarea,
-.form-input {
+.ds-textarea {
   width: 100%;
   background: var(--control-bg);
   color: var(--control-fg);
@@ -95,52 +91,38 @@
   transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
 }
 
-.ds-textarea,
-textarea.form-input {
+.ds-textarea {
   min-height: 110px;
   resize: vertical;
 }
 
 .ds-input::placeholder,
-.ds-textarea::placeholder,
-.form-input::placeholder {
+.ds-textarea::placeholder {
   color: var(--control-placeholder);
 }
 
 .ds-input:focus,
-.ds-textarea:focus,
-.form-input:focus {
+.ds-textarea:focus {
   outline: none;
   border-color: var(--control-focus-border);
   box-shadow: 0 0 0 3px var(--control-focus-ring);
 }
 
-.form-label {
-  font-size: 14px;
-  font-weight: var(--font-weight-medium);
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
 /* Accordion */
-.ds-accordion,
-.faq-list {
+.ds-accordion {
   max-width: 660px;
   margin-inline: auto;
 }
 
-.ds-accordion-item,
-.faq-item {
+.ds-accordion-item {
   border-bottom: 1px solid var(--border-default);
 }
 
-.ds-accordion-item:first-child,
-.faq-item:first-child {
+.ds-accordion-item:first-child {
   border-top: 1px solid var(--border-default);
 }
 
-.ds-accordion-trigger,
-.faq-trigger {
+.ds-accordion-trigger {
   width: 100%;
   display: flex;
   align-items: center;
@@ -158,8 +140,7 @@ textarea.form-input {
   cursor: pointer;
 }
 
-.ds-accordion-icon,
-.faq-icon {
+.ds-accordion-icon {
   width: 24px;
   height: 24px;
   border-radius: 999px;
@@ -178,14 +159,12 @@ textarea.form-input {
   shape-rendering: geometricPrecision;
 }
 
-.ds-accordion-content,
-.faq-body {
+.ds-accordion-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height var(--duration-mid) var(--ease-out);
 }
 
-.ds-accordion-item.is-open .ds-accordion-content,
-.faq-item.open .faq-body {
+.ds-accordion-item.is-open .ds-accordion-content {
   max-height: 280px;
 }
