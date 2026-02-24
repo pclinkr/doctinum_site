@@ -393,6 +393,58 @@ const en = {
         }
       ],
       closing: 'A protocol is only effective if the channel is truly used.'
+    },
+    homeUseCases: {
+      eyebrow: 'Use cases',
+      title: 'Use cases tailored to different clinical contexts',
+      explore: 'Explore use cases',
+      imagePlaceholder: 'Visual coming soon',
+      items: [
+        {
+          title: 'Pre and post-intervention follow-up',
+          body: 'Ambulatory care, surgery, dermatology, aesthetic medicine, sports medicine.',
+          contexts: ['Ambulatory care', 'Surgery', 'Dermatology', 'Aesthetic medicine', 'Sports medicine'],
+          cta: 'View dedicated page'
+        },
+        {
+          title: 'Chronic follow-up',
+          body: 'Regular monitoring, adherence, quality of life, coordination.',
+          contexts: ['Regular monitoring', 'Adherence', 'Quality of life', 'Coordination'],
+          cta: 'View dedicated page'
+        },
+        {
+          title: 'High-vigilance pathways',
+          body: 'Oncology, transplantation, cardiology, mental health: close monitoring, weak-signal detection, controlled escalation.',
+          contexts: ['Oncology', 'Transplantation', 'Cardiology', 'Mental health'],
+          cta: 'View dedicated page'
+        }
+      ]
+    },
+    homeSecurityFrame: {
+      eyebrow: 'Security & framework',
+      title: 'Built for demanding medical environments.',
+      subtitle: 'An operational foundation designed for pathway continuity, clinical supervision, and compliant usage.',
+      tableHeaderLeft: 'Pillar',
+      tableHeaderRight: 'What it ensures',
+      rows: [
+        {
+          title: 'Data protection',
+          body: 'Explicit consent and full logging.'
+        },
+        {
+          title: 'Secure hosting',
+          body: 'Infrastructure aligned with applicable healthcare requirements.'
+        },
+        {
+          title: 'Traceability',
+          body: 'Structured and exportable history.'
+        },
+        {
+          title: 'Clear regulatory positioning',
+          body: 'A supervised organizational tool, with no autonomous medical decision-making.'
+        }
+      ],
+      cta: 'Learn more about security'
     }
   },
   content: {
@@ -426,9 +478,7 @@ const en = {
       { question: 'How long until I see results?', answer: 'Organic growth is visible within 60–90 days. Paid campaigns can show ROI within 2–4 weeks depending on budget.' }
     ],
     storyVideos: [
-      '/assets/videos/doctor.mp4',
-      '/assets/videos/nurse.mp4',
-      '/assets/videos/patient1.mp4'
+      '/assets/videos/doctinum_hero.mp4',
     ],
     aboutTeamMembers: [
       { name: 'Sofia Little', role: 'Creative Lead', gradient: 'linear-gradient(160deg,#f0c5a8,#d4a090,#c08878)', delayClass: 'd1' },
@@ -508,23 +558,13 @@ const en = {
   footer: {
     tagline: 'Social media that drives real results',
     subtitle: 'Built for creators, businesses, and brands.',
-    navTitle: 'Navigate',
-    connectTitle: 'Connect',
-    legalTitle: 'Legal',
-    home: 'Home',
-    about: 'About',
-    caseStudies: 'Case Studies',
-    blog: 'Blog',
-    bookCall: 'Book a call',
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    solutionsTitle: 'Solutions',
+    resourcesTitle: 'Resources',
+    companyTitle: 'Company',
     contact: 'Contact',
-    instagram: 'Instagram',
-    linkedin: 'LinkedIn',
-    twitter: 'Twitter',
-    copyPrefix: 'Created by',
-    copySuffix: 'with',
-    copyAuthor: 'Cosmike',
+    legalNotice: 'Legal notice',
+    privacyPolicy: 'Privacy policy',
+    cookies: 'Cookie settings',
     copyright: '© 2025 Doctinum'
   }
 };

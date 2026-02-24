@@ -1,5 +1,6 @@
 import BrandIcon from '../ui/BrandIcon';
 import Button from '../ui/Button';
+import MediaContainer from '../ui/MediaContainer';
 import { useTranslation } from 'react-i18next';
 
 export default function FinalCtaSection({ onNavigate, subtitle, className = '', id }) {
@@ -22,7 +23,17 @@ export default function FinalCtaSection({ onNavigate, subtitle, className = '', 
           </Button>
         </div>
         <div className="relative flex items-center justify-center overflow-hidden bg-[var(--surface2)] max-[1199px]:hidden">
-          <div className="relative h-[380px] w-[200px] translate-y-5 rotate-[8deg] overflow-hidden rounded-[28px] bg-[#1a1a2a] shadow-[0_20px_60px_var(--ink-30)]">
+          <MediaContainer
+            type="image"
+            src="/assets/images/cta_desktop_image.png"
+            alt="Call to action"
+            enableParallax={true}
+            enableZoomOut={true}
+            className="cta-parallax"
+          />
+          {/* Overlay pour lisibilité */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.3)_100%)]" />
+          {/* <div className="relative h-[380px] w-[200px] translate-y-5 rotate-[8deg] overflow-hidden rounded-[28px] bg-[#1a1a2a] shadow-[0_20px_60px_var(--ink-30)]">
             <div className="h-full w-full" style={{ background: 'var(--gradient-accent-warm)' }} />
             <div className="absolute left-6 top-3 h-[6px] w-[60px] rounded-[3px] bg-[var(--ink-50)]" />
             <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: 'var(--gradient-overlay-top)' }}>
@@ -38,7 +49,7 @@ export default function FinalCtaSection({ onNavigate, subtitle, className = '', 
                 <div className="flex h-[28px] w-[28px] items-center justify-center rounded-[8px] bg-[var(--white-15)]"><span className="text-[14px]">🔖</span></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import FinalCtaSection from '../components/sections/FinalCtaSection';
-import MissionCard from '../components/sections/MissionCard';
-import FaqSection from '../components/sections/page-sections/FaqSection';
 import HomeOurSolutionSection from '../components/sections/page-sections/HomeOurSolutionSection';
 import HomeHeroSection from '../components/sections/page-sections/HomeHeroSection';
 import HomeSlidingBanner from '../components/sections/page-sections/HomeSlidingBanner';
 import HomeMedicalVoiceCallSection from '../components/sections/page-sections/HomeMedicalVoiceCallSection';
 import NotCallbotSectionAlt from '../components/sections/page-sections/NotCallbotSectionAlt';
 import HomeVoiceChannelSection from '../components/sections/page-sections/HomeVoiceChannelSection';
-import TestimonialSection from '../components/sections/page-sections/TestimonialSection';
-import WhyChooseSection from '../components/sections/page-sections/WhyChooseSection';
+import HomeUseCasesSection from '../components/sections/page-sections/HomeUseCasesSection';
+import HomeSecurityFrameSection from '../components/sections/page-sections/HomeSecurityFrameSection';
 import { getHelpItems, getHomeFaqItems, getStoryGradients } from '../constants/content';
 import { getCtaSubtitleFull, getStoryDurationMs } from '../constants/site';
 import ProblemCard from '../components/sections/ProblemCard';
@@ -30,10 +28,12 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
       <HomeOurSolutionSection onNavigate={onNavigate} />
       <NotCallbotSectionAlt />
       <HomeVoiceChannelSection />
-      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><MissionCard /></section>
+      <HomeUseCasesSection onNavigate={onNavigate} />
+      <HomeSecurityFrameSection onNavigate={onNavigate} />
+      {/* <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><MissionCard /></section>
       <TestimonialSection initials="EK" />
       <WhyChooseSection />
-      <FaqSection items={homeFaqItems} />
+      <FaqSection items={homeFaqItems} /> */}
       <HomeMedicalVoiceCallSection />
       <FinalCtaSection id="homeCta" onNavigate={onNavigate} subtitle={ctaSubtitleFull} />
       <div id="homeFooter" />

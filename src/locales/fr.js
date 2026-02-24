@@ -11,7 +11,7 @@ const fr = {
     ]
   },
   nav: {
-    cta: 'Réserver une démo',
+    cta: 'Discuter de votre projet',
     home: 'Accueil',
     solutions: 'Solutions',
     functioning: 'Fonctionnement',
@@ -92,8 +92,8 @@ const fr = {
         {
           title: 'Ressources',
           links: [
-            { label: 'Agents modèles', description: 'Exemples d’agents prêts à adapter.', page: 'case-studies' },
-            { label: 'Agents PROMS', description: 'Modèles orientés questionnaires post-acte.', page: 'blog-post' }
+            { label: 'Modèles d’agents', description: 'Exemples d’agents prêts à adapter.', page: 'case-studies' },
+            { label: 'Modèles PROMS', description: 'Modèles orientés questionnaires post-acte.', page: 'blog-post' }
           ]
         }
       ],
@@ -126,7 +126,7 @@ const fr = {
   },
   site: {
     socialProofText: 'Plus de 176+ créateurs accompagnés',
-    ctaSubtitleFull: 'Réservez un appel stratégique gratuit de 30 min et découvrez comment transformer vos abonnés en clients.',
+    ctaSubtitleFull: 'Réservez un appel stratégique gratuit de 30 min et construisons ensemble un protocole de suivi adapté à votre contexte.',
     ctaSubtitleShort: 'Réservez un appel stratégique gratuit de 30 min.',
     storyDurationMs: 3000
   },
@@ -136,7 +136,7 @@ const fr = {
       titlePrefix: 'Le suivi patient',
       titleMiddle: 'ne doit pas rester',
       titleAccent: 'silencieux',
-      subtitle: "Une infrastructure d’IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.",
+      subtitle: "L’infrastructure d’IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.",
       cta: 'Evaluez un projet pilote',
       cta2: 'Planifier un échange confidentiel'
     },
@@ -203,11 +203,11 @@ const fr = {
       }
     },
     whyChoose: {
-      titlePrefix: 'Pourquoi choisir Viral',
+      titlePrefix: 'Pourquoi choisir Doctinum',
       titleMiddle: 'plutôt que',
       titleAccent: 'les autres',
       titleSuffix: '?',
-      otherTitle: 'Autres agences',
+      otherTitle: 'Autres solutions',
       brandTitle: 'Notre différence',
       otherItems: [
         'Contrats longue durée contraignants',
@@ -230,7 +230,7 @@ const fr = {
     },
     finalCta: {
       label: 'Démarrer',
-      titlePrefix: 'Votre trajectoire virale commence',
+      titlePrefix: 'Votre suivi vocal commence',
       titleAccent: 'ici.'
     },
     medicalVoice: {
@@ -394,6 +394,58 @@ const fr = {
         }
       ],
       closing: 'Un protocole n’est efficace que si le canal est réellement utilisé.'
+    },
+    homeUseCases: {
+      eyebrow: 'Cas d’usage',
+      title: 'Des cas d’usage adaptés à différents contextes',
+      explore: 'Explorer les cas d’usage',
+      imagePlaceholder: 'Visuel à venir',
+      items: [
+        {
+          title: 'Suivi pré et post-intervention',
+          body: 'Ambulatoire, chirurgie, dermatologie, médecine esthétique, médecine du sport.',
+          contexts: ['Ambulatoire', 'Chirurgie', 'Dermatologie', 'Médecine esthétique', 'Médecine du sport'],
+          cta: 'Voir la page dédiée'
+        },
+        {
+          title: 'Suivi chronique',
+          body: 'Suivi régulier, observance, qualité de vie, coordination.',
+          contexts: ['Suivi régulier', 'Observance', 'Qualité de vie', 'Coordination'],
+          cta: 'Voir la page dédiée'
+        },
+        {
+          title: 'Parcours à haute vigilance',
+          body: 'Oncologie, transplantation, cardiologie, santé mentale : suivi rapproché, signaux faibles, escalade maîtrisée.',
+          contexts: ['Oncologie', 'Transplantation', 'Cardiologie', 'Santé mentale'],
+          cta: 'Voir la page dédiée'
+        }
+      ]
+    },
+    homeSecurityFrame: {
+      eyebrow: 'Sécurité & cadre',
+      title: 'Conçu pour des environnements médicaux exigeants.',
+      subtitle: 'Un socle opérationnel pensé pour la continuité des parcours, la supervision clinique et la conformité des usages.',
+      tableHeaderLeft: 'Pilier',
+      tableHeaderRight: 'Ce que cela garantit',
+      rows: [
+        {
+          title: 'Protection des données',
+          body: 'Consentement explicite et journalisation complète.'
+        },
+        {
+          title: 'Hébergement sécurisé',
+          body: 'Infrastructure compatible exigences applicables en santé.'
+        },
+        {
+          title: 'Traçabilité',
+          body: 'Historique structuré et exportable.'
+        },
+        {
+          title: 'Positionnement réglementaire clair',
+          body: 'Outil organisationnel supervisé, sans décision médicale autonome.'
+        }
+      ],
+      cta: 'En savoir plus sur la sécurité'
     }
   },
   content: {
@@ -428,9 +480,6 @@ const fr = {
     ],
     storyVideos: [
       '/assets/videos/doctinum_hero.mp4',
-      // '/assets/videos/doctor.mp4',
-      // '/assets/videos/nurse2.mp4',
-      // '/assets/videos/patient1.mp4'
     ],
     aboutTeamMembers: [
       { name: 'Sofia Little', role: 'Lead créative', gradient: 'linear-gradient(160deg,#f0c5a8,#d4a090,#c08878)', delayClass: 'd1' },
@@ -508,25 +557,15 @@ const fr = {
     submit: 'Réserver un appel ↗'
   },
   footer: {
-    tagline: 'Le social media qui génère de vrais résultats',
-    subtitle: 'Pensé pour les créateurs, entreprises et marques.',
-    navTitle: 'Navigation',
-    connectTitle: 'Contact',
-    legalTitle: 'Légal',
-    home: 'Accueil',
-    about: 'À propos',
-    caseStudies: 'Cas clients',
-    blog: 'Blog',
-    bookCall: 'Réserver un appel',
-    privacy: 'Politique de confidentialité',
-    terms: 'Conditions d’utilisation',
+    tagline: 'Donner une voix au suivi patient',
+    subtitle: 'Infrastructure vocale clinique IA pour le suivi patient.',
+    solutionsTitle: 'Solutions',
+    resourcesTitle: 'Ressources',
+    companyTitle: 'Entreprise',
     contact: 'Contact',
-    instagram: 'Instagram',
-    linkedin: 'LinkedIn',
-    twitter: 'Twitter',
-    copyPrefix: 'Créé par',
-    copySuffix: 'avec',
-    copyAuthor: 'Cosmike',
+    legalNotice: 'Mentions légales',
+    privacyPolicy: 'Politique de confidentialité',
+    cookies: 'Gestion des cookies',
     copyright: '© 2025 Doctinum'
   }
 };
