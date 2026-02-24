@@ -11,10 +11,14 @@ export default function MediaContainer({
   loop = false,
   playsInline = false,
   enableParallax = false,
-  enableZoomOut = false
+  enableZoomOut = false,
+  parallaxStartOffset = 0, // Point de scroll où l'effet commence (en pixels)
+  parallaxStartPosition = 'center', // Position de départ de l'image: 'top', 'center', 'bottom'
+  initialImageOffset = 0 // Offset initial de l'image pour éviter qu'elle soit coupée (en pixels)
 }) {
   const containerRef = useRef(null);
   const [transform, setTransform] = useState(0);
+  const [objectPosition, setObjectPosition] = useState('center');
 
   useEffect(() => {
     if (!enableParallax || type !== 'image') return;
@@ -28,21 +32,38 @@ export default function MediaContainer({
       const elementHeight = rect.height;
       const windowHeight = window.innerHeight;
       
-      // Calcul du parallax basé sur la position de l'élément
-      const elementCenter = elementTop + elementHeight / 2;
+      // Calcul du point de référence de l'élément selon parallaxStartPosition
+      let elementReference;
+      switch (parallaxStartPosition) {
+        case 'top':
+          elementReference = elementTop;
+          break;
+        case 'bottom':
+          elementReference = elementTop + elementHeight;
+          break;
+        case 'center':
+        default:
+          elementReference = elementTop + elementHeight / 2;
+          break;
+      }
+      
+      // Calcul de la distance avec prise en compte du parallaxStartOffset
       const windowCenter = scrollY + windowHeight / 2;
-      const distance = elementCenter - windowCenter;
+      const adjustedScrollY = scrollY + parallaxStartOffset;
+      const adjustedWindowCenter = adjustedScrollY + windowHeight / 2;
+      const distance = elementReference - adjustedWindowCenter;
       
       // Effet de parallax : différent selon la classe
       const isHorizontalParallax = className?.includes('cta-parallax');
-      const parallaxSpeed = isHorizontalParallax ? 0.07 : 0.08; // Plus rapide pour l'effet horizontal
+      const parallaxSpeed = isHorizontalParallax ? 0.06 : 0.06; // Plus rapide pour l'effet horizontal
       const parallaxOffset = distance * parallaxSpeed;
       
       // Direction du parallax : horizontal pour CTA, vertical pour les autres
       let transformValue;
+      let objectPositionValue = 'center';
       
       if (isHorizontalParallax) {
-        const baseScale = 1.15;
+        const baseScale = 1.05;
         let scale = baseScale;
         
         // Zoom out progressif basé sur la distance de scroll
@@ -52,20 +73,27 @@ export default function MediaContainer({
           scale = baseScale - zoomOutFactor;
         }
         
-        transformValue = `translateX(${parallaxOffset}px) scale(${scale})`;
+        // Pour le parallax horizontal, utiliser objectPosition au lieu de transform
+        transformValue = `scale(${scale})`;
+        
+        // Calculer l'objectPosition dynamique
+        const totalOffset = parallaxOffset + initialImageOffset;
+        objectPositionValue = `calc(50% + ${totalOffset}px) center`;
       } else {
-        // Parallax vertical : pas de zoom out pour préserver les autres éléments
-        transformValue = `translateY(${parallaxOffset}px) scale(1.15)`;
+        // Parallax vertical : utiliser transform comme avant
+        const totalOffset = parallaxOffset + initialImageOffset;
+        transformValue = `translateY(${totalOffset}px) scale(1.15)`;
       }
       
       setTransform(transformValue);
+      setObjectPosition(objectPositionValue);
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [enableParallax, type, className, enableZoomOut]);
+  }, [enableParallax, type, className, enableZoomOut, parallaxStartOffset, parallaxStartPosition, initialImageOffset]);
 
   const renderMedia = () => {
     switch (type) {
@@ -88,17 +116,26 @@ export default function MediaContainer({
         return (
           <div 
             ref={containerRef}
-            className={`relative overflow-hidden rounded-[var(--r-md)] shadow-lg ${
-              isHorizontalParallax ? 'h-full w-[120%] -ml-[10%]' : 'h-full w-full'
-            }`}
+            className="relative h-full w-full overflow-hidden shadow-lg"
           >
             <img
               src={src}
               alt={alt}
-              className={`h-full w-full object-cover ${className}`}
+              className={`absolute inset-0 ${className}`}
               style={{
-                transform: enableParallax ? transform : 'scale(1)',
-                willChange: enableParallax ? 'transform' : 'auto'
+                transform: enableParallax ? transform : (initialImageOffset !== 0 && isHorizontalParallax ? `scale(1.05)` : 'scale(1)'),
+                willChange: enableParallax ? 'transform' : 'auto',
+                // Utiliser object-fit: cover avec position absolue
+                objectFit: 'cover',
+                // Position dynamique du fond selon le parallax
+                objectPosition: isHorizontalParallax 
+                  ? (enableParallax ? objectPosition : `calc(50% + ${initialImageOffset}px) center`)
+                  : 'center',
+                // Étendre l'image au-delà du conteneur pour le parallax
+                width: isHorizontalParallax ? '100%' : '100%',
+                height: isHorizontalParallax ? '100%' : '100%',
+                left: isHorizontalParallax ? '0' : '0',
+                top: isHorizontalParallax ? '0' : '0'
               }}
             />
             {/* Overlay avec fondu vers le blanc en bas */}

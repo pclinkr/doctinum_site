@@ -25,14 +25,16 @@ export default function FinalCtaSection({ onNavigate, subtitle, className = '', 
         <div className="relative flex items-center justify-center overflow-hidden bg-[var(--surface2)] max-[1199px]:hidden">
           <MediaContainer
             type="image"
-            src="/assets/images/cta_desktop_image.png"
+            src="/assets/images/cta_desktop_image_2.png"
             alt="Call to action"
             enableParallax={true}
             enableZoomOut={true}
             className="cta-parallax"
+            parallaxStartPosition="bottom"
+            initialImageOffset={100}
           />
           {/* Overlay pour lisibilité */}
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.3)_100%)]" />
+          {/* <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.3)_100%)]" /> */}
           {/* <div className="relative h-[380px] w-[200px] translate-y-5 rotate-[8deg] overflow-hidden rounded-[28px] bg-[#1a1a2a] shadow-[0_20px_60px_var(--ink-30)]">
             <div className="h-full w-full" style={{ background: 'var(--gradient-accent-warm)' }} />
             <div className="absolute left-6 top-3 h-[6px] w-[60px] rounded-[3px] bg-[var(--ink-50)]" />

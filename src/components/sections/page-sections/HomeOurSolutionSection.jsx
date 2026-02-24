@@ -22,7 +22,7 @@ export default function HomeOurSolutionSection() {
         </h2>
       </div>
 
-      <div className="rev mb-8 grid gap-6 rounded-[24px] border border-[var(--border)] bg-[var(--surface)] p-8 shadow-[0_16px_42px_var(--ink-06)] max-[809px]:p-6">
+      <div className="rev mb-10">
         <div className="grid grid-cols-[1.1fr_.9fr] gap-8 max-[980px]:grid-cols-1">
           <div className="flex flex-col gap-4">
             <h3 className="text-[clamp(24px,3.2vw,36px)] font-[var(--w500)] leading-[1.08] tracking-[-0.045em] text-[var(--color-primary)]">
@@ -34,13 +34,19 @@ export default function HomeOurSolutionSection() {
             </p>
           </div>
 
-          <div className="rounded-[14px] border border-[var(--ink-10)] bg-[linear-gradient(150deg,#fff_0%,#fafcfe_100%)] px-5 py-4">
-            <p className="mb-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">{t('sections.homeOurSolution.impactTitle')}</p>
-            <div className="flex flex-col gap-[10px]">
+          <div className="relative pt-2 pl-5 max-[980px]:pl-0">
+            <div className="pointer-events-none absolute inset-0" style={{ background: 'var(--gradient-impact-warm-halo)' }} />
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-px max-[980px]:hidden" style={{ background: 'var(--gradient-impact-warm-divider)' }} />
+            <p className="relative mb-5 text-[11px] font-[var(--w500)] uppercase tracking-[0.1em] text-[rgba(126,93,45,0.78)]">{t('sections.homeOurSolution.impactTitle')}</p>
+            <div className="flex flex-col">
               {impactItems.map((itemText, index) => (
-                <div key={itemText} className={`rev flex items-start gap-3 rounded-[10px] border border-transparent px-2 py-2 hover:border-[var(--ink-08)] ${index === 0 ? 'd1' : index === 1 ? 'd2' : 'd3'}`.trim()}>
-                  <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-[var(--action-primary-bg)]" />
-                  <p className="text-[13px] leading-[1.58] text-[var(--color-primary)]">{itemText}</p>
+                <div key={itemText} className={`rev relative grid grid-cols-[60px_1fr] items-start gap-3 py-4 ${index < impactItems.length - 1 ? 'border-b border-[rgba(164,126,70,0.2)]' : ''} ${index === 0 ? 'd1' : index === 1 ? 'd2' : 'd3'}`.trim()}>
+                  <span className="pt-[1px] text-[34px] font-[var(--w500)] leading-none tracking-[-0.04em] text-[rgba(164,126,70,0.5)]">
+                    0{index + 1}
+                  </span>
+                  <p className="max-w-[36ch] pt-[5px] font-[var(--w500)] leading-[1.14] tracking-[-0.028em] text-[rgba(46,39,30,0.94)]">
+                    {itemText}
+                  </p>
                 </div>
               ))}
             </div>
