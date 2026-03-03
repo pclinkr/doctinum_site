@@ -1,6 +1,8 @@
 const en = {
   common: {
-    close: 'Close'
+    close: 'Close',
+    avatar: 'Avatar',
+    authorInitials: 'AA'
   },
   language: {
     title: 'Language',
@@ -45,9 +47,9 @@ const en = {
         {
           title: 'Pre and post intervention follow-up',
           links: [
-            { label: 'Surgery & aesthetic medicine', description: 'Guided pathways before and after procedures.', page: 'case-studies' },
-            { label: 'Sports medicine', description: 'Symptom monitoring and return-to-activity tracking.', page: 'about' },
-            { label: 'Dermatology', description: 'Regular follow-up for progression and tolerance.', page: 'blog' },
+            { label: 'Surgery & aesthetic medicine', description: 'Guided pathways before and after procedures.', page: 'surgery-aesthetic' },
+            { label: 'Sports medicine', description: 'Symptom monitoring and return-to-activity tracking.', page: 'sports-medicine' },
+            { label: 'Dermatology', description: 'Regular follow-up for progression and tolerance.', page: 'dermatology' },
             { label: 'PROMS / post-procedure questionnaires', description: 'Structured collection of patient feedback.', page: 'blog-post' }
           ]
         },
@@ -137,7 +139,8 @@ const en = {
       titleMiddle: 'done',
       titleAccent: 'right',
       subtitle: 'We combine content, management, and paid media to help brands grow and convert on the social platforms that matter most to you.',
-      cta: 'Get in touch'
+      cta: 'Get in touch',
+      cta2: 'Schedule a confidential call'
     },
     services: {
       titlePrefix: 'How we can help you',
@@ -445,6 +448,159 @@ const en = {
         }
       ],
       cta: 'Learn more about security'
+    },
+    logosStrip: {
+      title: 'Brands we support'
+    },
+    structureSupervise: {
+      title: 'Structure. Supervise. Differentiate.',
+      items: [
+        {
+          title: 'Custom protocols',
+          body: 'Personalized scenarios\nMilestone setup (D-7, D-1, D+1, D+7, D+30…)\nConfigured by procedure type.'
+        },
+        {
+          title: 'Longitudinal follow-up',
+          body: 'Historized feedback over time.\nTrend views'
+        },
+        {
+          title: 'Medical supervision',
+          body: 'No automated decision.\nClinic-defined vigilance thresholds\nFull traceability of feedback'
+        }
+      ]
+    },
+    imagineProtocol: {
+      heading: 'Build your own follow-up protocol',
+      left: {
+        label: 'Before intervention',
+        prepTitle: 'Structured preparation:',
+        prepItems: [
+          'Medical instruction check',
+          'Logistics confirmation',
+          'Concern collection',
+          'Anxiety self-rating (0–10)',
+          'Patient question handling',
+          'Exchange documentation'
+        ],
+        benefitsTitle: 'Benefits:',
+        benefitsItems: ['Fewer cancellations', 'Better-documented consent', 'Optimized preparation']
+      },
+      right: {
+        brand: 'DOCTINUM',
+        label: 'After intervention',
+        monitorTitle: 'Methodical monitoring:',
+        monitorLead: 'By procedure at defined checkpoints (D+1, D+7 ...)',
+        monitorItems: ['Pain (0–10)', 'Sensitive declarative signs', 'Instruction adherence', 'Edema evolution', 'Progressive satisfaction'],
+        responsesTitle: 'Responses are:',
+        responsesItems: ['Structured', 'Historized', 'Prioritized']
+      }
+    },
+    sportsStructure: {
+      title: 'A COORDINATION LAYER, NOT A REPLACEMENT',
+      subtitle: 'The system does not replace doctors or physiotherapists.',
+      items: [
+        { title: 'A longitudinal structuring tool' },
+        { title: 'An organizational support layer' },
+        { title: 'A declarative-indicator objectivation system' },
+        { title: 'A visibility point for the lead physician' }
+      ],
+      closing: 'Rehabilitation remains central. The system structures information around it.'
+    },
+    sportsProtocol: {
+      heading: 'Build your own follow-up protocol',
+      leftTitle: 'OBJECTIFY RECOVERY OVER TIME',
+      leftIntro: 'The protocol can include:',
+      leftList: ['Pain (0-10)', 'Perceived mobility', 'Instability sensation', 'Muscle fatigue', 'Physiotherapy adherence', 'Progressive return to activity'],
+      leftBottomIntro: 'These indicators are:',
+      leftBottom: ['Historized', 'Visualized longitudinally', 'Prioritized with team-defined thresholds'],
+      rightTitle: 'DETECT DROPOFFS AND PREMATURE RETURNS',
+      rightIntro: 'In practice, the system helps identify:',
+      rightList: ['Sudden pain increase', 'Reduced adherence to sessions', 'Unplanned return to activity', 'Perceived mobility deterioration'],
+      rightBottom: 'The system makes no decisions. It structures and prioritizes information.',
+      brand: 'DOCTINUM'
+    },
+    sportsCases: {
+      case1: {
+        title: 'COORDINATION WITH REHABILITATION',
+        body: 'In a structured center:',
+        listItems: ['The physician defines the protocol', 'Indicators can be shared', 'Recovery becomes objective', 'Decisions remain human', 'The system acts as a transversal layer improving pathway coherence.'],
+        brand: 'Rehab'
+      },
+      case2: {
+        title: 'ADAPTED TO INTEGRATED CENTERS',
+        listItems: ['Sports medicine centers', 'Private orthopedic clinics', 'Centers with in-house physiotherapy', 'Performance institutes'],
+        brand: 'Centers'
+      }
+    },
+    dermatologyNarrative: {
+      badge: 'Dermatology pathways',
+      title: 'Treatment does not end with the prescription.',
+      intro: 'In dermatology, many pathways rely on long and evolving treatments:',
+      firstList: ['Severe acne under isotretinoin', 'Psoriasis under biologic therapy', 'Chronic eczema', 'Post-laser or peel recovery'],
+      betweenIntro: 'Between two consultations, follow-up often depends on:',
+      secondList: ['Patient reactivity', 'Informal exchanges', 'Unstructured self-evaluation', 'Heterogeneous feedback'],
+      conclusion: 'Yet dermatology treatments require:',
+      lastList: ['Rigorous adherence', 'Side-effect monitoring', 'Progressive efficacy evaluation', 'Regular documentation']
+    },
+    dermatologyFragile: {
+      title: 'Long treatments, fragile follow-up',
+      items: {
+        effects: {
+          title: 'Side effects',
+          body: 'Some treatments require regular follow-up of declarative side effects.'
+        },
+        adherence: {
+          title: 'Variable adherence',
+          body: 'Treatment adherence can fluctuate over time.'
+        },
+        subjective: {
+          title: 'Subjective perception',
+          body: 'Symptom evolution is often described without structure or temporal comparison.'
+        }
+      }
+    },
+    dermatologyTrajectory: {
+      weeksChip: 'Weeks 1 → 12',
+      severityChip: 'Severity (0-10)',
+      drynessChip: 'Dryness',
+      adherenceChip: 'Adherence',
+      title: 'Turn isolated feedback into a structured trajectory.',
+      intro: 'The system enables:',
+      items: ['Weekly or monthly symptom collection', 'Standardized declarative structuring', 'Automatic historization', 'Trend visualization', 'Vigilance threshold definition'],
+      closing: 'Responses are no longer isolated exchanges. They become a documented evolution.'
+    },
+    dermatologyConfigurations: {
+      heading: 'Build your own follow-up protocol',
+      intro: 'Examples of possible configurations',
+      warning: 'Illustrative scenarios. Protocols are defined by the medical team.',
+      cards: [
+        {
+          title: 'Severe acne - Isotretinoin',
+          items: ['Skin dryness (0-10)', 'Irritation', 'Mood self-report', 'Treatment adherence', 'Perceived evolution']
+        },
+        {
+          title: 'Psoriasis with biologics',
+          items: ['Plaque intensity', 'Itching', 'Associated fatigue', 'Quality-of-life impact', 'Treatment tolerance']
+        },
+        {
+          title: 'Post-laser dermatology',
+          items: ['Pain', 'Redness', 'Edema', 'Abnormal crusting', 'Satisfaction at D+7']
+        }
+      ]
+    },
+    dermatologyOrganization: {
+      title: 'Adapt follow-up intensity to your practice.',
+      systemIntro: 'The system enables:',
+      systemList: ['Variable intensity by pathology', 'Adaptable frequency', 'Distinct protocols per indication', 'Selective activation by patient'],
+      clinicIntro: 'Each clinic defines:',
+      clinicList: ['Its milestones', 'Its thresholds', 'Its granularity level'],
+      schema: {
+        pathology: 'Pathology',
+        protocol: 'Protocol',
+        frequency: 'Frequency',
+        milestones: 'Milestones',
+        alerts: 'Alerts'
+      }
     }
   },
   content: {
@@ -526,6 +682,81 @@ const en = {
       badge: 'Blog',
       title: 'Latest insights',
       description: 'Actionable insights, proven strategies, and industry trends to help you build a social media presence that drives real business results.'
+    },
+    solutions: {
+      surgery: {
+        hero: {
+          badge: 'Pre & post intervention follow-up',
+          title: 'Surgery & aesthetic medicine'
+        },
+        testimonial: 'In surgery and aesthetic medicine, perceived quality relies as much on follow-up as on the procedure itself.',
+        challengeItems: [
+          {
+            label: 'Observation',
+            title: 'Between preparation and recovery, follow-up can become:',
+            listItems: ['Fragmented', 'Reactive', 'Dependent on manual calls', 'Poorly traceable']
+          },
+          {
+            label: 'Challenge',
+            title: 'A premium positioning requires structured continuity.'
+          }
+        ],
+        examples: {
+          badge: 'Clinical situations',
+          title: 'Follow-up configuration examples',
+          description: 'Each organization defines its own follow-up model. Here are a few illustrations',
+          cards: [
+            {
+              title: 'Rhinoplasty',
+              imageUrl: '/assets/images/rhinoplastie.png',
+              overlayGradient: 'var(--gradient-accent-warm-overlay)',
+              description: 'Create a clear, reassuring, and traceable pre/post-operative follow-up.'
+            },
+            {
+              title: 'Liposuction',
+              imageUrl: '/assets/images/liposuccion.png',
+              overlayGradient: 'var(--gradient-accent-warm-terra-overlay)',
+              description: 'Structure recovery milestones and prioritize meaningful reported signals.'
+            },
+            {
+              title: 'Injection',
+              imageUrl: '/assets/images/injection.png',
+              overlayGradient: 'var(--gradient-accent-cool-overlay)',
+              description: 'Ensure consistent support from preparation to delayed check-ins.'
+            }
+          ]
+        }
+      },
+      sports: {
+        hero: {
+          badge: 'Coordination & recovery',
+          title: 'Sports medicine',
+          subtitle: 'Structure recovery and coordinate care stakeholders'
+        },
+        testimonial: 'Structure recovery and coordinate pathway stakeholders',
+        challengeItems: [
+          {
+            label: 'Pathway',
+            title: 'In sports medicine, the pathway is rarely linear.',
+            description: 'The patient may be followed by:',
+            listItems: ['A sports physician', 'An orthopedic surgeon', 'A physiotherapist', 'Sometimes a performance coach']
+          },
+          {
+            label: 'Challenge',
+            title: 'The issue is not the absence of rehabilitation.',
+            description: 'The issue is often:',
+            listItems: ['Fragmented follow-up', 'Lack of longitudinal visibility', 'Premature return to activity', 'Irregular adherence', 'Between consultations, recovery remains weakly objectified.']
+          }
+        ]
+      },
+      dermatology: {
+        hero: {
+          badge: 'Longitudinal dermatology follow-up',
+          title: 'Dermatology',
+          subtitle: 'Structure dermatological treatments over time'
+        },
+        testimonial: 'Structure dermatological treatments over time'
+      }
     }
   },
   contactForm: {

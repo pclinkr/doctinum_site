@@ -8,7 +8,7 @@ export default function FinalCtaSection({ onNavigate, subtitle, className = '', 
 
   return (
     <section className={`rev mx-auto w-full max-w-[1200px] px-16 py-24 pb-[100px] max-[1024px]:px-8 max-[768px]:px-5 ${className}`.trim()} id={id}>
-      <div className="grid min-h-[320px] grid-cols-[1fr_320px] overflow-hidden rounded-[28px] bg-[var(--surface)] max-[1199px]:min-h-0 max-[1199px]:grid-cols-1">
+      <div className="grid min-h-[320px] grid-cols-[1fr_320px] overflow-hidden rounded-[28px] bg-[var(--surface)] max-[1199px]:min-h-0 max-[1199px]:grid-cols-1" style={{ boxShadow: 'var(--card-shadow)' }}>
         <div className="flex flex-col items-start gap-1 p-16 max-[809px]:px-7">
           <div style={{ width: '52px', height: '52px', background: 'rgba(0,0,0,.08)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
             <BrandIcon stroke="var(--text-primary)" width={24} height={24} />
@@ -25,13 +25,13 @@ export default function FinalCtaSection({ onNavigate, subtitle, className = '', 
         <div className="relative flex items-center justify-center overflow-hidden bg-[var(--surface2)] max-[1199px]:hidden">
           <MediaContainer
             type="image"
-            src="/assets/images/cta_desktop_image_2.png"
+            src="/assets/images/cta_desktop_image_3.png"
             alt="Call to action"
             enableParallax={true}
-            enableZoomOut={true}
+            enableZoomOut={false}
             className="cta-parallax"
             parallaxStartPosition="bottom"
-            initialImageOffset={100}
+            initialImageOffset={-100}
           />
           {/* Overlay pour lisibilité */}
           {/* <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.3)_100%)]" /> */}

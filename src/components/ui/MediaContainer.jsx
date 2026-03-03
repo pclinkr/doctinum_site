@@ -55,7 +55,7 @@ export default function MediaContainer({
       
       // Effet de parallax : différent selon la classe
       const isHorizontalParallax = className?.includes('cta-parallax');
-      const parallaxSpeed = isHorizontalParallax ? 0.06 : 0.06; // Plus rapide pour l'effet horizontal
+      const parallaxSpeed = isHorizontalParallax ? 0.04 : 0.06; // Plus rapide pour l'effet horizontal
       const parallaxOffset = distance * parallaxSpeed;
       
       // Direction du parallax : horizontal pour CTA, vertical pour les autres

@@ -61,7 +61,7 @@ export default function HomeUseCasesSection({ onNavigate }) {
             buttons={groupLinks}
             isImageRight={isImageRight}
             onNavigate={onNavigate}
-            targetPage={targetPage}
+            targetPage={index === 1 ? 'sports-medicine' : targetPage}
           />
         );
       })}

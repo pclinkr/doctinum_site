@@ -31,6 +31,18 @@ const frSeo = {
     title: 'Politique de confidentialité | Doctinum',
     description: 'Comment Doctinum collecte, utilise et protège les données personnelles.'
   },
+  'surgery-aesthetic': {
+    title: 'Chirurgie & médecine esthétique | Doctinum',
+    description: 'Le suivi devient une signature de votre pratique, avant et après intervention.'
+  },
+  'sports-medicine': {
+    title: 'Médecine du sport | Doctinum',
+    description: 'Structurer la récupération et coordonner les acteurs du parcours sportif.'
+  },
+  dermatology: {
+    title: 'Dermatologie | Doctinum',
+    description: 'Structurer les traitements dermatologiques dans la durée et objectiver l’évolution.'
+  },
   '404': {
     title: 'Page introuvable | Doctinum',
     description: 'La page demandée est introuvable.'
