@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import FinalCtaSection from '../components/sections/FinalCtaSection';
 import CaseDetailBodySection from '../components/sections/page-sections/CaseDetailBodySection';
-import CaseDetailHeroSection from '../components/sections/page-sections/SolutionHeroSection';
+import CaseDetailHeroSection from '../components/sections/page-sections/CaseDetailHeroSection';
 import { getCtaSubtitleFull } from '../constants/site';
 
 export default function CaseDetailPage({ active, onNavigate }) {
