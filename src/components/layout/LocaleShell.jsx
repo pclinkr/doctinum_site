@@ -41,9 +41,6 @@ export default function LocaleShell({ locale, children }) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const normalizedLocale = normalizeLocale(locale);
-  if (i18n.resolvedLanguage !== normalizedLocale) {
-    i18n.changeLanguage(normalizedLocale);
-  }
   const currentPage = pageIdFromPathname(pathname, normalizedLocale);
   const isTransitioning = pageTransitionPhase !== 'idle';
 

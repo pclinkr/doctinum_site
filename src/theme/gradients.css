@@ -68,11 +68,55 @@
     #d9a895 62%,
     #c89282 100%
   );
+
+  --gradient-accent-warm-terra-overlay: linear-gradient(
+    160deg,
+    rgba(243, 216, 198, 0.6),
+    rgba(233, 192, 171, 0.6),
+    rgba(217, 168, 149, 0.6),
+    rgba(200, 146, 130, 0.6)
+  );
+
   --gradient-accent-warm: linear-gradient(
     160deg,
     rgb(240, 232, 216),
     rgb(216, 200, 168),
     rgb(192, 168, 120)
+  );
+
+  --gradient-accent-warm-overlay: linear-gradient(
+    160deg,
+    rgba(240, 232, 216, 0.6),
+    rgba(216, 200, 168, 0.6),
+    rgba(192, 168, 120, 0.6)
+  );
+
+  --gradient-accent-cool: linear-gradient(
+    160deg,
+    rgb(208, 200, 224),
+    rgb(176, 160, 200),
+    rgb(152, 144, 184)
+  );
+
+  --gradient-accent-cool-overlay: linear-gradient(
+    160deg,
+    rgba(208, 200, 224, 0.6),
+    rgba(176, 160, 200, 0.6),
+    rgba(152, 144, 184, 0.6)
+  );
+
+
+
+  --gradient-impact-warm-halo: radial-gradient(
+    120% 90% at 0% 0%,
+    rgba(12, 36, 60, 0.10) 0%,
+    rgba(196, 215, 255, 0.06) 34%,
+    rgba(12, 36, 60, 0) 72%
+  );
+  --gradient-impact-warm-divider: linear-gradient(
+    180deg,
+    rgba(12, 36, 60, 0.22) 0%,
+    rgba(12, 36, 60, 0.06) 100%
   );
   --gradient-overlay-top: linear-gradient(to top, var(--ink-60), transparent);
   --gradient-problem-surface: linear-gradient(

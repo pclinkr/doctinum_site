@@ -31,6 +31,18 @@ const enSeo = {
     title: 'Privacy Policy | Doctinum',
     description: 'How Doctinum collects, uses, and protects personal data.'
   },
+  'surgery-aesthetic': {
+    title: 'Surgery & Aesthetic Medicine | Doctinum',
+    description: 'Follow-up becomes a signature of your practice before and after interventions.'
+  },
+  'sports-medicine': {
+    title: 'Sports Medicine | Doctinum',
+    description: 'Structure recovery and coordinate all stakeholders across the sports care pathway.'
+  },
+  dermatology: {
+    title: 'Dermatology | Doctinum',
+    description: 'Structure dermatology treatments over time and objectify progression.'
+  },
   '404': {
     title: 'Page Not Found | Doctinum',
     description: 'The page you requested could not be found.'

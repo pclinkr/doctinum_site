@@ -1,5 +1,11 @@
 const en = {
+  common: {
+    close: 'Close',
+    avatar: 'Avatar',
+    authorInitials: 'AA'
+  },
   language: {
+    title: 'Language',
     currentFlag: '🇬🇧',
     options: [
       { code: 'en', label: 'English', flag: '🇬🇧' },
@@ -7,70 +13,117 @@ const en = {
     ]
   },
   nav: {
-    cta: 'Book a call',
+    cta: 'Book a demo',
     home: 'Home',
     solutions: 'Solutions',
-    about: 'About',
-    resources: 'Resources',
+    functioning: 'How it works',
+    editorsApi: 'Editors & API',
+    pharmaResearch: 'Pharma & Research',
+    security: 'Security',
+    enterprise: 'Enterprise',
+    mainMenu: 'Menu',
+    quickAccess: 'Quick access',
+    try: 'Try',
+    demo: 'Demo',
+    bookDemo: 'Book a demo',
+    contactUs: 'Contact us',
     mobileMenu: 'Menu'
   },
   megaMenu: {
     soon: 'Soon',
+    grouped: {
+      sectionEntry: 'Open this section',
+      goHome: 'Go back to home'
+    },
+    main: {
+      title: 'Reach key sections quickly',
+      body: 'Use a single mega menu to access solutions, resources, and enterprise pathways.'
+    },
     solutions: {
       eyebrow: 'Solutions',
-      title: 'Everything to scale your social growth',
-      body: 'Build your stack by channel, execution model, and growth stage.',
+      title: 'Follow-up paths adapted to each clinical context',
+      body: 'Structure care journeys by specialty, coordination needs, and vigilance level.',
       groups: [
         {
-          title: 'By Need',
+          title: 'Pre and post intervention follow-up',
           links: [
-            { label: 'Content Studio', description: 'Short-form production and creative ops.', page: 'case-studies' },
-            { label: 'Social Management', description: 'Calendars, posting flow, and reporting.', page: 'about' },
-            { label: 'Paid Social', description: 'Performance campaigns and creative testing.', page: 'contact' }
+            { label: 'Surgery & aesthetic medicine', description: 'Guided pathways before and after procedures.', page: 'surgery-aesthetic' },
+            { label: 'Sports medicine', description: 'Symptom monitoring and return-to-activity tracking.', page: 'sports-medicine' },
+            { label: 'Dermatology', description: 'Regular follow-up for progression and tolerance.', page: 'dermatology' },
+            { label: 'PROMS / post-procedure questionnaires', description: 'Structured collection of patient feedback.', page: 'blog-post' }
           ]
         },
         {
-          title: 'By Outcome',
+          title: 'Chronic follow-up & coordination',
           links: [
-            { label: 'Launch Campaigns', description: 'Go-to-market social systems for new offers.', page: 'contact' },
-            { label: 'Retention Engine', description: 'Content loops to improve repeat purchase.', page: 'blog' },
-            { label: 'Creator Partnerships', description: 'Influencer workflows and UGC sourcing.', isSoon: true }
+            { label: 'Patient support programs', description: 'Cadenced follow-up with clinical scripts.', page: 'contact' },
+            { label: 'Prevention & workplace health', description: 'Population-level prevention and engagement.', page: 'about' },
+            { label: 'Coordinated chronic pathways', description: 'Shared visibility across care teams.', page: 'case-studies' }
           ]
         },
         {
-          title: 'By Industry',
+          title: 'Specialized high-vigilance pathways',
           links: [
-            { label: 'Beauty & Skincare', description: 'Playbooks validated by client case studies.', page: 'case-studies' },
-            { label: 'Fashion & Lifestyle', description: 'Formats optimized for visual-first brands.', page: 'case-studies' },
-            { label: 'Wellness', description: 'Editorial plus conversion-focused storytelling.', isSoon: true }
+            { label: 'Transplantation', description: 'Critical checkpoints and early warning signals.', page: 'blog' },
+            { label: 'Oncology', description: 'Follow-up on side effects and red flags.', page: 'contact' },
+            { label: 'Chronic cardiology', description: 'Longitudinal monitoring of key indicators.', page: 'privacy' },
+            { label: 'Rare diseases', description: 'Coordination across complex care journeys.', page: 'case-studies' },
+            { label: 'Mental health', description: 'Conversational follow-up with supervised escalation.', page: 'about' }
           ]
         }
       ],
-      cta: { label: 'Book a strategy call', page: 'contact' }
+      cta: { label: 'Discuss a pilot project', page: 'contact' }
     },
-    resources: {
-      eyebrow: 'Resources',
-      title: 'Learn from case studies and tactical content',
-      body: 'Browse practical frameworks and proof from real social growth projects.',
+    functioning: {
+      eyebrow: 'How it works',
+      title: 'Understand implementation end to end',
+      body: 'Explore the product demo, core features, and agent resources.',
       groups: [
         {
-          title: 'Explore',
+          title: 'Demo',
           links: [
-            { label: 'Case Studies', description: 'Wins, process breakdowns, and outcomes.', page: 'case-studies' },
-            { label: 'Blog Insights', description: 'Tactical social strategy content.', page: 'blog' },
-            { label: 'Methodology', description: 'How we design and run growth systems.', page: 'about' }
+            { label: 'Demo', description: 'See follow-up workflows in realistic conditions.', page: 'blog' }
           ]
         },
         {
-          title: 'Popular',
+          title: 'Product',
           links: [
-            { label: 'Organic Growth Blueprint', description: 'How to structure a monthly content engine.', page: 'blog-post' },
-            { label: 'Creative Testing Loop', description: 'A repeatable method for iteration speed.', page: 'blog-post' },
-            { label: 'Reporting Dashboard', description: 'A KPI structure for content and paid social.', isSoon: true }
+            { label: 'Features', description: 'Core capabilities and configuration options.', page: 'about' }
+          ]
+        },
+        {
+          title: 'Resources',
+          links: [
+            { label: 'Model agents', description: 'Ready-to-adapt agent examples.', page: 'case-studies' },
+            { label: 'PROMS agents', description: 'Templates for post-procedure questionnaires.', page: 'blog-post' }
           ]
         }
       ],
-      cta: { label: 'See all resources', page: 'blog' }
+      cta: { label: 'Book a demo', page: 'contact' }
+    },
+    enterprise: {
+      eyebrow: 'Enterprise',
+      title: 'Build deployments for high-stakes environments',
+      body: 'Work with us on product vision, experimentation, and strategic partnerships.',
+      groups: [
+        {
+          title: 'Vision & team',
+          links: [
+            { label: 'Vision', description: 'Product direction and deployment principles.', page: 'about' },
+            { label: 'Careers', description: 'Roles and product culture.', page: 'about' },
+            { label: 'Blog', description: 'Articles and perspectives.', page: 'blog' },
+            { label: 'Styleguide', description: 'Internal UI reference.', page: 'styleguide', devOnly: true }
+          ]
+        },
+        {
+          title: 'Partnerships',
+          links: [
+            { label: 'Experimentation & partnerships', description: 'Pilots, protocols, and collaborations.', page: 'case-studies' },
+            { label: 'Investors', description: 'Strategic discussions and information.', page: 'case-studies' }
+          ]
+        }
+      ],
+      cta: { label: 'Contact us', page: 'contact' }
     }
   },
   site: {
@@ -86,7 +139,8 @@ const en = {
       titleMiddle: 'done',
       titleAccent: 'right',
       subtitle: 'We combine content, management, and paid media to help brands grow and convert on the social platforms that matter most to you.',
-      cta: 'Get in touch'
+      cta: 'Get in touch',
+      cta2: 'Schedule a confidential call'
     },
     services: {
       titlePrefix: 'How we can help you',
@@ -317,6 +371,236 @@ const en = {
         }
       },
       reassurance: 'No autonomous medical decision. AI organizes, the team arbitrates.'
+    },
+    voiceChannel: {
+      eyebrow: 'Voice channel',
+      title: 'Why the voice channel works in healthcare',
+      coreEyebrow: 'Real-world adoption',
+      coreText: 'The voice channel fits naturally into patient routines without adding friction.',
+      items: [
+        {
+          title: 'Universal',
+          body: 'No app to download, no account to create, no friction.'
+        },
+        {
+          title: 'Natural',
+          body: 'Patients answer as they would speak with a care team.'
+        },
+        {
+          title: 'Regular',
+          body: 'A scheduled call creates rhythm and secures the care pathway.'
+        },
+        {
+          title: 'Inclusive',
+          body: 'Especially suited for fragile or low-digital-literacy patients.'
+        }
+      ],
+      closing: 'A protocol is only effective if the channel is truly used.'
+    },
+    homeUseCases: {
+      eyebrow: 'Use cases',
+      title: 'Use cases tailored to different clinical contexts',
+      explore: 'Explore use cases',
+      imagePlaceholder: 'Visual coming soon',
+      items: [
+        {
+          title: 'Pre and post-intervention follow-up',
+          body: 'Ambulatory care, surgery, dermatology, aesthetic medicine, sports medicine.',
+          contexts: ['Ambulatory care', 'Surgery', 'Dermatology', 'Aesthetic medicine', 'Sports medicine'],
+          cta: 'View dedicated page'
+        },
+        {
+          title: 'Chronic follow-up',
+          body: 'Regular monitoring, adherence, quality of life, coordination.',
+          contexts: ['Regular monitoring', 'Adherence', 'Quality of life', 'Coordination'],
+          cta: 'View dedicated page'
+        },
+        {
+          title: 'High-vigilance pathways',
+          body: 'Oncology, transplantation, cardiology, mental health: close monitoring, weak-signal detection, controlled escalation.',
+          contexts: ['Oncology', 'Transplantation', 'Cardiology', 'Mental health'],
+          cta: 'View dedicated page'
+        }
+      ]
+    },
+    homeSecurityFrame: {
+      eyebrow: 'Security & framework',
+      title: 'Built for demanding medical environments.',
+      subtitle: 'An operational foundation designed for pathway continuity, clinical supervision, and compliant usage.',
+      tableHeaderLeft: 'Pillar',
+      tableHeaderRight: 'What it ensures',
+      rows: [
+        {
+          title: 'Data protection',
+          body: 'Explicit consent and full logging.'
+        },
+        {
+          title: 'Secure hosting',
+          body: 'Infrastructure aligned with applicable healthcare requirements.'
+        },
+        {
+          title: 'Traceability',
+          body: 'Structured and exportable history.'
+        },
+        {
+          title: 'Clear regulatory positioning',
+          body: 'A supervised organizational tool, with no autonomous medical decision-making.'
+        }
+      ],
+      cta: 'Learn more about security'
+    },
+    logosStrip: {
+      title: 'Brands we support'
+    },
+    structureSupervise: {
+      title: 'Structure. Supervise. Differentiate.',
+      items: [
+        {
+          title: 'Custom protocols',
+          body: 'Personalized scenarios\nMilestone setup (D-7, D-1, D+1, D+7, D+30…)\nConfigured by procedure type.'
+        },
+        {
+          title: 'Longitudinal follow-up',
+          body: 'Historized feedback over time.\nTrend views'
+        },
+        {
+          title: 'Medical supervision',
+          body: 'No automated decision.\nClinic-defined vigilance thresholds\nFull traceability of feedback'
+        }
+      ]
+    },
+    imagineProtocol: {
+      heading: 'Build your own follow-up protocol',
+      left: {
+        label: 'Before intervention',
+        prepTitle: 'Structured preparation:',
+        prepItems: [
+          'Medical instruction check',
+          'Logistics confirmation',
+          'Concern collection',
+          'Anxiety self-rating (0–10)',
+          'Patient question handling',
+          'Exchange documentation'
+        ],
+        benefitsTitle: 'Benefits:',
+        benefitsItems: ['Fewer cancellations', 'Better-documented consent', 'Optimized preparation']
+      },
+      right: {
+        brand: 'DOCTINUM',
+        label: 'After intervention',
+        monitorTitle: 'Methodical monitoring:',
+        monitorLead: 'By procedure at defined checkpoints (D+1, D+7 ...)',
+        monitorItems: ['Pain (0–10)', 'Sensitive declarative signs', 'Instruction adherence', 'Edema evolution', 'Progressive satisfaction'],
+        responsesTitle: 'Responses are:',
+        responsesItems: ['Structured', 'Historized', 'Prioritized']
+      }
+    },
+    sportsStructure: {
+      title: 'A COORDINATION LAYER, NOT A REPLACEMENT',
+      subtitle: 'The system does not replace doctors or physiotherapists.',
+      items: [
+        { title: 'A longitudinal structuring tool' },
+        { title: 'An organizational support layer' },
+        { title: 'A declarative-indicator objectivation system' },
+        { title: 'A visibility point for the lead physician' }
+      ],
+      closing: 'Rehabilitation remains central. The system structures information around it.'
+    },
+    sportsProtocol: {
+      heading: 'Build your own follow-up protocol',
+      leftTitle: 'OBJECTIFY RECOVERY OVER TIME',
+      leftIntro: 'The protocol can include:',
+      leftList: ['Pain (0-10)', 'Perceived mobility', 'Instability sensation', 'Muscle fatigue', 'Physiotherapy adherence', 'Progressive return to activity'],
+      leftBottomIntro: 'These indicators are:',
+      leftBottom: ['Historized', 'Visualized longitudinally', 'Prioritized with team-defined thresholds'],
+      rightTitle: 'DETECT DROPOFFS AND PREMATURE RETURNS',
+      rightIntro: 'In practice, the system helps identify:',
+      rightList: ['Sudden pain increase', 'Reduced adherence to sessions', 'Unplanned return to activity', 'Perceived mobility deterioration'],
+      rightBottom: 'The system makes no decisions. It structures and prioritizes information.',
+      brand: 'DOCTINUM'
+    },
+    sportsCases: {
+      case1: {
+        title: 'COORDINATION WITH REHABILITATION',
+        body: 'In a structured center:',
+        listItems: ['The physician defines the protocol', 'Indicators can be shared', 'Recovery becomes objective', 'Decisions remain human', 'The system acts as a transversal layer improving pathway coherence.'],
+        brand: 'Rehab'
+      },
+      case2: {
+        title: 'ADAPTED TO INTEGRATED CENTERS',
+        listItems: ['Sports medicine centers', 'Private orthopedic clinics', 'Centers with in-house physiotherapy', 'Performance institutes'],
+        brand: 'Centers'
+      }
+    },
+    dermatologyNarrative: {
+      badge: 'Dermatology pathways',
+      title: 'Treatment does not end with the prescription.',
+      intro: 'In dermatology, many pathways rely on long and evolving treatments:',
+      firstList: ['Severe acne under isotretinoin', 'Psoriasis under biologic therapy', 'Chronic eczema', 'Post-laser or peel recovery'],
+      betweenIntro: 'Between two consultations, follow-up often depends on:',
+      secondList: ['Patient reactivity', 'Informal exchanges', 'Unstructured self-evaluation', 'Heterogeneous feedback'],
+      conclusion: 'Yet dermatology treatments require:',
+      lastList: ['Rigorous adherence', 'Side-effect monitoring', 'Progressive efficacy evaluation', 'Regular documentation']
+    },
+    dermatologyFragile: {
+      title: 'Long treatments, fragile follow-up',
+      items: {
+        effects: {
+          title: 'Side effects',
+          body: 'Some treatments require regular follow-up of declarative side effects.'
+        },
+        adherence: {
+          title: 'Variable adherence',
+          body: 'Treatment adherence can fluctuate over time.'
+        },
+        subjective: {
+          title: 'Subjective perception',
+          body: 'Symptom evolution is often described without structure or temporal comparison.'
+        }
+      }
+    },
+    dermatologyTrajectory: {
+      weeksChip: 'Weeks 1 → 12',
+      severityChip: 'Severity (0-10)',
+      drynessChip: 'Dryness',
+      adherenceChip: 'Adherence',
+      title: 'Turn isolated feedback into a structured trajectory.',
+      intro: 'The system enables:',
+      items: ['Weekly or monthly symptom collection', 'Standardized declarative structuring', 'Automatic historization', 'Trend visualization', 'Vigilance threshold definition'],
+      closing: 'Responses are no longer isolated exchanges. They become a documented evolution.'
+    },
+    dermatologyConfigurations: {
+      heading: 'Build your own follow-up protocol',
+      intro: 'Examples of possible configurations',
+      warning: 'Illustrative scenarios. Protocols are defined by the medical team.',
+      cards: [
+        {
+          title: 'Severe acne - Isotretinoin',
+          items: ['Skin dryness (0-10)', 'Irritation', 'Mood self-report', 'Treatment adherence', 'Perceived evolution']
+        },
+        {
+          title: 'Psoriasis with biologics',
+          items: ['Plaque intensity', 'Itching', 'Associated fatigue', 'Quality-of-life impact', 'Treatment tolerance']
+        },
+        {
+          title: 'Post-laser dermatology',
+          items: ['Pain', 'Redness', 'Edema', 'Abnormal crusting', 'Satisfaction at D+7']
+        }
+      ]
+    },
+    dermatologyOrganization: {
+      title: 'Adapt follow-up intensity to your practice.',
+      systemIntro: 'The system enables:',
+      systemList: ['Variable intensity by pathology', 'Adaptable frequency', 'Distinct protocols per indication', 'Selective activation by patient'],
+      clinicIntro: 'Each clinic defines:',
+      clinicList: ['Its milestones', 'Its thresholds', 'Its granularity level'],
+      schema: {
+        pathology: 'Pathology',
+        protocol: 'Protocol',
+        frequency: 'Frequency',
+        milestones: 'Milestones',
+        alerts: 'Alerts'
+      }
     }
   },
   content: {
@@ -350,9 +634,7 @@ const en = {
       { question: 'How long until I see results?', answer: 'Organic growth is visible within 60–90 days. Paid campaigns can show ROI within 2–4 weeks depending on budget.' }
     ],
     storyVideos: [
-      '/assets/videos/doctor.mp4',
-      '/assets/videos/nurse.mp4',
-      '/assets/videos/patient1.mp4'
+      '/assets/videos/doctinum_hero.mp4',
     ],
     aboutTeamMembers: [
       { name: 'Sofia Little', role: 'Creative Lead', gradient: 'linear-gradient(160deg,#f0c5a8,#d4a090,#c08878)', delayClass: 'd1' },
@@ -400,6 +682,81 @@ const en = {
       badge: 'Blog',
       title: 'Latest insights',
       description: 'Actionable insights, proven strategies, and industry trends to help you build a social media presence that drives real business results.'
+    },
+    solutions: {
+      surgery: {
+        hero: {
+          badge: 'Pre & post intervention follow-up',
+          title: 'Surgery & aesthetic medicine'
+        },
+        testimonial: 'In surgery and aesthetic medicine, perceived quality relies as much on follow-up as on the procedure itself.',
+        challengeItems: [
+          {
+            label: 'Observation',
+            title: 'Between preparation and recovery, follow-up can become:',
+            listItems: ['Fragmented', 'Reactive', 'Dependent on manual calls', 'Poorly traceable']
+          },
+          {
+            label: 'Challenge',
+            title: 'A premium positioning requires structured continuity.'
+          }
+        ],
+        examples: {
+          badge: 'Clinical situations',
+          title: 'Follow-up configuration examples',
+          description: 'Each organization defines its own follow-up model. Here are a few illustrations',
+          cards: [
+            {
+              title: 'Rhinoplasty',
+              imageUrl: '/assets/images/rhinoplastie.png',
+              overlayGradient: 'var(--gradient-accent-warm-overlay)',
+              description: 'Create a clear, reassuring, and traceable pre/post-operative follow-up.'
+            },
+            {
+              title: 'Liposuction',
+              imageUrl: '/assets/images/liposuccion.png',
+              overlayGradient: 'var(--gradient-accent-warm-terra-overlay)',
+              description: 'Structure recovery milestones and prioritize meaningful reported signals.'
+            },
+            {
+              title: 'Injection',
+              imageUrl: '/assets/images/injection.png',
+              overlayGradient: 'var(--gradient-accent-cool-overlay)',
+              description: 'Ensure consistent support from preparation to delayed check-ins.'
+            }
+          ]
+        }
+      },
+      sports: {
+        hero: {
+          badge: 'Coordination & recovery',
+          title: 'Sports medicine',
+          subtitle: 'Structure recovery and coordinate care stakeholders'
+        },
+        testimonial: 'Structure recovery and coordinate pathway stakeholders',
+        challengeItems: [
+          {
+            label: 'Pathway',
+            title: 'In sports medicine, the pathway is rarely linear.',
+            description: 'The patient may be followed by:',
+            listItems: ['A sports physician', 'An orthopedic surgeon', 'A physiotherapist', 'Sometimes a performance coach']
+          },
+          {
+            label: 'Challenge',
+            title: 'The issue is not the absence of rehabilitation.',
+            description: 'The issue is often:',
+            listItems: ['Fragmented follow-up', 'Lack of longitudinal visibility', 'Premature return to activity', 'Irregular adherence', 'Between consultations, recovery remains weakly objectified.']
+          }
+        ]
+      },
+      dermatology: {
+        hero: {
+          badge: 'Longitudinal dermatology follow-up',
+          title: 'Dermatology',
+          subtitle: 'Structure dermatological treatments over time'
+        },
+        testimonial: 'Structure dermatological treatments over time'
+      }
     }
   },
   contactForm: {
@@ -432,23 +789,13 @@ const en = {
   footer: {
     tagline: 'Social media that drives real results',
     subtitle: 'Built for creators, businesses, and brands.',
-    navTitle: 'Navigate',
-    connectTitle: 'Connect',
-    legalTitle: 'Legal',
-    home: 'Home',
-    about: 'About',
-    caseStudies: 'Case Studies',
-    blog: 'Blog',
-    bookCall: 'Book a call',
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    solutionsTitle: 'Solutions',
+    resourcesTitle: 'Resources',
+    companyTitle: 'Company',
     contact: 'Contact',
-    instagram: 'Instagram',
-    linkedin: 'LinkedIn',
-    twitter: 'Twitter',
-    copyPrefix: 'Created by',
-    copySuffix: 'with',
-    copyAuthor: 'Cosmike',
+    legalNotice: 'Legal notice',
+    privacyPolicy: 'Privacy policy',
+    cookies: 'Cookie settings',
     copyright: '© 2025 Doctinum'
   }
 };

@@ -31,7 +31,7 @@
   --card-bg: var(--bg-surface);
   --card-fg: var(--text-primary);
   --card-border: var(--border-default);
-  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 
   /* Alpha overlays from semantic theme colors */
   --ink-00: color-mix(in srgb, var(--color-text) 0%, transparent);

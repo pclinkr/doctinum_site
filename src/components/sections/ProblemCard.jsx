@@ -11,19 +11,19 @@ export default function ProblemCard() {
     <div
       className="rev relative mx-auto max-w-[980px] overflow-hidden rounded-[24px] px-8 py-12 max-[700px]:px-5 max-[700px]:py-9 bg-[var(--surface)] shadow-[0_2px_24px_var(--ink-04)]"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[var(--white-38)] to-transparent" />
-      <div className="pointer-events-none absolute -left-16 top-20 h-48 w-48 rounded-full bg-[var(--white-28)] blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 bottom-8 h-56 w-56 rounded-full bg-[var(--white-20)] blur-3xl" />
-      <div className="pointer-events-none absolute left-8 right-8 top-[92px] h-px bg-[var(--border-default)] max-[700px]:left-5 max-[700px]:right-5" />
+      {/* <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#d8c8a8]/20 to-transparent" /> */}
+      {/* <div className="pointer-events-none absolute -left-8 top-16 h-64 w-64 rounded-full bg-[#d9a895]/25 blur-2xl" /> */}
+      {/* <div className="pointer-events-none absolute -right-8 bottom-4 h-72 w-72 rounded-full bg-[#d8c8a8]/15 blur-2xl" /> */}
+      {/* <div className="pointer-events-none absolute left-8 right-8 top-[92px] h-px bg-[#d8c8a8]/30 max-[700px]:left-5 max-[700px]:right-5" /> */}
 
       <div className="mx-auto max-w-[760px] text-center">
         <Badge className="rev d1 mb-5 inline-block rounded-full bg-[var(--ink-06)] px-[13px] py-2 text-[12px] font-[var(--w500)]">{t('sections.problemCard.badge')}</Badge>
 
-        <h2 className="rev d2 mb-6 text-[clamp(30px,4vw,44px)] font-[var(--w500)] leading-[1.08] tracking-[-0.05em] text-[var(--text-primary)]">
+        <h2 className="rev d2 mb-6">
           {t('sections.problemCard.titlePrefix')} <span className="si">{t('sections.problemCard.titleAccent')}</span> {t('sections.problemCard.titleSuffix')}
         </h2>
 
-        <p className="rev d3 mx-auto mb-10 max-w-[720px] text-[17px] leading-[1.7] text-[var(--muted)]">
+        <p className="rev d3 mx-auto mb-10 max-w-[720px]">
           {t('sections.problemCard.intro')}
         </p>
       </div>
@@ -50,8 +50,8 @@ export default function ProblemCard() {
         ))}
       </div>
 
-      <div className="rev mx-auto mt-2 max-w-[760px] rounded-[18px] border border-[var(--border-default)] bg-[var(--white-20)] px-6 py-8 text-center backdrop-blur-[2px] max-[700px]:px-4" style={{ transitionDelay: '760ms' }}>
-        <p className="text-[26px] font-medium italic leading-[1.42] tracking-[-0.03em] text-[var(--text-primary)] max-[700px]:text-[22px]">
+      <div className="rev mx-auto mt-6 max-w-[680px] border-t border-[#d8c8a8]/20 pt-8 text-center" style={{ transitionDelay: '760ms' }}>
+        <p className="text-[26px] font-[var(--w300)] italic leading-[1.45] tracking-[-0.02em] text-[var(--text-primary)] opacity-90 max-[700px]:text-[22px]">
           {t('sections.problemCard.outroLine1')}<br />
           {t('sections.problemCard.outroLine2')}
         </p>
