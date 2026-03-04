@@ -1,11 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import Container from '../../layout/Container';
 
 export default function HomeMarqueeSection() {
-  const items = [
-    "Sans application à installer",
-    "Consentement explicite", 
-    "Traçabilité complète"
-  ];
+  const { t } = useTranslation();
+  const items = t('sections.slidingBanner.items', { returnObjects: true });
   
   // Create enough duplicates for seamless loop
   const duplicatedItems = [...items, ...items, ...items, ...items];

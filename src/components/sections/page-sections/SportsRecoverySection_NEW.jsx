@@ -15,53 +15,16 @@ function BulletList({ items }) {
   );
 }
 
-export default function SportsRecoverySection({ locale = 'fr' }) {
-  const isFr = locale === 'fr';
+export default function SportsRecoverySection() {
+  const { t } = useTranslation();
+  const copy = t('sections.sportsProtocol', { returnObjects: true });
 
-  const leftTitle = isFr ? '3. Objectiver la récupération dans le temps' : '3. Objectify recovery over time';
-  const rightTitle = isFr
-    ? '4. Détecter les décrochages et les reprises prématurées'
-    : '4. Detect drop-offs and premature returns';
-
-  const leftItems = isFr
-    ? [
-        'Douleur (0-10)',
-        'Perception de mobilité',
-        'Sensation d’instabilité',
-        'Fatigue musculaire',
-        'Adhésion aux séances de kinésithérapie',
-        'Reprise progressive d’activité'
-      ]
-    : [
-        'Pain (0-10)',
-        'Perceived mobility',
-        'Instability sensation',
-        'Muscle fatigue',
-        'Physiotherapy session adherence',
-        'Progressive return to activity'
-      ];
-
-  const chips = isFr
-    ? ['Historisés', 'Visualisés longitudinalement', 'Priorisés selon des seuils définis par l’équipe']
-    : ['Historized', 'Visualized longitudinally', 'Prioritized with team-defined thresholds'];
-
-  const rightItems = isFr
-    ? [
-        'Augmentation brutale de douleur',
-        'Baisse d’adhésion aux séances',
-        'Reprise d’activité non planifiée',
-        'Dégradation perçue de la mobilité'
-      ]
-    : [
-        'Sudden pain increase',
-        'Session adherence decrease',
-        'Unplanned return to activity',
-        'Perceived mobility deterioration'
-      ];
-
-  const note = isFr
-    ? 'Le système ne prend aucune décision. Il structure et priorise l’information.'
-    : 'The system makes no decision. It structures and prioritizes information.';
+  const leftTitle = copy.leftTitle;
+  const rightTitle = copy.rightTitle;
+  const leftItems = copy.leftList;
+  const chips = copy.leftBottom;
+  const rightItems = copy.rightList;
+  const note = copy.rightBottom;
 
   return (
     <Container className="py-8">

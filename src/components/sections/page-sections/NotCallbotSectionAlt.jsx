@@ -1,37 +1,24 @@
+import { useTranslation } from 'react-i18next';
 import SectionHeading from '../SectionHeading';
 
-const ITEMS = [
-  {
-    title: 'Protocoles paramétrables et sécurisés',
-    body: 'Le suivi repose sur un protocole appliqué de manière rigoureuse par vos agents dans une conversation fluide avec le patient.',
-    icon: (
-      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4Z" />
-    )
-  },
-  {
-    title: 'Suivi longitudinal',
-    body: 'Les données sont organisées dans le temps, pas traitées comme des échanges isolés.',
-    icon: (
-      <path d="M3 13h6l3 8 4-18 3 10h2" />
-    )
-  },
-  {
-    title: 'Supervision médicale constante',
-    body: 'Aucune décision médicale autonome. Les alertes sont définies par l’équipe.',
-    icon: (
-      <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" />
-    )
-  }
+const ICONS = [
+  <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4Z" />,
+  <path d="M3 13h6l3 8 4-18 3 10h2" />,
+  <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" />
 ];
 
 export default function NotCallbotSectionAlt() {
+  const { t } = useTranslation();
+  const copy = t('sections.notCallbot', { returnObjects: true });
+  const items = copy.items.map((item, index) => ({ ...item, icon: ICONS[index] }));
+
   return (
     <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-2 text-center max-[1024px]:px-8 max-[768px]:px-5">
       <SectionHeading
         className="rev"
         title={
           <>
-            Une <span className="si">infrastructure clinique</span>, pas un simple agent vocal.
+            {copy.title} <span className="si">{copy.titleAccent}</span>{copy.titleSuffix}
           </>
         }
         style={{ marginBottom: '48px' }}
@@ -61,7 +48,7 @@ export default function NotCallbotSectionAlt() {
           </div>
 
           <div className="relative z-[1] grid grid-cols-3">
-            {ITEMS.map((item, index) => (
+            {items.map((item, index) => (
               <div key={item.title} className={`rev ${index === 0 ? 'd1' : index === 1 ? 'd2' : 'd3'} mx-auto flex h-[92px] w-[92px] items-center justify-center rounded-[22px] bg-[var(--color-primary)]`}>
                 <svg className="h-[22px] w-[22px] fill-none stroke-[2] stroke-[var(--text-inverse)] [stroke-linecap:round] [stroke-linejoin:round]" viewBox="0 0 24 24">
                   {item.icon}
@@ -72,7 +59,7 @@ export default function NotCallbotSectionAlt() {
         </div>
 
         <div className="grid grid-cols-3 gap-8 max-[809px]:grid-cols-1">
-          {ITEMS.map((item, index) => (
+          {items.map((item, index) => (
             <article key={item.title} className={`rev ${index === 0 ? 'd1' : index === 1 ? 'd2' : 'd3'} flex flex-col items-center px-7 py-8 text-center`}>
               <div className="mb-4 hidden h-[56px] w-[56px] items-center justify-center rounded-[16px] border border-[var(--border)] bg-[var(--bg-page)] max-[809px]:flex">
                 <svg className="h-[19px] w-[19px] fill-none stroke-[2] stroke-[var(--color-primary)] [stroke-linecap:round] [stroke-linejoin:round]" viewBox="0 0 24 24">

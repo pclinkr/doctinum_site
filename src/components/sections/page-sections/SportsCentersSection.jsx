@@ -1,21 +1,17 @@
+import { useTranslation } from 'react-i18next';
 import Container from '../../layout/Container';
 import Card from '../../ui/Card';
 
-export default function SportsCentersSection({ locale = 'fr' }) {
-  const isFr = locale === 'fr';
+export default function SportsCentersSection() {
+  const { t } = useTranslation();
+  const copy = t('sections.sportsCases', { returnObjects: true });
 
-  const title = isFr ? '5. Coordination avec la rééducation' : '5. Coordination with rehabilitation';
-  const points = isFr
-    ? ['Le médecin définit le protocole', 'Les indicateurs peuvent être partagés', 'La récupération devient objectivée', 'Les décisions restent humaines']
-    : ['Physician defines the protocol', 'Indicators can be shared', 'Recovery becomes objectified', 'Decisions remain human'];
-  const desc = isFr
-    ? 'Le dispositif agit comme une couche transversale, facilitant la cohérence du parcours.'
-    : 'The system acts as a transversal layer, improving pathway coherence.';
+  const title = copy.case1.title;
+  const points = copy.case1.listItems.slice(0, 4);
+  const desc = copy.case1.listItems[4];
 
-  const targetTitle = isFr ? '6. Adapté aux centres intégrés' : '6. Adapted to integrated centers';
-  const targets = isFr
-    ? ['Centres de médecine du sport', 'Cliniques orthopédiques privées', 'Structures avec kinésithérapie interne', 'Instituts de performance']
-    : ['Sports medicine centers', 'Private orthopedic clinics', 'Centers with in-house physiotherapy', 'Performance institutes'];
+  const targetTitle = copy.case2.title;
+  const targets = copy.case2.listItems;
 
   return (
     <Container className="py-8">

@@ -13,7 +13,7 @@ const en = {
     ]
   },
   nav: {
-    cta: 'Book a demo',
+    cta: 'Discuss your project',
     home: 'Home',
     solutions: 'Solutions',
     functioning: 'How it works',
@@ -127,24 +127,24 @@ const en = {
     }
   },
   site: {
-    socialProofText: 'Grown over 176+ creators',
-    ctaSubtitleFull: "Book a free 30 min strategy call and we'll show you how to turn followers into customers.",
-    ctaSubtitleShort: 'Book a free 30 min strategy call.',
+    socialProofText: 'Supporting over 176+ healthcare professionals',
+    ctaSubtitleFull: 'Book a free 30-minute strategic call and let\'s build a follow-up protocol tailored to your clinical context.',
+    ctaSubtitleShort: 'Book a free 30-minute strategic call.',
     storyDurationMs: 3000
   },
   sections: {
     hero: {
       ariaLabel: 'Hero',
-      titlePrefix: 'Short form',
-      titleMiddle: 'done',
-      titleAccent: 'right',
-      subtitle: 'We combine content, management, and paid media to help brands grow and convert on the social platforms that matter most to you.',
-      cta: 'Get in touch',
-      cta2: 'Schedule a confidential call'
+      titlePrefix: 'Patient follow-up',
+      titleMiddle: 'should not remain',
+      titleAccent: 'silent',
+      subtitle: 'The voice AI infrastructure that applies your protocols, triggers structured follow-up, and surfaces actionable signals — under medical supervision.',
+      cta: 'Evaluate a pilot project',
+      cta2: 'Schedule a confidential discussion'
     },
     services: {
       titlePrefix: 'How we can help you',
-      titleAccent: 'grooow'
+      titleAccent: 'grow'
     },
     faq: {
       label: 'Questions',
@@ -152,88 +152,88 @@ const en = {
     },
     process: {
       titlePrefix: 'We like to keep things',
-      titleAccent: 'nice',
-      titleSuffix: 'and simple',
+      titleAccent: 'simple',
+      titleSuffix: 'and effective',
       cards: [
         {
-          title: 'Strategy First',
-          body: "We audit your brand, audience, and competition then build a strategy that's clear, specific, and built for results."
+          title: 'Strategy first',
+          body: 'We audit your brand, audience, and competitors, then build a clear, precise, results-oriented strategy.'
         },
         {
-          title: 'Create & Manage',
-          body: 'We create, schedule, and manage your content so you can focus on the business while we grow your presence.'
+          title: 'Create & manage',
+          body: 'We create, schedule, and manage your content so you can stay focused on your business.'
         },
         {
-          title: 'Review & Refine',
-          body: "Monthly reviews with clear reporting. We double down on what works and cut what doesn't."
+          title: 'Analyze & optimize',
+          body: 'Monthly reviews and clear reporting. We strengthen what works and eliminate the rest.'
         }
       ]
     },
     mission: {
       label: 'Our mission',
-      titlePrefix: 'Turning content chaos into',
+      titlePrefix: 'Transforming content chaos into',
       titleAccent: 'consistent',
       titleSuffix: 'growth',
       body: [
-        'We work with brands who are ready to take their social media presence seriously.',
-        'Not just to fill a feed or chase trends, but to show up with purpose and build something that actually grows.',
+        'We support brands ready to take their social media presence seriously.',
+        'Not to fill a feed, but to build a useful and sustainable presence.',
         'For us, content is just the starting point.',
-        'Our approach combines strategy, execution, and consistency. We handle the planning, posting, and platform management so you can focus on running the business.',
-        "If you're ready to grow with intention, we'd love to help."
+        'Our approach combines strategy, execution, and consistency. We handle planning, publishing, and platforms.',
+        'If you want to grow with intention, we can help.'
       ]
     },
     homeCases: {
-      label: 'Case results',
+      label: 'Client results',
       titlePrefix: 'Work that speaks',
       titleAccent: 'for itself',
       viewAll: 'View all cases',
       case1: {
-        tag: 'Case results · Beauty',
+        tag: 'Results · Beauty',
         titlePrefix: 'Scaling a beauty brand with',
-        titleAccent: 'reds',
-        body: 'We redesigned their entire content approach — from long tutorials to punchy 15-second reels — paired with targeted paid on Meta.',
+        titleAccent: 'Reels',
+        body: 'We redesigned their content approach, from long tutorials to short Reels, paired with targeted paid ads on Meta.',
         kpi1: 'Reel Views',
         kpi2: 'Engagement'
       },
       case2: {
-        tag: 'Case results · Fashion',
-        titlePrefix: 'Growing a clothing brand with',
+        tag: 'Results · Fashion',
+        titlePrefix: 'Growing a fashion brand with',
         titleAccent: 'video',
-        body: 'A pivot from static posts to video-first content showing the product in motion, exactly how the audience wanted to see it.',
+        body: 'Shift from a static feed to video-first content showing the product in real use.',
         kpi1: 'Followers',
         kpi2: 'Engagement'
       }
     },
     whyChoose: {
-      titlePrefix: 'Why choose Viral',
+      titlePrefix: 'Why choose Doctinum',
       titleMiddle: 'over',
-      titleAccent: 'everyone',
-      titleSuffix: 'else?',
-      otherTitle: 'Other Agencies',
-      brandTitle: 'What we do differently',
+      titleAccent: 'others',
+      titleSuffix: '?',
+      otherTitle: 'Other solutions',
+      brandTitle: 'Our difference',
       otherItems: [
-        'Locked in long-term contracts',
-        'Generic one-size-fits-all content',
-        'Slow turnaround times',
-        'Vague reporting, no real insights'
+        'Binding long-term contracts',
+        'Generic non-tailored content',
+        'Slow production timelines',
+        'Vague reporting without insights'
       ],
       brandItems: [
-        'Flexible, cancel-anytime plans',
+        'Flexible plans without commitment',
         'Brand-specific content strategy',
         '48-hour turnaround guarantee',
-        'Clear metrics tied to business goals'
+        'Clear KPIs tied to business objectives'
       ]
     },
     testimonial: {
-      quotePrefix: 'They took social media off our plate completely and our audience has never been',
-      quoteAccent: 'more engaged.',
+      quotePrefix: 'They completely took over managing our social media, and our audience has never been',
+      quoteAccent: 'so engaged.',
       author: 'Elena Chen',
       role: 'Founder · Bloom Skincare'
     },
     finalCta: {
       label: 'Get started',
-      titlePrefix: 'Your viral journey starts',
-      titleAccent: 'right here.'
+      titlePrefix: 'Your voice follow-up starts',
+      titleAccent: 'here.'
     },
     medicalVoice: {
       headLabel: 'Live voice test',
@@ -450,7 +450,7 @@ const en = {
       cta: 'Learn more about security'
     },
     logosStrip: {
-      title: 'Brands we support'
+      title: 'Supported brands'
     },
     structureSupervise: {
       title: 'Structure. Supervise. Differentiate.',
@@ -532,6 +532,32 @@ const en = {
         brand: 'Centers'
       }
     },
+    notCallbot: {
+      title: 'A',
+      titleAccent: 'clinical infrastructure',
+      titleSuffix: ', not a simple voice agent.',
+      items: [
+        {
+          title: 'Configurable and secure protocols',
+          body: 'Follow-up relies on a protocol rigorously applied by your agents in a fluid conversation with the patient.'
+        },
+        {
+          title: 'Longitudinal follow-up',
+          body: 'Data is organized over time, not treated as isolated exchanges.'
+        },
+        {
+          title: 'Constant medical supervision',
+          body: 'No autonomous medical decision. Alerts are defined by the team.'
+        }
+      ]
+    },
+    slidingBanner: {
+      items: [
+        'No app to install',
+        'Explicit consent',
+        'Full traceability'
+      ]
+    },
     dermatologyNarrative: {
       badge: 'Dermatology pathways',
       title: 'Treatment does not end with the prescription.',
@@ -606,46 +632,46 @@ const en = {
   content: {
     helpItems: [
       {
-        title: 'Content Creation',
-        body: "Scroll-stopping visuals and copy crafted for your brand voice and your audience's feed.",
+        title: 'Content creation',
+        body: 'Visuals and messaging designed to stop the scroll, aligned with your brand and audience.',
         emoji: '🎬',
         gradient: 'linear-gradient(135deg,#1a1a2e,#16213e)',
         delayClass: 'd1'
       },
       {
-        title: 'Social Management',
-        body: 'Full-service management across all platforms — posting, scheduling, and community handled.',
+        title: 'Social media management',
+        body: 'Full multi-platform management: publishing, scheduling, and community.',
         emoji: '📱',
         gradient: 'linear-gradient(135deg,#0f3460,#533483)',
         delayClass: 'd2'
       },
       {
-        title: 'Paid Media',
-        body: 'Data-driven ad campaigns that find your audience, tell your story, and turn attention into revenue.',
+        title: 'Paid media',
+        body: 'Data-driven campaigns that find your audience and turn attention into revenue.',
         emoji: '💰',
         gradient: 'linear-gradient(135deg,#f7971e,#ffd200)',
         delayClass: 'd3'
       }
     ],
     homeFaqItems: [
-      { question: 'Is there a minimum contract length?', answer: "No. We work on rolling monthly plans. Cancel or pause any time with 30 days' notice." },
-      { question: 'Can you work with my existing brand guidelines?', answer: "Absolutely. We work within your brand guidelines. If you don't have any, we can help create them during onboarding." },
-      { question: 'What platforms do you manage?', answer: 'Instagram, TikTok, LinkedIn, Facebook, Pinterest, and Threads. Most clients start with 2–3 platforms.' },
-      { question: 'How long until I see results?', answer: 'Organic growth is visible within 60–90 days. Paid campaigns can show ROI within 2–4 weeks depending on budget.' }
+      { question: 'Is there a minimum commitment period?', answer: 'No. We work on a monthly basis. You can pause or cancel with 30 days\' notice.' },
+      { question: 'Can you respect our brand guidelines?', answer: 'Yes. We work with your guidelines. If you don\'t have any, we can create them during onboarding.' },
+      { question: 'Which platforms do you manage?', answer: 'Instagram, TikTok, LinkedIn, Facebook, Pinterest, and Threads. Most clients start with 2–3 platforms.' },
+      { question: 'When do we see the first results?', answer: 'Organic growth becomes visible within 60–90 days. Paid can generate ROI within 2–4 weeks depending on budget.' }
     ],
     storyVideos: [
       '/assets/videos/doctinum_hero.mp4',
     ],
     aboutTeamMembers: [
-      { name: 'Sofia Little', role: 'Creative Lead', gradient: 'linear-gradient(160deg,#f0c5a8,#d4a090,#c08878)', delayClass: 'd1' },
+      { name: 'Sofia Little', role: 'Creative lead', gradient: 'linear-gradient(160deg,#f0c5a8,#d4a090,#c08878)', delayClass: 'd1' },
       { name: 'James Cohen', role: 'Founder & CEO', gradient: 'linear-gradient(160deg,#c8d4e0,#a8b8d0,#90a8c0)', delayClass: 'd2' },
-      { name: 'Maya Rodriguez', role: 'Growth Specialist', gradient: 'linear-gradient(160deg,#d0c8e0,#b0a0c8,#9890b8)', delayClass: 'd3' }
+      { name: 'Maya Rodriguez', role: 'Growth specialist', gradient: 'linear-gradient(160deg,#d0c8e0,#b0a0c8,#9890b8)', delayClass: 'd3' }
     ],
     aboutAwards: [
-      ['Social Media Agency of the Year', 'Recognised for outstanding creative campaigns and measurable client results across multiple industries.', '2024'],
-      ['Best Content Strategy Campaign', 'Awarded for our innovative approach to turning user-generated content into viral marketing moments.', '2023'],
-      ['Digital Marketing Innovation Award', 'Praised for developing new methodologies that consistently drive engagement and conversion rates.', '2024'],
-      ['Rising Agency Excellence', 'Recognised as one of the fastest-growing social media agencies with exceptional client satisfaction scores.', '2023']
+      ['Social Media Agency of the Year', 'Awarded for creative campaigns and measurable results across multiple sectors.', '2024'],
+      ['Best Content Strategy Campaign', 'Awarded for our innovative approach to high-viral-potential UGC content.', '2023'],
+      ['Digital Marketing Innovation Award', 'Recognized for methods that improve engagement and conversion.', '2024'],
+      ['Emerging Agency Excellence', 'Recognition among the fastest-growing social media agencies.', '2023']
     ],
     caseStudyCards: [
       { name: 'Glowhaus', category: 'Beauty', brand: 'Glowhaus', gradient: 'linear-gradient(135deg,#f5c5a8,#e8a090,#c87060)', delayClass: 'd1' },
@@ -654,34 +680,34 @@ const en = {
       { name: 'SnapShot', category: 'Photography', brand: '⚡ SnapShot', gradient: 'linear-gradient(135deg,#d8e0d0,#c0c8b8,#a8b0a0)', delayClass: 'd4' }
     ],
     blogCards: [
-      ['How to Create Content That Actually Converts', "Stop creating content that gets likes but doesn't drive sales. Here's what actually works.", 'Oct 17, 2025', 'linear-gradient(160deg,#f0e8d8,#d8c8a8,#c0a878)', 'd1'],
-      ['How We Scaled a Beauty Brand to 100K', 'A detailed breakdown of the strategy, content, and tactics that drove explosive growth for our client.', 'Sep 28, 2025', 'linear-gradient(160deg,#e8c8b8,#d4a898,#c09080)', 'd2'],
-      ['What to Track Beyond Vanity Metrics', "Likes and follows don't pay the bills. Here's how to measure what actually matters to your business.", 'Sep 10, 2025', 'linear-gradient(160deg,#e8e0d8,#c8c0b0,#a8a090)', 'd3'],
-      ["Why Your Reels Aren't Getting Views", 'Common mistakes that kill your reach and the simple changes that can make your content go viral.', 'Aug 22, 2025', 'linear-gradient(160deg,#c0b8d0,#a098c0,#8880a8)', 'd4']
+      ['Creating content that truly converts', 'Stop content that gets likes without sales. Here\'s what really works.', 'Oct 17, 2025', 'linear-gradient(160deg,#f0e8d8,#d8c8a8,#c0a878)', 'd1'],
+      ['How we scaled a beauty brand to 100K', 'Complete breakdown of strategy, content, and growth tactics.', 'Sep 28, 2025', 'linear-gradient(160deg,#e8c8b8,#d4a898,#c09080)', 'd2'],
+      ['KPIs to track beyond vanity metrics', 'Likes and followers don\'t pay the bills. Here\'s what to really measure.', 'Sep 10, 2025', 'linear-gradient(160deg,#e8e0d8,#c8c0b0,#a8a090)', 'd3'],
+      ['Why your Reels aren\'t getting views', 'Common mistakes that kill your reach and simple adjustments to perform.', 'Aug 22, 2025', 'linear-gradient(160deg,#c0b8d0,#a098c0,#8880a8)', 'd4']
     ],
     contactFaqItems: [
-      { question: 'How quickly will we see results?', answer: 'Paid campaigns can show ROI within 2–4 weeks. Organic growth takes 60–90 days of consistent execution to become visible.' },
-      { question: 'What platforms do you manage?', answer: 'Instagram, TikTok, LinkedIn, Facebook, Pinterest, and Threads. We recommend starting with 2–3 platforms.' },
-      { question: 'Do you work with our industry?', answer: 'We work with e-commerce, SaaS, DTC brands, service businesses, and personal brands. If you need to grow on social, we can help.' },
-      { question: 'What if we want to cancel?', answer: "Cancel any time with 30 days' notice. No penalties, no lock-ins. We're confident you won't want to." },
-      { question: 'How involved do we need to be?', answer: "As much or as little as you want. Most clients have a 30-minute check-in monthly and approve content in a shared doc. That's it." }
+      { question: 'When will we see results?', answer: 'Paid can show ROI within 2–4 weeks. Organic takes 60–90 days of consistent execution.' },
+      { question: 'Which platforms do you manage?', answer: 'Instagram, TikTok, LinkedIn, Facebook, Pinterest, and Threads. We recommend starting with 2–3 platforms.' },
+      { question: 'Do you work with our industry?', answer: 'We work with e-commerce, SaaS, DTC, service businesses, and personal brands.' },
+      { question: 'What if we want to cancel?', answer: 'Cancel anytime with 30 days\' notice. No penalties, no lock-ins.' },
+      { question: 'How involved do we need to be?', answer: 'As much or as little as you want. Generally a 30-minute monthly check-in is enough.' }
     ]
   },
   pages: {
     about: {
-      badge: 'About us',
+      badge: 'About',
       title: 'Who we are',
-      description: "We're strategists, creators, and growth experts who believe social media should drive real business results, not just look pretty. Every brand deserves a social presence that actually works."
+      description: 'We are strategists, creators, and growth experts convinced that social media must generate real business results.'
     },
     caseStudies: {
       badge: 'Case studies',
-      title: 'Our best work',
-      description: "See how we've helped growing businesses transform their social media from a time drain into their most powerful growth engine. Every strategy is custom-built, every result is measurable."
+      title: 'Our best projects',
+      description: 'Discover how we transform social media into a measurable growth engine.'
     },
     blog: {
       badge: 'Blog',
       title: 'Latest insights',
-      description: 'Actionable insights, proven strategies, and industry trends to help you build a social media presence that drives real business results.'
+      description: 'Actionable strategies and trends to transform your social presence into business growth.'
     },
     solutions: {
       surgery: {
@@ -787,15 +813,15 @@ const en = {
     submit: 'Book a call ↗'
   },
   footer: {
-    tagline: 'Social media that drives real results',
-    subtitle: 'Built for creators, businesses, and brands.',
+    tagline: 'Giving voice to patient follow-up',
+    subtitle: 'AI clinical voice infrastructure for patient follow-up.',
     solutionsTitle: 'Solutions',
     resourcesTitle: 'Resources',
     companyTitle: 'Company',
     contact: 'Contact',
     legalNotice: 'Legal notice',
     privacyPolicy: 'Privacy policy',
-    cookies: 'Cookie settings',
+    cookies: 'Cookie management',
     copyright: '© 2025 Doctinum'
   }
 };

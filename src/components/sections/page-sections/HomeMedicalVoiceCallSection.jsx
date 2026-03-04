@@ -497,6 +497,11 @@ export default function HomeMedicalVoiceCallSection() {
             className="medical-voice-header"
             style={{ transform: `translate3d(0,${headerTranslateY}px,0)` }}
           >
+            <div className="mb-4 flex items-center justify-center">
+              <div className="rounded-full bg-amber-50 px-4 py-1.5 border border-amber-200">
+                <p className="text-[11px] font-[var(--w500)] tracking-[0.02em] text-amber-700">Démonstration non clinique</p>
+              </div>
+            </div>
             <p className="medical-voice-head-label mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">{t('sections.medicalVoice.headLabel')}</p>
             <h2 className="medical-voice-head-title text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.055em] text-[var(--color-primary)]">
               {t('sections.medicalVoice.headTitlePrefix')} <span className="si">{t('sections.medicalVoice.headTitleAccent')}</span>
@@ -510,6 +515,9 @@ export default function HomeMedicalVoiceCallSection() {
               opacity: selectorOpacity
             }}
           >
+            <p className="mb-4 text-center text-[14px] font-[var(--w500)] text-[var(--color-primary)] opacity-80">
+              Sélectionner l'exemple d'appel
+            </p>
             <MedicalDomainSelector
               options={medicalDomains}
               selectedId={selectedDomain.id}

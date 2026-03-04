@@ -236,9 +236,9 @@ const fr = {
       titleAccent: 'ici.'
     },
     medicalVoice: {
-      headLabel: 'Test vocal live',
-      headTitlePrefix: 'Appeler un',
-      headTitleAccent: 'agent IA médical',
+      headLabel: 'Explorer un exemple de suivi vocal structuré',
+      headTitlePrefix: "Simulation interactive d'un appel par",
+      headTitleAccent: 'un agent IA médical',
       domains: [
         { id: 'orthopedie', label: 'Orthopédie (chirurgie)' },
         { id: 'cancer', label: 'Cancer' },
@@ -531,6 +531,32 @@ const fr = {
         listItems: ['Centres de médecine du sport', 'Cliniques orthopédiques privées', 'Structures avec kinésithérapie interne', 'Instituts de performance'],
         brand: 'Centres'
       }
+    },
+    notCallbot: {
+      title: 'Une',
+      titleAccent: 'infrastructure clinique',
+      titleSuffix: ', pas un simple agent vocal.',
+      items: [
+        {
+          title: 'Protocoles paramétrables et sécurisés',
+          body: 'Le suivi repose sur un protocole appliqué de manière rigoureuse par vos agents dans une conversation fluide avec le patient.'
+        },
+        {
+          title: 'Suivi longitudinal',
+          body: 'Les données sont organisées dans le temps, pas traitées comme des échanges isolés.'
+        },
+        {
+          title: 'Supervision médicale constante',
+          body: 'Aucune décision médicale autonome. Les alertes sont définies par l\'équipe.'
+        }
+      ]
+    },
+    slidingBanner: {
+      items: [
+        'Sans application à installer',
+        'Consentement explicite',
+        'Traçabilité complète'
+      ]
     },
     dermatologyNarrative: {
       badge: 'Parcours dermatologiques',
