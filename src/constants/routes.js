@@ -10,7 +10,7 @@ export const PAGE_PATH_SEGMENTS = {
   styleguide: 'styleguide',
   contact: 'contact',
   privacy: 'privacy',
-  '404': '404',
+  404: '404',
 
   'surgery-aesthetic': 'solutions/chirurgie-medecine-esthetique',
   'surgery-rhinoplasty': 'solutions/rhinoplastie',
@@ -35,7 +35,7 @@ export const PAGE_PATH_SEGMENTS = {
   'pharma-research': 'pharma-recherche',
   security: 'securite',
   vision: 'entreprise/vision',
-  'experimentation-partnerships': 'entreprise/experimentations-partenariats'
+  'experimentation-partnerships': 'entreprise/experimentations-partenariats',
 };
 
 export const SITEMAP_PAGE_IDS = Object.keys(PAGE_PATH_SEGMENTS).filter(
@@ -56,7 +56,7 @@ export const SOLUTION_SLUG_TO_PAGE_ID = {
   'proms-questionnaires-post-acte': 'proms',
   'programmes-accompagnement-patient': 'patient-support-programs',
   'prevention-sante-travail': 'prevention-workplace-health',
-  'parcours-chroniques-coordonnes': 'coordinated-chronic-pathways'
+  'parcours-chroniques-coordonnes': 'coordinated-chronic-pathways',
 };
 
 export const HIGH_VIGILANCE_SLUG_TO_PAGE_ID = {
@@ -64,7 +64,7 @@ export const HIGH_VIGILANCE_SLUG_TO_PAGE_ID = {
   oncologie: 'hv-oncology',
   'cardiologie-chronique': 'hv-chronic-cardiology',
   'maladies-rares': 'hv-rare-diseases',
-  'sante-mentale': 'hv-mental-health'
+  'sante-mentale': 'hv-mental-health',
 };
 
 export function buildLocalizedPath(pageId, localeValue = DEFAULT_LOCALE) {
@@ -85,7 +85,10 @@ export function pageIdFromPathname(pathname, localeValue = DEFAULT_LOCALE) {
 
   for (const [pageId, segmentValue] of MATCHABLE_ROUTE_ENTRIES) {
     const fullSegment = `/${segmentValue}`;
-    if (normalizedPath === fullSegment || normalizedPath.startsWith(`${fullSegment}/`)) {
+    if (
+      normalizedPath === fullSegment ||
+      normalizedPath.startsWith(`${fullSegment}/`)
+    ) {
       return pageId;
     }
   }

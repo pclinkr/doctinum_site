@@ -13,7 +13,11 @@ export function BlogPage({ active, onNavigate }) {
 
   return (
     <div id="page-blog" className={`page ${active ? 'active' : ''}`.trim()}>
-      <PageHero badge={t('pages.blog.badge')} title={t('pages.blog.title')} description={t('pages.blog.description')} />
+      <PageHero
+        badge={t('pages.blog.badge')}
+        title={t('pages.blog.title')}
+        description={t('pages.blog.description')}
+      />
       <BlogGridSection cards={blogCards} onNavigate={onNavigate} />
       <FinalCtaSection onNavigate={onNavigate} subtitle={ctaSubtitleShort} />
     </div>
@@ -25,7 +29,10 @@ export function BlogPostPage({ active, onNavigate }) {
   const ctaSubtitleShort = getCtaSubtitleShort(t);
 
   return (
-    <div id="page-blog-post" className={`page ${active ? 'active' : ''}`.trim()}>
+    <div
+      id="page-blog-post"
+      className={`page ${active ? 'active' : ''}`.trim()}
+    >
       <BlogPostContentSection />
       <FinalCtaSection onNavigate={onNavigate} subtitle={ctaSubtitleShort} />
     </div>

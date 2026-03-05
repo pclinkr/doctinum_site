@@ -29,5 +29,5 @@ export const PAGE_IDS = [
   'pharma-research',
   'security',
   'vision',
-  'experimentation-partnerships'
+  'experimentation-partnerships',
 ];

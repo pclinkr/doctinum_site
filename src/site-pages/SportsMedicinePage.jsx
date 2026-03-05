@@ -15,7 +15,10 @@ export default function SportsMedicinePage({ active, onNavigate }) {
   const pageCopy = t('pages.solutions.sports', { returnObjects: true });
 
   return (
-    <div id="page-sports-medicine" className={`page ${active ? 'active' : ''}`.trim()}>
+    <div
+      id="page-sports-medicine"
+      className={`page ${active ? 'active' : ''}`.trim()}
+    >
       <SolutionHeroSection
         onNavigate={onNavigate}
         badge={{ text: pageCopy.hero.badge, variant: 'secondary' }}

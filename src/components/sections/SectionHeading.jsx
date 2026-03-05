@@ -1,4 +1,9 @@
-export default function SectionHeading({ label, title, className = '', style }) {
+export default function SectionHeading({
+  label,
+  title,
+  className = '',
+  style,
+}) {
   return (
     <div className={className} style={style}>
       {label ? <p className="ds-text-label mb-3">{label}</p> : null}

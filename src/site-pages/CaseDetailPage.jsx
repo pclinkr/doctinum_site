@@ -9,7 +9,10 @@ export default function CaseDetailPage({ active, onNavigate }) {
   const ctaSubtitleFull = getCtaSubtitleFull(t);
 
   return (
-    <div id="page-case-detail" className={`page ${active ? 'active' : ''}`.trim()}>
+    <div
+      id="page-case-detail"
+      className={`page ${active ? 'active' : ''}`.trim()}
+    >
       <CaseDetailHeroSection onNavigate={onNavigate} />
       <CaseDetailBodySection />
       <FinalCtaSection onNavigate={onNavigate} subtitle={ctaSubtitleFull} />

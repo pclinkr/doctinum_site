@@ -8,7 +8,7 @@ const ROUTES = [
   '/blog',
   '/blog/organic-growth-blueprint',
   '/contact',
-  '/privacy'
+  '/privacy',
 ];
 
 export default function sitemap() {
@@ -20,7 +20,7 @@ export default function sitemap() {
       url: `${BASE_URL}/${localeValue}${routeValue}`,
       lastModified: nowIso,
       changeFrequency: routeValue === '' ? 'weekly' : 'monthly',
-      priority: routeValue === '' ? 1 : 0.7
+      priority: routeValue === '' ? 1 : 0.7,
     }))
   );
 }

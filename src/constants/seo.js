@@ -3,7 +3,7 @@ import frSeo from '../locales/seo/fr';
 
 const SEO_BY_LOCALE = {
   en: enSeo,
-  fr: frSeo
+  fr: frSeo,
 };
 
 export function getSeoForPage(pageId, locale) {

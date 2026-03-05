@@ -3,22 +3,62 @@ import Button from '../ui/Button';
 import MediaContainer from '../ui/MediaContainer';
 import { useTranslation } from 'react-i18next';
 
-export default function FinalCtaSection({ onNavigate, subtitle, className = '', id }) {
+export default function FinalCtaSection({
+  onNavigate,
+  subtitle,
+  className = '',
+  id,
+}) {
   const { t } = useTranslation();
 
   return (
-    <section className={`rev mx-auto w-full max-w-[1200px] px-16 py-24 pb-[100px] max-[1024px]:px-8 max-[768px]:px-5 ${className}`.trim()} id={id}>
-      <div className="grid min-h-[320px] grid-cols-[1fr_320px] overflow-hidden rounded-[28px] bg-[var(--surface)] max-[1199px]:min-h-0 max-[1199px]:grid-cols-1" style={{ boxShadow: 'var(--card-shadow)' }}>
+    <section
+      className={`rev mx-auto w-full max-w-[1200px] px-16 py-24 pb-[100px] max-[1024px]:px-8 max-[768px]:px-5 ${className}`.trim()}
+      id={id}
+    >
+      <div
+        className="grid min-h-[320px] grid-cols-[1fr_320px] overflow-hidden rounded-[28px] bg-[var(--surface)] max-[1199px]:min-h-0 max-[1199px]:grid-cols-1"
+        style={{ boxShadow: 'var(--card-shadow)' }}
+      >
         <div className="flex flex-col items-start gap-1 p-16 max-[809px]:px-7">
-          <div style={{ width: '52px', height: '52px', background: 'rgba(0,0,0,.08)', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+          <div
+            style={{
+              width: '52px',
+              height: '52px',
+              background: 'rgba(0,0,0,.08)',
+              borderRadius: '15px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}
+          >
             <BrandIcon stroke="var(--text-primary)" width={24} height={24} />
           </div>
-          <p className="mb-2 flex w-full items-center justify-center gap-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]" style={{ textAlign: 'center' }}>{t('sections.finalCta.label')}</p>
-          <h2 className="mb-3 mt-2 text-[clamp(32px,4vw,48px)] font-[var(--w500)] leading-[1.05] tracking-[-0.055em] text-[var(--color-primary)]" style={{ textAlign: 'center' }}>
-            {t('sections.finalCta.titlePrefix')} <span className="si">{t('sections.finalCta.titleAccent')}</span>
+          <p
+            className="mb-2 flex w-full items-center justify-center gap-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]"
+            style={{ textAlign: 'center' }}
+          >
+            {t('sections.finalCta.label')}
+          </p>
+          <h2
+            className="mb-3 mt-2 text-[clamp(32px,4vw,48px)] font-[var(--w500)] leading-[1.05] tracking-[-0.055em] text-[var(--color-primary)]"
+            style={{ textAlign: 'center' }}
+          >
+            {t('sections.finalCta.titlePrefix')}{' '}
+            <span className="si">{t('sections.finalCta.titleAccent')}</span>
           </h2>
-          <p className="mb-6 text-[14px] leading-[1.65] text-[var(--muted)]" style={{ textAlign: 'center', marginInline: 'auto' }}>{subtitle}</p>
-          <Button size="lg" onClick={() => onNavigate('contact')} style={{ marginInline: 'auto' }}>
+          <p
+            className="mb-6 text-[14px] leading-[1.65] text-[var(--muted)]"
+            style={{ textAlign: 'center', marginInline: 'auto' }}
+          >
+            {subtitle}
+          </p>
+          <Button
+            size="lg"
+            onClick={() => onNavigate('contact')}
+            style={{ marginInline: 'auto' }}
+          >
             {t('nav.cta')}
           </Button>
         </div>

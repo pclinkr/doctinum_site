@@ -2,7 +2,7 @@ import Container from '../../layout/Container';
 import Badge from '../../ui/Badge';
 import ExampleCard from './ExampleCard';
 
-export default function ExamplesGridSection({ 
+export default function ExamplesGridSection({
   locale = 'fr',
   onNavigate,
   badgeText,
@@ -15,11 +15,13 @@ export default function ExamplesGridSection({
   className = '',
   containerClassName = '',
   onCardClick,
-  showCardButton = true
+  showCardButton = true,
 }) {
   const handleCardClick = (cardItem) => {
     if (onCardClick) {
       onCardClick(cardItem);
+    } else if (onNavigate && cardItem.page) {
+      onNavigate(cardItem.page);
     } else if (onNavigate) {
       onNavigate('case-detail');
     }
@@ -33,9 +35,13 @@ export default function ExamplesGridSection({
             {badgeText}
           </Badge>
         )}
-        <h2 className="max-w-[18ch] text-[clamp(34px,4.2vw,50px)] leading-[1.02] tracking-[-0.045em]">{title}</h2>
+        <h2 className="max-w-[18ch] text-[clamp(34px,4.2vw,50px)] leading-[1.02] tracking-[-0.045em]">
+          {title}
+        </h2>
         {description && (
-          <p className="mt-4 max-w-[720px] text-[14px] leading-[1.7] text-[var(--muted)]">{description}</p>
+          <p className="mt-4 max-w-[720px] text-[14px] leading-[1.7] text-[var(--muted)]">
+            {description}
+          </p>
         )}
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">

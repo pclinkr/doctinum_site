@@ -5,13 +5,13 @@ const VIEWBOX = { width: 1040, height: 580 };
 const CENTER = { x: 520, y: 290 };
 const ORBIT_RADIUS = 210;
 const SEQUENCE = [0, 1, 3, 2];
-const THRESHOLDS = [0.30, 0.35, 0.40, 0.45];
+const THRESHOLDS = [0.3, 0.35, 0.4, 0.45];
 
 const BASE_NODES = [
-  { angleDeg: -140, side: 'left', lane: 'top' },   // Universel
-  { angleDeg: -40, side: 'right', lane: 'top' },   // Naturel
+  { angleDeg: -140, side: 'left', lane: 'top' }, // Universel
+  { angleDeg: -40, side: 'right', lane: 'top' }, // Naturel
   { angleDeg: 140, side: 'left', lane: 'bottom' }, // Regulier
-  { angleDeg: 40, side: 'right', lane: 'bottom' }  // Inclusif
+  { angleDeg: 40, side: 'right', lane: 'bottom' }, // Inclusif
 ];
 
 function clamp(value, minValue, maxValue) {
@@ -22,7 +22,7 @@ function polarToCartesian(centerX, centerY, radius, angleDeg) {
   const rad = (angleDeg * Math.PI) / 180;
   return {
     x: centerX + radius * Math.cos(rad),
-    y: centerY + radius * Math.sin(rad)
+    y: centerY + radius * Math.sin(rad),
   };
 }
 
@@ -62,7 +62,10 @@ export default function HomeVoiceChannelSection() {
     };
   }, []);
 
-  const visibleCount = THRESHOLDS.reduce((count, threshold) => (progress >= threshold ? count + 1 : count), 0);
+  const visibleCount = THRESHOLDS.reduce(
+    (count, threshold) => (progress >= threshold ? count + 1 : count),
+    0
+  );
   const visibleFlags = useMemo(() => {
     const flags = [false, false, false, false];
     SEQUENCE.forEach((itemIndex, seqIndex) => {
@@ -102,24 +105,49 @@ export default function HomeVoiceChannelSection() {
           endX,
           elbowX,
           elbowY,
-          side: node.side
+          side: node.side,
         };
       }),
     [rotationDeg]
   );
 
   return (
-    <section ref={sectionRef} className="mx-auto w-full max-w-[1200px] px-16 py-24 max-[1024px]:px-8 max-[768px]:px-5" id="homeVoiceChannel">
+    <section
+      ref={sectionRef}
+      className="mx-auto w-full max-w-[1200px] px-16 py-24 max-[1024px]:px-8 max-[768px]:px-5"
+      id="homeVoiceChannel"
+    >
       <div className="rev mb-10 text-center">
-        <p className="mb-3 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">{t('sections.voiceChannel.eyebrow')}</p>
-        <h2 className="mx-auto max-w-[900px] text-[var(--color-primary)]">{t('sections.voiceChannel.title')}</h2>
+        <p className="mb-3 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[var(--muted)]">
+          {t('sections.voiceChannel.eyebrow')}
+        </p>
+        <h2 className="mx-auto max-w-[900px] text-[var(--color-primary)]">
+          {t('sections.voiceChannel.title')}
+        </h2>
       </div>
 
       {isDesktop ? (
         <div className="relative mx-auto h-[580px] max-w-[1040px]">
-          <svg className="pointer-events-none absolute inset-0 z-[1] h-full w-full" viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`} aria-hidden="true">
-            <circle cx={CENTER.x} cy={CENTER.y} r={210} fill="none" stroke="rgba(18,42,70,0.16)" />
-            <circle cx={CENTER.x} cy={CENTER.y} r={260} fill="none" strokeDasharray="2 4" stroke="rgba(18,42,70,0.14)" />
+          <svg
+            className="pointer-events-none absolute inset-0 z-[1] h-full w-full"
+            viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`}
+            aria-hidden="true"
+          >
+            <circle
+              cx={CENTER.x}
+              cy={CENTER.y}
+              r={210}
+              fill="none"
+              stroke="rgba(18,42,70,0.16)"
+            />
+            <circle
+              cx={CENTER.x}
+              cy={CENTER.y}
+              r={260}
+              fill="none"
+              strokeDasharray="2 4"
+              stroke="rgba(18,42,70,0.14)"
+            />
 
             {scene.map((node) => {
               const isVisible = visibleFlags[node.index];
@@ -141,8 +169,18 @@ export default function HomeVoiceChannelSection() {
               const isVisible = visibleFlags[node.index];
               return (
                 <g key={`node-${node.index}`} opacity={isVisible ? 1 : 0}>
-                  <circle cx={node.point.x} cy={node.point.y} r="8.5" fill="rgba(12,36,60,0.08)" />
-                  <circle cx={node.point.x} cy={node.point.y} r="5.4" fill="rgba(12,36,60,0.32)" />
+                  <circle
+                    cx={node.point.x}
+                    cy={node.point.y}
+                    r="8.5"
+                    fill="rgba(12,36,60,0.08)"
+                  />
+                  <circle
+                    cx={node.point.x}
+                    cy={node.point.y}
+                    r="5.4"
+                    fill="rgba(12,36,60,0.32)"
+                  />
                 </g>
               );
             })}
@@ -150,8 +188,12 @@ export default function HomeVoiceChannelSection() {
 
           <div className="absolute left-1/2 top-1/2 z-[2] flex h-[270px] w-[270px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-hidden rounded-full border border-[rgba(18,42,70,0.14)] bg-[linear-gradient(165deg,rgba(255,255,255,0.74)_0%,rgba(251,253,255,0.66)_100%)] px-7 text-center shadow-[0_20px_50px_var(--ink-08)] backdrop-blur-[1.5px]">
             <div className="voice-core-gold pointer-events-none absolute inset-0" />
-            <p className="mb-3 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">{t('sections.voiceChannel.coreEyebrow')}</p>
-            <p className="text-[17px] font-[var(--w500)] leading-[1.35] tracking-[-0.02em] text-[var(--color-primary)]">{t('sections.voiceChannel.coreText')}</p>
+            <p className="mb-3 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
+              {t('sections.voiceChannel.coreEyebrow')}
+            </p>
+            <p className="text-[17px] font-[var(--w500)] leading-[1.35] tracking-[-0.02em] text-[var(--color-primary)]">
+              {t('sections.voiceChannel.coreText')}
+            </p>
           </div>
 
           {scene.map((node) => {
@@ -165,13 +207,17 @@ export default function HomeVoiceChannelSection() {
                   left: node.blockX,
                   top: node.blockY,
                   opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0px)' : 'translateY(10px)'
+                  transform: isVisible ? 'translateY(0px)' : 'translateY(10px)',
                 }}
               >
-                <h3 className={`mb-3 text-[40px] font-[var(--w500)] leading-[1.02] tracking-[-0.03em] text-[var(--color-primary)] ${node.side === 'right' ? 'text-right' : ''}`.trim()}>
+                <h3
+                  className={`mb-3 text-[40px] font-[var(--w500)] leading-[1.02] tracking-[-0.03em] text-[var(--color-primary)] ${node.side === 'right' ? 'text-right' : ''}`.trim()}
+                >
                   {item.title}
                 </h3>
-                <p className={`text-[14px] leading-[1.62] text-[var(--muted)] ${node.side === 'right' ? 'text-right' : ''}`.trim()}>
+                <p
+                  className={`text-[14px] leading-[1.62] text-[var(--muted)] ${node.side === 'right' ? 'text-right' : ''}`.trim()}
+                >
                   {item.body}
                 </p>
               </article>
@@ -189,11 +235,15 @@ export default function HomeVoiceChannelSection() {
                 className="rev border-b border-[var(--ink-08)] pb-3 pt-2 last:border-b-0 transition-all duration-500 ease-out"
                 style={{
                   opacity: isVisible ? 1 : 0.24,
-                  transform: isVisible ? 'translateX(0px)' : 'translateX(8px)'
+                  transform: isVisible ? 'translateX(0px)' : 'translateX(8px)',
                 }}
               >
-                <h3 className="mb-1 text-[19px] font-[var(--w500)] tracking-[-0.03em] text-[var(--color-primary)]">{item.title}</h3>
-                <p className="text-[14px] leading-[1.62] text-[var(--muted)]">{item.body}</p>
+                <h3 className="mb-1 text-[19px] font-[var(--w500)] tracking-[-0.03em] text-[var(--color-primary)]">
+                  {item.title}
+                </h3>
+                <p className="text-[14px] leading-[1.62] text-[var(--muted)]">
+                  {item.body}
+                </p>
               </article>
             );
           })}

@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, normalizeLocale } from './src/constants/locales';
+import {
+  DEFAULT_LOCALE,
+  SUPPORTED_LOCALES,
+  normalizeLocale,
+} from './src/constants/locales';
 
 function detectPreferredLocale(request) {
   const acceptLanguage = request.headers.get('accept-language') || '';
@@ -20,7 +24,10 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  const hasLocalePrefix = SUPPORTED_LOCALES.some((localeValue) => pathname === `/${localeValue}` || pathname.startsWith(`/${localeValue}/`));
+  const hasLocalePrefix = SUPPORTED_LOCALES.some(
+    (localeValue) =>
+      pathname === `/${localeValue}` || pathname.startsWith(`/${localeValue}/`)
+  );
   if (hasLocalePrefix) {
     return NextResponse.next();
   }
@@ -32,5 +39,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|favicon.ico).*)']
+  matcher: ['/((?!_next|favicon.ico).*)'],
 };

@@ -9,26 +9,41 @@ function normalizeLanguageCode(rawCode) {
 }
 
 function getFlagAssetPath(languageCode) {
-  return languageCode === 'fr' ? '/assets/flags/fr.svg' : '/assets/flags/en.svg';
+  return languageCode === 'fr'
+    ? '/assets/flags/fr.svg'
+    : '/assets/flags/en.svg';
 }
 
-export default function LanguageSelector({ variant = 'dropdown', className = '', onOpenChange }) {
+export default function LanguageSelector({
+  variant = 'dropdown',
+  className = '',
+  onOpenChange,
+}) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef(null);
   const options = t('language.options', { returnObjects: true }) || [];
-  const currentCode = normalizeLanguageCode(i18n.resolvedLanguage || i18n.language);
+  const currentCode = normalizeLanguageCode(
+    i18n.resolvedLanguage || i18n.language
+  );
 
   const currentLanguage = useMemo(
-    () => options.find((option) => normalizeLanguageCode(option.code) === currentCode) || options[0],
+    () =>
+      options.find(
+        (option) => normalizeLanguageCode(option.code) === currentCode
+      ) || options[0],
     [options, currentCode]
   );
 
   const orderedOptions = useMemo(() => {
-    const currentOption = options.find((option) => normalizeLanguageCode(option.code) === currentCode);
-    const remainingOptions = options.filter((option) => normalizeLanguageCode(option.code) !== currentCode);
+    const currentOption = options.find(
+      (option) => normalizeLanguageCode(option.code) === currentCode
+    );
+    const remainingOptions = options.filter(
+      (option) => normalizeLanguageCode(option.code) !== currentCode
+    );
     return currentOption ? [currentOption, ...remainingOptions] : options;
   }, [options, currentCode]);
   const currentOption = orderedOptions[0];
@@ -101,9 +116,13 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
           />
         </button>
 
-        <div className={`fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[60] border-t border-[var(--border)] bg-[var(--bg-overlay-95)] px-5 pb-5 pt-4 shadow-[0_18px_40px_var(--ink-16)] backdrop-blur-[12px] transition-all duration-200 ease-out ${isOpen ? 'pointer-events-auto overflow-y-auto overscroll-contain opacity-100' : 'pointer-events-none overflow-hidden opacity-0'}`.trim()}>
+        <div
+          className={`fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[60] border-t border-[var(--border)] bg-[var(--bg-overlay-95)] px-5 pb-5 pt-4 shadow-[0_18px_40px_var(--ink-16)] backdrop-blur-[12px] transition-all duration-200 ease-out ${isOpen ? 'pointer-events-auto overflow-y-auto overscroll-contain opacity-100' : 'pointer-events-none overflow-hidden opacity-0'}`.trim()}
+        >
           <div className="mb-3 flex items-center justify-between">
-            <p className="text-[14px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)]">{t('language.title')}</p>
+            <p className="text-[14px] font-[var(--w500)] tracking-[var(--track)] text-[var(--color-primary)]">
+              {t('language.title')}
+            </p>
             <button
               type="button"
               className="flex h-[36px] w-[36px] items-center justify-center border-none bg-transparent p-0 text-[26px] leading-none text-[var(--color-primary)]"
@@ -125,14 +144,24 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
               >
                 <img
                   className="block h-auto w-[22px] rounded-[3px] border border-[var(--ink-14)] opacity-100"
-                  src={getFlagAssetPath(normalizeLanguageCode(currentOption.code))}
+                  src={getFlagAssetPath(
+                    normalizeLanguageCode(currentOption.code)
+                  )}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
                 />
-                <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">{currentOption.label}</span>
-                <span className="ml-auto inline-flex h-[16px] w-[16px] items-center justify-center text-[var(--muted)]" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" className="h-[13px] w-[13px] fill-none stroke-current stroke-[1.6] [stroke-linecap:round] [stroke-linejoin:round]">
+                <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">
+                  {currentOption.label}
+                </span>
+                <span
+                  className="ml-auto inline-flex h-[16px] w-[16px] items-center justify-center text-[var(--muted)]"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 16 16"
+                    className="h-[13px] w-[13px] fill-none stroke-current stroke-[1.6] [stroke-linecap:round] [stroke-linejoin:round]"
+                  >
                     <path d="M3.4 8.2 6.4 11.2 12.6 5" />
                   </svg>
                 </span>
@@ -158,7 +187,9 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
                     aria-hidden="true"
                     loading="lazy"
                   />
-                  <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">{option.label}</span>
+                  <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">
+                    {option.label}
+                  </span>
                 </button>
               ))}
             </div>
@@ -169,7 +200,10 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
   }
 
   return (
-    <div className={`relative flex h-[44px] items-center ${isOpen ? 'open' : ''}`.trim()} ref={rootRef}>
+    <div
+      className={`relative flex h-[44px] items-center ${isOpen ? 'open' : ''}`.trim()}
+      ref={rootRef}
+    >
       <button
         type="button"
         className="flex h-[44px] items-center justify-center p-0 border-none bg-transparent"
@@ -191,7 +225,9 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
         />
       </button>
 
-      <div className={`absolute right-0 top-[calc(100%+8px)] flex min-w-[168px] flex-col gap-[3px] rounded-[14px] border border-[var(--border)] bg-[var(--bg-overlay-95)] p-2 opacity-0 shadow-lg backdrop-blur-[10px] pointer-events-none translate-y-px scale-[0.98] transition-all duration-150 ease-out ${isOpen ? 'pointer-events-auto translate-y-0 scale-100 opacity-100' : ''}`.trim()}>
+      <div
+        className={`absolute right-0 top-[calc(100%+8px)] flex min-w-[168px] flex-col gap-[3px] rounded-[14px] border border-[var(--border)] bg-[var(--bg-overlay-95)] p-2 opacity-0 shadow-lg backdrop-blur-[10px] pointer-events-none translate-y-px scale-[0.98] transition-all duration-150 ease-out ${isOpen ? 'pointer-events-auto translate-y-0 scale-100 opacity-100' : ''}`.trim()}
+      >
         {orderedOptions.map((option) => {
           const isCurrent = normalizeLanguageCode(option.code) === currentCode;
           return (
@@ -207,12 +243,18 @@ export default function LanguageSelector({ variant = 'dropdown', className = '',
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
-                style={isCurrent ? {
-                  transform: 'translateY(1px)',
-                  boxShadow: '0 6px 12px var(--ink-14)'
-                } : undefined}
+                style={
+                  isCurrent
+                    ? {
+                        transform: 'translateY(1px)',
+                        boxShadow: '0 6px 12px var(--ink-14)',
+                      }
+                    : undefined
+                }
               />
-              <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">{option.label}</span>
+              <span className="text-[13px] font-[var(--w500)] tracking-[var(--track)]">
+                {option.label}
+              </span>
             </button>
           );
         })}

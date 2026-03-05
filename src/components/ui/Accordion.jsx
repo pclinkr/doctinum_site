@@ -1,30 +1,43 @@
 import { useState } from 'react';
-import { Minus, Plus } from 'lucide-react';
 
-export default function Accordion({ items, className = '' }) {
+export default function DropdownAccordion({ items, className = '' }) {
   const [openIndex, setOpenIndex] = useState(-1);
 
   return (
-    <div className={`ds-accordion ${className}`.trim()}>
+    <div className={`faq-list ${className}`.trim()}>
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={item.question} className={`ds-accordion-item ${isOpen ? 'is-open' : ''}`.trim()}>
+          <div
+            key={item.question}
+            className={`faq-item ${isOpen ? 'open' : ''}`.trim()}
+          >
             <button
-              className="ds-accordion-trigger"
+              className="faq-trigger"
               aria-expanded={isOpen}
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
               type="button"
             >
               <span>{item.question}</span>
-              <span className="ds-accordion-icon" aria-hidden="true">
-                {isOpen
-                  ? <Minus size={12} strokeWidth={1.5} absoluteStrokeWidth />
-                  : <Plus size={12} strokeWidth={1.5} absoluteStrokeWidth />}
+              <span className="faq-icon">
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {isOpen ? (
+                    <polyline points="4,10 8,6 12,10" />
+                  ) : (
+                    <polyline points="4,6 8,10 12,6" />
+                  )}
+                </svg>
               </span>
             </button>
-            <div className={`ds-accordion-content ${isOpen ? 'max-h-[500px]' : ''}`}>
-              <p className="pb-[18px] text-[14px] leading-[1.7] text-[var(--text-muted)]">{item.answer}</p>
+            <div className="faq-body">
+              <p>{item.answer}</p>
             </div>
           </div>
         );

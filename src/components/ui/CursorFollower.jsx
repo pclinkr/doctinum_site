@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 function resolveCursorMode(target) {
   if (!(target instanceof Element)) return 'default';
 
-  const videoTarget = target.closest('[data-cursor="video"], video, [data-cursor-video]');
+  const videoTarget = target.closest(
+    '[data-cursor="video"], video, [data-cursor-video]'
+  );
   if (videoTarget) return 'video';
 
   const forcedClickable = target.closest('[data-cursor="clickable"]');
@@ -30,7 +32,9 @@ export default function CursorFollower() {
   const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
-    const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const supportsFinePointer = window.matchMedia(
+      '(hover: hover) and (pointer: fine)'
+    ).matches;
     if (!supportsFinePointer) return undefined;
 
     setIsEnabled(true);
@@ -62,7 +66,12 @@ export default function CursorFollower() {
 
     const hideCursorDot = () => {
       if (!dotRef.current) return;
-      dotRef.current.classList.remove('visible', 'active', 'is-clickable', 'is-video');
+      dotRef.current.classList.remove(
+        'visible',
+        'active',
+        'is-clickable',
+        'is-video'
+      );
       currentModeRef.current = 'default';
     };
 
@@ -74,8 +83,10 @@ export default function CursorFollower() {
 
     const animate = () => {
       const easing = 0.22;
-      currentPositionRef.current.x += (targetPositionRef.current.x - currentPositionRef.current.x) * easing;
-      currentPositionRef.current.y += (targetPositionRef.current.y - currentPositionRef.current.y) * easing;
+      currentPositionRef.current.x +=
+        (targetPositionRef.current.x - currentPositionRef.current.x) * easing;
+      currentPositionRef.current.y +=
+        (targetPositionRef.current.y - currentPositionRef.current.y) * easing;
 
       if (dotRef.current) {
         dotRef.current.style.left = `${currentPositionRef.current.x}px`;
@@ -87,7 +98,9 @@ export default function CursorFollower() {
 
     animationFrameRef.current = window.requestAnimationFrame(animate);
 
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    window.addEventListener('pointermove', handlePointerMove, {
+      passive: true,
+    });
     window.addEventListener('pointerdown', handlePointerDown);
     window.addEventListener('pointerup', handlePointerUp);
     window.addEventListener('mouseout', handlePointerLeaveWindow);

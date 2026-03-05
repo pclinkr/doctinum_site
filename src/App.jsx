@@ -9,9 +9,19 @@ import HomePage from './site-pages/HomePage';
 import AboutPage from './site-pages/AboutPage';
 import CaseStudiesPage from './site-pages/CaseStudiesPage';
 import CaseDetailPage from './site-pages/CaseDetailPage';
-import { ContactPage, NotFoundPage, PrivacyPage } from './site-pages/ContactPrivacy404Pages';
+import {
+  ContactPage,
+  NotFoundPage,
+  PrivacyPage,
+} from './site-pages/ContactPrivacy404Pages';
 import { PAGE_IDS } from './constants/pages';
-import { useKpiAnimation, useLoader, useReducedMotionMarquee, useRevealAnimation, useScrollState } from './hooks/useSiteEffects';
+import {
+  useKpiAnimation,
+  useLoader,
+  useReducedMotionMarquee,
+  useRevealAnimation,
+  useScrollState,
+} from './hooks/useSiteEffects';
 
 const PAGE_TRANSITION_EXIT_MS = 520;
 const PAGE_TRANSITION_ENTER_MS = 620;
@@ -37,7 +47,8 @@ export default function App() {
 
   const loaderStage = useLoader();
   const isLoaderDone = loaderStage === 'done';
-  const { isNavScrolled, isFloatingCtaVisible, navBlurProgress } = useScrollState();
+  const { isNavScrolled, isFloatingCtaVisible, navBlurProgress } =
+    useScrollState();
 
   useRevealAnimation(currentPage);
   useKpiAnimation(currentPage);
@@ -69,7 +80,10 @@ export default function App() {
 
   useEffect(() => {
     if (!isLoaderDone) return undefined;
-    const startTimerId = window.setTimeout(() => setIsStorySliderStarted(true), 0);
+    const startTimerId = window.setTimeout(
+      () => setIsStorySliderStarted(true),
+      0
+    );
     return () => window.clearTimeout(startTimerId);
   }, [isLoaderDone]);
 
@@ -82,7 +96,11 @@ export default function App() {
 
   useEffect(() => {
     const handleDocumentClick = (event) => {
-      if (isMobileMenuOpen && navRef.current && !navRef.current.contains(event.target)) {
+      if (
+        isMobileMenuOpen &&
+        navRef.current &&
+        !navRef.current.contains(event.target)
+      ) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -153,8 +171,10 @@ export default function App() {
     'page-transition-layer',
     loaderStage === 'curtain' ? 'is-loader-reveal' : '',
     pageTransitionPhase === 'exiting' ? 'is-exiting' : '',
-    pageTransitionPhase === 'entering' ? 'is-entering' : ''
-  ].filter(Boolean).join(' ');
+    pageTransitionPhase === 'entering' ? 'is-entering' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const isTransitioning = pageTransitionPhase !== 'idle';
 
@@ -181,19 +201,43 @@ export default function App() {
           storyStarted={isStorySliderStarted}
           instantHero={hasLeftHomeOnce}
         />
-        <AboutPage active={currentPage === 'about'} onNavigate={navigateToPage} />
-        <CaseStudiesPage active={currentPage === 'case-studies'} onNavigate={navigateToPage} />
-        <CaseDetailPage active={currentPage === 'case-detail'} onNavigate={navigateToPage} />
+        <AboutPage
+          active={currentPage === 'about'}
+          onNavigate={navigateToPage}
+        />
+        <CaseStudiesPage
+          active={currentPage === 'case-studies'}
+          onNavigate={navigateToPage}
+        />
+        <CaseDetailPage
+          active={currentPage === 'case-detail'}
+          onNavigate={navigateToPage}
+        />
         <BlogPage active={currentPage === 'blog'} onNavigate={navigateToPage} />
-        <BlogPostPage active={currentPage === 'blog-post'} onNavigate={navigateToPage} />
-        <ContactPage active={currentPage === 'contact'} onNavigate={navigateToPage} />
-        <PrivacyPage active={currentPage === 'privacy'} onNavigate={navigateToPage} />
-        <NotFoundPage active={currentPage === '404'} onNavigate={navigateToPage} />
+        <BlogPostPage
+          active={currentPage === 'blog-post'}
+          onNavigate={navigateToPage}
+        />
+        <ContactPage
+          active={currentPage === 'contact'}
+          onNavigate={navigateToPage}
+        />
+        <PrivacyPage
+          active={currentPage === 'privacy'}
+          onNavigate={navigateToPage}
+        />
+        <NotFoundPage
+          active={currentPage === '404'}
+          onNavigate={navigateToPage}
+        />
 
         <SiteFooter onNavigate={navigateToPage} />
       </div>
 
-      <FloatingCta visible={isFloatingCtaVisible && !isTransitioning} onNavigate={navigateToPage} />
+      <FloatingCta
+        visible={isFloatingCtaVisible && !isTransitioning}
+        onNavigate={navigateToPage}
+      />
       <CustomCursor />
     </>
   );

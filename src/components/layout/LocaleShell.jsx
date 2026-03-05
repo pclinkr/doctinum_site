@@ -9,7 +9,13 @@ import Navigation from './Navigation';
 import SiteFooter from './SiteFooter';
 import FloatingCta from './FloatingCta';
 import CustomCursor from './CustomCursor';
-import { useKpiAnimation, useLoader, useReducedMotionMarquee, useRevealAnimation, useScrollState } from '../../hooks/useSiteEffects';
+import {
+  useKpiAnimation,
+  useLoader,
+  useReducedMotionMarquee,
+  useRevealAnimation,
+  useScrollState,
+} from '../../hooks/useSiteEffects';
 import { buildLocalizedPath, pageIdFromPathname } from '../../constants/routes';
 import { normalizeLocale } from '../../constants/locales';
 import i18n from '../../i18n';
@@ -46,7 +52,8 @@ export default function LocaleShell({ locale, children }) {
 
   const loaderStage = useLoader();
   const isLoaderDone = loaderStage === 'done';
-  const { isNavScrolled, isFloatingCtaVisible, navBlurProgress } = useScrollState();
+  const { isNavScrolled, isFloatingCtaVisible, navBlurProgress } =
+    useScrollState();
 
   useRevealAnimation(currentPage);
   useKpiAnimation(currentPage);
@@ -66,7 +73,10 @@ export default function LocaleShell({ locale, children }) {
 
   useEffect(() => {
     if (!isLoaderDone) return undefined;
-    const startTimerId = window.setTimeout(() => setIsStorySliderStarted(true), 0);
+    const startTimerId = window.setTimeout(
+      () => setIsStorySliderStarted(true),
+      0
+    );
     return () => window.clearTimeout(startTimerId);
   }, [isLoaderDone]);
 
@@ -79,7 +89,11 @@ export default function LocaleShell({ locale, children }) {
 
   useEffect(() => {
     const handleDocumentClick = (event) => {
-      if (isMobileMenuOpen && navRef.current && !navRef.current.contains(event.target)) {
+      if (
+        isMobileMenuOpen &&
+        navRef.current &&
+        !navRef.current.contains(event.target)
+      ) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -160,7 +174,7 @@ export default function LocaleShell({ locale, children }) {
   const contextValue = {
     onNavigate: navigateToPage,
     storyStarted: isStorySliderStarted,
-    hasLeftHomeOnce
+    hasLeftHomeOnce,
   };
 
   return (
@@ -185,13 +199,18 @@ export default function LocaleShell({ locale, children }) {
             'page-transition-layer',
             loaderStage === 'curtain' ? 'is-loader-reveal' : '',
             pageTransitionPhase === 'exiting' ? 'is-exiting' : '',
-            pageTransitionPhase === 'entering' ? 'is-entering' : ''
-          ].filter(Boolean).join(' ')}
+            pageTransitionPhase === 'entering' ? 'is-entering' : '',
+          ]
+            .filter(Boolean)
+            .join(' ')}
         >
           {children}
           <SiteFooter onNavigate={navigateToPage} />
         </div>
-        <FloatingCta visible={isFloatingCtaVisible && !isTransitioning} onNavigate={navigateToPage} />
+        <FloatingCta
+          visible={isFloatingCtaVisible && !isTransitioning}
+          onNavigate={navigateToPage}
+        />
         <CustomCursor />
       </SiteAppProvider>
     </ThemeProvider>
