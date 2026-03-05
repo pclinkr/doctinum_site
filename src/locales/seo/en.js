@@ -38,6 +38,21 @@ const enSeo = {
     title: 'Privacy Policy | Doctinum',
     description: 'How Doctinum collects, uses, and protects personal data.',
   },
+  'legal-notice': {
+    title: 'Legal Notice | Doctinum',
+    description:
+      'Legal information about Doctinum SAS: publisher, hosting, intellectual property and liability.',
+  },
+  'privacy-policy': {
+    title: 'Privacy Policy | Doctinum',
+    description:
+      'GDPR-compliant privacy policy: collection, processing and protection of personal data.',
+  },
+  'cookies-policy': {
+    title: 'Cookies Policy | Doctinum',
+    description:
+      'Cookies management policy compliant with CNIL recommendations: consent and preference management.',
+  },
   'surgery-aesthetic': {
     title: 'Surgery & Aesthetic Medicine | Doctinum',
     description:

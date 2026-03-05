@@ -10,6 +10,9 @@ export const PAGE_PATH_SEGMENTS = {
   styleguide: 'styleguide',
   contact: 'contact',
   privacy: 'privacy',
+  'legal-notice': 'legal-notice',
+  'privacy-policy': 'privacy-policy',
+  'cookies-policy': 'cookies-policy',
   404: '404',
 
   'surgery-aesthetic': 'solutions/chirurgie-medecine-esthetique',

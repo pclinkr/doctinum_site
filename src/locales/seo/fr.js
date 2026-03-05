@@ -39,6 +39,21 @@ const frSeo = {
     description:
       'Comment Doctinum collecte, utilise et protège les données personnelles.',
   },
+  'legal-notice': {
+    title: 'Mentions légales | Doctinum',
+    description:
+      'Informations légales sur Doctinum SAS : éditeur, hébergement, propriété intellectuelle et responsabilité.',
+  },
+  'privacy-policy': {
+    title: 'Politique de confidentialité | Doctinum',
+    description:
+      'Politique de confidentialité conforme au RGPD : collecte, traitement et protection des données personnelles.',
+  },
+  'cookies-policy': {
+    title: 'Politique de gestion des cookies | Doctinum',
+    description:
+      'Politique de gestion des cookies conforme aux recommandations de la CNIL : consentement et gestion des préférences.',
+  },
   'surgery-aesthetic': {
     title: 'Chirurgie & médecine esthétique | Doctinum',
     description:

@@ -37,7 +37,7 @@ export default function SiteFooter({ onNavigate }) {
       ) || null;
 
   const footerCol2Links = [
-    ...functioningLinks,
+    // ...functioningLinks,
     ...(partnershipLink
       ? [
           {
@@ -60,9 +60,9 @@ export default function SiteFooter({ onNavigate }) {
   ];
 
   const footerLegalLinks = [
-    { label: t('footer.legalNotice'), page: '404' },
-    { label: t('footer.privacyPolicy'), page: 'privacy' },
-    { label: t('footer.cookies'), page: '404' },
+    { label: t('footer.legalNotice'), page: 'legal-notice' },
+    { label: t('footer.privacyPolicy'), page: 'privacy-policy' },
+    { label: t('footer.cookies'), page: 'cookies-policy' },
   ];
   const solutionSplitIndex = Math.min(2, solutionSections.length);
   const solutionSectionsCol1 = solutionSections.slice(0, solutionSplitIndex);
@@ -205,6 +205,16 @@ export default function SiteFooter({ onNavigate }) {
           <p className="text-[12px] text-[var(--muted)]">
             {t('footer.copyright')}
           </p>
+          <button
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('openCookiePreferences'));
+              }
+            }}
+            className="cursor-pointer text-[12px] text-[var(--muted)] transition-colors duration-150 ease-out hover:text-[var(--color-primary)]"
+          >
+            {t('footer.manageCookies', 'Modifier mes préférences cookies')}
+          </button>
         </div>
       </div>
     </footer>

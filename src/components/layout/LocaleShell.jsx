@@ -9,6 +9,7 @@ import Navigation from './Navigation';
 import SiteFooter from './SiteFooter';
 import FloatingCta from './FloatingCta';
 import CustomCursor from './CustomCursor';
+import CookieBanner from '../ui/CookieBanner';
 import {
   useKpiAnimation,
   useLoader,
@@ -212,6 +213,7 @@ export default function LocaleShell({ locale, children }) {
           onNavigate={navigateToPage}
         />
         <CustomCursor />
+        <CookieBanner onNavigate={navigateToPage} />
       </SiteAppProvider>
     </ThemeProvider>
   );

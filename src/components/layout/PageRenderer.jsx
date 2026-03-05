@@ -19,6 +19,11 @@ import {
   NotFoundPage,
   PrivacyPage,
 } from '../../site-pages/ContactPrivacy404Pages';
+import {
+  LegalNoticePage,
+  PrivacyPolicyPage,
+  CookiesPolicyPage,
+} from '../../site-pages/LegalPages';
 import { useSiteAppContext } from '../../context/SiteAppContext';
 
 export default function PageRenderer({ pageId }) {
@@ -94,6 +99,18 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'privacy') {
     return <PrivacyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'legal-notice') {
+    return <LegalNoticePage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'privacy-policy') {
+    return <PrivacyPolicyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'cookies-policy') {
+    return <CookiesPolicyPage active onNavigate={onNavigate} />;
   }
 
   return <NotFoundPage active onNavigate={onNavigate} />;
