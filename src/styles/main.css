@@ -44,342 +44,873 @@
 }
 
 /* ============================================================ RESET - Converti en classes Tailwind ============================================================ */
-*,*::before,*::after{@apply box-border m-0 p-0}
-html{@apply scroll-smooth}
-body{@apply bg-[var(--bg)] text-[var(--black)] font-[var(--sans)] antialiased overflow-x-hidden}
-a{@apply text-inherit no-underline}
-img,svg{@apply block}
-button{@apply cursor-pointer border-none bg-transparent}
-input,textarea,select{@apply text-sm outline-none}
-.si.si{font-family:var(--serif)!important;font-style:italic;font-weight:var(--w500);letter-spacing:var(--track-serif)}
+*,
+*::before,
+*::after {
+  @apply box-border m-0 p-0;
+}
+html {
+  @apply scroll-smooth;
+}
+body {
+  @apply bg-[var(--bg)] text-[var(--black)] font-[var(--sans)] antialiased overflow-x-hidden;
+}
+a {
+  @apply text-inherit no-underline;
+}
+img,
+svg {
+  @apply block;
+}
+button {
+  @apply cursor-pointer border-none bg-transparent;
+}
+input,
+textarea,
+select {
+  @apply text-sm outline-none;
+}
+.si.si {
+  font-family: var(--serif) !important;
+  font-style: italic;
+  font-weight: var(--w500);
+  letter-spacing: var(--track-serif);
+}
 
 /* ============================================================ LOADING SCREEN - Converti en classes Tailwind ============================================================ */
-#ls{
-  --ls-logo-w:clamp(240px,38vw,430px);
+#ls {
+  --ls-logo-w: clamp(240px, 38vw, 430px);
   @apply fixed inset-0 z-[9999] grid place-items-center bg-[var(--color-primary)] overflow-hidden;
-  transform:translateY(0);
-  will-change:transform;
+  transform: translateY(0);
+  will-change: transform;
 }
-#ls::after{
-  content:'';
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-1px;
-  height:40px;
-  background:linear-gradient(to bottom,var(--ink-30),transparent);
-  opacity:0;
+#ls::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--ink-30), transparent);
+  opacity: 0;
 }
-#ls.hide{
-  pointer-events:none;
-  animation:curtainLift .88s cubic-bezier(.19,1,.22,1) .46s forwards;
+#ls.hide {
+  pointer-events: none;
+  animation: curtainLift 0.88s cubic-bezier(0.19, 1, 0.22, 1) 0.46s forwards;
 }
-#ls.hide::after{opacity:1}
-.ls-curtain{@apply absolute inset-0 bg-[var(--color-primary)] will-change-transform}
-.ls-content{@apply relative z-[1] flex flex-col items-center justify-center gap-[40px]}
-.ls-logo-wrap{@apply flex items-center justify-center}
-.ls-progress-wrap{@apply w-[var(--ls-logo-w)]}
-.ls-progress-track{@apply relative h-[6px] w-full overflow-hidden rounded-full bg-[var(--white-28)]}
-.ls-progress-fill{
-  width:100%;
-  transform-origin:left center;
-  transform:scaleX(0);
+#ls.hide::after {
+  opacity: 1;
+}
+.ls-curtain {
+  @apply absolute inset-0 bg-[var(--color-primary)] will-change-transform;
+}
+.ls-content {
+  @apply relative z-[1] flex flex-col items-center justify-center gap-[40px];
+}
+.ls-logo-wrap {
+  @apply flex items-center justify-center;
+}
+.ls-progress-wrap {
+  @apply w-[var(--ls-logo-w)];
+}
+.ls-progress-track {
+  @apply relative h-[6px] w-full overflow-hidden rounded-full bg-[var(--white-28)];
+}
+.ls-progress-fill {
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
   @apply relative h-full rounded-full;
-  animation:lsBar .66s cubic-bezier(.22,.61,.36,1) 1.22s forwards;
-  background:linear-gradient(90deg,var(--white-75) 0%,var(--white-96) 52%,var(--white-75) 100%);
-  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 3px 10px rgba(255,255,255,.26);
+  animation: lsBar 0.66s cubic-bezier(0.22, 0.61, 0.36, 1) 1.22s forwards;
+  background: linear-gradient(
+    90deg,
+    var(--white-75) 0%,
+    var(--white-96) 52%,
+    var(--white-75) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 3px 10px rgba(255, 255, 255, 0.26);
 }
-.ls-progress-fill::after{
-  content:'';
+.ls-progress-fill::after {
+  content: '';
   @apply absolute top-0 right-0 h-full w-[18%] rounded-full;
-  background:linear-gradient(90deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.72) 100%);
-  opacity:.8;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  opacity: 0.8;
 }
-#ls.hide .ls-logo-wrap{animation:lsLogoOut .56s cubic-bezier(.35,0,.9,.28) .12s forwards}
-#ls.hide .ls-progress-wrap{animation:lsProgressFadeOut .42s cubic-bezier(.22,.61,.36,1) 0s forwards}
-@keyframes lsPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(.975)}}
-@keyframes curtainLift{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-104%)}
+#ls.hide .ls-logo-wrap {
+  animation: lsLogoOut 0.56s cubic-bezier(0.35, 0, 0.9, 0.28) 0.12s forwards;
 }
-@keyframes lsBar{to{transform:scaleX(1)}}
-@keyframes lsLogoDrop{
-  0%{opacity:0;transform:translate3d(0,-110vh,0) scale(.9)}
-  72%{opacity:1}
-  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+#ls.hide .ls-progress-wrap {
+  animation: lsProgressFadeOut 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) 0s
+    forwards;
 }
-@keyframes lsProgressIntro{
-  0%{opacity:0}
-  100%{opacity:1}
+@keyframes lsPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.975);
+  }
 }
-@keyframes lsLogoOut{
-  0%{opacity:1;transform:translate3d(0,0,0) scale(1)}
-  100%{opacity:0;transform:translate3d(0,-120vh,0) scale(.94)}
+@keyframes curtainLift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-104%);
+  }
 }
-@keyframes lsProgressFadeOut{
-  0%{opacity:1}
-  22%{opacity:1}
-  68%{opacity:.42}
-  100%{opacity:0}
+@keyframes lsBar {
+  to {
+    transform: scaleX(1);
+  }
 }
-.ls-logo-wrap{
-  opacity:0;
-  transform:translate3d(0,-110vh,0) scale(.9);
+@keyframes lsLogoDrop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -110vh, 0) scale(0.9);
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes lsProgressIntro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes lsLogoOut {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -120vh, 0) scale(0.94);
+  }
+}
+@keyframes lsProgressFadeOut {
+  0% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 1;
+  }
+  68% {
+    opacity: 0.42;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.ls-logo-wrap {
+  opacity: 0;
+  transform: translate3d(0, -110vh, 0) scale(0.9);
   animation:
-    lsLogoDrop .68s cubic-bezier(.18,.88,.28,1) .5s both,
+    lsLogoDrop 0.68s cubic-bezier(0.18, 0.88, 0.28, 1) 0.5s both,
     lsPulse 1.6s ease-in-out 1.18s infinite;
-  will-change:transform,opacity;
+  will-change: transform, opacity;
 }
-.ls-progress-wrap{
-  opacity:0;
-  transform:translate3d(0,0,0);
+.ls-progress-wrap {
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
   animation:
-    lsProgressIntro .24s ease-in-out 1.16s forwards,
+    lsProgressIntro 0.24s ease-in-out 1.16s forwards,
     lsPulse 1.6s ease-in-out 1.18s infinite;
-  will-change:transform,opacity;
+  will-change: transform, opacity;
 }
 
 /* ============================================================ LAYOUT - Converti en classes Tailwind ============================================================ */
-.page{@apply hidden min-h-screen}
-.page.active{@apply block}
-.page-transition-layer{@apply relative}
-.page-transition-layer.is-loader-reveal{@apply animate-pageLoaderRevealFull}
-.page-transition-layer.is-exiting{@apply pointer-events-none animate-pageRouteExitFull}
-.page-transition-layer.is-entering{@apply pointer-events-none animate-pageRouteEnterFull}
-@keyframes pageLoaderReveal{
-  from{opacity:0;transform:translate3d(0,36px,0)}
-  to{opacity:1;transform:translate3d(0,0,0)}
+.page {
+  @apply hidden min-h-screen;
 }
-@keyframes pageRouteExit{
-  from{opacity:1;transform:translate3d(0,0,0)}
-  to{opacity:0;transform:translate3d(0,-56px,0)}
+.page.active {
+  @apply block;
 }
-@keyframes pageRouteEnter{
-  from{opacity:0;transform:translate3d(0,52px,0)}
-  to{opacity:1;transform:translate3d(0,0,0)}
+.page-transition-layer {
+  @apply relative;
 }
-@media (prefers-reduced-motion: reduce){
+.page-transition-layer.is-loader-reveal {
+  @apply animate-pageLoaderRevealFull;
+}
+.page-transition-layer.is-exiting {
+  @apply pointer-events-none animate-pageRouteExitFull;
+}
+.page-transition-layer.is-entering {
+  @apply pointer-events-none animate-pageRouteEnterFull;
+}
+@keyframes pageLoaderReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes pageRouteExit {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -56px, 0);
+  }
+}
+@keyframes pageRouteEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 52px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
   .page-transition-layer.is-exiting,
-  .page-transition-layer.is-entering{@apply animate-none}
+  .page-transition-layer.is-entering {
+    @apply animate-none;
+  }
 }
 
 /* ============================================================ NAVIGATION - Converti en classes Tailwind ============================================================ */
-.nav{--nav-scroll-progress:0;@apply fixed top-0 left-0 right-0 w-full max-w-none h-[var(--nav-h)] flex items-center p-0 gap-6 z-[100] transition-colors duration-300 ease-out isolate overflow-visible}
-.nav::before{content:'';@apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] backdrop-blur-[calc(24px+var(--nav-scroll-progress)*-8px)] bg-[var(--bg-overlay-10)] pointer-events-none z-[2] transition-opacity duration-200 ease-out;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.82) 60%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.82) 60%,transparent 100%)}
-.nav::after{content:'';@apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] pointer-events-none z-[1] transition-opacity duration-200 ease-out;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.9) 10%,rgba(0,0,0,.46) 56%,transparent 96%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.9) 10%,rgba(0,0,0,.46) 56%,transparent 96%,transparent 100%);background:linear-gradient(180deg,var(--bg-page) 0%,var(--bg-page) calc(var(--nav-h) - var(--nav-opaque-threshold)),var(--bg-overlay-92) calc(var(--nav-h) + 8px),var(--bg-overlay-00) 100%)}
-.nav.scrolled{@apply bg-transparent border-b-0}
+.nav {
+  --nav-scroll-progress: 0;
+  @apply fixed top-0 left-0 right-0 w-full max-w-none h-[var(--nav-h)] flex items-center p-0 gap-6 z-[100] transition-colors duration-300 ease-out isolate overflow-visible;
+}
+.nav::before {
+  content: '';
+  @apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] backdrop-blur-[calc(24px+var(--nav-scroll-progress)*-8px)] bg-[var(--bg-overlay-10)] pointer-events-none z-[2] transition-opacity duration-200 ease-out;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.82) 60%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.82) 60%,
+    transparent 100%
+  );
+}
+.nav::after {
+  content: '';
+  @apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] pointer-events-none z-[1] transition-opacity duration-200 ease-out;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.9) 10%,
+    rgba(0, 0, 0, 0.46) 56%,
+    transparent 96%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.9) 10%,
+    rgba(0, 0, 0, 0.46) 56%,
+    transparent 96%,
+    transparent 100%
+  );
+  background: linear-gradient(
+    180deg,
+    var(--bg-page) 0%,
+    var(--bg-page) calc(var(--nav-h) - var(--nav-opaque-threshold)),
+    var(--bg-overlay-92) calc(var(--nav-h) + 8px),
+    var(--bg-overlay-00) 100%
+  );
+}
+.nav.scrolled {
+  @apply bg-transparent border-b-0;
+}
 
 /* ============================================================ ANIMATIONS RÉUTILISABLES - CODE DRY ============================================================ */
 
 /* Base reveal animation - Applique fade-in + slide-up */
-.rev-base{
-  opacity:0;
-  transform:translateY(28px) scale(0.993);
-  transition:opacity 0.82s cubic-bezier(0.16,1,0.3,1), 
-             transform 0.82s cubic-bezier(0.16,1,0.3,1);
+.rev-base {
+  opacity: 0;
+  transform: translateY(28px) scale(0.993);
+  transition:
+    opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.82s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Version sans scale pour les éléments qui ne doivent pas réduire */
-.rev-no-scale{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.82s cubic-bezier(0.16,1,0.3,1), 
-             transform 0.82s cubic-bezier(0.16,1,0.3,1);
+.rev-no-scale {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.82s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.rev-no-scale.in{opacity:1;transform:translateY(0)}
+.rev-no-scale.in {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Classes qui utilisent reveal */
-.rev{@apply rev-base}
-.rev.in{opacity:1;transform:translateY(0)}
-.rev.in.d1{transition-delay:120ms}
-.rev.in.d2{transition-delay:220ms}
-.rev.in.d3{transition-delay:320ms}
-.rev.in.d4{transition-delay:420ms}
+.rev {
+  @apply rev-base;
+}
+.rev.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rev.in.d1 {
+  transition-delay: 120ms;
+}
+.rev.in.d2 {
+  transition-delay: 220ms;
+}
+.rev.in.d3 {
+  transition-delay: 320ms;
+}
+.rev.in.d4 {
+  transition-delay: 420ms;
+}
 
 /* ============================================================ REVEAL ANIMATIONS - Converti en classes Tailwind ============================================================ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* ============================================================ CUSTOM CURSOR - Converti en classes Tailwind ============================================================ */
-.cursor-dot{@apply fixed top-0 left-0 w-[20px] h-[20px] rounded-full bg-[var(--ink-22)] border border-transparent z-[12000] pointer-events-none -translate-x-1/2 -translate-y-1/2 scale-100 opacity-0 transition-opacity duration-200 ease-out transition-transform duration-150 ease-spring transition-all duration-150 ease-spring transition-all duration-150 ease-out transition-all duration-150 ease-out}
-.cursor-dot.visible{@apply opacity-100}
-.cursor-dot.active{@apply -translate-x-1/2 -translate-y-1/2 scale-[1.12]}
-.cursor-dot-play{@apply absolute top-1/2 left-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[8px] border-l-white -translate-x-[40%] -translate-y-1/2 scale-[0.7] opacity-0 transition-opacity duration-150 ease-out transition-transform duration-150 ease-spring}
-.cursor-dot.is-clickable{@apply w-[30px] h-[30px] rounded-[10px] bg-[var(--ink-16)] border-[var(--ink-35)]}
-.cursor-dot.is-video{@apply w-[36px] h-[36px] rounded-full bg-[var(--ink-68)] border-[var(--white-40)]}
-.cursor-dot.is-video .cursor-dot-play{@apply opacity-100 -translate-x-[40%] -translate-y-1/2 scale-100}
+.cursor-dot {
+  @apply fixed top-0 left-0 w-[20px] h-[20px] rounded-full bg-[var(--ink-22)] border border-transparent z-[12000] pointer-events-none -translate-x-1/2 -translate-y-1/2 scale-100 opacity-0 transition-opacity duration-200 ease-out transition-transform duration-150 ease-spring transition-all duration-150 ease-spring transition-all duration-150 ease-out transition-all duration-150 ease-out;
+}
+.cursor-dot.visible {
+  @apply opacity-100;
+}
+.cursor-dot.active {
+  @apply -translate-x-1/2 -translate-y-1/2 scale-[1.12];
+}
+.cursor-dot-play {
+  @apply absolute top-1/2 left-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[8px] border-l-white -translate-x-[40%] -translate-y-1/2 scale-[0.7] opacity-0 transition-opacity duration-150 ease-out transition-transform duration-150 ease-spring;
+}
+.cursor-dot.is-clickable {
+  @apply w-[30px] h-[30px] rounded-[10px] bg-[var(--ink-16)] border-[var(--ink-35)];
+}
+.cursor-dot.is-video {
+  @apply w-[36px] h-[36px] rounded-full bg-[var(--ink-68)] border-[var(--white-40)];
+}
+.cursor-dot.is-video .cursor-dot-play {
+  @apply opacity-100 -translate-x-[40%] -translate-y-1/2 scale-100;
+}
 
 /* ============================================================ MARQUEE - Converti en classes Tailwind ============================================================ */
-.marquee-wrap{--marquee-edge-fade:clamp(140px,22vw,340px);@apply relative overflow-hidden py-[17px] isolate;background-image:var(--gradient-marquee-rail),var(--gradient-marquee-rail);background-position:top,bottom;background-repeat:no-repeat,no-repeat;background-size:100% 1px,100% 1px}
-.marquee-track{@apply flex gap-14 w-max animate-marquee}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-wrap::before,.marquee-wrap::after{content:'';@apply absolute top-0 bottom-0 w-[var(--marquee-edge-fade)] pointer-events-none z-[3]}
-.marquee-wrap::before{@apply left-0; background:var(--gradient-marquee-fade-left)}
-.marquee-wrap::after{@apply right-0; background:var(--gradient-marquee-fade-right)}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-item{@apply text-[15px] font-[var(--w500)] tracking-[var(--track-tight)] text-[var(--subtle)] whitespace-nowrap flex items-center gap-5}
-.marquee-item::after{content:'✦';@apply text-[9px] text-[var(--border-mid)]}
+.marquee-wrap {
+  --marquee-edge-fade: clamp(140px, 22vw, 340px);
+  @apply relative overflow-hidden py-[17px] isolate;
+  background-image: var(--gradient-marquee-rail), var(--gradient-marquee-rail);
+  background-position: top, bottom;
+  background-repeat: no-repeat, no-repeat;
+  background-size:
+    100% 1px,
+    100% 1px;
+}
+.marquee-track {
+  @apply flex gap-14 w-max animate-marquee;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-wrap::before,
+.marquee-wrap::after {
+  content: '';
+  @apply absolute top-0 bottom-0 w-[var(--marquee-edge-fade)] pointer-events-none z-[3];
+}
+.marquee-wrap::before {
+  @apply left-0;
+  background: var(--gradient-marquee-fade-left);
+}
+.marquee-wrap::after {
+  @apply right-0;
+  background: var(--gradient-marquee-fade-right);
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-item {
+  @apply text-[15px] font-[var(--w500)] tracking-[var(--track-tight)] text-[var(--subtle)] whitespace-nowrap flex items-center gap-5;
+}
+.marquee-item::after {
+  content: '✦';
+  @apply text-[9px] text-[var(--border-mid)];
+}
 
 /* ============================================================ VOICE DEMO SCROLL SECTION - Converti en classes Tailwind ============================================================ */
-.voice-demo-scroll{@apply relative h-[248vh] max-h-[2300px] my-6 mx-0}
-.voice-demo-sticky{@apply sticky top-[calc(var(--nav-h)+10px)] h-[calc(100vh-var(--nav-h)-16px)] flex items-center justify-center px-16 py-5 overflow-hidden}
-.voice-demo-shell{@apply relative w-full max-w-[1200px] h-[min(820px,calc(100vh-var(--nav-h)-26px))] rounded-[34px] px-10 py-10 border border-[var(--ink-06)] shadow-[inset_0_1px_0_var(--white-65),0_25px_60px_rgba(33,43,78,.08)];background:var(--gradient-surface-medical-premium)}
-.voice-demo-shell::before{content:'';@apply absolute inset-0 pointer-events-none bg-[length:8px_8px] opacity-55;background-image:var(--gradient-surface-dots)}
-.voice-demo-head{@apply relative z-[2] max-w-[620px] mx-auto text-center mb-6}
-.voice-demo-label{@apply mb-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[rgba(32,40,66,.62)]}
-.voice-demo-title{@apply text-[clamp(28px,3.9vw,44px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.06] text-[#1c2334]}
-.voice-demo-sub{@apply text-[14px] leading-[1.65] text-[rgba(28,35,52,.66)] max-w-[520px] mx-auto mt-4}
-.voice-demo-stage{@apply relative z-[2] grid grid-cols-[minmax(180px,240px)_minmax(240px,360px)_minmax(190px,280px)] gap-6 items-center justify-center min-h-[420px]}
-.voice-demo-side{@apply flex flex-col gap-[14px] transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear}
-.voice-demo-side.left,.voice-demo-side.right{@apply items-start}
-.voice-dialog-chip{@apply inline-flex items-center gap-2 p-[10px] p-4 rounded-[12px] bg-[var(--white-70)] border border-[rgba(78,84,108,.16)] text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[#e52d7a] backdrop-blur-[8px]}
-.voice-dialog-dot{@apply w-[9px] h-[9px] rounded-full bg-[#ff2f75] shadow-[0_0_0_6px_rgba(255,47,117,.15)]}
-.voice-goal-card{@apply max-w-[240px] p-[14px] p-4 rounded-[14px] bg-[var(--white-46)] border border-[rgba(70,82,122,.11)] text-[15px] leading-[1.55] text-[rgba(28,35,52,.74)] backdrop-blur-[7px]}
-.voice-test-button{@apply mt-1}
-.voice-phone-wrap{@apply relative flex items-center justify-center transition-transform duration-220 ease-linear origin-[50%_55%]}
-.voice-phone-glow{@apply absolute w-[82%] h-[48%] bottom-[8%] rounded-full blur-[9px] opacity-[0.90];background:var(--gradient-voice-phone-glow)}
-.voice-phone-frame{@apply relative w-[min(340px,30vw)] min-w-[248px] aspect-[0.53/1] rounded-[40px] p-[14px] border border-[rgba(86,94,128,.13)] shadow-[0_24px_65px_rgba(26,40,85,.14),inset_0_0_0_1px_var(--white-72)] flex flex-col justify-between;background:linear-gradient(to bottom,#ffffff,#f3efff)}
-.voice-phone-notch{@apply w-[82px] h-[8px] rounded-full bg-[rgba(120,126,158,.24)] mx-auto mt-1}
-.voice-phone-content{@apply flex-1 flex flex-col items-center justify-center gap-[6px]}
-.voice-avatar{@apply w-[66%] aspect-square rounded-full shadow-[0_22px_45px_rgba(87,56,141,.2)];background:var(--gradient-voice-avatar-base)}
-.voice-agent-name{@apply text-[43px] font-[var(--w500)] tracking-[-0.06em] text-[#2b3246] mt-1}
-.voice-agent-role{@apply text-[20px] leading-[1.2] text-[rgba(43,50,70,.46)]}
-.voice-answer-row{@apply flex items-center justify-center gap-[10px] p-[13px] p-4 rounded-full bg-[rgba(239,236,248,.95)] border border-[rgba(62,68,101,.11)] text-[15px] font-[var(--w500)] text-[#2f3550] tracking-[var(--track)]}
-.voice-answer-icon{@apply inline-flex items-center justify-center w-[34px] h-[34px] rounded-full bg-white shadow-[0_8px_16px_rgba(39,44,66,.15)]}
-.voice-transcript-line{@apply max-w-[280px] transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear}
-.voice-transcript-speaker{@apply text-[20px] font-[var(--w500)] tracking-[-0.05em] text-[rgba(37,44,67,.45)] mb-1}
-.voice-transcript-text{@apply text-[31px] font-[var(--w500)] tracking-[-0.05em] leading-[1.08] text-[#303850]}
+.voice-demo-scroll {
+  @apply relative h-[248vh] max-h-[2300px] my-6 mx-0;
+}
+.voice-demo-sticky {
+  @apply sticky top-[calc(var(--nav-h)+10px)] h-[calc(100vh-var(--nav-h)-16px)] flex items-center justify-center px-16 py-5 overflow-hidden;
+}
+.voice-demo-shell {
+  @apply relative w-full max-w-[1200px] h-[min(820px,calc(100vh-var(--nav-h)-26px))] rounded-[34px] px-10 py-10 border border-[var(--ink-06)] shadow-[inset_0_1px_0_var(--white-65),0_25px_60px_rgba(33,43,78,.08)];
+  background: var(--gradient-surface-medical-premium);
+}
+.voice-demo-shell::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none bg-[length:8px_8px] opacity-55;
+  background-image: var(--gradient-surface-dots);
+}
+.voice-demo-head {
+  @apply relative z-[2] max-w-[620px] mx-auto text-center mb-6;
+}
+.voice-demo-label {
+  @apply mb-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.07em] text-[rgba(32,40,66,.62)];
+}
+.voice-demo-title {
+  @apply text-[clamp(28px,3.9vw,44px)] font-[var(--w500)] tracking-[-0.055em] leading-[1.06] text-[#1c2334];
+}
+.voice-demo-sub {
+  @apply text-[14px] leading-[1.65] text-[rgba(28,35,52,.66)] max-w-[520px] mx-auto mt-4;
+}
+.voice-demo-stage {
+  @apply relative z-[2] grid grid-cols-[minmax(180px,240px)_minmax(240px,360px)_minmax(190px,280px)] gap-6 items-center justify-center min-h-[420px];
+}
+.voice-demo-side {
+  @apply flex flex-col gap-[14px] transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear;
+}
+.voice-demo-side.left,
+.voice-demo-side.right {
+  @apply items-start;
+}
+.voice-dialog-chip {
+  @apply inline-flex items-center gap-2 p-[10px] p-4 rounded-[12px] bg-[var(--white-70)] border border-[rgba(78,84,108,.16)] text-[15px] font-[var(--w500)] tracking-[var(--track)] text-[#e52d7a] backdrop-blur-[8px];
+}
+.voice-dialog-dot {
+  @apply w-[9px] h-[9px] rounded-full bg-[#ff2f75] shadow-[0_0_0_6px_rgba(255,47,117,.15)];
+}
+.voice-goal-card {
+  @apply max-w-[240px] p-[14px] p-4 rounded-[14px] bg-[var(--white-46)] border border-[rgba(70,82,122,.11)] text-[15px] leading-[1.55] text-[rgba(28,35,52,.74)] backdrop-blur-[7px];
+}
+.voice-test-button {
+  @apply mt-1;
+}
+.voice-phone-wrap {
+  @apply relative flex items-center justify-center transition-transform duration-220 ease-linear origin-[50%_55%];
+}
+.voice-phone-glow {
+  @apply absolute w-[82%] h-[48%] bottom-[8%] rounded-full blur-[9px] opacity-[0.90];
+  background: var(--gradient-voice-phone-glow);
+}
+.voice-phone-frame {
+  @apply relative w-[min(340px,30vw)] min-w-[248px] aspect-[0.53/1] rounded-[40px] p-[14px] border border-[rgba(86,94,128,.13)] shadow-[0_24px_65px_rgba(26,40,85,.14),inset_0_0_0_1px_var(--white-72)] flex flex-col justify-between;
+  background: linear-gradient(to bottom, #ffffff, #f3efff);
+}
+.voice-phone-notch {
+  @apply w-[82px] h-[8px] rounded-full bg-[rgba(120,126,158,.24)] mx-auto mt-1;
+}
+.voice-phone-content {
+  @apply flex-1 flex flex-col items-center justify-center gap-[6px];
+}
+.voice-avatar {
+  @apply w-[66%] aspect-square rounded-full shadow-[0_22px_45px_rgba(87,56,141,.2)];
+  background: var(--gradient-voice-avatar-base);
+}
+.voice-agent-name {
+  @apply text-[43px] font-[var(--w500)] tracking-[-0.06em] text-[#2b3246] mt-1;
+}
+.voice-agent-role {
+  @apply text-[20px] leading-[1.2] text-[rgba(43,50,70,.46)];
+}
+.voice-answer-row {
+  @apply flex items-center justify-center gap-[10px] p-[13px] p-4 rounded-full bg-[rgba(239,236,248,.95)] border border-[rgba(62,68,101,.11)] text-[15px] font-[var(--w500)] text-[#2f3550] tracking-[var(--track)];
+}
+.voice-answer-icon {
+  @apply inline-flex items-center justify-center w-[34px] h-[34px] rounded-full bg-white shadow-[0_8px_16px_rgba(39,44,66,.15)];
+}
+.voice-transcript-line {
+  @apply max-w-[280px] transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear;
+}
+.voice-transcript-speaker {
+  @apply text-[20px] font-[var(--w500)] tracking-[-0.05em] text-[rgba(37,44,67,.45)] mb-1;
+}
+.voice-transcript-text {
+  @apply text-[31px] font-[var(--w500)] tracking-[-0.05em] leading-[1.08] text-[#303850];
+}
 
 /* ============================================================ MEDICAL VOICE WEB-CALL SECTION - Converti en classes Tailwind ============================================================ */
-.medical-voice-scroll{@apply relative h-[800px] my-6 mx-0 mt-6 mb-4}
-.medical-voice-sticky{@apply sticky top-[calc(var(--nav-h)+12px)] h-[700px] flex items-center justify-center px-16 py-5 overflow-visible}
-.medical-voice-shell{@apply relative w-full max-w-[1200px] h-[680px] rounded-[32px] px-11 py-7 border border-[var(--ink-08)] shadow-[inset_0_1px_0_var(--white-78),0_28px_64px_rgba(31,47,76,.1)] overflow-hidden grid grid-rows-[auto_auto_minmax(0,1fr)];background:var(--gradient-surface-medical-premium)}
-.medical-voice-shell::before{content:'';@apply absolute inset-0 pointer-events-none bg-[length:8px_8px] opacity-55;background-image:var(--gradient-surface-dots)}
-.medical-voice-header{@apply relative z-[2] max-w-[760px] mb-2 mx-auto text-center transition-transform duration-300 ease-out}
-.medical-voice-head-label,.medical-voice-head-title{@apply opacity-0 translate-y-[18px]}
-.medical-voice-shell.in .medical-voice-head-label{@apply animate-fadeUpVoice}
-.medical-voice-shell.in .medical-voice-head-title{@apply animate-fadeUpTitle}
-.medical-voice-selector-wrap{@apply relative z-[2] mt-6 mb-2 transition-transform duration-300 ease-out transition-opacity duration-300 ease-out}
-.medical-voice-stage{--medical-stage-top-offset:clamp(0px,.55vh,6px);--medical-phone-frame-width:min(246px,20vw);--medical-phone-frame-height:calc(var(--medical-phone-frame-width) * 1.8868);--medical-phone-bottom-pad:34px;--medical-phone-display-scale:.84;--medical-phone-visible-height:calc((var(--medical-phone-frame-height) + var(--medical-phone-bottom-pad)) * var(--medical-phone-display-scale));@apply relative z-[2] h-full min-h-0 pt-[var(--medical-stage-top-offset)] pb-[clamp(64px,8vh,122px)] box-border flex items-start justify-center}
-.medical-voice-phone-col{@apply relative z-[2] h-[var(--medical-phone-visible-height)] flex items-start transition-transform duration-220 ease-linear origin-[50%_0]}
-.medical-voice-transcript-col{@apply absolute right-11 top-[var(--medical-stage-top-offset)] bottom-auto h-[var(--medical-phone-visible-height)] w-[min(44%,430px)] flex items-start transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear pointer-events-none}
-.medical-voice-stage.conversation-active .medical-voice-transcript-col{@apply pointer-events-auto}
-.medical-phone-wrap{@apply relative flex items-start justify-center px-3 pb-[var(--medical-phone-bottom-pad)] h-[calc(var(--medical-phone-frame-height)+var(--medical-phone-bottom-pad))] min-h-0}
-.medical-phone-frame{@apply w-[var(--medical-phone-frame-width)] min-w-[168px]}
-@keyframes medicalWavePulse{
-  0%{opacity:0;transform:scale(.82)}
-  24%{opacity:.8}
-  100%{opacity:0;transform:scale(1.42)}
+.medical-voice-scroll {
+  @apply relative h-[800px] my-6 mx-0 mt-6 mb-4;
 }
-@keyframes slideHintFlow{
-  0%{opacity:.12;transform:translateX(-4px) rotate(45deg)}
-  45%{opacity:.44}
-  100%{opacity:.12;transform:translateX(5px) rotate(45deg)}
+.medical-voice-sticky {
+  @apply sticky top-[calc(var(--nav-h)+12px)] h-[700px] flex items-center justify-center px-16 py-5 overflow-visible;
 }
-@keyframes callKnobBreath{
-  0%,100%{box-shadow:0 9px 18px rgba(20,95,58,.22)}
-  50%{box-shadow:0 14px 26px rgba(20,95,58,.38)}
+.medical-voice-shell {
+  @apply relative w-full max-w-[1200px] h-[680px] rounded-[32px] px-11 py-7 border border-[var(--ink-08)] shadow-[inset_0_1px_0_var(--white-78),0_28px_64px_rgba(31,47,76,.1)] overflow-hidden grid grid-rows-[auto_auto_minmax(0,1fr)];
+  background: var(--gradient-surface-medical-premium);
 }
-.medical-phone-state{@apply text-[12px] tracking-[0.04em] uppercase text-[rgba(34,41,63,.56)] text-center}
-@keyframes medicalLineIn{
-  0%{opacity:0;transform:translate3d(0,10px,0)}
-  100%{opacity:1;transform:translate3d(0,0,0)}
+.medical-voice-shell::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none bg-[length:8px_8px] opacity-55;
+  background-image: var(--gradient-surface-dots);
+}
+.medical-voice-header {
+  @apply relative z-[2] max-w-[760px] mb-2 mx-auto text-center transition-transform duration-300 ease-out;
+}
+.medical-voice-head-label,
+.medical-voice-head-title {
+  @apply opacity-0 translate-y-[18px];
+}
+.medical-voice-shell.in .medical-voice-head-label {
+  @apply animate-fadeUpVoice;
+}
+.medical-voice-shell.in .medical-voice-head-title {
+  @apply animate-fadeUpTitle;
+}
+.medical-voice-selector-wrap {
+  @apply relative z-[2] mt-6 mb-2 transition-transform duration-300 ease-out transition-opacity duration-300 ease-out;
+}
+.medical-voice-stage {
+  --medical-stage-top-offset: clamp(0px, 0.55vh, 6px);
+  --medical-phone-frame-width: min(246px, 20vw);
+  --medical-phone-frame-height: calc(var(--medical-phone-frame-width) * 1.8868);
+  --medical-phone-bottom-pad: 34px;
+  --medical-phone-display-scale: 0.84;
+  --medical-phone-visible-height: calc(
+    (var(--medical-phone-frame-height) + var(--medical-phone-bottom-pad)) *
+      var(--medical-phone-display-scale)
+  );
+  @apply relative z-[2] h-full min-h-0 pt-[var(--medical-stage-top-offset)] pb-[clamp(64px,8vh,122px)] box-border flex items-start justify-center;
+}
+.medical-voice-phone-col {
+  @apply relative z-[2] h-[var(--medical-phone-visible-height)] flex items-start transition-transform duration-220 ease-linear origin-[50%_0];
+}
+.medical-voice-transcript-col {
+  @apply absolute right-11 top-[var(--medical-stage-top-offset)] bottom-auto h-[var(--medical-phone-visible-height)] w-[min(44%,430px)] flex items-start transition-transform duration-200 ease-linear transition-opacity duration-200 ease-linear pointer-events-none;
+}
+.medical-voice-stage.conversation-active .medical-voice-transcript-col {
+  @apply pointer-events-auto;
+}
+.medical-phone-wrap {
+  @apply relative flex items-start justify-center px-3 pb-[var(--medical-phone-bottom-pad)] h-[calc(var(--medical-phone-frame-height)+var(--medical-phone-bottom-pad))] min-h-0;
+}
+.medical-phone-frame {
+  @apply w-[var(--medical-phone-frame-width)] min-w-[168px];
+}
+@keyframes medicalWavePulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  24% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.42);
+  }
+}
+@keyframes slideHintFlow {
+  0% {
+    opacity: 0.12;
+    transform: translateX(-4px) rotate(45deg);
+  }
+  45% {
+    opacity: 0.44;
+  }
+  100% {
+    opacity: 0.12;
+    transform: translateX(5px) rotate(45deg);
+  }
+}
+@keyframes callKnobBreath {
+  0%,
+  100% {
+    box-shadow: 0 9px 18px rgba(20, 95, 58, 0.22);
+  }
+  50% {
+    box-shadow: 0 14px 26px rgba(20, 95, 58, 0.38);
+  }
+}
+.medical-phone-state {
+  @apply text-[12px] tracking-[0.04em] uppercase text-[rgba(34,41,63,.56)] text-center;
+}
+@keyframes medicalLineIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ============================================================ ===== HOME PAGE - Converti en classes Tailwind ===== ============================================================ */
-@keyframes barProg{from{width:0}to{width:100%}}
+@keyframes barProg {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
-.testi-vis-bg{@apply w-full h-full; background:var(--gradient-accent-warm)}
+.testi-vis-bg {
+  @apply w-full h-full;
+  background: var(--gradient-accent-warm);
+}
 
 /* DS Accordion reveal animations */
-.ds-accordion{@apply rev-base}
-.ds-accordion.in{opacity:1;transform:translateY(0)}
-.ds-accordion.in.d1{transition-delay:120ms}
-.ds-accordion.in.d2{transition-delay:220ms}
-.ds-accordion.in.d3{transition-delay:320ms}
-.ds-accordion.in.d4{transition-delay:420ms}
+.ds-accordion {
+  @apply rev-base;
+}
+.ds-accordion.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ds-accordion.in.d1 {
+  transition-delay: 120ms;
+}
+.ds-accordion.in.d2 {
+  transition-delay: 220ms;
+}
+.ds-accordion.in.d3 {
+  transition-delay: 320ms;
+}
+.ds-accordion.in.d4 {
+  transition-delay: 420ms;
+}
 
-.logo-item{@apply text-[18px] font-[var(--w500)] tracking-[-0.04em] text-[var(--subtle)] transition-colors duration-150 ease-out}
-.logo-item:hover{@apply text-[var(--color-primary)]}
-.logo-item.rev{transform:translateY(22px) translateX(var(--logo-x,0)) scale(0.992);transition-duration:var(--logo-dur,700ms)}
-.logo-item.rev.in{@apply translate-y-0 translate-x-0 scale-100}
-.logo-item.rev.in.d1{transition-delay:120ms}
-.logo-item.rev.in.d2{transition-delay:220ms}
-.logo-item.rev.in.d3{transition-delay:320ms}
-.logo-item.rev.in.d4{transition-delay:420ms}
+.logo-item {
+  @apply text-[18px] font-[var(--w500)] tracking-[-0.04em] text-[var(--subtle)] transition-colors duration-150 ease-out;
+}
+.logo-item:hover {
+  @apply text-[var(--color-primary)];
+}
+.logo-item.rev {
+  transform: translateY(22px) translateX(var(--logo-x, 0)) scale(0.992);
+  transition-duration: var(--logo-dur, 700ms);
+}
+.logo-item.rev.in {
+  @apply translate-y-0 translate-x-0 scale-100;
+}
+.logo-item.rev.in.d1 {
+  transition-delay: 120ms;
+}
+.logo-item.rev.in.d2 {
+  transition-delay: 220ms;
+}
+.logo-item.rev.in.d3 {
+  transition-delay: 320ms;
+}
+.logo-item.rev.in.d4 {
+  transition-delay: 420ms;
+}
 
 /* ============================================================ ===== CONTACT PAGE - Converti en classes Tailwind ===== ============================================================ */
 
 /* ============================================================ ===== LEGAL PAGES - Converti en classes Tailwind ===== ============================================================ */
 
 /* ============================================================ FOOTER - Converti en classes Tailwind ============================================================ */
-footer{@apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t border-[var(--border)]}
+footer {
+  @apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t border-[var(--border)];
+}
 
 /* ============================================================ FLOATING CTA - Converti en classes Tailwind ============================================================ */
-.float-cta{@apply fixed bottom-6 right-6 z-[50] opacity-0 translate-y-[10px] transition-opacity duration-1000 ease-out transition-transform duration-1000 ease-spring pointer-events-none}
-.float-cta.vis{@apply opacity-100 translate-y-0 pointer-events-auto}
-.float-cta .ds-btn{@apply shadow-[0_6px_28px_var(--ink-20)]}
+.float-cta {
+  @apply fixed bottom-6 right-6 z-[50] opacity-0 translate-y-[10px] transition-opacity duration-1000 ease-out transition-transform duration-1000 ease-spring pointer-events-none;
+}
+.float-cta.vis {
+  @apply opacity-100 translate-y-0 pointer-events-auto;
+}
+.float-cta .ds-btn {
+  @apply shadow-[0_6px_28px_var(--ink-20)];
+}
 
 /* ============================================================ RESPONSIVE LARGE DESKTOP ≤1400 - Converti en classes Tailwind ============================================================ */
-@media(max-width:1400px){
+@media (max-width: 1400px) {
 }
 
 /* ============================================================ RESPONSIVE TABLET ≤1200 - Converti en classes Tailwind ============================================================ */
-@media(max-width:1200px){
+@media (max-width: 1200px) {
 }
 
 /* ============================================================ RESPONSIVE TABLET ≤1199 - Converti en classes Tailwind ============================================================ */
-@media(max-width:1199px){
-  .nav{@apply px-8}
-  .voice-demo-sticky{@apply px-8}
-  .voice-demo-shell{@apply px-7 py-7}
-  .voice-demo-stage{@apply grid-cols-[minmax(160px,210px)_minmax(220px,320px)_minmax(170px,240px)]}
-  .voice-transcript-text{@apply text-[25px]}
-  .voice-agent-name{@apply text-[36px]}
-  .medical-voice-sticky{@apply px-8}
-.medical-voice-shell{@apply h-[min(840px,calc(100vh-var(--nav-h)-34px))] px-7}
-  .medical-voice-stage{--medical-phone-frame-width:min(226px,22vw);@apply h-full min-h-0 pt-[clamp(0px,.45vh,5px)] pb-[clamp(52px,6.8vh,92px)]}
-  .medical-voice-transcript-col{@apply right-6 top-[var(--medical-stage-top-offset)] bottom-[clamp(20px,3vh,30px)] w-[min(45%,370px)]}
-  .medical-phone-wrap{@apply h-full min-h-0}
-  .medical-phone-frame{@apply w-[min(226px,22vw)] min-w-[172px]}
+@media (max-width: 1199px) {
+  .nav {
+    @apply px-8;
+  }
+  .voice-demo-sticky {
+    @apply px-8;
+  }
+  .voice-demo-shell {
+    @apply px-7 py-7;
+  }
+  .voice-demo-stage {
+    @apply grid-cols-[minmax(160px,210px)_minmax(220px,320px)_minmax(170px,240px)];
+  }
+  .voice-transcript-text {
+    @apply text-[25px];
+  }
+  .voice-agent-name {
+    @apply text-[36px];
+  }
+  .medical-voice-sticky {
+    @apply px-8;
+  }
+  .medical-voice-shell {
+    @apply h-[min(840px,calc(100vh-var(--nav-h)-34px))] px-7;
+  }
+  .medical-voice-stage {
+    --medical-phone-frame-width: min(226px, 22vw);
+    @apply h-full min-h-0 pt-[clamp(0px,.45vh,5px)] pb-[clamp(52px,6.8vh,92px)];
+  }
+  .medical-voice-transcript-col {
+    @apply right-6 top-[var(--medical-stage-top-offset)] bottom-[clamp(20px,3vh,30px)] w-[min(45%,370px)];
+  }
+  .medical-phone-wrap {
+    @apply h-full min-h-0;
+  }
+  .medical-phone-frame {
+    @apply w-[min(226px,22vw)] min-w-[172px];
+  }
 }
 
 /* ============================================================ RESPONSIVE SMALL TABLET ≤1000 - Converti en classes Tailwind ============================================================ */
-@media(max-width:1000px){
+@media (max-width: 1000px) {
 }
 
 /* ============================================================ RESPONSIVE PHONE ≤809 - Converti en classes Tailwind ============================================================ */
-@media(max-width:809px){
-  :root{--nav-h:64px}
-  .nav{@apply p-0 h-auto flex-col items-stretch w-full gap-0}
-  .nav::before{@apply top-0 h-[var(--nav-h)]}
-  .nav::after{@apply top-0 h-[calc(var(--nav-h)+104px)]}
-  .float-cta{@apply bottom-4 right-6}
-  .voice-demo-scroll{@apply h-auto max-h-none mt-4 mb-1}
-  .voice-demo-sticky{@apply relative top-auto h-auto p-0 overflow-visible}
-  .voice-demo-shell{@apply h-auto min-h-0 rounded-[24px] px-7 px-5}
-  .voice-demo-head{@apply mb-4}
-  .voice-demo-title{@apply text-[clamp(26px,9vw,36px)]}
-  .voice-demo-sub{@apply text-[13px]}
-  .voice-demo-stage{@apply min-h-0 grid-cols-1 gap-[18px]}
-  .voice-demo-side.left,.voice-demo-side.right{@apply items-stretch opacity-100 translate-y-0}
-  .voice-goal-card,.voice-transcript-line{@apply max-w-none}
-  .voice-phone-wrap{@apply translate-y-0}
-  .voice-phone-frame{@apply w-[min(88vw,300px)]}
-  .voice-agent-name{@apply text-[34px]}
-  .voice-agent-role{@apply text-[17px]}
-  .voice-transcript-speaker{@apply text-[16px]}
-  .voice-transcript-text{@apply text-[22px]}
-  .voice-test-button{@apply w-full}
-  .case-row,.case-row.case-row--image-right{@apply flex flex-col direction-ltr}
-  .medical-voice-scroll{@apply h-auto max-h-none mt-6 mb-2}
-  .medical-voice-sticky{@apply relative top-auto h-auto px-5 overflow-visible}
-  .medical-voice-shell{@apply h-auto min-h-0 px-6 px-5 rounded-[24px]}
-  .medical-voice-stage{@apply h-auto min-h-0 grid grid-cols-1 gap-[14px]}
-  .medical-voice-phone-col,.medical-voice-transcript-col{@apply transform-none opacity-100}
-  .medical-voice-transcript-col{@apply static w-full}
-  .medical-phone-wrap{@apply h-auto min-h-0 p-0}
-  .medical-phone-frame{@apply w-full max-w-[286px] max-h-none h-auto min-w-0 mx-auto}
-  .cursor-dot{@apply hidden}
+@media (max-width: 809px) {
+  :root {
+    --nav-h: 64px;
   }
+  .nav {
+    @apply p-0 h-auto flex-col items-stretch w-full gap-0;
+  }
+  .nav::before {
+    @apply top-0 h-[var(--nav-h)];
+  }
+  .nav::after {
+    @apply top-0 h-[calc(var(--nav-h)+104px)];
+  }
+  .float-cta {
+    @apply bottom-4 right-6;
+  }
+  .voice-demo-scroll {
+    @apply h-auto max-h-none mt-4 mb-1;
+  }
+  .voice-demo-sticky {
+    @apply relative top-auto h-auto p-0 overflow-visible;
+  }
+  .voice-demo-shell {
+    @apply h-auto min-h-0 rounded-[24px] px-7 px-5;
+  }
+  .voice-demo-head {
+    @apply mb-4;
+  }
+  .voice-demo-title {
+    @apply text-[clamp(26px,9vw,36px)];
+  }
+  .voice-demo-sub {
+    @apply text-[13px];
+  }
+  .voice-demo-stage {
+    @apply min-h-0 grid-cols-1 gap-[18px];
+  }
+  .voice-demo-side.left,
+  .voice-demo-side.right {
+    @apply items-stretch opacity-100 translate-y-0;
+  }
+  .voice-goal-card,
+  .voice-transcript-line {
+    @apply max-w-none;
+  }
+  .voice-phone-wrap {
+    @apply translate-y-0;
+  }
+  .voice-phone-frame {
+    @apply w-[min(88vw,300px)];
+  }
+  .voice-agent-name {
+    @apply text-[34px];
+  }
+  .voice-agent-role {
+    @apply text-[17px];
+  }
+  .voice-transcript-speaker {
+    @apply text-[16px];
+  }
+  .voice-transcript-text {
+    @apply text-[22px];
+  }
+  .voice-test-button {
+    @apply w-full;
+  }
+  .case-row,
+  .case-row.case-row--image-right {
+    @apply flex flex-col direction-ltr;
+  }
+  .medical-voice-scroll {
+    @apply h-auto max-h-none mt-6 mb-2;
+  }
+  .medical-voice-sticky {
+    @apply relative top-auto h-auto px-5 overflow-visible;
+  }
+  .medical-voice-shell {
+    @apply h-auto min-h-0 px-6 px-5 rounded-[24px];
+  }
+  .medical-voice-stage {
+    @apply h-auto min-h-0 grid grid-cols-1 gap-[14px];
+  }
+  .medical-voice-phone-col,
+  .medical-voice-transcript-col {
+    @apply transform-none opacity-100;
+  }
+  .medical-voice-transcript-col {
+    @apply static w-full;
+  }
+  .medical-phone-wrap {
+    @apply h-auto min-h-0 p-0;
+  }
+  .medical-phone-frame {
+    @apply w-full max-w-[286px] max-h-none h-auto min-w-0 mx-auto;
+  }
+  .cursor-dot {
+    @apply hidden;
+  }
+}

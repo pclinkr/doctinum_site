@@ -2,8 +2,8 @@ export default function robots() {
   return {
     rules: {
       userAgent: '*',
-      allow: '/'
+      allow: '/',
     },
-    sitemap: 'https://viral.example/sitemap.xml'
+    sitemap: 'https://viral.example/sitemap.xml',
   };
 }

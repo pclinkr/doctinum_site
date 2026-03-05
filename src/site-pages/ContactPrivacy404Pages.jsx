@@ -9,7 +9,8 @@ import { getSocialProofText } from '../constants/site';
 export function ContactPage({ active }) {
   const { t } = useTranslation();
   const contactFaqItems = getContactFaqItems(t);
-  const socialProofText = getSocialProofText(t);
+  // const socialProofText = getSocialProofText(t);
+  const socialProofText = '';
 
   return (
     <div id="page-contact" className={`page ${active ? 'active' : ''}`.trim()}>

@@ -11,12 +11,12 @@ function buildSectionLink(label, page, description) {
 function mergeSolutionsMenu(t, solutionsMenu, options) {
   const mergedGroups = [...(solutionsMenu?.groups || [])];
 
-  if (options.includeFunctioning) {
-    mergedGroups.push({
-      title: t('nav.functioning'),
-      links: flattenMenuLinks(options.functioningMenu)
-    });
-  }
+  // if (options.includeFunctioning) {
+  //   mergedGroups.push({
+  //     title: t('nav.functioning'),
+  //     links: flattenMenuLinks(options.functioningMenu)
+  //   });
+  // }
 
   if (options.includePharma) {
     mergedGroups.push({
@@ -26,8 +26,8 @@ function mergeSolutionsMenu(t, solutionsMenu, options) {
           t('nav.pharmaResearch'),
           'case-studies',
           t('megaMenu.grouped.sectionEntry')
-        )
-      ]
+        ),
+      ],
     });
   }
 
@@ -39,14 +39,14 @@ function mergeSolutionsMenu(t, solutionsMenu, options) {
           t('nav.editorsApi'),
           'about',
           t('megaMenu.grouped.sectionEntry')
-        )
-      ]
+        ),
+      ],
     });
   }
 
   return {
     ...solutionsMenu,
-    groups: mergedGroups
+    groups: mergedGroups,
   };
 }
 
@@ -61,14 +61,14 @@ function mergeEnterpriseMenu(t, enterpriseMenu, options) {
           t('nav.security'),
           'privacy',
           t('megaMenu.grouped.sectionEntry')
-        )
-      ]
+        ),
+      ],
     });
   }
 
   return {
     ...enterpriseMenu,
-    groups: mergedGroups
+    groups: mergedGroups,
   };
 }
 
@@ -78,17 +78,21 @@ function buildSingleMegaMenu(t, solutionsMenu, enterpriseMenu) {
       title: t('nav.quickAccess'),
       links: [
         buildSectionLink(t('nav.home'), 'home', t('megaMenu.grouped.goHome')),
-        buildSectionLink(t('nav.bookDemo'), 'contact', t('megaMenu.grouped.sectionEntry'))
-      ]
+        buildSectionLink(
+          t('nav.bookDemo'),
+          'contact',
+          t('megaMenu.grouped.sectionEntry')
+        ),
+      ],
     },
     ...(solutionsMenu?.groups || []).map((group) => ({
       ...group,
-      title: `${t('nav.solutions')} · ${group.title}`
+      title: `${t('nav.solutions')} · ${group.title}`,
     })),
     ...(enterpriseMenu?.groups || []).map((group) => ({
       ...group,
-      title: `${t('nav.enterprise')} · ${group.title}`
-    }))
+      title: `${t('nav.enterprise')} · ${group.title}`,
+    })),
   ];
 
   return {
@@ -96,7 +100,7 @@ function buildSingleMegaMenu(t, solutionsMenu, enterpriseMenu) {
     title: t('megaMenu.main.title'),
     body: t('megaMenu.main.body'),
     groups,
-    cta: { label: t('nav.bookDemo'), page: 'contact' }
+    cta: { label: t('nav.bookDemo'), page: 'contact' },
   };
 }
 
@@ -110,19 +114,19 @@ export function getNavItems(t, { density = 'full' } = {}) {
       includeFunctioning: true,
       includePharma: true,
       includeEditors: true,
-      functioningMenu
+      functioningMenu,
     });
 
     const singleEnterprise = mergeEnterpriseMenu(t, enterpriseMenu, {
-      includeSecurity: true
+      includeSecurity: true,
     });
 
     return [
       {
         id: 'mainMenu',
         label: t('nav.mainMenu'),
-        megaMenu: buildSingleMegaMenu(t, singleSolutions, singleEnterprise)
-      }
+        megaMenu: buildSingleMegaMenu(t, singleSolutions, singleEnterprise),
+      },
     ];
   }
 
@@ -136,14 +140,16 @@ export function getNavItems(t, { density = 'full' } = {}) {
           includeFunctioning: true,
           includePharma: true,
           includeEditors: true,
-          functioningMenu
-        })
+          functioningMenu,
+        }),
       },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
-        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, { includeSecurity: true })
-      }
+        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, {
+          includeSecurity: true,
+        }),
+      },
     ];
   }
 
@@ -157,15 +163,17 @@ export function getNavItems(t, { density = 'full' } = {}) {
           includeFunctioning: true,
           includePharma: true,
           includeEditors: false,
-          functioningMenu
-        })
+          functioningMenu,
+        }),
       },
       { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
-        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, { includeSecurity: true })
-      }
+        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, {
+          includeSecurity: true,
+        }),
+      },
     ];
   }
 
@@ -179,16 +187,22 @@ export function getNavItems(t, { density = 'full' } = {}) {
           includeFunctioning: true,
           includePharma: false,
           includeEditors: false,
-          functioningMenu
-        })
+          functioningMenu,
+        }),
       },
       { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
-      { id: 'pharmaResearch', label: t('nav.pharmaResearch'), page: 'case-studies' },
+      {
+        id: 'pharmaResearch',
+        label: t('nav.pharmaResearch'),
+        page: 'case-studies',
+      },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
-        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, { includeSecurity: true })
-      }
+        megaMenu: mergeEnterpriseMenu(t, enterpriseMenu, {
+          includeSecurity: true,
+        }),
+      },
     ];
   }
 
@@ -197,20 +211,24 @@ export function getNavItems(t, { density = 'full' } = {}) {
     {
       id: 'solutions',
       label: t('nav.solutions'),
-      megaMenu: solutionsMenu
+      megaMenu: solutionsMenu,
     },
     { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
-    { id: 'pharmaResearch', label: t('nav.pharmaResearch'), page: 'case-studies' },
+    {
+      id: 'pharmaResearch',
+      label: t('nav.pharmaResearch'),
+      page: 'case-studies',
+    },
     {
       id: 'functioning',
       label: t('nav.functioning'),
-      megaMenu: functioningMenu
+      megaMenu: functioningMenu,
     },
     {
       id: 'enterprise',
       label: t('nav.enterprise'),
-      megaMenu: enterpriseMenu
+      megaMenu: enterpriseMenu,
     },
-    { id: 'security', label: t('nav.security'), page: 'privacy' }
+    { id: 'security', label: t('nav.security'), page: 'privacy' },
   ];
 }

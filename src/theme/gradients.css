@@ -60,7 +60,10 @@
     #f8fbff 100%
   );
   --gradient-surface-soft: var(--gradient-surface-medical-premium);
-  --gradient-surface-dots: radial-gradient(rgba(154, 164, 215, 0.18) 1px, transparent 1.2px);
+  --gradient-surface-dots: radial-gradient(
+    rgba(154, 164, 215, 0.18) 1px,
+    transparent 1.2px
+  );
   --gradient-accent-warm-terra: linear-gradient(
     160deg,
     #f3d8c6 0%,
@@ -105,11 +108,9 @@
     rgba(152, 144, 184, 0.6)
   );
 
-
-
   --gradient-impact-warm-halo: radial-gradient(
     120% 90% at 0% 0%,
-    rgba(12, 36, 60, 0.10) 0%,
+    rgba(12, 36, 60, 0.1) 0%,
     rgba(196, 215, 255, 0.06) 34%,
     rgba(12, 36, 60, 0) 72%
   );
@@ -144,8 +145,19 @@
     #efc7ad 0%,
     #c8927f 100%
   );
-  --gradient-medical-avatar-composite: var(--medical-avatar-image, none),
-    radial-gradient(circle at 52% 26%, var(--white-84), var(--white-20) 45%, transparent 62%),
-    radial-gradient(circle at 46% 88%, rgba(170, 126, 255, 0.62), rgba(170, 126, 255, 0.07) 66%, transparent 100%),
+  --gradient-medical-avatar-composite:
+    var(--medical-avatar-image, none),
+    radial-gradient(
+      circle at 52% 26%,
+      var(--white-84),
+      var(--white-20) 45%,
+      transparent 62%
+    ),
+    radial-gradient(
+      circle at 46% 88%,
+      rgba(170, 126, 255, 0.62),
+      rgba(170, 126, 255, 0.07) 66%,
+      transparent 100%
+    ),
     var(--gradient-voice-avatar-base);
 }

@@ -8,7 +8,7 @@ import '../src/theme/typography.css';
 export const metadata = {
   metadataBase: new URL('https://doctinum.example'),
   title: 'Doctinum',
-  description: 'Creative growth partner.'
+  description: 'Creative growth partner.',
 };
 
 export default function RootLayout({ children }) {

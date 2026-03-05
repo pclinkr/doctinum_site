@@ -38,8 +38,15 @@ export default function HomeVoiceAgentSection({ onNavigate }) {
 
       const sectionElement = sectionRef.current;
       const sectionRect = sectionElement.getBoundingClientRect();
-      const totalScrollableDistance = Math.max(1, sectionElement.offsetHeight - window.innerHeight);
-      const scrolledWithinSection = clamp(-sectionRect.top, 0, totalScrollableDistance);
+      const totalScrollableDistance = Math.max(
+        1,
+        sectionElement.offsetHeight - window.innerHeight
+      );
+      const scrolledWithinSection = clamp(
+        -sectionRect.top,
+        0,
+        totalScrollableDistance
+      );
       const nextProgress = scrolledWithinSection / totalScrollableDistance;
 
       if (Math.abs(nextProgress - progressRef.current) < 0.003) return;
@@ -78,9 +85,21 @@ export default function HomeVoiceAgentSection({ onNavigate }) {
   const rightOpacity = 0.12 + transcriptProgress * 0.88;
 
   const transcriptEntries = [
-    { speaker: 'Alex', text: 'Hello, this is Alex from PaceLinker AI.', start: 0.46 },
-    { speaker: 'Alex', text: 'I can answer your questions and guide your next steps.', start: 0.58 },
-    { speaker: 'You', text: 'Great, show me how a real call flow starts.', start: 0.7 }
+    {
+      speaker: 'Alex',
+      text: 'Hello, this is Alex from PaceLinker AI.',
+      start: 0.46,
+    },
+    {
+      speaker: 'Alex',
+      text: 'I can answer your questions and guide your next steps.',
+      start: 0.58,
+    },
+    {
+      speaker: 'You',
+      text: 'Great, show me how a real call flow starts.',
+      start: 0.7,
+    },
   ];
 
   return (
@@ -93,30 +112,40 @@ export default function HomeVoiceAgentSection({ onNavigate }) {
               Test an <span className="si">AI voice agent</span> while scrolling
             </h2>
             <p className="voice-demo-sub">
-              The sequence plays inside this section first. Once the sequence is done, the next section appears naturally.
+              The sequence plays inside this section first. Once the sequence is
+              done, the next section appears naturally.
             </p>
           </div>
 
           <div className="voice-demo-stage">
             <div
               className="voice-demo-side left"
-              style={{ transform: `translate3d(${leftTranslateX}px,0,0)`, opacity: leftOpacity }}
+              style={{
+                transform: `translate3d(${leftTranslateX}px,0,0)`,
+                opacity: leftOpacity,
+              }}
             >
               <div className="voice-dialog-chip">
                 <span className="voice-dialog-dot" />
                 Dialogue
               </div>
               <div className="voice-goal-card">
-                Goal: introduce the AI voice agent and invite the user to start a first interaction.
+                Goal: introduce the AI voice agent and invite the user to start
+                a first interaction.
               </div>
-              <Button className="voice-test-button" onClick={() => onNavigate('contact')}>
+              <Button
+                className="voice-test-button"
+                onClick={() => onNavigate('contact')}
+              >
                 Launch voice demo
               </Button>
             </div>
 
             <div
               className="voice-phone-wrap"
-              style={{ transform: `translate3d(0,${phoneTranslateY}px,0) scale(${phoneScale}) rotate(${phoneRotate}deg)` }}
+              style={{
+                transform: `translate3d(0,${phoneTranslateY}px,0) scale(${phoneScale}) rotate(${phoneRotate}deg)`,
+              }}
             >
               <div className="voice-phone-glow" />
               <div className="voice-phone-frame">
@@ -135,17 +164,24 @@ export default function HomeVoiceAgentSection({ onNavigate }) {
 
             <div
               className="voice-demo-side right"
-              style={{ transform: `translate3d(${rightTranslateX}px,0,0)`, opacity: rightOpacity }}
+              style={{
+                transform: `translate3d(${rightTranslateX}px,0,0)`,
+                opacity: rightOpacity,
+              }}
             >
               {transcriptEntries.map((entry) => {
-                const lineProgress = progressBetween(progress, entry.start, entry.start + 0.16);
+                const lineProgress = progressBetween(
+                  progress,
+                  entry.start,
+                  entry.start + 0.16
+                );
                 return (
                   <div
                     key={`${entry.speaker}-${entry.text}`}
                     className="voice-transcript-line"
                     style={{
                       opacity: 0.14 + lineProgress * 0.86,
-                      transform: `translate3d(0,${(1 - lineProgress) * 16}px,0)`
+                      transform: `translate3d(0,${(1 - lineProgress) * 16}px,0)`,
                     }}
                   >
                     <p className="voice-transcript-speaker">{entry.speaker}</p>

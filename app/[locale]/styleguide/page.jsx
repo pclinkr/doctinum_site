@@ -9,7 +9,7 @@ import {
   Globe,
   BadgeCheck,
   CircleHelp,
-  ChevronRight
+  ChevronRight,
 } from 'lucide-react';
 import Button from '../../../src/components/ui/Button';
 import Badge from '../../../src/components/ui/Badge';
@@ -22,16 +22,19 @@ import BrandIcon from '../../../src/components/ui/BrandIcon';
 const styleguideFaqItems = [
   {
     question: 'How do I change brand colors globally?',
-    answer: 'Update color tokens in src/theme/tokens.css and semantic aliases in src/theme/semantic.css.'
+    answer:
+      'Update color tokens in src/theme/tokens.css and semantic aliases in src/theme/semantic.css.',
   },
   {
     question: 'Where do I manage H1/H2 typography?',
-    answer: 'Adjust --font-size-h1/h2 and related line-height/letter-spacing tokens in src/theme/tokens.css.'
+    answer:
+      'Adjust --font-size-h1/h2 and related line-height/letter-spacing tokens in src/theme/tokens.css.',
   },
   {
     question: 'How do I add a new button style?',
-    answer: 'Create a new semantic variant in src/theme/components.css and expose it in src/components/ui/Button.jsx.'
-  }
+    answer:
+      'Create a new semantic variant in src/theme/components.css and expose it in src/components/ui/Button.jsx.',
+  },
 ];
 
 const colorTokens = [
@@ -42,13 +45,16 @@ const colorTokens = [
   { label: 'Muted Text', variable: '--text-muted' },
   { label: 'Primary Action', variable: '--action-primary-bg' },
   { label: 'Primary Action Text', variable: '--action-primary-fg' },
-  { label: 'Border', variable: '--border-default' }
+  { label: 'Border', variable: '--border-default' },
 ];
 
 const gradientTokens = [
   { label: 'Voice Phone Glow', variable: '--gradient-voice-phone-glow' },
   { label: 'Voice Avatar', variable: '--gradient-voice-avatar-base' },
-  { label: 'Surface Medical Premium', variable: '--gradient-surface-medical-premium' },
+  {
+    label: 'Surface Medical Premium',
+    variable: '--gradient-surface-medical-premium',
+  },
   { label: 'Surface Dots', variable: '--gradient-surface-dots' },
   { label: 'Problem Surface', variable: '--gradient-problem-surface' },
   { label: 'Accent Warm gold', variable: '--gradient-accent-warm-gold' },
@@ -59,7 +65,7 @@ const gradientTokens = [
   { label: 'Nav Mask Strong', variable: '--gradient-nav-mask-strong' },
   { label: 'Marquee Rail', variable: '--gradient-marquee-rail' },
   { label: 'Marquee Fade Left', variable: '--gradient-marquee-fade-left' },
-  { label: 'Marquee Fade Right', variable: '--gradient-marquee-fade-right' }
+  { label: 'Marquee Fade Right', variable: '--gradient-marquee-fade-right' },
 ];
 
 const iconItems = [
@@ -71,7 +77,7 @@ const iconItems = [
   { label: 'Badge', Icon: BadgeCheck },
   { label: 'Help', Icon: CircleHelp },
   { label: 'Arrow', Icon: ChevronRight },
-  { label: 'Brand', Icon: BrandIcon }
+  { label: 'Brand', Icon: BrandIcon },
 ];
 
 function SectionBlock({ title, description, children }) {
@@ -81,7 +87,9 @@ function SectionBlock({ title, description, children }) {
         <div style={{ marginBottom: '18px', display: 'grid', gap: '8px' }}>
           <h2>{title}</h2>
           {description ? (
-            <p style={{ color: 'var(--text-muted)', maxWidth: '70ch' }}>{description}</p>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '70ch' }}>
+              {description}
+            </p>
           ) : null}
         </div>
         {children}
@@ -94,12 +102,28 @@ export default function StyleguidePage() {
   const { i18n } = useTranslation();
 
   return (
-    <main style={{ paddingTop: 'calc(var(--layout-nav-h) + 48px)', paddingInline: '64px', paddingBottom: '72px', maxWidth: '1200px', marginInline: 'auto' }}>
+    <main
+      style={{
+        paddingTop: 'calc(var(--layout-nav-h) + 48px)',
+        paddingInline: '64px',
+        paddingBottom: '72px',
+        maxWidth: '1200px',
+        marginInline: 'auto',
+      }}
+    >
       <section style={{ marginBottom: '34px' }}>
         <Badge>Design System</Badge>
-        <h1  style={{ marginTop: '16px' }}>Style Guide</h1>
-        <p  style={{ color: 'var(--text-muted)', maxWidth: '68ch', marginTop: '12px' }}>
-          This page centralizes reusable UI components and typography scales. Current locale: <strong>{i18n.resolvedLanguage || i18n.language}</strong>.
+        <h1 style={{ marginTop: '16px' }}>Style Guide</h1>
+        <p
+          style={{
+            color: 'var(--text-muted)',
+            maxWidth: '68ch',
+            marginTop: '12px',
+          }}
+        >
+          This page centralizes reusable UI components and typography scales.
+          Current locale:{' '}
+          <strong>{i18n.resolvedLanguage || i18n.language}</strong>.
         </p>
       </section>
 
@@ -122,11 +146,26 @@ export default function StyleguidePage() {
         description="Short conventions to keep the codebase centralized and maintainable."
       >
         <ul style={{ display: 'grid', gap: '10px', paddingLeft: '20px' }}>
-          <li>Use semantic tokens first (`--text-*`, `--border-*`, `--action-*`) in new code.</li>
-          <li>Use native tags for typography (`h1..h4`, `p`) and avoid duplicating text classes.</li>
-          <li>Use DS components for micro UI (`Button`, `Card`, `TextInput`, `TextArea`, `Accordion`).</li>
-          <li>Use Tailwind mostly for layout and spacing; keep animations in `main.css`.</li>
-          <li>Treat legacy aliases in `main.css` as compatibility only for progressive migration.</li>
+          <li>
+            Use semantic tokens first (`--text-*`, `--border-*`, `--action-*`)
+            in new code.
+          </li>
+          <li>
+            Use native tags for typography (`h1..h4`, `p`) and avoid duplicating
+            text classes.
+          </li>
+          <li>
+            Use DS components for micro UI (`Button`, `Card`, `TextInput`,
+            `TextArea`, `Accordion`).
+          </li>
+          <li>
+            Use Tailwind mostly for layout and spacing; keep animations in
+            `main.css`.
+          </li>
+          <li>
+            Treat legacy aliases in `main.css` as compatibility only for
+            progressive migration.
+          </li>
         </ul>
       </SectionBlock>
 
@@ -134,12 +173,44 @@ export default function StyleguidePage() {
         title="Colors"
         description="Semantic tokens used across surfaces, text, actions, and borders."
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '12px',
+          }}
+        >
           {colorTokens.map((token) => (
-            <div key={token.variable} style={{ border: '1px solid var(--border-default)', borderRadius: '12px', padding: '10px' }}>
-              <div style={{ height: '64px', borderRadius: '10px', background: `var(${token.variable})`, border: '1px solid var(--border-default)' }} />
-              <p style={{ marginTop: '10px', fontSize: '13px', fontWeight: 500 }}>{token.label}</p>
-              <p style={{ marginTop: '4px', fontSize: '12px', color: 'var(--text-muted)' }}>{token.variable}</p>
+            <div
+              key={token.variable}
+              style={{
+                border: '1px solid var(--border-default)',
+                borderRadius: '12px',
+                padding: '10px',
+              }}
+            >
+              <div
+                style={{
+                  height: '64px',
+                  borderRadius: '10px',
+                  background: `var(${token.variable})`,
+                  border: '1px solid var(--border-default)',
+                }}
+              />
+              <p
+                style={{ marginTop: '10px', fontSize: '13px', fontWeight: 500 }}
+              >
+                {token.label}
+              </p>
+              <p
+                style={{
+                  marginTop: '4px',
+                  fontSize: '12px',
+                  color: 'var(--text-muted)',
+                }}
+              >
+                {token.variable}
+              </p>
             </div>
           ))}
         </div>
@@ -149,12 +220,44 @@ export default function StyleguidePage() {
         title="Gradients"
         description="Gradient tokens centralized in src/theme/gradients.css."
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '12px',
+          }}
+        >
           {gradientTokens.map((token) => (
-            <div key={token.variable} style={{ border: '1px solid var(--border-default)', borderRadius: '12px', padding: '10px' }}>
-              <div style={{ height: '74px', borderRadius: '10px', background: `var(${token.variable})`, border: '1px solid var(--border-default)' }} />
-              <p style={{ marginTop: '10px', fontSize: '13px', fontWeight: 500 }}>{token.label}</p>
-              <p style={{ marginTop: '4px', fontSize: '12px', color: 'var(--text-muted)' }}>{token.variable}</p>
+            <div
+              key={token.variable}
+              style={{
+                border: '1px solid var(--border-default)',
+                borderRadius: '12px',
+                padding: '10px',
+              }}
+            >
+              <div
+                style={{
+                  height: '74px',
+                  borderRadius: '10px',
+                  background: `var(${token.variable})`,
+                  border: '1px solid var(--border-default)',
+                }}
+              />
+              <p
+                style={{ marginTop: '10px', fontSize: '13px', fontWeight: 500 }}
+              >
+                {token.label}
+              </p>
+              <p
+                style={{
+                  marginTop: '4px',
+                  fontSize: '12px',
+                  color: 'var(--text-muted)',
+                }}
+              >
+                {token.variable}
+              </p>
             </div>
           ))}
         </div>
@@ -164,11 +267,20 @@ export default function StyleguidePage() {
         title="Buttons"
         description="Primary actions, secondary actions, and large CTA variants."
       >
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            alignItems: 'center',
+          }}
+        >
           <Button variant="primary">Primary</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="light">Light</Button>
-          <Button variant="primary" size="lg">Primary Large</Button>
+          <Button variant="primary" size="lg">
+            Primary Large
+          </Button>
         </div>
       </SectionBlock>
 
@@ -187,18 +299,30 @@ export default function StyleguidePage() {
         title="Cards"
         description="Unified surface style for feature cards, content cards, and metric blocks."
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '16px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+            gap: '16px',
+          }}
+        >
           <Card style={{ padding: '20px' }}>
             <h3>Feature Card</h3>
-            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>Reusable card with semantic tokens.</p>
+            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>
+              Reusable card with semantic tokens.
+            </p>
           </Card>
           <Card style={{ padding: '20px' }}>
             <h3>Content Card</h3>
-            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>Use Card for consistent surfaces and radius.</p>
+            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>
+              Use Card for consistent surfaces and radius.
+            </p>
           </Card>
           <Card style={{ padding: '20px' }}>
             <h3>Stat Card</h3>
-            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>Edit tokens once, update all cards.</p>
+            <p style={{ marginTop: '8px', color: 'var(--text-muted)' }}>
+              Edit tokens once, update all cards.
+            </p>
           </Card>
         </div>
       </SectionBlock>
@@ -224,13 +348,41 @@ export default function StyleguidePage() {
         title="Icons"
         description="Icon style examples for nav, cards, actions, and brand markers."
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '12px' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+            gap: '12px',
+          }}
+        >
           {iconItems.map(({ label, Icon }) => (
-            <div key={label} style={{ border: '1px solid var(--border-default)', borderRadius: '12px', padding: '12px', display: 'grid', placeItems: 'center', gap: '10px' }}>
-              <span style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--bg-surface)', display: 'grid', placeItems: 'center', border: '1px solid var(--border-default)' }}>
+            <div
+              key={label}
+              style={{
+                border: '1px solid var(--border-default)',
+                borderRadius: '12px',
+                padding: '12px',
+                display: 'grid',
+                placeItems: 'center',
+                gap: '10px',
+              }}
+            >
+              <span
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  background: 'var(--bg-surface)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  border: '1px solid var(--border-default)',
+                }}
+              >
                 <Icon size={18} strokeWidth={1.8} />
               </span>
-              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{label}</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                {label}
+              </span>
             </div>
           ))}
         </div>

@@ -37,7 +37,10 @@ export function useScrollState() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const blurRampDistance = 140;
-      const nextBlurProgress = Math.min(1, Math.max(0, scrollY / blurRampDistance));
+      const nextBlurProgress = Math.min(
+        1,
+        Math.max(0, scrollY / blurRampDistance)
+      );
 
       setIsNavScrolled(scrollY > 24);
       setIsFloatingCtaVisible(scrollY > window.innerHeight * 0.65);
@@ -62,7 +65,9 @@ export function useRevealAnimation(currentPage) {
       observerRef.current.disconnect();
     }
 
-    revealTimeoutIdsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));
+    revealTimeoutIdsRef.current.forEach((timeoutId) =>
+      window.clearTimeout(timeoutId)
+    );
     revealTimeoutIdsRef.current = [];
     const isInitialRun = !hasPlayedInitialRevealRef.current;
     const entryDelayMs = isInitialRun ? REVEAL_ENTRY_DELAY_MS : 0;
@@ -84,20 +89,26 @@ export function useRevealAnimation(currentPage) {
       },
       {
         threshold: isInitialRun ? 0.3 : 0.12,
-        rootMargin: isInitialRun ? '0px 0px -14% 0px' : '0px 0px -6% 0px'
+        rootMargin: isInitialRun ? '0px 0px -14% 0px' : '0px 0px -6% 0px',
       }
     );
 
     observerRef.current = revealObserver;
     const timerId = window.setTimeout(() => {
-      document.querySelectorAll('.page.active .rev:not(.in), .page.active .rev-no-scale:not(.in)').forEach((element) => revealObserver.observe(element));
+      document
+        .querySelectorAll(
+          '.page.active .rev:not(.in), .page.active .rev-no-scale:not(.in)'
+        )
+        .forEach((element) => revealObserver.observe(element));
     }, observeDelayMs);
 
     hasPlayedInitialRevealRef.current = true;
 
     return () => {
       window.clearTimeout(timerId);
-      revealTimeoutIdsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      revealTimeoutIdsRef.current.forEach((timeoutId) =>
+        window.clearTimeout(timeoutId)
+      );
       revealTimeoutIdsRef.current = [];
       revealObserver.disconnect();
     };
@@ -115,7 +126,10 @@ function animateCounter(counterElement) {
 
   const tick = () => {
     frame += 1;
-    const currentValue = Math.round(startingValue + (targetValue - startingValue) * easeOutQuad(frame / totalFrames));
+    const currentValue = Math.round(
+      startingValue +
+        (targetValue - startingValue) * easeOutQuad(frame / totalFrames)
+    );
     counterElement.textContent = `${currentValue}${suffix}`;
 
     if (frame < totalFrames) {
@@ -184,12 +198,14 @@ export function useKpiAnimation(currentPage) {
 
     observerRef.current = kpiObserver;
 
-    document.querySelectorAll('.page.active [data-target]').forEach((counter) => {
-      delete counter.dataset.counted;
-      const suffix = counter.dataset.suffix || '';
-      counter.textContent = `0${suffix}`;
-      kpiObserver.observe(counter);
-    });
+    document
+      .querySelectorAll('.page.active [data-target]')
+      .forEach((counter) => {
+        delete counter.dataset.counted;
+        const suffix = counter.dataset.suffix || '';
+        counter.textContent = `0${suffix}`;
+        kpiObserver.observe(counter);
+      });
 
     return () => {
       pendingRevealFrameIds.forEach((frameId) => cancelAnimationFrame(frameId));
@@ -202,11 +218,15 @@ export function useKpiAnimation(currentPage) {
 export function useReducedMotionMarquee() {
   useEffect(() => {
     const marqueeTrackElement = document.getElementById('marqueeTrack');
-    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const motionPreference = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
 
     const syncMarqueeAnimationState = () => {
       if (marqueeTrackElement) {
-        marqueeTrackElement.style.animationPlayState = motionPreference.matches ? 'paused' : 'running';
+        marqueeTrackElement.style.animationPlayState = motionPreference.matches
+          ? 'paused'
+          : 'running';
       }
     };
 

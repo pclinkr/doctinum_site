@@ -14,7 +14,10 @@
   letter-spacing: var(--track);
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) var(--ease-spring), background var(--duration-fast) ease;
+  transition:
+    opacity var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-spring),
+    background var(--duration-fast) ease;
 }
 
 .ds-btn--primary {
@@ -88,7 +91,9 @@
   padding: 14px 18px;
   font-size: 14px;
   line-height: 1.5;
-  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  transition:
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
 }
 
 .ds-textarea {
@@ -109,20 +114,24 @@
 }
 
 /* Accordion */
-.ds-accordion {
+.ds-accordion,
+.faq-list {
   max-width: 660px;
   margin-inline: auto;
 }
 
-.ds-accordion-item {
+.ds-accordion-item,
+.faq-item {
   border-bottom: 1px solid var(--border-default);
 }
 
-.ds-accordion-item:first-child {
+.ds-accordion-item:first-child,
+.faq-item:first-child {
   border-top: 1px solid var(--border-default);
 }
 
-.ds-accordion-trigger {
+.ds-accordion-trigger,
+.faq-trigger {
   width: 100%;
   display: flex;
   align-items: center;
@@ -140,16 +149,23 @@
   cursor: pointer;
 }
 
-.ds-accordion-icon {
-  width: 24px;
-  height: 24px;
+.ds-accordion-icon,
+.faq-icon {
+  width: 20px;
+  height: 20px;
   border-radius: 999px;
-  background: var(--action-primary-bg);
-  color: var(--action-primary-fg);
+  background: transparent;
+  color: var(--text-primary);
   display: grid;
   place-items: center;
   flex-shrink: 0;
   line-height: 0;
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.faq-trigger:hover .faq-icon {
+  opacity: 1;
 }
 
 .ds-accordion-icon svg,
@@ -159,12 +175,21 @@
   shape-rendering: geometricPrecision;
 }
 
-.ds-accordion-content {
+.ds-accordion-content,
+.faq-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height var(--duration-mid) var(--ease-out);
 }
 
-.ds-accordion-item.is-open .ds-accordion-content {
+.faq-body p {
+  padding-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.ds-accordion-item.is-open .ds-accordion-content,
+.faq-item.open .faq-body {
   max-height: 280px;
 }

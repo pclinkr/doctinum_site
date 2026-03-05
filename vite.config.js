@@ -22,11 +22,11 @@ export default defineConfig(async () => {
     plugins,
     resolve: {
       alias: {
-        '@': path.resolve(projectRoot, './src')
-      }
+        '@': path.resolve(projectRoot, './src'),
+      },
     },
     build: {
-      cssCodeSplit: !useSingleFile
-    }
+      cssCodeSplit: !useSingleFile,
+    },
   };
 });

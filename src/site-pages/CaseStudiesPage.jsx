@@ -12,8 +12,17 @@ export default function CaseStudiesPage({ active, onNavigate }) {
   const socialProofText = getSocialProofText(t);
 
   return (
-    <div id="page-case-studies" className={`page ${active ? 'active' : ''}`.trim()}>
-      <PageHero badge={t('pages.caseStudies.badge')} title={t('pages.caseStudies.title')} description={t('pages.caseStudies.description')} showProof proofText={socialProofText} />
+    <div
+      id="page-case-studies"
+      className={`page ${active ? 'active' : ''}`.trim()}
+    >
+      <PageHero
+        badge={t('pages.caseStudies.badge')}
+        title={t('pages.caseStudies.title')}
+        description={t('pages.caseStudies.description')}
+        showProof
+        proofText={socialProofText}
+      />
       <CaseStudiesGridSection cards={caseStudyCards} onNavigate={onNavigate} />
       <FinalCtaSection onNavigate={onNavigate} subtitle={ctaSubtitleFull} />
     </div>

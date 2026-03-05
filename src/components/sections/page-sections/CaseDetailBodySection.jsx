@@ -3,9 +3,85 @@ import Container from '../../layout/Container';
 export default function CaseDetailBodySection() {
   return (
     <Container className="py-16">
-      <div className="rev grid grid-cols-[180px_1fr] gap-12 border-b border-[var(--border)] py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4"><div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">The Challenge</div><div><h3 className="mb-4 text-[clamp(22px,3vw,32px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.05em]">Glowhaus came to us with great products but low engagement on social media. They needed a content strategy that would showcase their clean beauty philosophy while driving real audience growth.</h3><p className="text-[14px] leading-[1.75] text-[var(--muted)]">Glowhaus had built a loyal customer base through word-of-mouth, but their social presence wasn't reflecting the quality of their brand or converting browsers into buyers.</p></div></div>
-      <div className="rev grid grid-cols-[180px_1fr] gap-12 border-b border-[var(--border)] py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4"><div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">Our Strategy</div><div><h3 className="mb-4 text-[clamp(22px,3vw,32px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.05em]">We developed a UGC-driven content strategy focused on short-form video content, specifically optimised for Instagram Reels to maximise organic reach and engagement.</h3><p className="text-[14px] leading-[1.75] text-[var(--muted)]">Our approach combined authentic customer testimonials with behind-the-scenes content showing their clean ingredient sourcing and product development process.</p></div></div>
-      <div className="rev grid grid-cols-[180px_1fr] gap-12 py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4"><div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">The Results</div><div><div className="flex flex-wrap gap-16 max-[809px]:gap-8"><div><div className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums" data-target="128" data-suffix="K">0K</div><div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">Reel Views</div></div><div><div className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums" data-target="219" data-suffix="%">0%</div><div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">Engagement</div></div><div><div className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums" data-target="189" data-suffix="%">0%</div><div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">Follower Growth</div></div></div></div></div>
+      <div className="rev grid grid-cols-[180px_1fr] gap-12 border-b border-[var(--border)] py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4">
+        <div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">
+          The Challenge
+        </div>
+        <div>
+          <h3 className="mb-4 text-[clamp(22px,3vw,32px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.05em]">
+            Glowhaus came to us with great products but low engagement on social
+            media. They needed a content strategy that would showcase their
+            clean beauty philosophy while driving real audience growth.
+          </h3>
+          <p className="text-[14px] leading-[1.75] text-[var(--muted)]">
+            Glowhaus had built a loyal customer base through word-of-mouth, but
+            their social presence wasn't reflecting the quality of their brand
+            or converting browsers into buyers.
+          </p>
+        </div>
+      </div>
+      <div className="rev grid grid-cols-[180px_1fr] gap-12 border-b border-[var(--border)] py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4">
+        <div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">
+          Our Strategy
+        </div>
+        <div>
+          <h3 className="mb-4 text-[clamp(22px,3vw,32px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.05em]">
+            We developed a UGC-driven content strategy focused on short-form
+            video content, specifically optimised for Instagram Reels to
+            maximise organic reach and engagement.
+          </h3>
+          <p className="text-[14px] leading-[1.75] text-[var(--muted)]">
+            Our approach combined authentic customer testimonials with
+            behind-the-scenes content showing their clean ingredient sourcing
+            and product development process.
+          </p>
+        </div>
+      </div>
+      <div className="rev grid grid-cols-[180px_1fr] gap-12 py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4">
+        <div className="pt-1 text-[13px] tracking-[var(--track)] text-[var(--muted)]">
+          The Results
+        </div>
+        <div>
+          <div className="flex flex-wrap gap-16 max-[809px]:gap-8">
+            <div>
+              <div
+                className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums"
+                data-target="128"
+                data-suffix="K"
+              >
+                0K
+              </div>
+              <div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">
+                Reel Views
+              </div>
+            </div>
+            <div>
+              <div
+                className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums"
+                data-target="219"
+                data-suffix="%"
+              >
+                0%
+              </div>
+              <div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">
+                Engagement
+              </div>
+            </div>
+            <div>
+              <div
+                className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums"
+                data-target="189"
+                data-suffix="%"
+              >
+                0%
+              </div>
+              <div className="mt-1 text-[14px] font-[var(--w500)] text-[var(--muted)]">
+                Follower Growth
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }

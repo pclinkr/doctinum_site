@@ -4,7 +4,7 @@ export default function BrandWordmark({
   symbolColor,
   width,
   height,
-  alt = 'Darkteam'
+  alt = 'Darkteam',
 }) {
   const wordmarkColor = color;
   const markColor = symbolColor ?? color;

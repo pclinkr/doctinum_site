@@ -36,12 +36,15 @@ export default function SurgeryAestheticPage({ active, onNavigate }) {
   const copy = t('pages.solutions.surgery', { returnObjects: true });
 
   return (
-    <div id="page-case-detail" className={`page ${active ? 'active' : ''}`.trim()}>
-      <SolutionHeroSection 
+    <div
+      id="page-case-detail"
+      className={`page ${active ? 'active' : ''}`.trim()}
+    >
+      <SolutionHeroSection
         onNavigate={onNavigate}
         badge={{
           text: copy.hero.badge,
-          variant: 'secondary'
+          variant: 'secondary',
         }}
         title={copy.hero.title}
         backgroundImage="/assets/images/aesthetic_face.png"
@@ -55,9 +58,7 @@ export default function SurgeryAestheticPage({ active, onNavigate }) {
         showVisual={true}
         visualImageUrl="/assets/images/aesthetic_patient.png"
       />
-      <SolutionChallengeSection
-        items={copy.challengeItems}
-      />
+      <SolutionChallengeSection items={copy.challengeItems} />
       <StructureSuperviseSection />
       <ImagineProtocolSection />
       <ConfiguredExamplesSection onNavigate={onNavigate} />

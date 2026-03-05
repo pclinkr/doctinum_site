@@ -3,7 +3,7 @@ export default function BrandIcon({
   stroke,
   className = '',
   width = 32,
-  height = 32
+  height = 32,
 }) {
   const resolvedColor = stroke ?? color;
 

@@ -8,11 +8,20 @@ import NotCallbotSectionAlt from '../components/sections/page-sections/NotCallbo
 import HomeVoiceChannelSection from '../components/sections/page-sections/HomeVoiceChannelSection';
 import HomeUseCasesSection from '../components/sections/page-sections/HomeUseCasesSection';
 import HomeSecurityFrameSection from '../components/sections/page-sections/HomeSecurityFrameSection';
-import { getHelpItems, getHomeFaqItems, getStoryGradients } from '../constants/content';
+import {
+  getHelpItems,
+  getHomeFaqItems,
+  getStoryGradients,
+} from '../constants/content';
 import { getCtaSubtitleFull, getStoryDurationMs } from '../constants/site';
 import ProblemCard from '../components/sections/ProblemCard';
 
-export default function HomePage({ active, onNavigate, storyStarted, instantHero }) {
+export default function HomePage({
+  active,
+  onNavigate,
+  storyStarted,
+  instantHero,
+}) {
   const { t } = useTranslation();
   const storyGradients = getStoryGradients(t);
   const storyDurationMs = getStoryDurationMs(t);
@@ -22,9 +31,17 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
 
   return (
     <div id="page-home" className={`page ${active ? 'active' : ''}`.trim()}>
-      <HomeHeroSection onNavigate={onNavigate} storyStarted={storyStarted} storyGradients={storyGradients} storyDurationMs={storyDurationMs} instant={instantHero} />
+      <HomeHeroSection
+        onNavigate={onNavigate}
+        storyStarted={storyStarted}
+        storyGradients={storyGradients}
+        storyDurationMs={storyDurationMs}
+        instant={instantHero}
+      />
       {/* <HomeSlidingBanner /> */}
-      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5"><ProblemCard /></section>
+      <section className="mx-auto w-full max-w-[1200px] px-16 pb-24 pt-10 max-[1024px]:px-8 max-[768px]:px-5">
+        <ProblemCard />
+      </section>
       <HomeOurSolutionSection onNavigate={onNavigate} />
       <NotCallbotSectionAlt />
       <HomeVoiceChannelSection />
@@ -35,7 +52,11 @@ export default function HomePage({ active, onNavigate, storyStarted, instantHero
       <WhyChooseSection />
       <FaqSection items={homeFaqItems} /> */}
       <HomeMedicalVoiceCallSection />
-      <FinalCtaSection id="homeCta" onNavigate={onNavigate} subtitle={ctaSubtitleFull} />
+      <FinalCtaSection
+        id="homeCta"
+        onNavigate={onNavigate}
+        subtitle={ctaSubtitleFull}
+      />
       <div id="homeFooter" />
     </div>
   );

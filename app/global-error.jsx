@@ -17,7 +17,8 @@ export default function GlobalError({ error, reset }) {
               A critical error occurred!
             </h2>
             <p className="text-gray-600 mb-8">
-              We apologize for the inconvenience. A critical error occurred that affected the entire application.
+              We apologize for the inconvenience. A critical error occurred that
+              affected the entire application.
             </p>
             <button
               onClick={reset}
@@ -25,7 +26,7 @@ export default function GlobalError({ error, reset }) {
             >
               Try again
             </button>
-            <Link 
+            <Link
               href="/"
               className="inline-block bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors"
             >

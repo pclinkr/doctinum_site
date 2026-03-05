@@ -12,19 +12,19 @@ export function buildMetadata(pageId, localeValue) {
     alternates: {
       languages: {
         en: `/${pageId === 'home' ? '' : pageId}`,
-        fr: `/fr/${pageId === 'home' ? '' : pageId}`
-      }
+        fr: `/fr/${pageId === 'home' ? '' : pageId}`,
+      },
     },
     openGraph: {
       title: seoValue.title,
       description: seoValue.description,
       url: urlBase,
-      type: 'website'
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: seoValue.title,
-      description: seoValue.description
-    }
+      description: seoValue.description,
+    },
   };
 }

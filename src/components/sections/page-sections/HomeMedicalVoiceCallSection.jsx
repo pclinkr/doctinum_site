@@ -5,7 +5,12 @@ import VoiceCallPhone from '../../ui/VoiceCallPhone';
 import VoiceTranscriptPanel from '../../ui/VoiceTranscriptPanel';
 import { getRetellWebClientClass } from '../../../lib/retellWebCall';
 
-const MEDICAL_DOMAIN_IDS = ['orthopedie', 'cancer', 'transplantation-hepatique', 'chirurgie-esthetique'];
+const MEDICAL_DOMAIN_IDS = [
+  'orthopedie',
+  'cancer',
+  'transplantation-hepatique',
+  'chirurgie-esthetique',
+];
 
 const DEFAULT_ENDPOINT_TEMPLATE = '/api/retell/test-web-call';
 const DEFAULT_AGENT_ID = 'agent_9f250d09bcb3b222b1baa1ff88';
@@ -44,7 +49,11 @@ function extractAccessToken(responsePayload) {
 function normalizeRole(rawRole) {
   const roleValue = String(rawRole || '').toLowerCase();
 
-  if (roleValue.includes('agent') || roleValue.includes('assistant') || roleValue.includes('ai')) {
+  if (
+    roleValue.includes('agent') ||
+    roleValue.includes('assistant') ||
+    roleValue.includes('ai')
+  ) {
     return 'agent';
   }
 
@@ -68,13 +77,15 @@ function normalizeTranscriptEntries(updatePayload) {
 
   return transcriptRows
     .map((row, index) => {
-      const text = String(row?.content ?? row?.transcript ?? row?.text ?? '').trim();
+      const text = String(
+        row?.content ?? row?.transcript ?? row?.text ?? ''
+      ).trim();
       if (!text) return null;
 
       return {
         id: `live-${index}-${text.slice(0, 24)}`,
         role: normalizeRole(row?.role ?? row?.speaker ?? row?.speaker_type),
-        text
+        text,
       };
     })
     .filter(Boolean);
@@ -83,7 +94,9 @@ function normalizeTranscriptEntries(updatePayload) {
 function mergeTranscriptEntries(currentEntries, incomingEntries) {
   if (!incomingEntries.length) return currentEntries;
 
-  const signatures = new Set(currentEntries.map((entry) => `${entry.role}:${entry.text}`));
+  const signatures = new Set(
+    currentEntries.map((entry) => `${entry.role}:${entry.text}`)
+  );
   const mergedEntries = [...currentEntries];
 
   incomingEntries.forEach((entry) => {
@@ -93,7 +106,7 @@ function mergeTranscriptEntries(currentEntries, incomingEntries) {
     mergedEntries.push({
       id: `${entry.id}-${Date.now()}-${Math.random().toString(16).slice(2, 6)}`,
       role: entry.role,
-      text: entry.text
+      text: entry.text,
     });
   });
 
@@ -104,7 +117,9 @@ export default function HomeMedicalVoiceCallSection() {
   const { t, i18n } = useTranslation();
   const sectionRef = useRef(null);
   const progressRef = useRef(0);
-  const [selectedDomainId, setSelectedDomainId] = useState(MEDICAL_DOMAIN_IDS[0]);
+  const [selectedDomainId, setSelectedDomainId] = useState(
+    MEDICAL_DOMAIN_IDS[0]
+  );
   const [scrollProgress, setScrollProgress] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [callState, setCallState] = useState('idle');
@@ -125,12 +140,15 @@ export default function HomeMedicalVoiceCallSection() {
     [t, i18n.resolvedLanguage, i18n.language]
   );
   const fallbackTranscripts = useMemo(
-    () => t('sections.medicalVoice.fallbackTranscripts', { returnObjects: true }),
+    () =>
+      t('sections.medicalVoice.fallbackTranscripts', { returnObjects: true }),
     [t, i18n.resolvedLanguage, i18n.language]
   );
 
   const selectedDomain = useMemo(
-    () => medicalDomains.find((domain) => domain.id === selectedDomainId) || medicalDomains[0],
+    () =>
+      medicalDomains.find((domain) => domain.id === selectedDomainId) ||
+      medicalDomains[0],
     [selectedDomainId, medicalDomains]
   );
 
@@ -165,8 +183,15 @@ export default function HomeMedicalVoiceCallSection() {
 
       const sectionElement = sectionRef.current;
       const sectionRect = sectionElement.getBoundingClientRect();
-      const totalScrollableDistance = Math.max(1, sectionElement.offsetHeight - window.innerHeight);
-      const scrolledWithinSection = clamp(-sectionRect.top, 0, totalScrollableDistance);
+      const totalScrollableDistance = Math.max(
+        1,
+        sectionElement.offsetHeight - window.innerHeight
+      );
+      const scrolledWithinSection = clamp(
+        -sectionRect.top,
+        0,
+        totalScrollableDistance
+      );
       const nextProgress = scrolledWithinSection / totalScrollableDistance;
 
       if (Math.abs(nextProgress - progressRef.current) < 0.003) return;
@@ -192,7 +217,9 @@ export default function HomeMedicalVoiceCallSection() {
   }, [prefersReducedMotion]);
 
   const clearFallbackTimers = () => {
-    fallbackTimerIdsRef.current.forEach((timerId) => window.clearTimeout(timerId));
+    fallbackTimerIdsRef.current.forEach((timerId) =>
+      window.clearTimeout(timerId)
+    );
     fallbackTimerIdsRef.current = [];
   };
 
@@ -242,7 +269,8 @@ export default function HomeMedicalVoiceCallSection() {
     setOrbMode('listening');
     setTranscriptEntries([]);
 
-    const fallbackAudioUrl = process.env.NEXT_PUBLIC_VOICE_DEMO_FALLBACK_AUDIO_URL;
+    const fallbackAudioUrl =
+      process.env.NEXT_PUBLIC_VOICE_DEMO_FALLBACK_AUDIO_URL;
 
     if (fallbackAudioUrl) {
       try {
@@ -254,7 +282,10 @@ export default function HomeMedicalVoiceCallSection() {
       }
     }
 
-    const script = fallbackTranscripts[selectedDomain.id] || fallbackTranscripts.orthopedie || [];
+    const script =
+      fallbackTranscripts[selectedDomain.id] ||
+      fallbackTranscripts.orthopedie ||
+      [];
 
     const streamFallbackLine = (lineId, fullText) => {
       const textCharacters = Array.from(fullText || '');
@@ -271,7 +302,10 @@ export default function HomeMedicalVoiceCallSection() {
 
         const progress = clamp(tickCount / totalTicks);
         const easedProgress = 1 - Math.pow(1 - progress, 2.2);
-        const nextLength = Math.max(1, Math.round(textCharacters.length * easedProgress));
+        const nextLength = Math.max(
+          1,
+          Math.round(textCharacters.length * easedProgress)
+        );
         const nextText = textCharacters.slice(0, nextLength).join('');
 
         setTranscriptEntries((currentEntries) =>
@@ -298,7 +332,7 @@ export default function HomeMedicalVoiceCallSection() {
         setOrbModeFromRole(entry.role);
         setTranscriptEntries((currentEntries) => [
           ...currentEntries,
-          { id: lineId, role: entry.role, text: '' }
+          { id: lineId, role: entry.role, text: '' },
         ]);
         streamFallbackLine(lineId, entry.text);
       }, entry.delayMs);
@@ -316,11 +350,14 @@ export default function HomeMedicalVoiceCallSection() {
       ? lastEntryTicks * FALLBACK_TYPING_INTERVAL_MS
       : 0;
     const finalTypingTailMs = Math.max(520, lastEntryTypingDurationMs + 520);
-    const endTimerId = window.setTimeout(() => {
-      setCallState('ended');
-      setCallStatusLabel(t('sections.medicalVoice.status.fallbackCompleted'));
-      scheduleReturnToIdle(2000);
-    }, (lastEntry?.delayMs || 0) + finalTypingTailMs);
+    const endTimerId = window.setTimeout(
+      () => {
+        setCallState('ended');
+        setCallStatusLabel(t('sections.medicalVoice.status.fallbackCompleted'));
+        scheduleReturnToIdle(2000);
+      },
+      (lastEntry?.delayMs || 0) + finalTypingTailMs
+    );
 
     fallbackTimerIdsRef.current.push(endTimerId);
   };
@@ -342,7 +379,8 @@ export default function HomeMedicalVoiceCallSection() {
 
     try {
       const endpoint = resolveBackendEndpoint();
-      const agentId = process.env.NEXT_PUBLIC_RETELL_AGENT_ID || DEFAULT_AGENT_ID;
+      const agentId =
+        process.env.NEXT_PUBLIC_RETELL_AGENT_ID || DEFAULT_AGENT_ID;
       const requestHeaders = { 'Content-Type': 'application/json' };
 
       const webCallResponse = await fetch(endpoint, {
@@ -351,12 +389,14 @@ export default function HomeMedicalVoiceCallSection() {
         body: JSON.stringify({
           domain: selectedDomain.label,
           domainKey: selectedDomain.id,
-          agentId
-        })
+          agentId,
+        }),
       });
 
       if (!webCallResponse.ok) {
-        throw new Error(`Backend request failed with status ${webCallResponse.status}`);
+        throw new Error(
+          `Backend request failed with status ${webCallResponse.status}`
+        );
       }
 
       const webCallPayload = await webCallResponse.json();
@@ -399,7 +439,8 @@ export default function HomeMedicalVoiceCallSection() {
         const liveTranscriptEntries = normalizeTranscriptEntries(updatePayload);
         if (!liveTranscriptEntries.length) return;
 
-        const latestEntry = liveTranscriptEntries[liveTranscriptEntries.length - 1];
+        const latestEntry =
+          liveTranscriptEntries[liveTranscriptEntries.length - 1];
         if (latestEntry) {
           setOrbModeFromRole(latestEntry.role);
         }
@@ -436,7 +477,12 @@ export default function HomeMedicalVoiceCallSection() {
   };
 
   const startCallFromPhone = () => {
-    if (callState === 'connecting' || callState === 'live' || callState === 'fallback') return;
+    if (
+      callState === 'connecting' ||
+      callState === 'live' ||
+      callState === 'fallback'
+    )
+      return;
     startRetellCall();
   };
   const hangupCallFromPhone = () => stopCall();
@@ -445,7 +491,7 @@ export default function HomeMedicalVoiceCallSection() {
     if (!transcriptViewportRef.current) return;
     transcriptViewportRef.current.scrollTo({
       top: transcriptViewportRef.current.scrollHeight,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }, [transcriptEntries]);
 
@@ -461,11 +507,11 @@ export default function HomeMedicalVoiceCallSection() {
 
   const sectionRevealProgress = progressBetween(scrollProgress, 0.05, 0.26);
   const headerRevealProgress = progressBetween(scrollProgress, 0.05, 0.22);
-  const selectorRevealProgress = progressBetween(scrollProgress, 0.1, 0.31);
-  const phoneMoveProgress = progressBetween(scrollProgress, 0.12, 0.64);
+  const selectorRevealProgress = progressBetween(scrollProgress, 0.08, 0.26);
+  const phoneMoveProgress = progressBetween(scrollProgress, 0.12, 0.48);
   const transcriptRevealProgress = progressBetween(scrollProgress, 0.36, 0.88);
   const headerDriftProgress = progressBetween(scrollProgress, 0.22, 0.84);
-  const selectorDriftProgress = progressBetween(scrollProgress, 0.26, 0.88);
+  const selectorDriftProgress = progressBetween(scrollProgress, 0.26, 0.84);
   const isConversationVisible =
     callState === 'connecting' ||
     callState === 'live' ||
@@ -475,7 +521,8 @@ export default function HomeMedicalVoiceCallSection() {
   const headerEase = smoothstep(headerRevealProgress);
   const selectorEase = smoothstep(selectorRevealProgress);
   const headerTranslateY = 18 * (1 - headerEase) - 8 * headerDriftProgress;
-  const selectorTranslateY = 26 * (1 - selectorEase) - 8 * selectorDriftProgress;
+  const selectorTranslateY =
+    26 * (1 - selectorEase) - 8 * selectorDriftProgress;
   const stageTranslateY = 28 * (1 - sectionRevealProgress);
   const stageOpacity = 0.22 + sectionRevealProgress * 0.78;
   const selectorOpacity = selectorEase * 0.96;
@@ -485,26 +532,36 @@ export default function HomeMedicalVoiceCallSection() {
   const phoneRotate = -10 * (1 - phoneMoveProgress);
   const phoneScale = 0.64 + phoneMoveProgress * 0.2;
   const phoneTranslateX = isConversationVisible ? -186 : 0;
-  const transcriptTranslateX = isConversationVisible ? 54 * (1 - transcriptRevealProgress) : 112;
-  const transcriptOpacity = isConversationVisible ? 0.2 + transcriptRevealProgress * 0.8 : 0;
-  const phoneAvatarUrl = process.env.NEXT_PUBLIC_VOICE_DEMO_AVATAR_URL || '/assets/voice-demo/avatar-default.jpg';
+  const transcriptTranslateX = isConversationVisible
+    ? 54 * (1 - transcriptRevealProgress)
+    : 112;
+  const transcriptOpacity = isConversationVisible
+    ? 0.2 + transcriptRevealProgress * 0.8
+    : 0;
+  const phoneAvatarUrl =
+    process.env.NEXT_PUBLIC_VOICE_DEMO_AVATAR_URL ||
+    '/assets/voice-demo/avatar-default.jpg';
 
   return (
-    <section className="medical-voice-scroll" id="medicalVoiceDemo" ref={sectionRef}>
+    <section
+      className="medical-voice-scroll"
+      id="medicalVoiceDemo"
+      ref={sectionRef}
+    >
       <div className="medical-voice-sticky">
         <div className="medical-voice-shell rev-no-scale">
           <div
             className="medical-voice-header"
             style={{ transform: `translate3d(0,${headerTranslateY}px,0)` }}
           >
-            <div className="mb-4 flex items-center justify-center">
-              <div className="rounded-full bg-amber-50 px-4 py-1.5 border border-amber-200">
-                <p className="text-[11px] font-[var(--w500)] tracking-[0.02em] text-amber-700">Démonstration non clinique</p>
-              </div>
-            </div>
-            <p className="medical-voice-head-label mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">{t('sections.medicalVoice.headLabel')}</p>
+            <p className="medical-voice-head-label mb-3 text-[12px] font-[var(--w500)] uppercase tracking-[0.06em] text-[var(--muted)]">
+              {t('sections.medicalVoice.headLabel')}
+            </p>
             <h2 className="medical-voice-head-title text-[clamp(32px,4.5vw,52px)] font-[var(--w500)] leading-[var(--lh-head)] tracking-[-0.055em] text-[var(--color-primary)]">
-              {t('sections.medicalVoice.headTitlePrefix')} <span className="si">{t('sections.medicalVoice.headTitleAccent')}</span>
+              {t('sections.medicalVoice.headTitlePrefix')}{' '}
+              <span className="si">
+                {t('sections.medicalVoice.headTitleAccent')}
+              </span>
             </h2>
           </div>
 
@@ -512,12 +569,9 @@ export default function HomeMedicalVoiceCallSection() {
             className="medical-voice-selector-wrap"
             style={{
               transform: `translate3d(0,${selectorTranslateY}px,0) scale(${selectorScale})`,
-              opacity: selectorOpacity
+              opacity: selectorOpacity,
             }}
           >
-            <p className="mb-4 text-center text-[14px] font-[var(--w500)] text-[var(--color-primary)] opacity-80">
-              Sélectionner l'exemple d'appel
-            </p>
             <MedicalDomainSelector
               options={medicalDomains}
               selectedId={selectedDomain.id}
@@ -527,11 +581,13 @@ export default function HomeMedicalVoiceCallSection() {
 
           <div
             className={`medical-voice-stage ${isConversationVisible ? 'conversation-active' : ''}`.trim()}
-            style={{ transform: `translate3d(0,${stageTranslateY}px,0)`, opacity: stageOpacity }}
+            style={{ opacity: stageOpacity }}
           >
             <div
               className="medical-voice-phone-col"
-              style={{ transform: `translate3d(${phoneTranslateX}px,${phoneTranslateY}px,0) scale(${phoneScale}) rotate(${phoneRotate}deg)` }}
+              style={{
+                transform: `translate3d(${phoneTranslateX}px,${stageTranslateY + phoneTranslateY}px,0) scale(${phoneScale}) rotate(${phoneRotate}deg)`,
+              }}
             >
               <VoiceCallPhone
                 domainLabel={selectedDomain.label}
@@ -547,7 +603,7 @@ export default function HomeMedicalVoiceCallSection() {
               className="medical-voice-transcript-col"
               style={{
                 transform: `translate3d(${transcriptTranslateX}px,0,0)`,
-                opacity: transcriptOpacity
+                opacity: transcriptOpacity,
               }}
             >
               <VoiceTranscriptPanel

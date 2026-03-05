@@ -1,6 +1,10 @@
 import { notFound } from 'next/navigation';
 import LocaleShell from '../../src/components/layout/LocaleShell';
-import { isSupportedLocale, normalizeLocale, SUPPORTED_LOCALES } from '../../src/constants/locales';
+import {
+  isSupportedLocale,
+  normalizeLocale,
+  SUPPORTED_LOCALES,
+} from '../../src/constants/locales';
 
 export function generateStaticParams() {
   return SUPPORTED_LOCALES.map((localeValue) => ({ locale: localeValue }));

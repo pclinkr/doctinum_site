@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   const seoValue = getSeoForPage('editors-api', localeCode);
   return {
     title: seoValue.title,
-    description: seoValue.description
+    description: seoValue.description,
   };
 }
 

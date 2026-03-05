@@ -1,15 +1,15 @@
 import Container from '../../layout/Container';
 
-export default function SolutionChallengeSection({ 
+export default function SolutionChallengeSection({
   items = [],
-  className = "",
-  containerClassName = ""
+  className = '',
+  containerClassName = '',
 }) {
   return (
     <Container className={`py-16 ${containerClassName}`}>
       <div className={`space-y-0 ${className}`}>
         {items.map((item, index) => (
-          <div 
+          <div
             key={index}
             className={`rev grid grid-cols-[180px_1fr] gap-12 py-14 max-[809px]:grid-cols-1 max-[809px]:gap-4 ${
               index < items.length - 1 ? 'border-b border-[var(--border)]' : ''
@@ -32,7 +32,7 @@ export default function SolutionChallengeSection({
               {item.listItems && (
                 <ul className="space-y-4">
                   {item.listItems.map((listItem, listIndex) => (
-                    <li 
+                    <li
                       key={listIndex}
                       className="flex items-center gap-4 pl-8 relative group"
                     >
@@ -47,7 +47,7 @@ export default function SolutionChallengeSection({
                 <div className="flex flex-wrap gap-16 max-[809px]:gap-8">
                   {item.metrics.map((metric, metricIndex) => (
                     <div key={metricIndex}>
-                      <div 
+                      <div
                         className="text-[clamp(40px,6vw,72px)] font-[var(--w500)] leading-none tracking-[-0.06em] tabular-nums"
                         data-target={metric.target}
                         data-suffix={metric.suffix}
