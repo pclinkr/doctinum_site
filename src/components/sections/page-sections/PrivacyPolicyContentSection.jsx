@@ -25,7 +25,6 @@ export default function PrivacyPolicyContentSection() {
         <p>
           <strong>Doctinum SAS</strong>
           <br />
-          RCS Paris
           <br />
           contact [at] doctinum.com
         </p>

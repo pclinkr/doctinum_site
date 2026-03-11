@@ -1,6 +1,16 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
 import Container from '../../layout/Container';
+import Button from '../../ui/Button';
 
 export default function CookiesPolicyContentSection() {
+  const { t } = useTranslation();
+
+  const handleOpenCookiePreferences = () => {
+    window.dispatchEvent(new Event('openCookiePreferences'));
+  };
+
   return (
     <Container className="grid grid-cols-1 gap-0 pb-20 pt-[calc(var(--nav-h)+48px)]">
       <h1 className="mb-10 animate-fadeUp">Politique de gestion des cookies</h1>
@@ -66,6 +76,16 @@ export default function CookiesPolicyContentSection() {
           <li>retirer votre accord.</li>
         </ul>
         <p>Une interface de gestion des cookies est accessible sur le site.</p>
+        
+        <div className="mt-6">
+          <Button
+            onClick={handleOpenCookiePreferences}
+            variant="primary"
+            className="w-full max-w-[320px]"
+          >
+            {t('footer.manageCookies', 'Modifier mes préférences cookies')}
+          </Button>
+        </div>
       </div>
     </Container>
   );

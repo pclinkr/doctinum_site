@@ -96,7 +96,7 @@ export default function PageRenderer({ pageId }) {
     return <EditorsApiPage active onNavigate={onNavigate} />;
   }
 
-  if (pageId === 'prevention-work-health') {
+  if (pageId === 'prevention-workplace-health') {
     return <PreventionWorkHealthPage active onNavigate={onNavigate} />;
   }
 

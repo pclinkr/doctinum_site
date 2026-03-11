@@ -76,12 +76,12 @@ const en = {
             {
               label: 'Patient support programs',
               description: 'Cadenced follow-up with clinical scripts.',
-              page: 'contact',
+              page: 'patient-support-programs',
             },
             {
               label: 'Prevention & workplace health',
               description: 'Population-level prevention and engagement.',
-              page: 'about',
+              page: 'prevention-workplace-health',
             },
             {
               label: 'Coordinated chronic pathways',
@@ -90,37 +90,37 @@ const en = {
             },
           ],
         },
-        {
-          title: 'Specialized high-vigilance pathways',
-          links: [
-            {
-              label: 'Transplantation',
-              description: 'Critical checkpoints and early warning signals.',
-              page: 'blog',
-            },
-            {
-              label: 'Oncology',
-              description: 'Follow-up on side effects and red flags.',
-              page: 'contact',
-            },
-            {
-              label: 'Chronic cardiology',
-              description: 'Longitudinal monitoring of key indicators.',
-              page: 'privacy',
-            },
-            {
-              label: 'Rare diseases',
-              description: 'Coordination across complex care journeys.',
-              page: 'case-studies',
-            },
-            {
-              label: 'Mental health',
-              description:
-                'Conversational follow-up with supervised escalation.',
-              page: 'about',
-            },
-          ],
-        },
+        // {
+        //   title: 'Specialized high-vigilance pathways',
+        //   links: [
+        //     {
+        //       label: 'Transplantation',
+        //       description: 'Critical checkpoints and early warning signals.',
+        //       page: 'blog',
+        //     },
+        //     {
+        //       label: 'Oncology',
+        //       description: 'Follow-up on side effects and red flags.',
+        //       page: 'contact',
+        //     },
+        //     {
+        //       label: 'Chronic cardiology',
+        //       description: 'Longitudinal monitoring of key indicators.',
+        //       page: 'privacy',
+        //     },
+        //     {
+        //       label: 'Rare diseases',
+        //       description: 'Coordination across complex care journeys.',
+        //       page: 'case-studies',
+        //     },
+        //     {
+        //       label: 'Mental health',
+        //       description:
+        //         'Conversational follow-up with supervised escalation.',
+        //       page: 'about',
+        //     },
+        //   ],
+        // },
       ],
       cta: { label: 'Discuss a pilot project', page: 'contact' },
     },
@@ -180,16 +180,16 @@ const en = {
               description: 'Product direction and deployment principles.',
               page: 'about',
             },
-            {
-              label: 'Careers',
-              description: 'Roles and product culture.',
-              page: 'about',
-            },
-            {
-              label: 'Blog',
-              description: 'Articles and perspectives.',
-              page: 'blog',
-            },
+            // {
+            //   label: 'Careers',
+            //   description: 'Roles and product culture.',
+            //   page: 'about',
+            // },
+            // {
+            //   label: 'Blog',
+            //   description: 'Articles and perspectives.',
+            //   page: 'blog',
+            // },
             {
               label: 'Styleguide',
               description: 'Internal UI reference.',
@@ -198,21 +198,21 @@ const en = {
             },
           ],
         },
-        {
-          title: 'Partnerships',
-          links: [
-            {
-              label: 'Experimentation & partnerships',
-              description: 'Pilots, protocols, and collaborations.',
-              page: 'case-studies',
-            },
-            {
-              label: 'Investors',
-              description: 'Strategic discussions and information.',
-              page: 'case-studies',
-            },
-          ],
-        },
+        // {
+        //   title: 'Partnerships',
+        //   links: [
+        //     {
+        //       label: 'Experimentation & partnerships',
+        //       description: 'Pilots, protocols, and collaborations.',
+        //       page: 'case-studies',
+        //     },
+        //     {
+        //       label: 'Investors',
+        //       description: 'Strategic discussions and information.',
+        //       page: 'case-studies',
+        //     },
+        //   ],
+        // },
       ],
       cta: { label: 'Contact us', page: 'contact' },
     },

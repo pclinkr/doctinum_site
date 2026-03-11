@@ -11,6 +11,8 @@ export default function PatientSupportCaseRow({
   items2 = [],
   description3 = '',
   items3 = [],
+  description4 = '',
+  items4 = [],
   footer = '',
   className = '',
   containerClassName = '',
@@ -42,45 +44,31 @@ export default function PatientSupportCaseRow({
             )}
           </div>
 
-          <div className={`flex flex-col gap-6 ${isImageRight ? 'min-[810px]:order-1' : 'min-[810px]:order-2'}`}>
+          <div className={`flex flex-col gap-4 ${isImageRight ? 'min-[810px]:order-1' : 'min-[810px]:order-2'}`}>
             <h3 className="text-[clamp(26px,3.2vw,36px)] font-[var(--w500)] leading-[1.12] tracking-[-0.045em]">
               {title}
             </h3>
             
             {description && (
-              <p className="text-[16px] leading-[1.7] text-[var(--muted)]">
+              <p className="text-[15px] leading-[1.65] text-[var(--muted)]">
                 {description}
               </p>
             )}
-            
-            {items && items.length > 0 && (
-              <ul className="space-y-3">
-                {items.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-3 text-[15px] leading-[1.7] text-[var(--muted)]"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
 
             {description2 && (
-              <p className="text-[16px] leading-[1.7] text-[var(--muted)]">
+              <p className="text-[15px] leading-[1.65] text-[var(--muted)]">
                 {description2}
               </p>
             )}
             
-            {items2 && items2.length > 0 && (
-              <ul className="space-y-3">
-                {items2.map((item, index) => (
+            {items && items.length > 0 && (
+              <ul className="space-y-2">
+                {items.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-[15px] leading-[1.7] text-[var(--muted)]"
+                    className="flex items-start gap-3 text-[14px] leading-[1.6] text-[var(--muted)]"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -88,27 +76,61 @@ export default function PatientSupportCaseRow({
             )}
 
             {description3 && (
-              <p className="text-[16px] leading-[1.7] text-[var(--muted)]">
+              <p className="text-[15px] leading-[1.65] text-[var(--muted)]">
                 {description3}
               </p>
             )}
             
-            {items3 && items3.length > 0 && (
-              <ul className="space-y-3">
-                {items3.map((item, index) => (
+            {items2 && items2.length > 0 && (
+              <ul className="space-y-2">
+                {items2.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-3 text-[15px] leading-[1.7] text-[var(--muted)]"
+                    className="flex items-start gap-3 text-[14px] leading-[1.6] text-[var(--muted)]"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             )}
 
+            {items3 && items3.length > 0 && (
+              <ul className="space-y-2">
+                {items3.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-3 text-[14px] leading-[1.6] text-[var(--muted)]"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {description4 && (
+              <p className="text-[15px] font-[var(--w500)] leading-[1.65] text-[var(--foreground)]">
+                {description4}
+              </p>
+            )}
+            
+            {items4 && items4.length > 0 && (
+              <ul className="space-y-2">
+                {items4.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-3 text-[14px] leading-[1.6] text-[var(--color-primary)]"
+                  >
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)] shadow-[0_0_8px_rgba(216,200,168,0.4)]"></span>
+                    <span className="font-[var(--w500)]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {footer && (
-              <p className="text-[16px] font-[var(--w500)] leading-[1.7] text-[var(--foreground)]">
+              <p className="mt-2 text-[15px] font-[var(--w500)] leading-[1.65] text-[var(--foreground)] italic">
                 {footer}
               </p>
             )}

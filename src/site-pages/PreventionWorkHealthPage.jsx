@@ -4,7 +4,7 @@ import SolutionHeroSection from '../components/sections/page-sections/SolutionHe
 import HomeFieldObservationSection from '../components/sections/page-sections/HomeFieldObservationSection';
 import HomeOurApproachSection from '../components/sections/page-sections/HomeOurApproachSection';
 import HomeWhyVoiceSection from '../components/sections/page-sections/HomeWhyVoiceSection';
-import HomeUseCasesSection from '../components/sections/page-sections/HomeUseCasesSection';
+import PatientSupportUseCasesSection from '../components/sections/page-sections/PatientSupportUseCasesSection';
 import HomeBeyondAgentSection from '../components/sections/page-sections/HomeBeyondAgentSection';
 import PreventionOrganizationsSection from '../components/sections/page-sections/PreventionOrganizationsSection';
 import SolutionRegulatorySection from '../components/sections/page-sections/SolutionRegulatorySection';
@@ -14,7 +14,7 @@ import { getCtaSubtitleFull } from '../constants/site';
 export default function PreventionWorkHealthPage({ active, onNavigate }) {
   const { t } = useTranslation();
   const ctaSubtitleFull = getCtaSubtitleFull(t);
-  const copy = t('pages.prevention', { returnObjects: true });
+  const copy = t('pages.solutions.prevention', { returnObjects: true });
 
   if (!copy || !copy.hero) {
     return null;
@@ -63,7 +63,7 @@ export default function PreventionWorkHealthPage({ active, onNavigate }) {
         footer={copy.whyVoice.footer}
       />
 
-      <HomeUseCasesSection
+      <PatientSupportUseCasesSection
         title={copy.useCases.title}
         cards={copy.useCases.cards}
       />

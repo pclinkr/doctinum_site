@@ -9,10 +9,10 @@ export default function PatientSupportHeroSection({
   imageUrl = '/assets/images/patient_support_hero.png',
 }) {
   return (
-    <Container className="pt-[calc(var(--nav-h)+20px)] pb-16">
+    <Container className="pt-[calc(var(--nav-h)+56px)] pb-16 max-[809px]:pt-[calc(var(--nav-h)+32px)]">
       <section className="rev grid min-h-[70vh] grid-cols-[440px_1fr] items-center gap-16 max-[1199px]:grid-cols-[360px_1fr] max-[1199px]:gap-10 max-[809px]:min-h-0 max-[809px]:grid-cols-1 max-[809px]:gap-10">
         <div
-          className="relative aspect-[4/5] overflow-hidden rounded-[var(--r-lg)] bg-cover bg-center"
+          className="relative aspect-[4/5] overflow-hidden rounded-[var(--r-md)] bg-cover bg-center"
           style={{
             backgroundImage: `url(${imageUrl})`,
             background: 'var(--gradient-accent-cool)',

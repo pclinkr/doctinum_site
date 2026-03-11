@@ -21,7 +21,7 @@ export default function SiteFooter({ onNavigate }) {
     },
     {
       label: 'Prévention & santé au travail',
-      links: [{ label: 'Prévention & santé au travail', page: 'prevention-work-health' }],
+      links: [{ label: 'Prévention & santé au travail', page: 'prevention-workplace-health' }],
     },
     {
       label: t('nav.pharmaResearch'),

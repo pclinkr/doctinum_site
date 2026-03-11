@@ -105,7 +105,7 @@ const frSeo = {
     description:
       "Intégrez une infrastructure vocale capable d'appliquer des protocoles de suivi, contacter les patients et structurer les retours déclaratifs via API.",
   },
-  'prevention-work-health': {
+  'prevention-workplace-health': {
     title: 'Prévention & santé au travail | Doctinum',
     description:
       "Dispositif de suivi vocal longitudinal pour engager les collaborateurs dans des programmes de prévention et structurer les indicateurs dans le temps.",

@@ -63,6 +63,8 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
         items2={copy.engagement.items2}
         description3={copy.engagement.description3}
         items3={copy.engagement.items3}
+        description4={copy.engagement.description4}
+        items4={copy.engagement.items4}
       />
       
       <PatientSupportCaseRow
@@ -88,6 +90,8 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
         description={copy.teams.description}
         description2={copy.teams.description2}
         items={copy.teams.items}
+        description3={copy.teams.description3}
+        items2={copy.teams.items2}
         footer={copy.teams.footer}
       />
       

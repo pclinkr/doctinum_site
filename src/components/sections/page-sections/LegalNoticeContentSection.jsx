@@ -15,12 +15,12 @@ export default function LegalNoticeContentSection() {
           <br />
           Société par actions simplifiée
           <br />
-          Immatriculée au Registre du Commerce et des Sociétés de Paris
+          Immatriculée au Registre du Commerce et des Sociétés de Bayonne
         </p>
         <p>
           <strong>Siège social :</strong>
           <br />
-          (à compléter)
+          Bayonne
         </p>
         <p>
           <strong>Adresse email :</strong>
