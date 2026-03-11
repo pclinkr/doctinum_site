@@ -75,7 +75,7 @@ const fr = {
             {
               label: 'Programmes d’accompagnement patient',
               description: 'Cadence de suivi avec scripts cliniques.',
-              page: 'contact',
+              page: 'patient-support-programs',
             },
             {
               label: 'Prévention & santé au travail',
@@ -1868,54 +1868,583 @@ const fr = {
           cta: 'Voir la documentation API',
         },
       },
+      patientSupport: {
+        hero: {
+          title: "Programmes d'accompagnement patient",
+          subtitle:
+            "Une infrastructure d'intelligence artificielle vocale qui applique vos protocoles d'accompagnement, maintient un lien régulier avec les patients et structure les retours dans le temps — sous supervision humaine.",
+          cta1: 'Évaluer un projet pilote',
+          cta2: 'Explorer une intégration',
+        },
+        challenge: {
+          title:
+            "L'accompagnement patient repose sur une continuité difficile à maintenir.",
+          items: [
+            {
+              title: "Dans de nombreux programmes d'accompagnement :",
+              listItems: [
+                'les patients sont suivis sur plusieurs semaines ou plusieurs mois',
+                'les équipes doivent maintenir un contact régulier',
+                'les indicateurs sont collectés à intervalles définis',
+              ],
+            },
+            {
+              title: 'Mais en pratique :',
+              listItems: [
+                'les relances manuelles sont chronophages',
+                "l'engagement diminue avec le temps",
+                'les données sont hétérogènes',
+                'les interactions sont peu structurées',
+              ],
+            },
+          ],
+        },
+        protocol: {
+          title: "Appliquer vos protocoles d'accompagnement à grande échelle.",
+          subtitle:
+            "Le dispositif permet d'organiser un suivi structuré en appliquant les protocoles définis par votre programme. Chaque programme peut définir :",
+          items: [
+            {
+              title: 'la fréquence des appels',
+              description: 'Rythme adapté au protocole',
+            },
+            {
+              title: 'les indicateurs déclaratifs à suivre',
+              description: 'Données structurées',
+            },
+            {
+              title: "les seuils d'alerte",
+              description: 'Critères de vigilance',
+            },
+            {
+              title: 'la durée du programme',
+              description: 'Période de suivi définie',
+            },
+          ],
+          footer:
+            'Le système applique ensuite ce protocole de manière automatisée et traçable.',
+        },
+        engagement: {
+          sectionTitle: "Maintenir l'engagement dans la durée",
+          title: 'Le canal vocal permet de maintenir un lien simple et accessible.',
+          description: 'Dans de nombreux programmes, les outils numériques reposent sur :',
+          items: [
+            'applications mobiles',
+            'portails patients',
+            'questionnaires web',
+          ],
+          description2: 'Ces outils supposent :',
+          items2: [
+            'disponibilité',
+            'motivation',
+            'familiarité numérique',
+          ],
+          description3: 'Le téléphone reste un canal universel :',
+          items3: [
+            "aucune application à installer",
+            'interaction simple',
+            'accessibilité pour tous les profils patients',
+          ],
+        },
+        structuredReturns: {
+          title: 'Transformer les échanges en données longitudinales exploitables.',
+          description: 'Chaque interaction permet de recueillir :',
+          items: [
+            'symptômes déclaratifs',
+            'perception du traitement',
+            'adhérence au protocole',
+            'effets indésirables déclaratifs',
+            'indicateurs qualité de vie',
+          ],
+          description2: 'Les réponses sont :',
+          items2: [
+            'structurées',
+            'historisées',
+            'analysables dans le temps',
+          ],
+        },
+        useCases: {
+          title: "Cas d'usage typiques",
+          cards: [
+            {
+              title: "Programmes d'observance thérapeutique",
+              description:
+                "Suivi de l'adhérence aux traitements dans des pathologies chroniques.",
+              gradient: 'var(--gradient-accent-warm)',
+            },
+            {
+              title: 'Accompagnement post-hospitalisation',
+              description: 'Suivi après retour à domicile.',
+              gradient: 'var(--gradient-accent-cool)',
+            },
+            {
+              title: 'Éducation thérapeutique',
+              description: 'Suivi des indicateurs entre les séances.',
+              gradient: 'var(--gradient-accent-warm-terra)',
+            },
+            {
+              title: "Programmes d'accompagnement pharma",
+              description:
+                'Maintien du lien avec les patients dans les programmes PSP.',
+              gradient: 'var(--gradient-accent-cool-overlay)',
+            },
+          ],
+        },
+        teams: {
+          sectionTitle: "Pour les équipes d'accompagnement",
+          title: "Un outil organisationnel, pas un remplacement humain.",
+          description:
+            "Le dispositif ne remplace pas les équipes d'accompagnement.",
+          description2: "Il agit comme :",
+          items: [
+            "un outil de structuration",
+            'un système de collecte standardisée',
+            "un support d'organisation du suivi",
+            'un moyen de prioriser les situations sensibles',
+          ],
+          footer: 'Les décisions restent toujours humaines.',
+        },
+        platforms: {
+          sectionTitle: 'Pour les plateformes et opérateurs de programmes',
+          title: 'Une infrastructure intégrable dans vos dispositifs existants.',
+          description: 'Le dispositif peut être utilisé :',
+          items: [
+            'comme solution autonome',
+            'comme brique intégrée dans une plateforme existante',
+            'comme canal complémentaire aux applications',
+          ],
+          description2: 'Fonctionnalités :',
+          items2: [
+            'API',
+            'export données',
+            'intégration dashboards',
+            'planification protocole',
+          ],
+        },
+      },
     },
   },
-  contactForm: {
-    badge: 'Évaluation projet pilote',
-    titleLine1: 'Discutons de votre',
-    titleLine2: "cas d'usage",
-    subtitle:
-      "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un projet pilote de suivi vocal patient.",
-    nameLabel: 'Nom',
-    namePlaceholder: 'Dr. Martin Dupont',
-    roleLabel: 'Fonction',
-    rolePlaceholder: 'Chirurgien esthétique',
-    emailLabel: 'Email professionnel',
-    emailPlaceholder: 'votre@email.com',
-    servicesLabel: 'Type de parcours envisagé',
-    services: {
-      surgery: 'Chirurgie & médecine esthétique',
-      sportsMedicine: 'Médecine du sport',
-      dermatology: 'Dermatologie',
-      proms: 'PROMS / Questionnaires post-acte',
-      chronic: 'Parcours chroniques (diabète, insuffisance cardiaque...)',
-      oncology: 'Oncologie / Suivi post-traitement',
-      rehabilitation: 'Rééducation / Kinésithérapie',
-      preventive: 'Médecine préventive / Dépistage',
-      patientSoftware: 'Logiciel de suivi patient',
-      promsSoftware: 'Logiciel PROMS',
-      clinicalStudies: 'Études cliniques (pharma)',
-      croStudies: 'Études CRO',
-      followUpPrograms: 'Programmes de suivi patient',
-      other: 'Autre parcours',
+  editorsApi: {
+    hero: {
+      title: 'Ajoutez un agent vocal médical à votre plateforme',
+      subtitle:
+        "Intégrez facilement et de manière sécurisée via API un canal vocal structuré sans vous soucier des problématiques d'appels, de conversation ou d'extraction de données",
+      description:
+        "L'infrastructure s'intègre via API et permet d'ajouter un canal vocal structuré sans développer votre propre système d'appels.",
+      cta1: "Explorer l'intégration",
+      cta2: 'Demander un accès sandbox',
     },
-    budgetLabel: 'Type de structure',
-    budgets: {
-      solo: 'Cabinet individuel',
-      group: 'Groupe médical (2-10 praticiens)',
-      clinic: 'Établissement de santé',
-      network: 'Réseau coordonné / Multi-sites',
-      software: 'Éditeur de logiciel / CRO',
-      pharma: 'Laboratoire pharmaceutique',
-      researcher: 'Médecin chercheur / Universitaire',
-      patientProgram: 'Programme de suivi patient (entreprise)',
-      association: 'Association de patients / Fondation',
-      other: 'Autre',
+    problem: {
+      title:
+        'Les plateformes de suivi patient rencontrent toutes la même limite',
+      intro:
+        "Les solutions numériques permettent aujourd'hui de suivre les patients via applications ou questionnaires. Mais l'engagement patient reste difficile à maintenir dans le temps.",
+      blocks: [
+        {
+          title: 'Questionnaires incomplets',
+          description:
+            'Les questionnaires numériques restent fréquemment non complétés.',
+        },
+        {
+          title: 'Relances humaines',
+          description:
+            'Les équipes doivent relancer manuellement les patients.',
+        },
+        {
+          title: 'Fragmentation des interactions',
+          description: 'Les informations remontent par différents canaux.',
+        },
+        {
+          title: 'Engagement numérique variable',
+          description:
+            'Certains patients utilisent peu les applications ou portails.',
+        },
+      ],
+      footer:
+        "Un protocole de suivi n'est efficace que si les patients répondent réellement.",
     },
-    businessLabel: 'Contexte et objectifs',
-    businessPlaceholder:
-      'Décrivez votre parcours de soins actuel, vos enjeux de suivi patient et ce que vous souhaitez améliorer...',
-    submit: 'Planifier un échange confidentiel',
+    infrastructure: {
+      title: 'Une infrastructure vocale conçue pour les plateformes de santé',
+      blocks: [
+        {
+          title: 'Protocoles configurables',
+          description:
+            "Les scénarios d'appel sont définis à partir de protocoles ou questionnaires existants.",
+        },
+        {
+          title: 'Suivi longitudinal',
+          description:
+            'Chaque interaction est historisée et structurée dans le temps.',
+        },
+        {
+          title: 'Supervision médicale',
+          description:
+            'Le système agit comme un outil organisationnel supervisé par les équipes.',
+        },
+      ],
+    },
+    transform: {
+      title: 'Transformez vos questionnaires patients en appels vocaux',
+      description:
+        "Si votre plateforme utilise déjà des questionnaires patients (PROMS, ePRO, auto-évaluations, questionnaires de suivi), ils peuvent être transformés en protocoles d'appels vocaux structurés. Les réponses sont ensuite renvoyées vers votre système sous forme de données structurées.",
+      items: [
+        'PROMS',
+        'ePRO',
+        'Auto-évaluation',
+        'Questionnaire de suivi',
+      ],
+    },
+    architecture: {
+      title: "Architecture d'intégration",
+      steps: [
+        'Votre plateforme',
+        'API',
+        'Infrastructure vocale',
+        'Appel patient',
+        'Analyse',
+        'Webhook données',
+        'Votre système',
+      ],
+      description:
+        "L'infrastructure peut être intégrée via API et webhooks. Votre plateforme conserve la logique produit et reçoit les données structurées.",
+    },
+    apiExample: {
+      title: 'Exemple de logique API',
+      examples: [
+        {
+          title: 'Créer un patient dans un workspace',
+          method: 'POST',
+          endpoint: 'api/public/v1/patients',
+          body: '{\n  "workspace_id": "ws_123",\n  "first_name": "Marie",\n  "last_name": "Dupont",\n  "phone": "+33612345678"\n}',
+        },
+        {
+          title: 'Lancer un suivi',
+          method: 'POST',
+          endpoint: 'api/public/v1/follow-up',
+          body: '{\n  "patient_id": "pat_456",\n  "agent_id": "agent_789"\n}',
+        },
+        {
+          title: 'Recevoir les données',
+          method: 'WEBHOOK',
+          endpoint: 'Webhook JSON',
+          response:
+            '{\n  "call_id": "call_abc",\n  "patient_id": "pat_456",\n  "responses": [\n    {\n      "question": "Douleur (0-10)",\n      "answer": "3"\n    }\n  ]\n}',
+        },
+      ],
+    },
+    integrationCases: {
+      title: 'Plateformes pouvant intégrer la brique vocale',
+      cards: [
+        {
+          title: 'Télésuivi',
+          description: 'suivi patient à distance.',
+          gradient: 'var(--gradient-accent-warm)',
+        },
+        {
+          title: 'Coordination de parcours',
+          description: 'suivi post-hospitalisation.',
+          gradient: 'var(--gradient-accent-cool)',
+        },
+        {
+          title: 'Plateformes RWE',
+          description: 'collecte longitudinale de données patients.',
+          gradient: 'var(--gradient-accent-warm-terra)',
+        },
+        {
+          title: 'Logiciels de dossiers patients',
+          description: 'compléter les interactions numériques.',
+          gradient: 'var(--gradient-accent-cool-overlay)',
+        },
+        {
+          title: 'Programmes de prévention',
+          description: 'engagement régulier des patients.',
+          gradient: 'var(--gradient-accent-warm)',
+        },
+      ],
+    },
+    questionnaireCreation: {
+      title: "Création d'un appel à partir d'un questionnaire",
+      description: 'Vous avez déjà un questionnaire ? Votre formulaire devient un appel vocal structuré.',
+      items: [
+        'Import JSON',
+        'Mapping simple',
+        'Définition logique conditionnelle',
+        'Planification automatique',
+      ],
+    },
+    pricing: {
+      title: 'Tarification',
+      leftTitle: 'Nous contacter pour :',
+      leftItems: [
+        'Forfait mensuel plateforme',
+        'Facturation au temps de conversation',
+        'Packs crédits',
+      ],
+      rightTitle: 'Plans',
+      rightItems: [
+        'Starter',
+        'Growth',
+        'Enterprise : Volume négocié',
+      ],
+    },
+    collaborationModels: {
+      title: "Différents modèles d'intégration",
+      models: [
+        {
+          title: 'API complète',
+          description: 'Intégration produit native.',
+        },
+        {
+          title: 'Projet pilote',
+          description: 'expérimentation limitée.',
+        },
+        {
+          title: 'Partenariat produit',
+          description: 'co-développement.',
+        },
+      ],
+    },
+    finalCta: {
+      title: 'Ajoutez une couche vocale à votre plateforme',
+      subtitle:
+        "Échangeons sur les possibilités d'intégration avec votre solution.",
+      primaryCta: 'Demander un accès sandbox',
+      secondaryCta: 'Planifier un échange technique',
+    },
+    prevention: {
+      hero: {
+        title: 'Structurer les programmes de prévention et santé au travail',
+        subtitle:
+          "Un dispositif de suivi vocal longitudinal permettant d'engager les collaborateurs dans des programmes de prévention, collecter des indicateurs déclaratifs et structurer le suivi dans le temps.",
+        cta1: 'Explorer un projet pilote',
+        cta2: 'Échanger avec notre équipe',
+      },
+      fieldObservation: {
+        title:
+          "L'engagement dans les programmes de prévention reste difficile à maintenir",
+        intro:
+          "De nombreuses organisations déploient aujourd'hui des programmes de prévention ou de santé au travail. Mais l'adhésion des collaborateurs reste souvent limitée dans la durée.",
+        blocks: [
+          {
+            title: 'Faible engagement des applications',
+            description:
+              'Les applications de prévention sont souvent peu utilisées après les premières semaines.',
+          },
+          {
+            title: 'Suivi irrégulier',
+            description:
+              'Les indicateurs déclaratifs sont collectés de manière ponctuelle et difficilement comparables dans le temps.',
+          },
+          {
+            title: 'Manque de visibilité',
+            description:
+              "Les équipes responsables des programmes disposent de peu d'informations longitudinales.",
+          },
+          {
+            title: 'Barrière numérique',
+            description:
+              'Certains collaborateurs utilisent peu les outils numériques ou les applications.',
+          },
+        ],
+        footer:
+          "Un programme de prévention n'est efficace que s'il permet un suivi régulier et structuré.",
+      },
+      approach: {
+        title: "Un suivi structuré, sans complexifier l'organisation",
+        intro:
+          'Le dispositif permet de structurer un suivi régulier des participants à un programme de prévention.',
+        steps: [
+          {
+            title: 'Définition du programme',
+            description:
+              'Les indicateurs de suivi sont définis selon les objectifs du programme.',
+          },
+          {
+            title: 'Consentement des participants',
+            description:
+              'Les participants sont informés du dispositif et de la nature du suivi.',
+          },
+          {
+            title: 'Appels vocaux programmés',
+            description:
+              'Des appels réguliers permettent de recueillir des indicateurs déclaratifs.',
+          },
+          {
+            title: 'Analyse selon critères',
+            description:
+              'Les réponses sont structurées et analysées selon les indicateurs définis.',
+          },
+          {
+            title: 'Restitution synthétique',
+            description:
+              'Les résultats sont consolidés et restitués aux responsables du programme.',
+          },
+        ],
+      },
+      whyVoice: {
+        title: 'Un canal simple et accessible pour les collaborateurs',
+        blocks: [
+          {
+            title: 'Universel',
+            description: 'Le téléphone est accessible à tous.',
+          },
+          {
+            title: 'Sans application',
+            description: 'Aucun téléchargement nécessaire.',
+          },
+          {
+            title: 'Interaction naturelle',
+            description: "La voix facilite l'expression des ressentis.",
+          },
+          {
+            title: 'Suivi régulier',
+            description:
+              'Les appels programmés facilitent la continuité du programme.',
+          },
+        ],
+        footer:
+          "Le canal vocal réduit les barrières d'engagement dans les programmes de prévention.",
+      },
+      useCases: {
+        title: 'Exemples de programmes pouvant être structurés',
+        cards: [
+          {
+            title: 'Prévention des troubles musculo-squelettiques',
+            description: 'Recueil périodique de douleurs ou gênes physiques.',
+          },
+          {
+            title: 'Prévention du stress',
+            description:
+              'Auto-évaluation régulière du niveau de stress et de fatigue.',
+          },
+          {
+            title: "Programmes d'activité physique",
+            description: "Suivi déclaratif de l'activité et de l'adhésion.",
+          },
+          {
+            title: 'Suivi post-arrêt de travail',
+            description: 'Accompagnement progressif du retour au travail.',
+          },
+          {
+            title: 'Programmes de bien-être',
+            description: 'Indicateurs déclaratifs de santé globale.',
+          },
+        ],
+      },
+      beyondAgent: {
+        title: 'Une vision longitudinale des indicateurs de prévention',
+        description:
+          'Les réponses collectées lors des appels sont structurées dans le temps. Cela permet :',
+        items: [
+          "d'observer l'évolution des indicateurs",
+          "d'identifier les tendances",
+          "d'adapter les programmes.",
+        ],
+      },
+      organizations: {
+        title: 'Acteurs pouvant déployer ces programmes',
+        cards: [
+          {
+            title: 'Entreprises',
+            description: 'programmes de prévention interne.',
+          },
+          {
+            title: 'Services de santé au travail',
+            description: 'suivi de cohortes de salariés.',
+          },
+          {
+            title: 'Assureurs',
+            description: 'programmes de prévention pour assurés.',
+          },
+          {
+            title: 'Prestataires santé',
+            description: "programmes d'accompagnement santé.",
+          },
+        ],
+      },
+      regulatory: {
+        description:
+          'Le dispositif agit comme un outil organisationnel permettant de structurer des programmes de prévention. Il :',
+        items: [
+          'ne pose aucun diagnostic',
+          'ne remplace pas un professionnel de santé',
+          'ne constitue pas un dispositif médical.',
+          '',
+          'Les données collectées sont des informations déclaratives.',
+        ],
+      },
+      pilot: {
+        title: "Évaluer l'impact dans votre programme de prévention",
+        description:
+          "Nous proposons des phases pilotes permettant d'évaluer l'utilisation du dispositif.",
+        steps: [
+          'définition du programme',
+          'paramétrage des indicateurs',
+          "phase d'expérimentation",
+          'analyse des résultats',
+        ],
+        objectives: 'observer :',
+        objectiveItems: [
+          "l'engagement des participants",
+          "la régularité du suivi",
+          "la qualité des données collectées",
+        ],
+      },
+      finalCta: {
+        title: 'Structurer vos programmes de prévention',
+        subtitle:
+          "Échangeons sur les possibilités d'expérimentation dans votre organisation.",
+        primaryCta: 'Proposer un projet pilote',
+        secondaryCta: 'Être recontacté',
+      },
+    },
+    contactForm: {
+      badge: 'Évaluation projet pilote',
+      titleLine1: 'Discutons de votre',
+      titleLine2: "cas d'usage",
+      subtitle:
+        "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un projet pilote de suivi vocal patient.",
+      nameLabel: 'Nom',
+      namePlaceholder: 'Dr. Martin Dupont',
+      roleLabel: 'Fonction',
+      rolePlaceholder: 'Chirurgien esthétique',
+      emailLabel: 'Email professionnel',
+      emailPlaceholder: 'votre@email.com',
+      servicesLabel: 'Type de parcours envisagé',
+      services: {
+        surgery: 'Chirurgie & médecine esthétique',
+        sportsMedicine: 'Médecine du sport',
+        dermatology: 'Dermatologie',
+        proms: 'PROMS / Questionnaires post-acte',
+        chronic: 'Parcours chroniques (diabète, insuffisance cardiaque...)',
+        oncology: 'Oncologie / Suivi post-traitement',
+        rehabilitation: 'Rééducation / Kinésithérapie',
+        preventive: 'Médecine préventive / Dépistage',
+        patientSoftware: 'Logiciel de suivi patient',
+        promsSoftware: 'Logiciel PROMS',
+        clinicalStudies: 'Études cliniques (pharma)',
+        croStudies: 'Études CRO',
+        followUpPrograms: 'Programmes de suivi patient',
+        other: 'Autre parcours',
+      },
+      budgetLabel: 'Type de structure',
+      budgets: {
+        solo: 'Cabinet individuel',
+        group: 'Groupe médical (2-10 praticiens)',
+        clinic: 'Établissement de santé',
+        network: 'Réseau coordonné / Multi-sites',
+        software: 'Éditeur de logiciel / CRO',
+        pharma: 'Laboratoire pharmaceutique',
+        researcher: 'Médecin chercheur / Universitaire',
+        patientProgram: 'Programme de suivi patient (entreprise)',
+        association: 'Association de patients / Fondation',
+        other: 'Autre',
+      },
+      businessLabel: 'Contexte et objectifs',
+      businessPlaceholder:
+        'Décrivez votre parcours de soins actuel, vos enjeux de suivi patient et ce que vous souhaitez améliorer...',
+      submit: 'Planifier un échange confidentiel',
+    },
   },
   notFound: {
     title: '404',

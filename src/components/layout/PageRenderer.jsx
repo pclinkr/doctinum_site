@@ -14,6 +14,9 @@ import SportsMedicinePage from '../../site-pages/SportsMedicinePage';
 import IntegratedCentersPage from '../../site-pages/IntegratedCentersPage';
 import DermatologyPage from '../../site-pages/DermatologyPage';
 import PromsPage from '../../site-pages/PromsPage';
+import PatientSupportProgramsPage from '../../site-pages/PatientSupportProgramsPage';
+import EditorsApiPage from '../../site-pages/EditorsApiPage';
+import PreventionWorkHealthPage from '../../site-pages/PreventionWorkHealthPage';
 import {
   ContactPage,
   NotFoundPage,
@@ -83,6 +86,18 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'proms') {
     return <PromsPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'patient-support-programs') {
+    return <PatientSupportProgramsPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'editors-api') {
+    return <EditorsApiPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'prevention-work-health') {
+    return <PreventionWorkHealthPage active onNavigate={onNavigate} />;
   }
 
   if (pageId === 'blog') {

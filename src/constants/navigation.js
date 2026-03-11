@@ -37,7 +37,7 @@ function mergeSolutionsMenu(t, solutionsMenu, options) {
       links: [
         buildSectionLink(
           t('nav.editorsApi'),
-          'about',
+          'editors-api',
           t('megaMenu.grouped.sectionEntry')
         ),
       ],
@@ -166,7 +166,7 @@ export function getNavItems(t, { density = 'full' } = {}) {
           functioningMenu,
         }),
       },
-      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
+      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
@@ -190,7 +190,7 @@ export function getNavItems(t, { density = 'full' } = {}) {
           functioningMenu,
         }),
       },
-      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
+      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
       {
         id: 'pharmaResearch',
         label: t('nav.pharmaResearch'),
@@ -213,7 +213,7 @@ export function getNavItems(t, { density = 'full' } = {}) {
       label: t('nav.solutions'),
       megaMenu: solutionsMenu,
     },
-    { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
+    { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
     {
       id: 'pharmaResearch',
       label: t('nav.pharmaResearch'),

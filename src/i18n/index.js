@@ -16,6 +16,14 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
+  react: {
+    useSuspense: false,
+    bindI18n: 'languageChanged loaded',
+    bindI18nStore: 'added removed',
+    transEmptyNodeValue: '',
+    transSupportBasicHtmlNodes: true,
+    transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p'],
+  },
 });
 
 i18n.on('languageChanged', (languageCode) => {

@@ -76,7 +76,7 @@ export default function HomeHeroSection({
         storyDurationMs={storyDurationMs}
         reveal={storyStarted}
         instant={instant}
-        phoneSize={{ width: '380px', height: '640px' }}
+        phoneSize={{ width: '380px', height: '600px' }}
       />
     </Container>
   );

@@ -17,7 +17,11 @@ export default function SiteFooter({ onNavigate }) {
     })),
     {
       label: t('nav.editorsApi'),
-      links: [{ label: t('nav.editorsApi'), page: 'about' }],
+      links: [{ label: t('nav.editorsApi'), page: 'editors-api' }],
+    },
+    {
+      label: 'Prévention & santé au travail',
+      links: [{ label: 'Prévention & santé au travail', page: 'prevention-work-health' }],
     },
     {
       label: t('nav.pharmaResearch'),
