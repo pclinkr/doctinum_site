@@ -76,12 +76,12 @@ const en = {
             {
               label: 'Patient support programs',
               description: 'Cadenced follow-up with clinical scripts.',
-              page: 'contact',
+              page: 'patient-support-programs',
             },
             {
               label: 'Prevention & workplace health',
               description: 'Population-level prevention and engagement.',
-              page: 'about',
+              page: 'prevention-workplace-health',
             },
             {
               label: 'Coordinated chronic pathways',
@@ -90,37 +90,37 @@ const en = {
             },
           ],
         },
-        {
-          title: 'Specialized high-vigilance pathways',
-          links: [
-            {
-              label: 'Transplantation',
-              description: 'Critical checkpoints and early warning signals.',
-              page: 'blog',
-            },
-            {
-              label: 'Oncology',
-              description: 'Follow-up on side effects and red flags.',
-              page: 'contact',
-            },
-            {
-              label: 'Chronic cardiology',
-              description: 'Longitudinal monitoring of key indicators.',
-              page: 'privacy',
-            },
-            {
-              label: 'Rare diseases',
-              description: 'Coordination across complex care journeys.',
-              page: 'case-studies',
-            },
-            {
-              label: 'Mental health',
-              description:
-                'Conversational follow-up with supervised escalation.',
-              page: 'about',
-            },
-          ],
-        },
+        // {
+        //   title: 'Specialized high-vigilance pathways',
+        //   links: [
+        //     {
+        //       label: 'Transplantation',
+        //       description: 'Critical checkpoints and early warning signals.',
+        //       page: 'blog',
+        //     },
+        //     {
+        //       label: 'Oncology',
+        //       description: 'Follow-up on side effects and red flags.',
+        //       page: 'contact',
+        //     },
+        //     {
+        //       label: 'Chronic cardiology',
+        //       description: 'Longitudinal monitoring of key indicators.',
+        //       page: 'privacy',
+        //     },
+        //     {
+        //       label: 'Rare diseases',
+        //       description: 'Coordination across complex care journeys.',
+        //       page: 'case-studies',
+        //     },
+        //     {
+        //       label: 'Mental health',
+        //       description:
+        //         'Conversational follow-up with supervised escalation.',
+        //       page: 'about',
+        //     },
+        //   ],
+        // },
       ],
       cta: { label: 'Discuss a pilot project', page: 'contact' },
     },
@@ -178,18 +178,23 @@ const en = {
             {
               label: 'Vision',
               description: 'Product direction and deployment principles.',
-              page: 'about',
+              page: 'vision',
             },
             {
-              label: 'Careers',
-              description: 'Roles and product culture.',
-              page: 'about',
+              label: 'Security',
+              description: 'Compliance, regulation and governance.',
+              page: 'security',
             },
-            {
-              label: 'Blog',
-              description: 'Articles and perspectives.',
-              page: 'blog',
-            },
+            // {
+            //   label: 'Careers',
+            //   description: 'Roles and product culture.',
+            //   page: 'about',
+            // },
+            // {
+            //   label: 'Blog',
+            //   description: 'Articles and perspectives.',
+            //   page: 'blog',
+            // },
             {
               label: 'Styleguide',
               description: 'Internal UI reference.',
@@ -198,21 +203,21 @@ const en = {
             },
           ],
         },
-        {
-          title: 'Partnerships',
-          links: [
-            {
-              label: 'Experimentation & partnerships',
-              description: 'Pilots, protocols, and collaborations.',
-              page: 'case-studies',
-            },
-            {
-              label: 'Investors',
-              description: 'Strategic discussions and information.',
-              page: 'case-studies',
-            },
-          ],
-        },
+        // {
+        //   title: 'Partnerships',
+        //   links: [
+        //     {
+        //       label: 'Experimentation & partnerships',
+        //       description: 'Pilots, protocols, and collaborations.',
+        //       page: 'case-studies',
+        //     },
+        //     {
+        //       label: 'Investors',
+        //       description: 'Strategic discussions and information.',
+        //       page: 'case-studies',
+        //     },
+        //   ],
+        // },
       ],
       cta: { label: 'Contact us', page: 'contact' },
     },
@@ -1879,6 +1884,34 @@ const en = {
     privacyPolicy: 'Privacy policy',
     cookies: 'Cookie management',
     copyright: '© 2026 Doctinum',
+    manageCookies: 'Manage cookie preferences',
+  },
+  cookies: {
+    banner: {
+      title: 'Cookie banner',
+      description: 'This site uses cookies to measure audience and improve your browsing experience.',
+      choices: 'You can accept, refuse or customize the use of cookies.',
+      accept: 'Accept',
+      reject: 'Refuse',
+      customize: 'Customize',
+      learnMore: 'Learn more',
+      policyLink: 'Cookie policy',
+    },
+    preferences: {
+      title: 'Customize cookies',
+      description: 'Manage your cookie preferences. Necessary cookies are always active as they are essential for the site to function.',
+      necessary: 'Necessary cookies',
+      alwaysActive: 'Always active',
+      necessaryDesc: 'These cookies are essential for the proper functioning of the site and cannot be disabled.',
+      analytics: 'Analytics cookies',
+      analyticsDesc: 'Analytics cookies allow us to understand site usage in order to improve content.',
+      analyticsExample: 'E.g.: Google Analytics',
+      acceptAll: 'Accept all',
+      save: 'Save my preferences',
+      cancel: 'Cancel',
+      learnMore: 'Learn more',
+      policyLink: 'Cookie policy',
+    },
   },
 };
 

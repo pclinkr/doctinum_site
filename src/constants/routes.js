@@ -10,6 +10,9 @@ export const PAGE_PATH_SEGMENTS = {
   styleguide: 'styleguide',
   contact: 'contact',
   privacy: 'privacy',
+  'legal-notice': 'legal-notice',
+  'privacy-policy': 'privacy-policy',
+  'cookies-policy': 'cookies-policy',
   404: '404',
 
   'surgery-aesthetic': 'solutions/chirurgie-medecine-esthetique',
@@ -20,6 +23,7 @@ export const PAGE_PATH_SEGMENTS = {
   dermatology: 'solutions/dermatologie',
   proms: 'solutions/proms-questionnaires-post-acte',
   'patient-support-programs': 'solutions/programmes-accompagnement-patient',
+  'prevention-work-health': 'solutions/prevention-sante-travail',
   'prevention-workplace-health': 'solutions/prevention-sante-travail',
   'coordinated-chronic-pathways': 'solutions/parcours-chroniques-coordonnes',
 

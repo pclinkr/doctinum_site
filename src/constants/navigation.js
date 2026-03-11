@@ -11,12 +11,12 @@ function buildSectionLink(label, page, description) {
 function mergeSolutionsMenu(t, solutionsMenu, options) {
   const mergedGroups = [...(solutionsMenu?.groups || [])];
 
-  // if (options.includeFunctioning) {
-  //   mergedGroups.push({
-  //     title: t('nav.functioning'),
-  //     links: flattenMenuLinks(options.functioningMenu)
-  //   });
-  // }
+  if (options.includeFunctioning) {
+    mergedGroups.push({
+      title: t('nav.functioning'),
+      links: flattenMenuLinks(options.functioningMenu)
+    });
+  }
 
   if (options.includePharma) {
     mergedGroups.push({
@@ -37,7 +37,7 @@ function mergeSolutionsMenu(t, solutionsMenu, options) {
       links: [
         buildSectionLink(
           t('nav.editorsApi'),
-          'about',
+          'editors-api',
           t('megaMenu.grouped.sectionEntry')
         ),
       ],
@@ -59,7 +59,7 @@ function mergeEnterpriseMenu(t, enterpriseMenu, options) {
       links: [
         buildSectionLink(
           t('nav.security'),
-          'privacy',
+          'security',
           t('megaMenu.grouped.sectionEntry')
         ),
       ],
@@ -111,8 +111,8 @@ export function getNavItems(t, { density = 'full' } = {}) {
 
   if (density === 'single') {
     const singleSolutions = mergeSolutionsMenu(t, solutionsMenu, {
-      includeFunctioning: true,
-      includePharma: true,
+      includeFunctioning: false,
+      includePharma: false,
       includeEditors: true,
       functioningMenu,
     });
@@ -137,9 +137,9 @@ export function getNavItems(t, { density = 'full' } = {}) {
         id: 'solutions',
         label: t('nav.solutions'),
         megaMenu: mergeSolutionsMenu(t, solutionsMenu, {
-          includeFunctioning: true,
-          includePharma: true,
-          includeEditors: true,
+          includeFunctioning: false,
+          includePharma: false,
+          includeEditors: false,
           functioningMenu,
         }),
       },
@@ -160,13 +160,13 @@ export function getNavItems(t, { density = 'full' } = {}) {
         id: 'solutions',
         label: t('nav.solutions'),
         megaMenu: mergeSolutionsMenu(t, solutionsMenu, {
-          includeFunctioning: true,
-          includePharma: true,
+          includeFunctioning: false,
+          includePharma: false,
           includeEditors: false,
           functioningMenu,
         }),
       },
-      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
+      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
@@ -184,18 +184,18 @@ export function getNavItems(t, { density = 'full' } = {}) {
         id: 'solutions',
         label: t('nav.solutions'),
         megaMenu: mergeSolutionsMenu(t, solutionsMenu, {
-          includeFunctioning: true,
+          includeFunctioning: false,
           includePharma: false,
           includeEditors: false,
           functioningMenu,
         }),
       },
-      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
-      {
-        id: 'pharmaResearch',
-        label: t('nav.pharmaResearch'),
-        page: 'case-studies',
-      },
+      { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
+      // {
+      //   id: 'pharmaResearch',
+      //   label: t('nav.pharmaResearch'),
+      //   page: 'case-studies',
+      // },
       {
         id: 'enterprise',
         label: t('nav.enterprise'),
@@ -213,17 +213,17 @@ export function getNavItems(t, { density = 'full' } = {}) {
       label: t('nav.solutions'),
       megaMenu: solutionsMenu,
     },
-    { id: 'editorsApi', label: t('nav.editorsApi'), page: 'about' },
-    {
-      id: 'pharmaResearch',
-      label: t('nav.pharmaResearch'),
-      page: 'case-studies',
-    },
-    {
-      id: 'functioning',
-      label: t('nav.functioning'),
-      megaMenu: functioningMenu,
-    },
+    { id: 'editorsApi', label: t('nav.editorsApi'), page: 'editors-api' },
+    // {
+    //   id: 'pharmaResearch',
+    //   label: t('nav.pharmaResearch'),
+    //   page: 'case-studies',
+    // },
+    // {
+    //   id: 'functioning',
+    //   label: t('nav.functioning'),
+    //   megaMenu: functioningMenu,
+    // },
     {
       id: 'enterprise',
       label: t('nav.enterprise'),

@@ -38,6 +38,21 @@ const enSeo = {
     title: 'Privacy Policy | Doctinum',
     description: 'How Doctinum collects, uses, and protects personal data.',
   },
+  'legal-notice': {
+    title: 'Legal Notice | Doctinum',
+    description:
+      'Legal information about Doctinum SAS: publisher, hosting, intellectual property and liability.',
+  },
+  'privacy-policy': {
+    title: 'Privacy Policy | Doctinum',
+    description:
+      'GDPR-compliant privacy policy: collection, processing and protection of personal data.',
+  },
+  'cookies-policy': {
+    title: 'Cookies Policy | Doctinum',
+    description:
+      'Cookies management policy compliant with CNIL recommendations: consent and preference management.',
+  },
   'surgery-aesthetic': {
     title: 'Surgery & Aesthetic Medicine | Doctinum',
     description:
@@ -78,6 +93,16 @@ const enSeo = {
     title: 'PROMS & Post-procedure questionnaires | Doctinum',
     description:
       'Transform your questionnaires into structured voice follow-up. Increase completion rates and structure data over time.',
+  },
+  vision: {
+    title: 'Vision — Doctinum',
+    description:
+      'The missing channel for patient follow-up. Clinical voice infrastructure to solve the structural problem of monitoring between consultations.',
+  },
+  security: {
+    title: 'Security & Regulation — Doctinum',
+    description:
+      'Infrastructure designed for healthcare environments. HDS hosting, GDPR compliance, human supervision and complete traceability.',
   },
   404: {
     title: 'Page Not Found | Doctinum',

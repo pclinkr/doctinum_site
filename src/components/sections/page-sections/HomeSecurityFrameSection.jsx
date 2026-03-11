@@ -44,7 +44,7 @@ export default function HomeSecurityFrameSection({ onNavigate }) {
       </div>
 
       <div className="rev mt-7 flex justify-center">
-        <Button variant="light" onClick={() => onNavigate('privacy')}>
+        <Button variant="light" onClick={() => onNavigate('security')}>
           {t('sections.homeSecurityFrame.cta')}
         </Button>
       </div>

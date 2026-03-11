@@ -14,11 +14,21 @@ import SportsMedicinePage from '../../site-pages/SportsMedicinePage';
 import IntegratedCentersPage from '../../site-pages/IntegratedCentersPage';
 import DermatologyPage from '../../site-pages/DermatologyPage';
 import PromsPage from '../../site-pages/PromsPage';
+import PatientSupportProgramsPage from '../../site-pages/PatientSupportProgramsPage';
+import EditorsApiPage from '../../site-pages/EditorsApiPage';
+import PreventionWorkHealthPage from '../../site-pages/PreventionWorkHealthPage';
+import VisionPage from '../../site-pages/VisionPage';
+import SecurityPage from '../../site-pages/SecurityPage';
 import {
   ContactPage,
   NotFoundPage,
   PrivacyPage,
 } from '../../site-pages/ContactPrivacy404Pages';
+import {
+  LegalNoticePage,
+  PrivacyPolicyPage,
+  CookiesPolicyPage,
+} from '../../site-pages/LegalPages';
 import { useSiteAppContext } from '../../context/SiteAppContext';
 
 export default function PageRenderer({ pageId }) {
@@ -80,6 +90,18 @@ export default function PageRenderer({ pageId }) {
     return <PromsPage active onNavigate={onNavigate} />;
   }
 
+  if (pageId === 'patient-support-programs') {
+    return <PatientSupportProgramsPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'editors-api') {
+    return <EditorsApiPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'prevention-workplace-health') {
+    return <PreventionWorkHealthPage active onNavigate={onNavigate} />;
+  }
+
   if (pageId === 'blog') {
     return <BlogPage active onNavigate={onNavigate} />;
   }
@@ -94,6 +116,26 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'privacy') {
     return <PrivacyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'legal-notice') {
+    return <LegalNoticePage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'privacy-policy') {
+    return <PrivacyPolicyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'cookies-policy') {
+    return <CookiesPolicyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'vision') {
+    return <VisionPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'security') {
+    return <SecurityPage active onNavigate={onNavigate} />;
   }
 
   return <NotFoundPage active onNavigate={onNavigate} />;

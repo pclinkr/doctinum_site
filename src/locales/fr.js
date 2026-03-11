@@ -75,12 +75,12 @@ const fr = {
             {
               label: 'Programmes d’accompagnement patient',
               description: 'Cadence de suivi avec scripts cliniques.',
-              page: 'contact',
+              page: 'patient-support-programs',
             },
             {
               label: 'Prévention & santé au travail',
               description: 'Actions de prévention et suivi de population.',
-              page: 'about',
+              page: 'prevention-workplace-health',
             },
             {
               label: 'Parcours chroniques coordonnés',
@@ -156,7 +156,7 @@ const fr = {
             {
               label: 'Vision',
               description: 'Cap produit et logique de déploiement.',
-              page: 'about',
+              page: 'vision',
             },
             // { label: 'Nous rejoindre', description: 'Opportunités et culture produit.', page: 'about' },
             // { label: 'Blog', description: 'Articles et points de vue.', page: 'blog' },
@@ -193,7 +193,7 @@ const fr = {
       titleMiddle: 'ne doit pas rester',
       titleAccent: 'silencieux',
       subtitle:
-        'L’infrastructure d’IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.',
+        'L’infrastructure d’IA vocale qui applique des protocoles de suivi et structure les retours patients dans le temps — sous supervision médicale.',
       cta: 'Evaluez un projet pilote',
       cta2: 'Planifier un échange confidentiel',
     },
@@ -322,109 +322,189 @@ const fr = {
         orthopedie: [
           {
             role: 'agent',
-            text: "Bonjour, je suis l'agent orthopédique. Que ressentez-vous aujourd'hui ?",
-            delayMs: 600,
+            text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Êtes-vous disponible pour votre suivi post-opératoire ?",
+            delayMs: 0,
           },
           {
             role: 'patient',
-            text: "J'ai une douleur au genou droit après la course.",
-            delayMs: 2100,
+            text: "Oui, je suis disponible.",
+            delayMs: 1500,
           },
           {
             role: 'agent',
-            text: 'Merci. Depuis combien de temps la douleur est-elle présente ?',
-            delayMs: 3800,
+            text: "Parfait. Nous sommes à J+7 après votre arthroscopie du genou. Comment évaluez-vous votre douleur sur 10 ?",
+            delayMs: 3000,
           },
           {
             role: 'patient',
-            text: 'Depuis environ dix jours, surtout en descendant les escaliers.',
-            delayMs: 5600,
+            text: "Environ 4 sur 10, surtout la nuit.",
+            delayMs: 5500,
           },
           {
             role: 'agent',
-            text: 'Parfait, je peux vous proposer un premier triage et une prise de rendez-vous.',
-            delayMs: 7600,
+            text: "D'accord. Prenez-vous bien vos antalgiques selon la prescription ? Paracétamol 1g toutes les 6h ?",
+            delayMs: 8500,
+          },
+          {
+            role: 'patient',
+            text: "Oui, je les prends régulièrement. La douleur diminue progressivement.",
+            delayMs: 11500,
+          },
+          {
+            role: 'agent',
+            text: "Très bien. Avez-vous constaté un gonflement, une rougeur ou un écoulement au niveau de la cicatrice ?",
+            delayMs: 14500,
+          },
+          {
+            role: 'patient',
+            text: "Non, la cicatrice est propre. Un peu de gonflement mais ça diminue.",
+            delayMs: 17500,
+          },
+          {
+            role: 'agent',
+            text: "Parfait. Avez-vous commencé les exercices de rééducation prescrits par le kinésithérapeute ?",
+            delayMs: 20500,
           },
         ],
         cancer: [
           {
             role: 'agent',
-            text: "Bonjour, je suis l'agent oncologie. Je vais vous aider à structurer vos informations.",
-            delayMs: 600,
+            text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Êtes-vous disponible pour votre suivi entre deux cures de chimiothérapie ?",
+            delayMs: 0,
           },
           {
             role: 'patient',
-            text: "J'ai reçu des résultats hier et je souhaite comprendre les prochaines étapes.",
-            delayMs: 2300,
+            text: "Oui, bonjour. Je suis disponible.",
+            delayMs: 1500,
           },
           {
             role: 'agent',
-            text: 'Très bien. Nous allons revoir vos symptômes, traitements en cours et examens.',
-            delayMs: 4100,
+            text: "Nous sommes à J+10 après votre 3ème cure. Avez-vous eu des nausées ou vomissements cette semaine ?",
+            delayMs: 3000,
           },
           {
             role: 'patient',
-            text: "D'accord, je veux aussi préparer mes questions pour la consultation.",
-            delayMs: 6000,
+            text: "Oui, des nausées les 3 premiers jours, mais ça va mieux maintenant.",
+            delayMs: 5500,
           },
           {
             role: 'agent',
-            text: 'Excellent, je vous fournis une synthèse claire à partager avec le médecin.',
-            delayMs: 8100,
+            text: "D'accord. Avez-vous pris les anti-émétiques prescrits ? Ondansétron si besoin ?",
+            delayMs: 8500,
+          },
+          {
+            role: 'patient',
+            text: "Oui, j'ai pris 2 comprimés les premiers jours. Ça m'a bien aidé.",
+            delayMs: 11500,
+          },
+          {
+            role: 'agent',
+            text: "Très bien. Comment est votre appétit ? Arrivez-vous à maintenir une alimentation suffisante ?",
+            delayMs: 14500,
+          },
+          {
+            role: 'patient',
+            text: "Ça revient progressivement. Je mange des petites portions plusieurs fois par jour.",
+            delayMs: 17500,
+          },
+          {
+            role: 'agent',
+            text: "Parfait. Avez-vous constaté de la fièvre supérieure à 38°C ou des frissons ?",
+            delayMs: 20500,
           },
         ],
         'transplantation-hepatique': [
           {
             role: 'agent',
-            text: "Bonjour, je suis l'agent transplantation hépatique. Vérifions ensemble votre situation.",
-            delayMs: 600,
+            text: "Bonjour, je suis Clara l'assistant de suivi du service de transplantation. Je vous appelle concernant votre suivi hebdomadaire post-greffe.",
+            delayMs: 0,
           },
           {
             role: 'patient',
-            text: "J'ai besoin de savoir quels documents préparer avant l'évaluation.",
-            delayMs: 2400,
+            text: "Oui, bonjour. Je suis disponible.",
+            delayMs: 1500,
           },
           {
             role: 'agent',
-            text: 'Je vous guide étape par étape: antécédents, bilans sanguins et imagerie.',
-            delayMs: 4300,
+            text: "Nous sommes à M+2 après votre transplantation. Prenez-vous bien votre traitement immunosuppresseur aux heures fixes ?",
+            delayMs: 3000,
           },
           {
             role: 'patient',
-            text: 'Très bien, je veux aussi comprendre les délais habituels.',
-            delayMs: 6200,
+            text: "Oui, tacrolimus à 8h et 20h tous les jours, sans oubli.",
+            delayMs: 5500,
           },
           {
             role: 'agent',
-            text: "Parfait, je vous indique les priorités et l'ordre recommandé.",
-            delayMs: 8200,
+            text: "Excellent. Avez-vous constaté de la fièvre, des douleurs abdominales ou une jaunisse ?",
+            delayMs: 8500,
+          },
+          {
+            role: 'patient',
+            text: "Non, aucun de ces symptômes. Je me sens bien.",
+            delayMs: 11500,
+          },
+          {
+            role: 'agent',
+            text: "Parfait. Avez-vous fait votre prise de sang de contrôle cette semaine ? Bilan hépatique et taux de tacrolimus ?",
+            delayMs: 14500,
+          },
+          {
+            role: 'patient',
+            text: "Oui, hier matin à jeun. J'attends les résultats.",
+            delayMs: 17500,
+          },
+          {
+            role: 'agent',
+            text: "Très bien. Respectez-vous les consignes d'hygiène ? Lavage des mains, éviter les contacts avec personnes malades ?",
+            delayMs: 20500,
           },
         ],
         'chirurgie-esthetique': [
           {
             role: 'agent',
-            text: "Bonjour, je suis l'agent chirurgie esthétique. Quel est votre objectif principal ?",
-            delayMs: 600,
+            text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Je vous appelle concernant votre suivi post-rhinoplastie. Êtes-vous disponible quelques minutes ?",
+            delayMs: 0,
           },
           {
             role: 'patient',
-            text: "Je veux comprendre les options et la récupération après l'intervention.",
-            delayMs: 2300,
+            text: "Oui, bonjour. Je suis disponible.",
+            delayMs: 1500,
           },
           {
             role: 'agent',
-            text: 'Je peux comparer les options, bénéfices, risques et temps de récupération.',
-            delayMs: 4200,
+            text: "Nous sommes à J+5 après votre intervention. Comment évaluez-vous les ecchymoses et l'œdème ?",
+            delayMs: 3000,
           },
           {
             role: 'patient',
-            text: "Super, j'aimerais ensuite planifier un premier rendez-vous.",
-            delayMs: 6100,
+            text: "Les bleus commencent à diminuer. Le gonflement est encore présent mais moins qu'avant.",
+            delayMs: 5500,
           },
           {
             role: 'agent',
-            text: 'Très bien, je prépare un résumé et les créneaux disponibles.',
-            delayMs: 8100,
+            text: "C'est normal à ce stade. Appliquez-vous bien les compresses froides 3 fois par jour comme prescrit ?",
+            delayMs: 8500,
+          },
+          {
+            role: 'patient',
+            text: "Oui, je fais attention. J'applique les compresses régulièrement.",
+            delayMs: 11500,
+          },
+          {
+            role: 'agent',
+            text: "Parfait. Dormez-vous bien en position semi-assise avec 2 oreillers pour limiter l'œdème ?",
+            delayMs: 14500,
+          },
+          {
+            role: 'patient',
+            text: "Oui, je dors avec la tête surélevée. C'est un peu inconfortable mais je m'habitue.",
+            delayMs: 17500,
+          },
+          {
+            role: 'agent',
+            text: "Très bien. Avez-vous des saignements de nez importants ou des douleurs inhabituelles ?",
+            delayMs: 20500,
           },
         ],
       },
@@ -1868,54 +1948,889 @@ const fr = {
           cta: 'Voir la documentation API',
         },
       },
+      patientSupport: {
+        hero: {
+          title: "Programmes d'accompagnement patient",
+          subtitle:
+            "Un système hybride qui libère du temps à vos équipes d'accompagnement en automatisant les appels de routine, tout en gardant les décisions critiques et l'empathie sous contrôle humain.",
+          cta1: 'Évaluer un projet pilote',
+          cta2: 'Explorer une intégration',
+        },
+        challenge: {
+          title:
+            "L'accompagnement patient repose sur une continuité difficile à maintenir.",
+          items: [
+            {
+              title: "Dans de nombreux programmes d'accompagnement :",
+              listItems: [
+                'les patients sont suivis sur plusieurs semaines ou plusieurs mois',
+                'les équipes doivent maintenir un contact régulier',
+                'les indicateurs sont collectés à intervalles définis',
+              ],
+            },
+            {
+              title: 'Mais en pratique :',
+              listItems: [
+                'les relances manuelles sont chronophages',
+                "l'engagement diminue avec le temps",
+                'les données sont hétérogènes',
+                'les interactions sont peu structurées',
+              ],
+            },
+            {
+              title: 'Impact sur les équipes :',
+              listItems: [
+                'temps considérable passé sur des appels de routine répétitifs',
+                'moins de disponibilité pour les cas complexes nécessitant expertise et empathie',
+                'difficulté à prioriser les patients qui ont vraiment besoin d\'attention',
+              ],
+            },
+          ],
+        },
+        protocol: {
+          title: "Appliquer vos protocoles d'accompagnement à grande échelle.",
+          subtitle:
+            "Le dispositif permet d'organiser un suivi structuré en appliquant les protocoles définis par votre programme. Chaque programme peut définir :",
+          items: [
+            {
+              title: 'la fréquence des appels',
+              description: 'Rythme adapté au protocole',
+            },
+            {
+              title: 'les indicateurs déclaratifs à suivre',
+              description: 'Données structurées',
+            },
+            {
+              title: "les seuils d'alerte",
+              description: 'Critères de vigilance',
+            },
+            {
+              title: 'la durée du programme',
+              description: 'Période de suivi définie',
+            },
+          ],
+          footer:
+            'Le système applique ce protocole automatiquement sur les appels de routine, libérant vos équipes pour se concentrer sur les patients qui nécessitent une attention particulière.',
+        },
+        engagement: {
+          sectionTitle: "Maintenir l'engagement dans la durée",
+          title: 'Le canal vocal : un lien simple et universel',
+          description: 'Les outils numériques (applications, portails, questionnaires web) supposent disponibilité, motivation et familiarité numérique. Le téléphone reste accessible à tous les profils patients.',
+          items: [
+            "Aucune application à installer",
+            'Interaction simple et naturelle',
+            'Accessible quel que soit le niveau numérique',
+          ],
+          description2: 'Pour vos équipes :',
+          items2: [
+            'Gain de temps sur les appels de routine',
+            'Focus sur les cas nécessitant empathie et expertise',
+            'Supervision des alertes prioritaires uniquement',
+          ],
+        },
+        structuredReturns: {
+          title: 'Transformer les échanges en données longitudinales exploitables.',
+          description: 'Chaque interaction permet de recueillir :',
+          items: [
+            'symptômes déclaratifs',
+            'perception du traitement',
+            'adhérence au protocole',
+            'effets indésirables déclaratifs',
+            'indicateurs qualité de vie',
+          ],
+          description2: 'Les réponses sont :',
+          items2: [
+            'structurées',
+            'historisées',
+            'analysables dans le temps',
+          ],
+        },
+        useCases: {
+          title: "Cas d'usage typiques",
+          cards: [
+            {
+              title: "Programmes d'observance thérapeutique",
+              description:
+                "Suivi de l'adhérence aux traitements dans des pathologies chroniques.",
+              gradient: 'var(--gradient-accent-warm)',
+            },
+            {
+              title: 'Accompagnement post-hospitalisation',
+              description: 'Suivi après retour à domicile.',
+              gradient: 'var(--gradient-accent-cool)',
+            },
+            {
+              title: 'Éducation thérapeutique',
+              description: 'Suivi des indicateurs entre les séances.',
+              gradient: 'var(--gradient-accent-warm-terra)',
+            },
+            {
+              title: "Programmes d'accompagnement pharma",
+              description:
+                'Maintien du lien avec les patients dans les programmes PSP.',
+              gradient: 'var(--gradient-accent-cool-overlay)',
+            },
+          ],
+        },
+        teams: {
+          sectionTitle: "Pour les équipes d'accompagnement",
+          title: "Un système hybride humain-IA",
+          description:
+            "L'IA gère les appels de routine standardisés. Les équipes restent essentielles pour l'empathie, les décisions critiques et les situations complexes.",
+          items: [
+            'Appels de routine automatisés (J+7, J+14, J+30...)',
+            'Collecte et structuration des indicateurs',
+            'Détection des signaux d\'alerte selon vos critères',
+          ],
+          description2: "Les équipes se concentrent sur :",
+          items2: [
+            'Patients déclenchant des alertes',
+            'Situations nécessitant empathie et expertise',
+            'Décisions médicales et ajustements de protocole',
+          ],
+          footer: 'L\'IA automatise les tâches répétitives, les humains gardent le contrôle sur ce qui compte.',
+        },
+        platforms: {
+          sectionTitle: 'Pour les plateformes et opérateurs',
+          title: 'Infrastructure intégrable à vos dispositifs',
+          description: 'Solution autonome, brique intégrable ou canal complémentaire aux applications existantes.',
+          items: [
+            'API sécurisée et export de données structurées',
+            'Intégration dashboards et planification protocole',
+            'Supervision humaine paramétrable',
+          ],
+        },
+      },
+      prevention: {
+        hero: {
+          title: 'Multipliez par 5 l\'engagement dans vos programmes de prévention',
+          subtitle:
+            "Transformez vos initiatives de santé au travail en programmes structurés avec un suivi vocal automatisé avec un taux d'engagement supérieur à 75%. Collectez des données longitudinales fiables sans surcharger vos équipes.",
+          cta1: 'Demander une démo',
+          cta2: 'Échanger sur votre contexte',
+        },
+        metrics: [
+          {
+            value: '75%',
+            label: 'Taux de participation',
+            description: 'au lieu de 15% pour les applications classiques',
+          },
+          {
+            value: '5x',
+            label: 'Plus d\'engagement',
+            description: 'Maintenu dans le temps',
+          },
+          {
+            value: '-40%',
+            label: 'Arrêts de travail TMS',
+            description: 'Après 6 mois de suivi',
+          },
+        ],
+        fieldObservation: {
+          title:
+            "Les programmes de prévention échouent par manque d'engagement",
+          intro:
+            "Vous investissez dans des programmes de prévention, mais les résultats ne suivent pas. 85% des collaborateurs abandonnent les applications de santé après 3 semaines. Le suivi manuel est chronophage et irrégulier.",
+          blocks: [
+            {
+              title: '15% de taux d\'engagement moyen',
+              description:
+                'Les applications de prévention perdent 85% de leurs utilisateurs après 3 semaines. Impossible de collecter des données longitudinales fiables.',
+            },
+            {
+              title: 'Données fragmentées et inexploitables',
+              description:
+                'Les questionnaires ponctuels ne permettent pas de suivre l\'évolution dans le temps. Impossible d\'identifier les tendances ou d\'adapter les programmes.',
+            },
+            {
+              title: 'Charge administrative importante',
+              description:
+                "Les équipes RH et SST passent des heures à relancer les participants et compiler manuellement les données. Le ROI du programme devient négatif.",
+            },
+            {
+              title: 'Exclusion des populations fragiles',
+              description:
+                'Les collaborateurs peu à l\'aise avec le numérique ou sans smartphone sont exclus des programmes. Vous perdez 30% de votre cible.',
+            },
+          ],
+          footer:
+            "Sans engagement régulier et données structurées, vos programmes de prévention ne génèrent aucun impact mesurable.",
+        },
+        approach: {
+          title: "Un suivi automatisé qui génère 75% de participation",
+          intro:
+            'Le téléphone est universel, familier et ne nécessite aucune installation. Les appels vocaux programmés permettent un suivi régulier sans effort pour vos équipes.',
+          steps: [
+            {
+              title: 'Co-construction du programme (1 semaine)',
+              description:
+                'Nous définissons ensemble les indicateurs de suivi, la fréquence des appels et les critères d\'alerte selon vos objectifs métier.',
+            },
+            {
+              title: 'Enrôlement des participants (2 jours)',
+              description:
+                'Information claire sur le dispositif, consentement éclairé et inscription par simple numéro de téléphone. Aucune app à télécharger.',
+            },
+            {
+              title: 'Appels vocaux automatisés',
+              description:
+                'Des appels réguliers (hebdomadaires, bi-mensuels...) collectent les indicateurs définis. Durée moyenne : 3-5 minutes. Taux de réponse : 75%.',
+            },
+            {
+              title: 'Structuration et analyse en temps réel',
+              description:
+                'Les réponses sont automatiquement transcrites, structurées et analysées selon vos critères. Alertes automatiques si seuils dépassés.',
+            },
+            {
+              title: 'Tableaux de bord et exports',
+              description:
+                'Accès en temps réel aux données agrégées et individuelles. Exports CSV pour vos analyses. Rapports mensuels automatiques.',
+            },
+          ],
+        },
+        whyVoice: {
+          title: 'Pourquoi la voix génère 5x plus d\'engagement que les apps',
+          blocks: [
+            {
+              title: '100% d\'accessibilité',
+              description: 'Tous vos collaborateurs ont un téléphone. Pas de smartphone requis, pas d\'installation, pas de mot de passe oublié.',
+            },
+            {
+              title: 'Zéro friction',
+              description: 'Le collaborateur reçoit un appel, décroche et répond. 3 minutes chrono. Pas de connexion, pas de navigation, pas d\'abandon.',
+            },
+            {
+              title: 'Expression naturelle et riche',
+              description: "La voix permet de nuancer les réponses et d'exprimer des ressentis qu'un questionnaire à choix multiples ne capte pas.",
+            },
+            {
+              title: 'Rappels automatiques intégrés',
+              description:
+                'L\'appel programmé agit comme un rappel. Pas besoin de relancer manuellement. Taux de réponse maintenu dans le temps.',
+            },
+          ],
+          footer:
+            "Résultat : 75% de taux de participation vs 15% pour les applications de prévention classiques.",
+        },
+        useCases: {
+          title: 'Cas d\'usage avec résultats attendus',
+          cards: [
+            {
+              title: 'Prévention des TMS (industrie, logistique)',
+              description: 'Recueil hebdomadaire des douleurs et gênes. Identification précoce des situations à risque. Réduction de 40% des arrêts de travail liés aux TMS après 6 mois.',
+            },
+            {
+              title: 'Programmes de gestion du stress (tertiaire)',
+              description:
+                'Auto-évaluation bi-mensuelle du stress, fatigue et charge mentale. Alertes automatiques si dégradation. Taux de participation : 78% sur 12 mois.',
+            },
+            {
+              title: "Programmes d'activité physique (tous secteurs)",
+              description: "Suivi déclaratif de l'activité, motivation et obstacles. Coaching vocal personnalisé. Maintien de l'engagement 3x supérieur aux apps.",
+            },
+            {
+              title: 'Retour au travail post-arrêt (RH/SST)',
+              description: 'Accompagnement progressif du retour. Détection précoce des difficultés. Réduction de 30% des rechutes et arrêts prolongés.',
+            },
+            {
+              title: 'Programmes de bien-être global (QVT)',
+              description: 'Indicateurs de santé perçue, sommeil, alimentation. Vision longitudinale de l\'impact des actions QVT. ROI mesurable des programmes.',
+            },
+          ],
+        },
+        beyondAgent: {
+          title: 'Des données exploitables qui prouvent l\'impact de vos programmes',
+          description:
+            'Contrairement aux questionnaires ponctuels, le suivi vocal régulier génère des données longitudinales structurées. Vous pouvez enfin :',
+          items: [
+            "mesurer l'évolution réelle des indicateurs dans le temps (avant/après)",
+            "identifier les populations à risque et les tendances par service/site",
+            "prouver le ROI de vos programmes de prévention avec des données chiffrées",
+            "adapter vos actions en temps réel selon les remontées terrain",
+            "produire des rapports automatiques pour la direction et les IRP",
+          ],
+        },
+        organizations: {
+          title: 'Qui déploie ces programmes de suivi vocal',
+          cards: [
+            {
+              title: 'Entreprises (RH, QVT, HSE)',
+              description: 'Programmes de prévention TMS, stress, bien-être. Suivi post-arrêt. Mesure de l\'impact des actions QVT. Reporting IRP et direction.',
+            },
+            {
+              title: 'Services de santé au travail (SST, SSTI)',
+              description: 'Suivi de cohortes de salariés exposés. Études longitudinales. Détection précoce des risques. Optimisation des visites médicales.',
+            },
+            {
+              title: 'Assureurs et mutuelles',
+              description: 'Programmes de prévention pour assurés. Réduction de la sinistralité. Engagement dans les parcours santé. Différenciation concurrentielle.',
+            },
+            {
+              title: 'Prestataires santé et bien-être',
+              description: "Enrichissement de l'offre avec un suivi vocal. Différenciation vs concurrence. Données d'impact pour vos clients. Scalabilité sans recruter.",
+            },
+          ],
+        },
+        regulatory: {
+          title: 'Conformité et sécurité des données',
+          description:
+            'Un outil organisationnel conforme aux exigences RGPD et santé au travail',
+          certifications: [
+            {
+              badge: 'HDS',
+              label: 'Hébergeur certifié',
+            },
+            {
+              badge: 'RGPD',
+              label: 'Conforme',
+            },
+            {
+              badge: 'Hipaa',
+              label: 'Conforme',
+            },
+            // {
+            //   badge: 'ISO 27001',
+            //   label: 'Sécurité',
+            // },
+          ],
+          items: [
+            'Hébergement de données de santé certifié HDS (Hébergeur de Données de Santé)',
+            'Conformité RGPD : consentement éclairé, droit d\'accès, de rectification et d\'effacement',
+            'Respect du Code du travail : anonymisation des données agrégées, confidentialité',
+            'Outil organisationnel (non dispositif médical) : collecte d\'informations déclaratives',
+            'Pas de diagnostic médical : les données sont des indicateurs de prévention',
+            'Complémentaire aux professionnels de santé : ne remplace pas le suivi médical',
+          ],
+        },
+        pilot: {
+          title: "Pilote de 3 mois pour mesurer l'impact sur votre population",
+          description:
+            "Nous déployons un pilote sur un échantillon de collaborateurs (50-200 personnes) pour mesurer l'engagement, la qualité des données et le ROI avant un déploiement à grande échelle.",
+          steps: [
+            'Co-construction du programme et des indicateurs (1 semaine)',
+            'Paramétrage technique et enrôlement des participants (1 semaine)',
+            "Phase d'expérimentation avec suivi vocal régulier (3 mois)",
+            'Analyse des résultats et recommandations de déploiement (1 semaine)',
+          ],
+          objectives: 'Objectifs mesurés :',
+          objectiveItems: [
+            "Taux de participation et d'engagement dans le temps",
+            "Qualité et exploitabilité des données collectées",
+            "Satisfaction des participants et des équipes RH/SST",
+            "ROI estimé d'un déploiement à grande échelle",
+          ],
+        },
+        finalCta: {
+          title: 'Déployez un pilote de 3 mois dans votre organisation',
+          subtitle:
+            "Échangeons 30 minutes sur votre contexte et vos enjeux de prévention. Nous vous proposerons un pilote adapté avec objectifs mesurables et ROI projeté.",
+          primaryCta: 'Planifier un échange confidentiel',
+          secondaryCta: 'Recevoir une documentation',
+        },
+      },
+    },
+    editorsApi: {
+      hero: {
+        title: 'Ajoutez un agent vocal médical à votre plateforme',
+        subtitle:
+          "Intégrez facilement et de manière sécurisée via API un canal vocal structuré sans vous soucier des problématiques d'appels, de conversation ou d'extraction de données",
+        description:
+          "L'infrastructure s'intègre via API et permet d'ajouter un canal vocal structuré sans développer votre propre système d'appels.",
+        cta1: "Explorer l'intégration",
+        cta2: 'Demander un accès sandbox',
+      },
+      problem: {
+        title:
+          'Les plateformes de suivi patient rencontrent toutes la même limite',
+        intro:
+          "Les solutions numériques permettent aujourd'hui de suivre les patients via applications ou questionnaires. Mais l'engagement patient reste difficile à maintenir dans le temps.",
+        blocks: [
+          {
+            title: 'Questionnaires incomplets',
+            description:
+              'Les questionnaires numériques restent fréquemment non complétés.',
+          },
+          {
+            title: 'Relances humaines',
+            description:
+              'Les équipes doivent relancer manuellement les patients.',
+          },
+          {
+            title: 'Fragmentation des interactions',
+            description: 'Les informations remontent par différents canaux.',
+          },
+          {
+            title: 'Engagement numérique variable',
+            description:
+              'Certains patients utilisent peu les applications ou portails.',
+          },
+        ],
+        footer:
+          "Un protocole de suivi n'est efficace que si les patients répondent réellement.",
+      },
+      infrastructure: {
+        title: 'Une infrastructure vocale conçue pour les plateformes de santé',
+        blocks: [
+          {
+            title: 'Protocoles configurables',
+            description:
+              "Les scénarios d'appel sont définis à partir de protocoles ou questionnaires existants.",
+          },
+          {
+            title: 'Suivi longitudinal',
+            description:
+              'Chaque interaction est historisée et structurée dans le temps.',
+          },
+          {
+            title: 'Supervision médicale',
+            description:
+              'Le système agit comme un outil organisationnel supervisé par les équipes.',
+          },
+        ],
+      },
+      transform: {
+        title: 'Transformez vos questionnaires patients en appels vocaux',
+        description:
+          "Si votre plateforme utilise déjà des questionnaires patients (PROMS, ePRO, auto-évaluations, questionnaires de suivi), ils peuvent être transformés en protocoles d'appels vocaux structurés. Les réponses sont ensuite renvoyées vers votre système sous forme de données structurées.",
+        items: [
+          'PROMS',
+          'ePRO',
+          'Auto-évaluation',
+          'Questionnaire de suivi',
+        ],
+      },
+      architecture: {
+        title: "Architecture d'intégration",
+        steps: [
+          'Votre plateforme',
+          'API',
+          'Infrastructure vocale',
+          'Appel patient',
+          'Analyse',
+          'Webhook données',
+          'Votre système',
+        ],
+        description:
+          "L'infrastructure peut être intégrée via API et webhooks. Votre plateforme conserve la logique produit et reçoit les données structurées.",
+      },
+      apiExample: {
+        title: 'Exemple de logique API',
+        examples: [
+          {
+            title: 'Créer un patient dans un workspace',
+            method: 'POST',
+            endpoint: 'api/public/v1/patients',
+            body: '{\n  "workspace_id": "ws_123",\n  "first_name": "Marie",\n  "last_name": "Dupont",\n  "phone": "+33612345678"\n}',
+          },
+          {
+            title: 'Lancer un suivi',
+            method: 'POST',
+            endpoint: 'api/public/v1/follow-up',
+            body: '{\n  "patient_id": "pat_456",\n  "agent_id": "agent_789"\n}',
+          },
+          {
+            title: 'Recevoir les données',
+            method: 'WEBHOOK',
+            endpoint: 'Webhook JSON',
+            response:
+              '{\n  "call_id": "call_abc",\n  "patient_id": "pat_456",\n  "responses": [\n    {\n      "question": "Douleur (0-10)",\n      "answer": "3"\n    }\n  ]\n}',
+          },
+        ],
+      },
+      integrationCases: {
+        title: 'Plateformes pouvant intégrer la brique vocale',
+        cards: [
+          {
+            title: 'Télésuivi',
+            description: 'suivi patient à distance.',
+            gradient: 'var(--gradient-accent-warm)',
+          },
+          {
+            title: 'Coordination de parcours',
+            description: 'suivi post-hospitalisation.',
+            gradient: 'var(--gradient-accent-cool)',
+          },
+          {
+            title: 'Plateformes RWE',
+            description: 'collecte longitudinale de données patients.',
+            gradient: 'var(--gradient-accent-warm-terra)',
+          },
+          {
+            title: 'Logiciels de dossiers patients',
+            description: 'compléter les interactions numériques.',
+            gradient: 'var(--gradient-accent-cool-overlay)',
+          },
+          {
+            title: 'Programmes de prévention',
+            description: 'engagement régulier des patients.',
+            gradient: 'var(--gradient-accent-warm)',
+          },
+        ],
+      },
+      questionnaireCreation: {
+        title: "Création d'un appel à partir d'un questionnaire",
+        description: 'Vous avez déjà un questionnaire ? Votre formulaire devient un appel vocal structuré.',
+        items: [
+          'Import JSON',
+          'Mapping simple',
+          'Définition logique conditionnelle',
+          'Planification automatique',
+        ],
+      },
+      pricing: {
+        title: 'Tarification',
+        leftTitle: 'Nous contacter pour :',
+        leftItems: [
+          'Forfait mensuel plateforme',
+          'Facturation au temps de conversation',
+          'Packs crédits',
+        ],
+        rightTitle: 'Plans',
+        rightItems: [
+          'Starter',
+          'Growth',
+          'Enterprise : Volume négocié',
+        ],
+      },
+      collaborationModels: {
+        title: "Différents modèles d'intégration",
+        models: [
+          {
+            title: 'API complète',
+            description: 'Intégration produit native.',
+          },
+          {
+            title: 'Projet pilote',
+            description: 'expérimentation limitée.',
+          },
+          {
+            title: 'Partenariat produit',
+            description: 'co-développement.',
+          },
+        ],
+      },
+      finalCta: {
+        title: 'Ajoutez une couche vocale à votre plateforme',
+        subtitle:
+          "Échangeons sur les possibilités d'intégration avec votre solution.",
+        primaryCta: 'Demander un accès sandbox',
+        secondaryCta: 'Planifier un échange technique',
+      },
+    },
+    vision: {
+      hero: {
+        eyebrow: "Infrastructure vocale clinique",
+        title: "Le canal qui manquait au suivi patient.",
+        subtitle: "Entre deux consultations, les patients vivent. Leurs symptômes évoluent, leurs questions s'accumulent. Ces données critiques restent invisibles — non par manque de volonté, mais parce que le canal disponible était le mauvais.",
+        stats: [
+          {
+            value: "40–50%",
+            label: "de patients perdus de vue\nen études cliniques"
+          },
+          {
+            value: "4",
+            label: "moteurs d'infrastructure\nclinique construits"
+          }
+        ]
+      },
+      problem: {
+        label: "Le problème réel",
+        title: "Une incompatibilité structurelle",
+        intro: "Ce n'est pas un problème d'engagement. Les patients ne sont pas démotivés. C'est une <strong>incompatibilité structurelle entre le canal et la contrainte clinique.</strong>",
+        body: "Les applications supposent une capacité d'action que l'état post-chimio, post-opératoire ou simplement la fragilité rendent impossible. Le suivi fiable ne peut pas reposer sur la motivation du patient.",
+        statPill: {
+          value: "40–50%",
+          label: "de lost-to-follow-up moyen · Kyte et al., 2016"
+        },
+        barriers: [
+          {
+            title: "État clinique",
+            text: "Ouvrir une app, naviguer, cocher — la charge cognitive est incompatible avec l'état post-chimio ou post-opératoire."
+          },
+          {
+            title: "Digital literacy",
+            text: "Les populations âgées, peu digitales, fragilisées sont structurellement exclues du canal application."
+          },
+          {
+            title: "Engagement passif requis",
+            text: "L'app attend que le patient vienne. Le suivi fiable nécessite un canal qui va vers lui."
+          }
+        ]
+      },
+      thesis: {
+        label: "Notre thèse",
+        title: "La voix résout le canal. Mais la rendre cliniquement fiable est un problème d'ingénierie.",
+        body: "Intégrer un assistant vocal est trivial. Construire une infrastructure vocale qui résiste aux contraintes cliniques réelles — identité, protocole, données structurées, continuité longitudinale — est un problème d'ingénierie spécialisée. C'est cette barrière que nous avons franchie.",
+        pillars: [
+          {
+            title: "Identité & consentement",
+            text: "Vérification patient avant collecte, anti-usurpation, traçabilité RGPD native."
+          },
+          {
+            title: "Orchestration des appels",
+            text: "Absents, répondeurs, tiers en ligne, escalade humaine — journal auditable complet."
+          },
+          {
+            title: "Fidélité protocolaire",
+            text: "Maintien de la logique clinique sous déviation conversationnelle, base de connaissances paramétrée par le clinicien."
+          },
+          {
+            title: "Données structurées",
+            text: "Extraction clinique propre, alertes sur seuils, export HL7 FHIR — pas de la transcription."
+          }
+        ]
+      },
+      founders: {
+        label: "À l'origine",
+        title: "Deux trajectoires, une même conviction",
+        intro: "Doctinum est né de la convergence d'une frustration terrain et d'une expertise technique. Non d'une hypothèse — d'une observation vécue.",
+        founders: [
+          {
+            role: "CEO & Co-fondateur",
+            name: "Michael Ramassamy",
+            story: [
+              "Entrepreneur dans la santé numérique, Michael a travaillé sur la réputation des établissements et l'expérience patient. Là, il a observé un paradoxe récurrent : <strong>les questionnaires ne revenaient pas, les données manquaient — non par indifférence, mais parce que le canal imposait trop d'effort.</strong>",
+              "L'expérience est devenue personnelle. Face aux problèmes de santé de son père — peu à l'aise avec le numérique — il a mesuré la réalité du vide entre deux consultations : pas d'outil, pas de remontée, pas de suivi structuré possible."
+            ],
+            insight: "Ce n'est pas un problème de motivation. C'est un problème de canal. Et la voix est le seul canal qui va vers le patient."
+          },
+          {
+            role: "CTO & Co-fondateur",
+            name: "Régis Anclades",
+            story: [
+              "Ingénieur et entrepreneur technologique, Régis a conçu et déployé plusieurs infrastructures vocales automatisées à grande échelle — notamment pour des systèmes de support client en production.",
+              "Cette expérience lui a appris ce que les voice bots génériques ignorent : <strong>la fiabilité à grande échelle est un problème d'architecture, pas d'interface.</strong> Gérer les absents, les tiers en ligne, les refus, les plages horaires, les données propres — c'est l'infrastructure, pas le LLM."
+            ],
+            insight: "La fiabilité vocale à grande échelle est un problème d'architecture, pas d'interface. C'est précisément ce que nous avons construit."
+          }
+        ]
+      },
+      conviction: {
+        label: "Nos convictions",
+        title: "Ce en quoi nous croyons profondément",
+        cards: [
+          {
+            label: "Sur le canal",
+            text: "La voix est le seul canal universel. Elle ne requiert ni compte, ni app, ni maîtrise numérique. C'est le seul canal qui va vers le patient — et non l'inverse."
+          },
+          {
+            label: "Sur la barrière technique",
+            text: "La voix cliniquement fiable n'est pas un problème de design. C'est un problème d'ingénierie. La barrière est là — c'est notre avantage."
+          },
+          {
+            label: "Sur le positionnement",
+            text: "Nous ne remplaçons pas les plateformes. Nous sommes la couche vocale qu'elles n'ont pas — et que construire en interne leur coûterait 12 mois de R&D."
+          },
+          {
+            label: "Sur le timing",
+            text: "Les LLM vocaux multimodaux ont atteint un niveau de maturité et un coût qui rendent enfin possible une infrastructure vocale clinique fiable. La fenêtre s'ouvre maintenant."
+          }
+        ]
+      },
+      roadmap: {
+        label: "Notre ambition",
+        title: "Devenir l'infrastructure de référence du suivi clinique vocal",
+        timeline: [
+          {
+            year: "Aujourd'hui",
+            title: "Validation en conditions réelles",
+            text: "Infrastructure fonctionnelle déployée avec des praticiens partenaires. Validation des quatre moteurs cliniques sur des cas d'usage concrets : suivi post-opératoire, esthétique médicale, études cliniques.",
+            tags: ["Beta fonctionnelle", "Pilotes cliniques actifs"]
+          },
+          {
+            year: "Demain",
+            title: "Infrastructure pour les plateformes",
+            text: "Devenir la couche vocale que les éditeurs de suivi patient intègrent par API — plutôt que de la reconstruire. Interopérabilité native avec les standards du secteur.",
+            tags: ["API-first", "Interopérabilité HL7 FHIR"]
+          },
+          {
+            year: "Vision",
+            title: "Standard du suivi vocal en santé",
+            text: "Une infrastructure vocale clinique certifiée, déployée à l'échelle — de la médecine de ville aux essais cliniques internationaux. Le suivi patient accessible à tous, partout, sans friction.",
+            tags: ["Certification réglementaire", "Expansion internationale"]
+          }
+        ]
+      },
+      cta: {
+        title: "Une conversation, pas un pitch.",
+        subtitle: "Si notre raisonnement vous intéresse — ou si vous pensez qu'il est faux — nous voulons l'entendre. 60 minutes pour vérifier notre thèse ensemble.",
+        primaryCta: "Demander une démo",
+        secondaryCta: "Voir le deck investisseur"
+      }
+    },
+    security: {
+      hero: {
+        eyebrow: "Sécurité & Réglementation",
+        title: "Une infrastructure conçue pour les environnements de santé.",
+        subtitle: "La protection des données patient, la traçabilité des interactions et la supervision humaine ne sont pas des options dans Doctinum — elles sont constitutives de l'architecture.",
+        badges: [
+          "Hébergement HDS · France",
+          "RGPD natif",
+          "Hors classification DM",
+          "Traçabilité complète"
+        ]
+      },
+      guarantees: {
+        label: "Ce que nous garantissons aujourd'hui",
+        title: "Des fondations vérifiables, pas des déclarations d'intention.",
+        intro: "Voici ce qui est en place, opérationnel, et vérifiable — sans sur-vente de certifications que nous n'avons pas encore.",
+        items: [
+          {
+            icon: "🏥",
+            title: "Hébergement HDS certifié",
+            text: "Les données de santé sont hébergées en France auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
+            tag: "France · Données de santé"
+          },
+          {
+            icon: "🔒",
+            title: "Chiffrement des données",
+            text: "Les données sont chiffrées en transit et au repos. Aucune donnée patient ne circule en clair à aucune étape du traitement.",
+            tag: "Chiffrement en transit · Au repos"
+          },
+          {
+            icon: "✅",
+            title: "Consentement tracé & auditable",
+            text: "Le consentement du patient est recueilli en ligne avant toute collecte, horodaté et conservé. Chaque interaction est journalisée avec une traçabilité complète exportable.",
+            tag: "RGPD · Journal auditable"
+          },
+          {
+            icon: "👤",
+            title: "Contrôle des accès",
+            text: "L'accès aux données est strictement limité aux utilisateurs autorisés. Les accès sont enregistrés et traçables. Aucun accès non authentifié n'est possible aux données patient.",
+            tag: "Authentification · Journalisation"
+          },
+          {
+            icon: "🌍",
+            title: "Localisation des données · UE",
+            text: "L'intégralité des données est hébergée sur des infrastructures localisées en France et dans l'Union Européenne. Les transferts éventuels hors UE sont encadrés contractuellement et documentés.",
+            tag: "France · Union Européenne"
+          },
+          {
+            icon: "🔍",
+            title: "Vérification d'identité patient",
+            text: "L'identité du patient est vérifiée avant toute collecte de données. Le système intègre des mécanismes anti-usurpation pour garantir que les données collectées correspondent bien à la bonne personne.",
+            tag: "Anti-usurpation · Identité vérifiée"
+          }
+        ]
+      },
+      posture: {
+        label: "Posture réglementaire",
+        title: "Ce que nous sommes. Ce que nous ne sommes pas encore.",
+        intro: "La transparence sur notre statut réglementaire actuel est un principe, pas une contrainte. Voici un état exact de notre situation.",
+        activeItems: [
+          "Hors classification Dispositif Médical — outil d'organisation et de collecte déclarative, sans diagnostic ni décision clinique autonome",
+          "Conformité RGPD native — base légale documentée, droits des personnes exercés",
+          "Hébergement HDS certifié en France",
+          "Conventions de pilote encadrant chaque déploiement",
+          "Politique de confidentialité et mentions légales à jour"
+        ],
+        pendingItems: [
+          "Analyse de trajectoire CE MDR en cours — périmètre à définir selon les usages retenus",
+          "Engagement avec un cabinet réglementaire spécialisé santé numérique en cours de structuration",
+          "Clause de revue sécurité disponible pour les partenaires institutionnels qui en font la demande",
+          "Certification ISO 27001 envisagée pour les déploiements institutionnels à grande échelle"
+        ],
+        note: "nous ne revendiquons pas de certifications que nous n'avons pas. Si votre contexte requiert un niveau de certification spécifique, nous vous l'indiquerons clairement — et si la trajectoire est compatible, nous la construirons ensemble."
+      },
+      supervision: {
+        label: "Supervision humaine & gouvernance",
+        title: "Le clinicien reste décisionnaire. Toujours.",
+        intro: "Doctinum collecte et structure des données déclaratives. Elle ne diagnostique pas, ne prescrit pas, et ne remplace aucune décision médicale. Voici comment la gouvernance est architecturée.",
+        items: [
+          {
+            title: "Aucune décision autonome",
+            text: "Le système ne prend aucune décision médicale de manière autonome. Il collecte, structure et alerte — le professionnel de santé reste le seul décisionnaire sur l'interprétation et l'action clinique."
+          },
+          {
+            title: "Escalade humaine intégrée",
+            text: "Les protocoles prévoient une escalade humaine systématique pour les situations qui dépassent le périmètre de collecte défini. Le praticien est notifié en temps réel sur les alertes définies par lui-même."
+          },
+          {
+            title: "Accès praticien en temps réel",
+            text: "Le professionnel de santé a accès à l'intégralité des données collectées, aux transcriptions et aux journaux d'appels à tout moment. Rien n'est opaque entre le système et le clinicien superviseur."
+          },
+          {
+            title: "Protocole paramétré par le clinicien",
+            text: "La base de connaissances et les questions de suivi sont définies et validées par le professionnel de santé responsable du protocole. Doctinum exécute — le clinicien conçoit et supervise."
+          }
+        ]
+      },
+      roadmap: {
+        label: "Trajectoire",
+        title: "Un cadre réglementaire qui évolue avec nos usages.",
+        intro: "Nous construisons la trajectoire réglementaire en fonction des déploiements réels — pas d'une liste de certifications abstraites. Voici l'état actuel.",
+        items: [
+          {
+            status: "actif",
+            title: "Hébergement HDS & conformité RGPD",
+            text: "Infrastructure opérationnelle, hébergement certifié HDS en France, conformité RGPD documentée. Applicable dès aujourd'hui pour tous les déploiements."
+          },
+          {
+            status: "actif",
+            title: "Convention de pilote & cadre contractuel",
+            text: "Chaque déploiement est encadré par une convention de pilote définissant le périmètre d'usage, les responsabilités et les conditions de traitement des données. Ce cadre contractuel est disponible pour examen avant tout engagement."
+          },
+          {
+            status: "engage",
+            title: "Analyse CE MDR & engagement réglementaire",
+            text: "L'analyse de la trajectoire Dispositif Médical est en cours. Le périmètre de certification dépendra des usages retenus. Un cabinet réglementaire spécialisé santé numérique sera engagé prochainement pour définir la trajectoire précise."
+          },
+          {
+            status: "horizon",
+            title: "Certification CE MDR & certifications complémentaires",
+            text: "La certification CE MDR sera engagée selon le périmètre d'usage retenu. Des certifications complémentaires (ISO 27001, etc.) seront envisagées en fonction des exigences des partenaires institutionnels. Ces certifications ne conditionnent pas les déploiements actuels."
+          }
+        ]
+      }
     },
   },
+
   contactForm: {
-    badge: 'Évaluation projet pilote',
-    titleLine1: 'Discutons de votre',
-    titleLine2: "cas d'usage",
-    subtitle:
-      "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un projet pilote de suivi vocal patient.",
-    nameLabel: 'Nom',
-    namePlaceholder: 'Dr. Martin Dupont',
-    roleLabel: 'Fonction',
-    rolePlaceholder: 'Chirurgien esthétique',
-    emailLabel: 'Email professionnel',
-    emailPlaceholder: 'votre@email.com',
-    servicesLabel: 'Type de parcours envisagé',
-    services: {
-      surgery: 'Chirurgie & médecine esthétique',
-      sportsMedicine: 'Médecine du sport',
-      dermatology: 'Dermatologie',
-      proms: 'PROMS / Questionnaires post-acte',
-      chronic: 'Parcours chroniques (diabète, insuffisance cardiaque...)',
-      oncology: 'Oncologie / Suivi post-traitement',
-      rehabilitation: 'Rééducation / Kinésithérapie',
-      preventive: 'Médecine préventive / Dépistage',
-      patientSoftware: 'Logiciel de suivi patient',
-      promsSoftware: 'Logiciel PROMS',
-      clinicalStudies: 'Études cliniques (pharma)',
-      croStudies: 'Études CRO',
-      followUpPrograms: 'Programmes de suivi patient',
-      other: 'Autre parcours',
-    },
-    budgetLabel: 'Type de structure',
-    budgets: {
-      solo: 'Cabinet individuel',
-      group: 'Groupe médical (2-10 praticiens)',
-      clinic: 'Établissement de santé',
-      network: 'Réseau coordonné / Multi-sites',
-      software: 'Éditeur de logiciel / CRO',
-      pharma: 'Laboratoire pharmaceutique',
-      researcher: 'Médecin chercheur / Universitaire',
-      patientProgram: 'Programme de suivi patient (entreprise)',
-      association: 'Association de patients / Fondation',
-      other: 'Autre',
-    },
-    businessLabel: 'Contexte et objectifs',
-    businessPlaceholder:
-      'Décrivez votre parcours de soins actuel, vos enjeux de suivi patient et ce que vous souhaitez améliorer...',
-    submit: 'Planifier un échange confidentiel',
+  badge: 'Évaluation projet pilote',
+  titleLine1: 'Discutons de votre',
+  titleLine2: "cas d'usage",
+  subtitle:
+    "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un projet pilote de suivi vocal patient.",
+  nameLabel: 'Nom',
+  namePlaceholder: 'Dr. Martin Dupont',
+  roleLabel: 'Fonction',
+  rolePlaceholder: 'Chirurgien esthétique',
+  emailLabel: 'Email professionnel',
+  emailPlaceholder: 'votre@email.com',
+  servicesLabel: 'Type de parcours envisagé',
+  services: {
+    surgery: 'Chirurgie & médecine esthétique',
+    sportsMedicine: 'Médecine du sport',
+    dermatology: 'Dermatologie',
+    proms: 'PROMS / Questionnaires post-acte',
+    chronic: 'Parcours chroniques (diabète, insuffisance cardiaque...)',
+    oncology: 'Oncologie / Suivi post-traitement',
+    rehabilitation: 'Rééducation / Kinésithérapie',
+    preventive: 'Médecine préventive / Dépistage',
+    patientSoftware: 'Logiciel de suivi patient',
+    promsSoftware: 'Logiciel PROMS',
+    clinicalStudies: 'Études cliniques (pharma)',
+    croStudies: 'Études CRO',
+    followUpPrograms: 'Programmes de suivi patient',
+    other: 'Autre parcours',
+  },
+  budgetLabel: 'Type de structure',
+  budgets: {
+    solo: 'Cabinet individuel',
+    group: 'Groupe médical (2-10 praticiens)',
+    clinic: 'Établissement de santé',
+    network: 'Réseau coordonné / Multi-sites',
+    software: 'Éditeur de logiciel / CRO',
+    pharma: 'Laboratoire pharmaceutique',
+    researcher: 'Médecin chercheur / Universitaire',
+    patientProgram: 'Programme de suivi patient (entreprise)',
+    association: 'Association de patients / Fondation',
+    other: 'Autre',
+  },
+  businessLabel: 'Contexte et objectifs',
+  businessPlaceholder:
+    'Décrivez votre parcours de soins actuel, vos enjeux de suivi patient et ce que vous souhaitez améliorer...',
+  submit: 'Planifier un échange confidentiel',
   },
   notFound: {
     title: '404',
@@ -1933,6 +2848,34 @@ const fr = {
     privacyPolicy: 'Politique de confidentialité',
     cookies: 'Gestion des cookies',
     copyright: '© 2026 Doctinum',
+    manageCookies: 'Modifier mes préférences cookies',
+  },
+  cookies: {
+    banner: {
+      title: 'Bandeau cookies',
+      description: "Ce site utilise des cookies afin de mesurer l'audience et améliorer votre expérience de navigation.",
+      choices: "Vous pouvez accepter, refuser ou personnaliser l'utilisation des cookies.",
+      accept: 'Accepter',
+      reject: 'Refuser',
+      customize: 'Personnaliser',
+      learnMore: 'En savoir plus',
+      policyLink: 'Politique de cookies',
+    },
+    preferences: {
+      title: 'Personnaliser les cookies',
+      description: "Gérez vos préférences en matière de cookies. Les cookies nécessaires sont toujours actifs car ils sont essentiels au fonctionnement du site.",
+      necessary: 'Cookies nécessaires',
+      alwaysActive: 'Toujours actifs',
+      necessaryDesc: "Ces cookies sont indispensables au bon fonctionnement du site et ne peuvent pas être désactivés.",
+      analytics: "Cookies de mesure d'audience",
+      analyticsDesc: "Les cookies analytiques nous permettent de comprendre l'utilisation du site afin d'en améliorer le contenu.",
+      analyticsExample: 'Ex: Google Analytics',
+      acceptAll: 'Tout accepter',
+      save: 'Enregistrer mes préférences',
+      cancel: 'Annuler',
+      learnMore: 'En savoir plus',
+      policyLink: 'Politique de cookies',
+    },
   },
 };
 
