@@ -94,6 +94,11 @@ const enSeo = {
     description:
       'Transform your questionnaires into structured voice follow-up. Increase completion rates and structure data over time.',
   },
+  vision: {
+    title: 'Vision — Doctinum',
+    description:
+      'The missing channel for patient follow-up. Clinical voice infrastructure to solve the structural problem of monitoring between consultations.',
+  },
   404: {
     title: 'Page Not Found | Doctinum',
     description: 'The page you requested could not be found.',

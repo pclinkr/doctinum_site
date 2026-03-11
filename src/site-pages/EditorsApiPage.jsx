@@ -12,7 +12,7 @@ import HomeSecurityFrameSection from '../components/sections/page-sections/HomeS
 
 export default function EditorsApiPage({ active, onNavigate }) {
   const { t } = useTranslation();
-  const copy = t('editorsApi', { returnObjects: true });
+  const copy = t('pages.editorsApi', { returnObjects: true });
 
   if (!copy || !copy.hero) {
     return null;

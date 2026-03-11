@@ -110,6 +110,11 @@ const frSeo = {
     description:
       "Dispositif de suivi vocal longitudinal pour engager les collaborateurs dans des programmes de prévention et structurer les indicateurs dans le temps.",
   },
+  vision: {
+    title: 'Vision — Doctinum',
+    description:
+      'Le canal qui manquait au suivi patient. Infrastructure vocale clinique pour résoudre le problème structurel du suivi entre deux consultations.',
+  },
   404: {
     title: 'Page introuvable | Doctinum',
     description: 'La page demandée est introuvable.',

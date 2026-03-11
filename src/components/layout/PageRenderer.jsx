@@ -17,6 +17,7 @@ import PromsPage from '../../site-pages/PromsPage';
 import PatientSupportProgramsPage from '../../site-pages/PatientSupportProgramsPage';
 import EditorsApiPage from '../../site-pages/EditorsApiPage';
 import PreventionWorkHealthPage from '../../site-pages/PreventionWorkHealthPage';
+import VisionPage from '../../site-pages/VisionPage';
 import {
   ContactPage,
   NotFoundPage,
@@ -126,6 +127,10 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'cookies-policy') {
     return <CookiesPolicyPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'vision') {
+    return <VisionPage active onNavigate={onNavigate} />;
   }
 
   return <NotFoundPage active onNavigate={onNavigate} />;

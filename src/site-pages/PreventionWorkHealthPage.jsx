@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import FinalCtaSection from '../components/sections/FinalCtaSection';
-import SolutionHeroSection from '../components/sections/page-sections/SolutionHeroSection';
+import PatientSupportHeroSection from '../components/sections/page-sections/PatientSupportHeroSection';
+import PreventionMetricsSection from '../components/sections/page-sections/PreventionMetricsSection';
 import HomeFieldObservationSection from '../components/sections/page-sections/HomeFieldObservationSection';
 import HomeOurApproachSection from '../components/sections/page-sections/HomeOurApproachSection';
 import HomeWhyVoiceSection from '../components/sections/page-sections/HomeWhyVoiceSection';
 import PatientSupportUseCasesSection from '../components/sections/page-sections/PatientSupportUseCasesSection';
 import HomeBeyondAgentSection from '../components/sections/page-sections/HomeBeyondAgentSection';
 import PreventionOrganizationsSection from '../components/sections/page-sections/PreventionOrganizationsSection';
-import SolutionRegulatorySection from '../components/sections/page-sections/SolutionRegulatorySection';
+import PreventionRegulatorySection from '../components/sections/page-sections/PreventionRegulatorySection';
 import SolutionPilotSection from '../components/sections/page-sections/SolutionPilotSection';
 import { getCtaSubtitleFull } from '../constants/site';
 
@@ -25,7 +26,7 @@ export default function PreventionWorkHealthPage({ active, onNavigate }) {
       id="page-prevention-work-health"
       className={`page ${active ? 'active' : ''}`.trim()}
     >
-      <SolutionHeroSection
+      <PatientSupportHeroSection
         onNavigate={onNavigate}
         title={copy.hero.title}
         subtitle={copy.hero.subtitle}
@@ -41,8 +42,10 @@ export default function PreventionWorkHealthPage({ active, onNavigate }) {
             onClick: () => onNavigate('contact'),
           },
         ]}
-        imageUrl="/assets/images/prevention_hero.jpg"
+        imageUrl="/assets/images/prevention_hero.png"
       />
+
+      <PreventionMetricsSection metrics={copy.metrics} />
 
       <HomeFieldObservationSection
         title={copy.fieldObservation.title}
@@ -79,8 +82,10 @@ export default function PreventionWorkHealthPage({ active, onNavigate }) {
         cards={copy.organizations.cards}
       />
 
-      <SolutionRegulatorySection
+      <PreventionRegulatorySection
+        title={copy.regulatory.title}
         description={copy.regulatory.description}
+        certifications={copy.regulatory.certifications}
         items={copy.regulatory.items}
       />
 

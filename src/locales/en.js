@@ -178,7 +178,7 @@ const en = {
             {
               label: 'Vision',
               description: 'Product direction and deployment principles.',
-              page: 'about',
+              page: 'vision',
             },
             // {
             //   label: 'Careers',
