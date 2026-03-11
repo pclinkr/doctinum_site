@@ -18,6 +18,7 @@ import PatientSupportProgramsPage from '../../site-pages/PatientSupportProgramsP
 import EditorsApiPage from '../../site-pages/EditorsApiPage';
 import PreventionWorkHealthPage from '../../site-pages/PreventionWorkHealthPage';
 import VisionPage from '../../site-pages/VisionPage';
+import SecurityPage from '../../site-pages/SecurityPage';
 import {
   ContactPage,
   NotFoundPage,
@@ -131,6 +132,10 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'vision') {
     return <VisionPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'security') {
+    return <SecurityPage active onNavigate={onNavigate} />;
   }
 
   return <NotFoundPage active onNavigate={onNavigate} />;

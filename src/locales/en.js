@@ -180,6 +180,11 @@ const en = {
               description: 'Product direction and deployment principles.',
               page: 'vision',
             },
+            {
+              label: 'Security',
+              description: 'Compliance, regulation and governance.',
+              page: 'security',
+            },
             // {
             //   label: 'Careers',
             //   description: 'Roles and product culture.',

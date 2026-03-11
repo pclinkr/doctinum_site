@@ -23,10 +23,10 @@ export default function SiteFooter({ onNavigate }) {
       label: 'Prévention & santé au travail',
       links: [{ label: 'Prévention & santé au travail', page: 'prevention-workplace-health' }],
     },
-    {
-      label: t('nav.pharmaResearch'),
-      links: [{ label: t('nav.pharmaResearch'), page: 'case-studies' }],
-    },
+    // {
+    //   label: t('nav.pharmaResearch'),
+    //   links: [{ label: t('nav.pharmaResearch'), page: 'case-studies' }],
+    // },
   ];
 
   const functioningLinks = (functioningMenu?.groups || [])
@@ -50,7 +50,7 @@ export default function SiteFooter({ onNavigate }) {
           },
         ]
       : []),
-    { label: t('nav.security'), page: 'privacy' },
+    { label: t('nav.security'), page: 'security' },
   ];
 
   const enterpriseBaseLinks = (enterpriseMenu?.groups?.[0]?.links || [])

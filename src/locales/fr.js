@@ -2658,7 +2658,133 @@ const fr = {
         secondaryCta: "Voir le deck investisseur"
       }
     },
+    security: {
+      hero: {
+        eyebrow: "Sécurité & Réglementation",
+        title: "Une infrastructure conçue pour les environnements de santé.",
+        subtitle: "La protection des données patient, la traçabilité des interactions et la supervision humaine ne sont pas des options dans Doctinum — elles sont constitutives de l'architecture.",
+        badges: [
+          "Hébergement HDS · France",
+          "RGPD natif",
+          "Hors classification DM",
+          "Traçabilité complète"
+        ]
+      },
+      guarantees: {
+        label: "Ce que nous garantissons aujourd'hui",
+        title: "Des fondations vérifiables, pas des déclarations d'intention.",
+        intro: "Voici ce qui est en place, opérationnel, et vérifiable — sans sur-vente de certifications que nous n'avons pas encore.",
+        items: [
+          {
+            icon: "🏥",
+            title: "Hébergement HDS certifié",
+            text: "Les données de santé sont hébergées en France auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
+            tag: "France · Données de santé"
+          },
+          {
+            icon: "🔒",
+            title: "Chiffrement des données",
+            text: "Les données sont chiffrées en transit et au repos. Aucune donnée patient ne circule en clair à aucune étape du traitement.",
+            tag: "Chiffrement en transit · Au repos"
+          },
+          {
+            icon: "✅",
+            title: "Consentement tracé & auditable",
+            text: "Le consentement du patient est recueilli en ligne avant toute collecte, horodaté et conservé. Chaque interaction est journalisée avec une traçabilité complète exportable.",
+            tag: "RGPD · Journal auditable"
+          },
+          {
+            icon: "👤",
+            title: "Contrôle des accès",
+            text: "L'accès aux données est strictement limité aux utilisateurs autorisés. Les accès sont enregistrés et traçables. Aucun accès non authentifié n'est possible aux données patient.",
+            tag: "Authentification · Journalisation"
+          },
+          {
+            icon: "🌍",
+            title: "Localisation des données · UE",
+            text: "L'intégralité des données est hébergée sur des infrastructures localisées en France et dans l'Union Européenne. Les transferts éventuels hors UE sont encadrés contractuellement et documentés.",
+            tag: "France · Union Européenne"
+          },
+          {
+            icon: "🔍",
+            title: "Vérification d'identité patient",
+            text: "L'identité du patient est vérifiée avant toute collecte de données. Le système intègre des mécanismes anti-usurpation pour garantir que les données collectées correspondent bien à la bonne personne.",
+            tag: "Anti-usurpation · Identité vérifiée"
+          }
+        ]
+      },
+      posture: {
+        label: "Posture réglementaire",
+        title: "Ce que nous sommes. Ce que nous ne sommes pas encore.",
+        intro: "La transparence sur notre statut réglementaire actuel est un principe, pas une contrainte. Voici un état exact de notre situation.",
+        activeItems: [
+          "Hors classification Dispositif Médical — outil d'organisation et de collecte déclarative, sans diagnostic ni décision clinique autonome",
+          "Conformité RGPD native — base légale documentée, droits des personnes exercés",
+          "Hébergement HDS certifié en France",
+          "Conventions de pilote encadrant chaque déploiement",
+          "Politique de confidentialité et mentions légales à jour"
+        ],
+        pendingItems: [
+          "Analyse de trajectoire CE MDR en cours — périmètre à définir selon les usages retenus",
+          "Engagement avec un cabinet réglementaire spécialisé santé numérique en cours de structuration",
+          "Clause de revue sécurité disponible pour les partenaires institutionnels qui en font la demande",
+          "Certification ISO 27001 envisagée pour les déploiements institutionnels à grande échelle"
+        ],
+        note: "nous ne revendiquons pas de certifications que nous n'avons pas. Si votre contexte requiert un niveau de certification spécifique, nous vous l'indiquerons clairement — et si la trajectoire est compatible, nous la construirons ensemble."
+      },
+      supervision: {
+        label: "Supervision humaine & gouvernance",
+        title: "Le clinicien reste décisionnaire. Toujours.",
+        intro: "Doctinum collecte et structure des données déclaratives. Elle ne diagnostique pas, ne prescrit pas, et ne remplace aucune décision médicale. Voici comment la gouvernance est architecturée.",
+        items: [
+          {
+            title: "Aucune décision autonome",
+            text: "Le système ne prend aucune décision médicale de manière autonome. Il collecte, structure et alerte — le professionnel de santé reste le seul décisionnaire sur l'interprétation et l'action clinique."
+          },
+          {
+            title: "Escalade humaine intégrée",
+            text: "Les protocoles prévoient une escalade humaine systématique pour les situations qui dépassent le périmètre de collecte défini. Le praticien est notifié en temps réel sur les alertes définies par lui-même."
+          },
+          {
+            title: "Accès praticien en temps réel",
+            text: "Le professionnel de santé a accès à l'intégralité des données collectées, aux transcriptions et aux journaux d'appels à tout moment. Rien n'est opaque entre le système et le clinicien superviseur."
+          },
+          {
+            title: "Protocole paramétré par le clinicien",
+            text: "La base de connaissances et les questions de suivi sont définies et validées par le professionnel de santé responsable du protocole. Doctinum exécute — le clinicien conçoit et supervise."
+          }
+        ]
+      },
+      roadmap: {
+        label: "Trajectoire",
+        title: "Un cadre réglementaire qui évolue avec nos usages.",
+        intro: "Nous construisons la trajectoire réglementaire en fonction des déploiements réels — pas d'une liste de certifications abstraites. Voici l'état actuel.",
+        items: [
+          {
+            status: "actif",
+            title: "Hébergement HDS & conformité RGPD",
+            text: "Infrastructure opérationnelle, hébergement certifié HDS en France, conformité RGPD documentée. Applicable dès aujourd'hui pour tous les déploiements."
+          },
+          {
+            status: "actif",
+            title: "Convention de pilote & cadre contractuel",
+            text: "Chaque déploiement est encadré par une convention de pilote définissant le périmètre d'usage, les responsabilités et les conditions de traitement des données. Ce cadre contractuel est disponible pour examen avant tout engagement."
+          },
+          {
+            status: "engage",
+            title: "Analyse CE MDR & engagement réglementaire",
+            text: "L'analyse de la trajectoire Dispositif Médical est en cours. Le périmètre de certification dépendra des usages retenus. Un cabinet réglementaire spécialisé santé numérique sera engagé prochainement pour définir la trajectoire précise."
+          },
+          {
+            status: "horizon",
+            title: "Certification CE MDR & certifications complémentaires",
+            text: "La certification CE MDR sera engagée selon le périmètre d'usage retenu. Des certifications complémentaires (ISO 27001, etc.) seront envisagées en fonction des exigences des partenaires institutionnels. Ces certifications ne conditionnent pas les déploiements actuels."
+          }
+        ]
+      }
+    },
   },
+
   contactForm: {
   badge: 'Évaluation projet pilote',
   titleLine1: 'Discutons de votre',

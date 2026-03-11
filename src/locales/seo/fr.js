@@ -115,6 +115,11 @@ const frSeo = {
     description:
       'Le canal qui manquait au suivi patient. Infrastructure vocale clinique pour résoudre le problème structurel du suivi entre deux consultations.',
   },
+  security: {
+    title: 'Sécurité & Réglementation — Doctinum',
+    description:
+      'Infrastructure conçue pour les environnements de santé. Hébergement HDS, conformité RGPD, supervision humaine et traçabilité complète.',
+  },
   404: {
     title: 'Page introuvable | Doctinum',
     description: 'La page demandée est introuvable.',
