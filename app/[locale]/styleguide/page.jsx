@@ -11,12 +11,12 @@ import {
   CircleHelp,
   ChevronRight,
 } from 'lucide-react';
-import Button from '../../../src/components/ui/Button';
-import Badge from '../../../src/components/ui/Badge';
-import Card from '../../../src/components/ui/Card';
-import TextInput from '../../../src/components/ui/TextInput';
-import TextArea from '../../../src/components/ui/TextArea';
-import Accordion from '../../../src/components/ui/Accordion';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
+import Card from '@/components/ui/Card';
+import TextInput from '@/components/ui/TextInput';
+import TextArea from '@/components/ui/TextArea';
+import Accordion from '@/components/ui/Accordion';
 import BrandIcon from '../../../src/components/ui/BrandIcon';
 
 const styleguideFaqItems = [

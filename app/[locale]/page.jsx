@@ -13,5 +13,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default function HomeRoute() {
-  return <PageRenderer pageId="home" />;
+  return <PageRenderer pageId="home2" />;
 }

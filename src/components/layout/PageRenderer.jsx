@@ -1,8 +1,8 @@
 'use client';
 
-import { useTranslation } from 'react-i18next';
 import { BlogPage, BlogPostPage } from '../../site-pages/BlogPages';
 import HomePage from '../../site-pages/HomePage';
+import HomePage2 from '../../site-pages/HomePage2';
 import AboutPage from '../../site-pages/AboutPage';
 import CaseStudiesPage from '../../site-pages/CaseStudiesPage';
 import CaseDetailPage from '../../site-pages/CaseDetailPage';
@@ -32,8 +32,18 @@ import {
 import { useSiteAppContext } from '../../context/SiteAppContext';
 
 export default function PageRenderer({ pageId }) {
-  const { t } = useTranslation();
   const { onNavigate, storyStarted, hasLeftHomeOnce } = useSiteAppContext();
+
+  if (pageId === 'home2') {
+    return (
+      <HomePage2
+        active
+        onNavigate={onNavigate}
+        storyStarted={storyStarted}
+        instantHero={hasLeftHomeOnce}
+      />
+    );
+  }
 
   if (pageId === 'home') {
     return (
