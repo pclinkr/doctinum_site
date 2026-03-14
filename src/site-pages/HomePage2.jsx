@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Home2HeroSection from '../components/sections/page-sections/Home2HeroSection';
 import Home2TensionSection from '../components/sections/page-sections/Home2TensionSection';
 import Home2ApproachSection from '../components/sections/page-sections/Home2ApproachSection';
@@ -7,6 +8,9 @@ import Home2UseCasesSection from '../components/sections/page-sections/Home2UseC
 import Home2SimulationSection from '../components/sections/page-sections/Home2SimulationSection';
 import Home2SecurityStripSection from '../components/sections/page-sections/Home2SecurityStripSection';
 import Home2FinalCtaSection from '../components/sections/page-sections/Home2FinalCtaSection';
+import Home2VoiceSimulationOverlay from '../components/sections/page-sections/Home2VoiceSimulationOverlay';
+
+const OVERLAY_EXIT_MS = 420;
 
 function scrollToSection(sectionId) {
   if (typeof window === 'undefined') return;
@@ -23,7 +27,55 @@ export default function HomePage2({
   storyStarted,
   instantHero,
 }) {
+  const [isSimulationOpen, setIsSimulationOpen] = useState(false);
+  const [isSimulationClosing, setIsSimulationClosing] = useState(false);
+  const [selectedSimulationSpecialtyId, setSelectedSimulationSpecialtyId] =
+    useState('ortho');
+  const closeTimerIdRef = useRef(null);
+
+  const clearCloseTimer = () => {
+    if (!closeTimerIdRef.current) return;
+    window.clearTimeout(closeTimerIdRef.current);
+    closeTimerIdRef.current = null;
+  };
+
+  const handleOpenSimulation = useCallback((specialtyId) => {
+    clearCloseTimer();
+    setSelectedSimulationSpecialtyId(specialtyId || 'ortho');
+    setIsSimulationClosing(false);
+    setIsSimulationOpen(true);
+  }, []);
+
+  const handleRequestSimulationClose = useCallback(() => {
+    if (!isSimulationOpen || isSimulationClosing) return;
+
+    setIsSimulationClosing(true);
+    clearCloseTimer();
+    closeTimerIdRef.current = window.setTimeout(() => {
+      setIsSimulationOpen(false);
+      setIsSimulationClosing(false);
+    }, OVERLAY_EXIT_MS);
+  }, [isSimulationClosing, isSimulationOpen]);
+
+  useEffect(() => {
+    if (!isSimulationOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isSimulationOpen]);
+
+  useEffect(() => {
+    return () => {
+      clearCloseTimer();
+    };
+  }, []);
+
   const handleJumpToSimulation = () => scrollToSection('simulation');
+
   return (
     <div id="page-home2" className={`page ${active ? 'active' : ''}`.trim()}>
       <Home2HeroSection
@@ -37,12 +89,21 @@ export default function HomePage2({
       <Home2TestimonialSection />
       <Home2InfrastructureSection onNavigate={onNavigate} />
       <Home2UseCasesSection />
-      <Home2SimulationSection onNavigate={onNavigate} />
+      <Home2SimulationSection onLaunchSimulation={handleOpenSimulation} />
       <Home2SecurityStripSection onNavigate={onNavigate} />
       <Home2FinalCtaSection
         onNavigate={onNavigate}
         onJumpToSimulation={handleJumpToSimulation}
       />
+
+      {isSimulationOpen ? (
+        <Home2VoiceSimulationOverlay
+          specialtyId={selectedSimulationSpecialtyId}
+          isClosing={isSimulationClosing}
+          onRequestClose={handleRequestSimulationClose}
+        />
+      ) : null}
+
       <div id="homeFooter" />
     </div>
   );

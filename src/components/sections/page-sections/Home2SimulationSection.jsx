@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Container from '../../layout/Container';
 import Button from '../../ui/Button';
 
-export default function Home2SimulationSection({ onNavigate }) {
+export default function Home2SimulationSection({ onLaunchSimulation }) {
   const { t } = useTranslation();
   const specialties = t('sections.home2.simulation.specialties', {
     returnObjects: true,
@@ -32,7 +32,7 @@ export default function Home2SimulationSection({ onNavigate }) {
 
           <h2 className="rev d1 mb-6 max-w-[20ch] text-[clamp(2rem,3.4vw,2.9rem)] leading-[1.2] text-[var(--color-primary)]">
             {t('sections.home2.simulation.titlePrefix')}{' '}
-            <em className="text-[var(--color-accent-2)] si">
+            <em className="si text-[var(--color-accent-2)]">
               {t('sections.home2.simulation.titleAccent')}
             </em>
           </h2>
@@ -55,7 +55,7 @@ export default function Home2SimulationSection({ onNavigate }) {
               <span className="text-[42px]">📞</span>
             </div>
 
-            <p className="mb-1 font-serif text-[27px] text-[var(--color-white)]">
+            <p className="mb-1 text-[27px] text-[var(--color-white)]">
               {t('sections.home2.simulation.agentName')}
             </p>
             <p className="mb-8 text-[11px] uppercase tracking-[0.1em] text-[var(--white-40)]">
@@ -80,7 +80,7 @@ export default function Home2SimulationSection({ onNavigate }) {
 
             <Button
               className="w-full bg-[var(--color-success)] py-[14px] text-[12px] uppercase tracking-[0.08em] hover:opacity-90"
-              onClick={() => onNavigate('contact')}
+              onClick={() => onLaunchSimulation?.(activeSpecialtyId)}
             >
               {t('sections.home2.simulation.buttonCta')}
             </Button>

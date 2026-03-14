@@ -318,7 +318,7 @@ export const home2Fr = {
     titleAccent: 'vivent entre deux consultations.',
     body: "Sélectionnez un contexte clinique et déclenchez une simulation d'appel réelle par un agent Doctinum. En 3 minutes, vous entendez ce que le patient entend et ce que vous recevez en retour.",
     note: 'Simulation non clinique à titre démonstratif. Les protocoles réels sont définis et validés par les équipes médicales.',
-    agentName: 'Agent Doctinum',
+    agentName: 'Clara, assistante de suivi médical',
     agentRole: 'Simulation · Choisir un contexte',
     specialties: [
       { id: 'ortho', label: 'Orthopédie' },
