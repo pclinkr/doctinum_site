@@ -31,6 +31,7 @@ export default function HomePage2({
   const [isSimulationClosing, setIsSimulationClosing] = useState(false);
   const [selectedSimulationSpecialtyId, setSelectedSimulationSpecialtyId] =
     useState('ortho');
+  const [simulationLaunchRect, setSimulationLaunchRect] = useState(null);
   const closeTimerIdRef = useRef(null);
 
   const clearCloseTimer = () => {
@@ -39,9 +40,10 @@ export default function HomePage2({
     closeTimerIdRef.current = null;
   };
 
-  const handleOpenSimulation = useCallback((specialtyId) => {
+  const handleOpenSimulation = useCallback((specialtyId, launchRect) => {
     clearCloseTimer();
     setSelectedSimulationSpecialtyId(specialtyId || 'ortho');
+    setSimulationLaunchRect(launchRect || null);
     setIsSimulationClosing(false);
     setIsSimulationOpen(true);
   }, []);
@@ -54,6 +56,7 @@ export default function HomePage2({
     closeTimerIdRef.current = window.setTimeout(() => {
       setIsSimulationOpen(false);
       setIsSimulationClosing(false);
+      setSimulationLaunchRect(null);
     }, OVERLAY_EXIT_MS);
   }, [isSimulationClosing, isSimulationOpen]);
 
@@ -99,6 +102,7 @@ export default function HomePage2({
       {isSimulationOpen ? (
         <Home2VoiceSimulationOverlay
           specialtyId={selectedSimulationSpecialtyId}
+          launchOriginRect={simulationLaunchRect}
           isClosing={isSimulationClosing}
           onRequestClose={handleRequestSimulationClose}
         />

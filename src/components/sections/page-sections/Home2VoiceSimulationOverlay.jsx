@@ -123,6 +123,7 @@ function resolveDomainId(specialtyId) {
 
 export default function Home2VoiceSimulationOverlay({
   specialtyId,
+  launchOriginRect,
   isClosing = false,
   onRequestClose,
 }) {
@@ -143,6 +144,8 @@ export default function Home2VoiceSimulationOverlay({
   const fallbackTimerIdsRef = useRef([]);
   const closeTimerIdRef = useRef(null);
   const autoLaunchDoneRef = useRef(false);
+  const modalFrameRef = useRef(null);
+  const [modalFrameRect, setModalFrameRect] = useState(null);
 
   const medicalDomains = useMemo(
     () => t('sections.medicalVoice.domains', { returnObjects: true }),
@@ -445,6 +448,20 @@ export default function Home2VoiceSimulationOverlay({
   }, [specialtyId]);
 
   useEffect(() => {
+    const updateModalFrameRect = () => {
+      if (!modalFrameRef.current) return;
+      setModalFrameRect(modalFrameRef.current.getBoundingClientRect());
+    };
+
+    updateModalFrameRect();
+    window.addEventListener('resize', updateModalFrameRect);
+
+    return () => {
+      window.removeEventListener('resize', updateModalFrameRect);
+    };
+  }, [isShown, isClosing, launchOriginRect]);
+
+  useEffect(() => {
     if (!transcriptViewportRef.current) return;
 
     transcriptViewportRef.current.scrollTo({
@@ -497,22 +514,48 @@ export default function Home2VoiceSimulationOverlay({
     callState === 'fallback' ||
     callState === 'ended';
 
+  const modalTransformOrigin = useMemo(() => {
+    if (!launchOriginRect || !modalFrameRect) return '50% 50%';
+
+    const launchCenterX = launchOriginRect.left + launchOriginRect.width * 0.5;
+    const launchCenterY = launchOriginRect.top + launchOriginRect.height * 0.5;
+    const originX = launchCenterX - modalFrameRect.left;
+    const originY = launchCenterY - modalFrameRect.top;
+
+    return originX + 'px ' + originY + 'px';
+  }, [launchOriginRect, modalFrameRect]);
+
+  const modalHiddenTransform = launchOriginRect
+    ? 'translate3d(0,0,0) scale(0.14)'
+    : 'translate3d(0,20px,0) scale(0.96)';
+
+  const modalTransform =
+    isShown && !isClosing
+      ? 'translate3d(0,0,0) scale(1)'
+      : modalHiddenTransform;
+
   const phoneAvatarUrl =
     process.env.NEXT_PUBLIC_VOICE_DEMO_AVATAR_URL ||
     '/assets/voice-demo/avatar-default.jpg';
 
   return (
     <div
-      className={`fixed inset-0 z-[220] transition-opacity duration-420 ease-out ${isShown && !isClosing ? 'opacity-100' : 'pointer-events-none opacity-0'}`.trim()}
+      className={`fixed inset-0 z-[220] overflow-y-auto overscroll-contain transition-opacity duration-420 ease-out ${isShown && !isClosing ? 'opacity-100' : 'pointer-events-none opacity-0'}`.trim()}
       role="dialog"
       aria-modal="true"
       aria-label={t('sections.home2.simulation.label')}
     >
-      <div className="absolute inset-0 bg-[rgba(7,11,24,.72)] backdrop-blur-[3px]" />
+      <div className="absolute inset-0 bg-[var(--color-surface)]" />
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,0.1)_0%,transparent_46%),radial-gradient(circle_at_84%_84%,rgba(255,255,255,0.07)_0%,transparent_44%)]" /> */}
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1240px] items-center justify-center px-5 py-8 min-[980px]:px-8">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1240px] items-start justify-center px-4 py-4 min-[980px]:items-center min-[980px]:px-8 min-[980px]:py-8">
         <div
-          className={`relative w-full overflow-hidden rounded-[24px] border border-[var(--white-20)] bg-[radial-gradient(circle_at_16%_18%,color-mix(in_srgb,var(--color-info)_28%,transparent)_0%,transparent_45%),linear-gradient(140deg,#f9fbff_0%,#f2f5ff_52%,#eef4fb_100%)] shadow-[0_40px_120px_rgba(8,14,30,.48)] transition-all duration-420 ease-out ${isShown && !isClosing ? 'translate-y-0 scale-100' : 'translate-y-[20px] scale-[0.96]'}`.trim()}
+          ref={modalFrameRef}
+          className="relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-[24px] border border-[var(--white-20)] bg-[var(--gradient-voice-simulation-overlay)] transition-all duration-420 ease-out min-[980px]:max-h-[calc(100dvh-4rem)]"
+          style={{
+            transform: modalTransform,
+            transformOrigin: modalTransformOrigin,
+          }}
         >
           <button
             type="button"
@@ -526,22 +569,20 @@ export default function Home2VoiceSimulationOverlay({
             </span>
           </button>
 
-          <div className="grid gap-8 px-5 pb-6 pt-12 min-[980px]:grid-cols-[420px_1fr] min-[980px]:px-8 min-[980px]:pb-8 min-[980px]:pt-8">
-            <div className="flex flex-col justify-between">
-              <div className="mb-5 min-[980px]:mb-0">
-                <p className="mb-2 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
-                  {t('sections.home2.simulation.label')}
-                </p>
-                <h3 className="text-[clamp(1.55rem,2.2vw,2.1rem)] font-[var(--w500)] leading-[1.15] tracking-[-0.035em] text-[var(--color-primary)]">
-                  {selectedDomain?.label ||
-                    t('sections.medicalVoice.headTitleAccent')}
-                </h3>
-                <p className="mt-2 text-[13px] leading-[1.6] text-[var(--muted)]">
-                  {callStatusLabel}
-                </p>
-              </div>
-
-              <div className="flex min-h-0 items-center justify-center rounded-[20px] border border-[var(--ink-08)] bg-[var(--color-white)]/72 p-2">
+          <div className="grid flex-1 gap-6 overflow-y-auto overscroll-contain px-4 pb-5 pt-12 min-[980px]:grid-cols-[minmax(460px,1.08fr)_1fr] min-[980px]:gap-8 min-[980px]:px-8 min-[980px]:pb-8 min-[980px]:pt-8">
+            <div className="flex min-h-[340px] items-center justify-center min-[980px]:min-h-[520px]">
+              <p className="sr-only" aria-live="polite">
+                {callStatusLabel}
+              </p>
+              <div
+                className="flex min-h-0 w-full flex-1 items-center justify-center"
+                style={{
+                  '--medical-phone-frame-width': 'clamp(198px, 30vw, 320px)',
+                  '--medical-phone-frame-height':
+                    'calc(var(--medical-phone-frame-width) * 1.8868)',
+                  '--medical-phone-bottom-pad': '34px',
+                }}
+              >
                 <VoiceCallPhone
                   domainLabel={selectedDomain?.label || ''}
                   state={callState}
@@ -554,12 +595,12 @@ export default function Home2VoiceSimulationOverlay({
             </div>
 
             <div
-              className={`relative min-h-[360px] rounded-[20px] border border-[var(--ink-08)] bg-[var(--color-white)]/78 p-4 transition-all duration-300 ease-out min-[980px]:p-6 ${shouldShowConversation ? 'opacity-100' : 'opacity-88'}`.trim()}
+              className={`relative flex h-[300px] min-h-[300px] flex-col overflow-hidden rounded-[20px] bg-[var(--color-white)]/78 p-4 transition-all duration-300 ease-out min-[980px]:h-[520px] min-[980px]:min-h-[520px] min-[980px]:p-6 ${shouldShowConversation ? 'opacity-100' : 'opacity-88'}`.trim()}
             >
-              <p className="mb-4 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
+              {/* <p className="mb-4 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
                 {t('sections.medicalVoice.headLabel')}
-              </p>
-              <div className="h-[calc(100%-26px)] min-h-[300px]">
+              </p> */}
+              <div className="min-h-0 flex-1 overflow-hidden">
                 <VoiceTranscriptPanel
                   transcriptEntries={transcriptEntries}
                   transcriptViewportRef={transcriptViewportRef}

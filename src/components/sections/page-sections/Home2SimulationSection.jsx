@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Container from '../../layout/Container';
 import Button from '../../ui/Button';
+import Icon from '../../ui/Icon';
 
 export default function Home2SimulationSection({ onLaunchSimulation }) {
   const { t } = useTranslation();
@@ -51,8 +52,8 @@ export default function Home2SimulationSection({ onLaunchSimulation }) {
 
           <div className="relative z-[1] text-center">
             <div className="relative mx-auto mb-6 grid h-[102px] w-[102px] place-items-center rounded-full border border-[var(--white-14)]">
-              <span className="pointer-events-none absolute inset-[-12px] rounded-full border border-[var(--white-08)] animate-[home2RingPulse_2s_ease-in-out_infinite]" />
-              <span className="text-[42px]">📞</span>
+              <span className="pointer-events-none absolute inset-[-12px] rounded-full border border-[var(--white-40)] animate-[home2RingPulse_2s_ease-in-out_infinite]" />
+              <Icon name="phone" size={42} strokeColor="var(--color-white)" />
             </div>
 
             <p className="mb-1 text-[27px] text-[var(--color-white)]">
@@ -70,7 +71,7 @@ export default function Home2SimulationSection({ onLaunchSimulation }) {
                     key={specialty.id}
                     type="button"
                     onClick={() => setActiveSpecialtyId(specialty.id)}
-                    className={`border px-3 py-1.5 text-[10px] uppercase tracking-[0.08em] transition-colors duration-200 ease-out ${isActive ? 'border-[var(--white-38)] bg-[var(--white-07)] text-[var(--color-white)]' : 'border-[var(--white-14)] text-[var(--white-46)] hover:border-[var(--white-34)] hover:text-[var(--white-84)]'}`.trim()}
+                    className={`rounded border px-3 py-1.5 text-[10px] uppercase tracking-[0.08em] transition-colors duration-200 ease-out ${isActive ? 'border-[var(--white-38)] bg-[var(--white-10)] text-[var(--color-white)]' : 'border-[var(--white-14)] text-[var(--white-46)] hover:border-[var(--white-34)] hover:text-[var(--white-84)]'}`.trim()}
                   >
                     {specialty.label}
                   </button>
@@ -80,7 +81,15 @@ export default function Home2SimulationSection({ onLaunchSimulation }) {
 
             <Button
               className="w-full bg-[var(--color-success)] py-[14px] text-[12px] uppercase tracking-[0.08em] hover:opacity-90"
-              onClick={() => onLaunchSimulation?.(activeSpecialtyId)}
+              onClick={(event) => {
+                const triggerRect = event.currentTarget.getBoundingClientRect();
+                onLaunchSimulation?.(activeSpecialtyId, {
+                  left: triggerRect.left,
+                  top: triggerRect.top,
+                  width: triggerRect.width,
+                  height: triggerRect.height,
+                });
+              }}
             >
               {t('sections.home2.simulation.buttonCta')}
             </Button>

@@ -11,7 +11,7 @@ export const home2Fr = {
     trustItems: [
       // { value: '4', label: 'moteurs cliniques opérationnels' },
       { value: 'HDS', label: 'hébergement certifié France' },
-      { value: '0', label: 'action requise du patient' },
+      { value: 'Aucune', label: 'action requise du patient' },
     ],
     preview: {
       label: 'Appel en cours · Suivi J+7 post-opératoire',
