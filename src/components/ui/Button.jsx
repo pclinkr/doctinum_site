@@ -8,10 +8,10 @@ export default function Button({
   onClick,
   type = 'button',
 }) {
-  const baseClasses = 'inline-flex items-center justify-center gap-2 px-[22px] py-3 rounded-full border border-transparent font-sans text-[14px] leading-none font-medium tracking-[var(--track)] cursor-pointer whitespace-nowrap transition-all duration-200 ease-out hover:scale-[0.98] hover:opacity-90';
+  const baseClasses = 'inline-flex items-center justify-center gap-2 px-[22px] py-3 rounded-full border font-sans text-[14px] leading-none font-medium tracking-[var(--track)] cursor-pointer whitespace-nowrap transition-all duration-200 ease-out hover:scale-[0.98] hover:opacity-90';
   
   const variantClasses = {
-    primary: 'bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)]',
+    primary: 'bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] border-none',
     outline: 'bg-[var(--action-secondary-bg)] text-[var(--action-secondary-fg)] border-[var(--border-strong)] hover:bg-[var(--color-border)]',
     light: 'bg-[var(--text-inverse)] text-[var(--text-primary)]',
     heroPrimary: 'bg-[var(--action-primary-bg)] text-[var(--action-primary-fg)] uppercase',

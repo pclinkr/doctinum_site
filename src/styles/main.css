@@ -392,6 +392,35 @@ select {
   transition-delay: 420ms;
 }
 
+/* Variante pour les medias: reveal plus marque avec zoom + blur */
+.rev-cinematic {
+  opacity: 0;
+  transform: translateY(36px) scale(1.04);
+  filter: blur(10px);
+  transition:
+    opacity 1.02s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.02s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.02s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rev-cinematic.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rev-cinematic {
+    filter: none;
+    transform: none;
+    transition: opacity 0.2s linear;
+  }
+
+  .rev-cinematic.in {
+    opacity: 1;
+  }
+}
+
 /* ============================================================ REVEAL ANIMATIONS - Converti en classes Tailwind ============================================================ */
 @keyframes fadeUp {
   from {

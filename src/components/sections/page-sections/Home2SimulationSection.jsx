@@ -23,7 +23,7 @@ export default function Home2SimulationSection({ onLaunchSimulation }) {
   return (
     <section
       id="simulation"
-      className="border-y border-[var(--color-border)] bg-[var(--color-white)] py-24"
+      className="bg-[var(--color-white)] py-24"
     >
       <Container className="grid items-center gap-14 min-[980px]:grid-cols-[1fr_1fr]">
         <div>

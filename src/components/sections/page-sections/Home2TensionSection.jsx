@@ -8,7 +8,7 @@ export default function Home2TensionSection() {
   return (
     <section
       id="tension"
-      className="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-24"
+      className="bg-[var(--color-surface)] py-24"
     >
       <Container>
         <p className="rev ds-text-label mb-5 text-[var(--color-info)]">

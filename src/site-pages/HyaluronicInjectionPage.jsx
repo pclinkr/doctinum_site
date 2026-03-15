@@ -93,7 +93,7 @@ function PremiumExperienceSection({ copy }) {
       <div className="rev grid grid-cols-2 items-center gap-10 max-[809px]:flex max-[809px]:flex-col">
         <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)] min-[810px]:order-2">
           <img
-            src="/assets/images/injection.png"
+            src="/assets/images/aesthetic_patient_injection.png"
             alt="Patient experience"
             className="h-full w-full object-cover"
           />

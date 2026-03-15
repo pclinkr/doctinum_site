@@ -7,6 +7,8 @@ function SportsCaseRow({
   body,
   listItems = [],
   imagePosition = 'right',
+  imageSrc,
+  imageAlt = 'Case study image',
   imageGradient,
   brand,
   onNavigate,
@@ -21,10 +23,27 @@ function SportsCaseRow({
         className={`relative aspect-[4/3] cursor-pointer overflow-hidden rounded-[var(--r-md)] transition-transform duration-300 ease-spring hover:scale-[1.02] ${isImageRight ? 'min-[810px]:order-2' : 'min-[810px]:order-1'}`.trim()}
         onClick={() => onNavigate(targetPage)}
       >
-        <div className="h-full w-full" style={{ background: imageGradient }} />
-        <div className="absolute bottom-4 right-6 rounded-[var(--r-sm)] bg-[var(--white-90)] px-3 py-2 text-[13px] font-[var(--w500)] backdrop-blur-[8px]">
+        {imageSrc ? (
+          <>
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            {imageGradient && (
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: imageGradient }}
+              />
+            )}
+          </>
+        ) : (
+          <div className="h-full w-full" style={{ background: imageGradient }} />
+        )}
+        {/* <div className="absolute bottom-4 right-6 rounded-[var(--r-sm)] bg-[var(--white-90)] px-3 py-2 text-[13px] font-[var(--w500)] backdrop-blur-[8px]">
           {brand}
-        </div>
+        </div> */}
       </div>
 
       <div
@@ -71,7 +90,9 @@ export default function SportsCasesSection({ onNavigate }) {
     title: copy.case1.title,
     body: copy.case1.body,
     listItems: copy.case1.listItems,
-    imageGradient: 'var(--gradient-accent-warm-terra)',
+    imageSrc: '/assets/images/sports_case1.jpg',
+    imageAlt: copy.case1.title,
+    imageGradient: 'linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.3) 100%)',
     brand: copy.case1.brand,
     imagePosition: 'right',
   };
@@ -79,7 +100,9 @@ export default function SportsCasesSection({ onNavigate }) {
   const case2 = {
     title: copy.case2.title,
     listItems: copy.case2.listItems,
-    imageGradient: 'var(--gradient-accent-warm)',
+    imageSrc: '/assets/images/sports_case2.jpg',
+    imageAlt: copy.case2.title,
+    imageGradient: 'linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.4) 100%)',
     brand: copy.case2.brand,
     imagePosition: 'left',
     targetPage: 'sports-integrated-centers',

@@ -5,7 +5,7 @@ export default function Home2TestimonialSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="border-y border-[var(--color-border)] bg-[var(--color-white)] py-24">
+    <section className="bg-[var(--color-white)] py-24">
       <Container className="max-w-[760px] text-center">
         <p className="rev ds-text-label mb-5 text-[var(--color-info)]">
           {t('sections.home2.testimonial.label')}
