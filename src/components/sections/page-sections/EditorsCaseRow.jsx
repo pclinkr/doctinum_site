@@ -16,18 +16,25 @@ export default function EditorsCaseRow({
       <section className={`rev ${className}`}>
         <div className="grid grid-cols-2 items-center gap-12 max-[809px]:grid-cols-1">
           <div
-            className={`relative aspect-[4/3] overflow-hidden rounded-[var(--r-lg)] bg-cover bg-center ${isImageRight ? 'min-[810px]:order-2' : 'min-[810px]:order-1'}`}
+            className={`relative aspect-[4/3] overflow-hidden rounded-[var(--r-lg)] ${isImageRight ? 'min-[810px]:order-2' : 'min-[810px]:order-1'}`}
             style={{
-              backgroundImage: imageUrl ? `url(${imageUrl})` : 'none',
               background: imageUrl ? undefined : 'var(--gradient-accent-cool)',
             }}
           >
-            {imageUrl && (
-              <div
-                className="absolute inset-0"
-                style={{ background: 'var(--gradient-overlay-top)' }}
-              />
-            )}
+            {imageUrl ? (
+              <>
+                <img
+                  src={imageUrl}
+                  alt={title}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'var(--gradient-overlay-top)' }}
+                />
+              </>
+            ) : null}
           </div>
 
           <div className={`flex flex-col gap-6 ${isImageRight ? 'min-[810px]:order-1' : 'min-[810px]:order-2'}`}>

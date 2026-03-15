@@ -18,23 +18,23 @@ export default function EditorsIntegrationCasesSection({
           {cards.map((card, index) => (
             <Card
               key={index}
-              className="rev flex flex-col overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-0 shadow-none"
+              className="rev flex flex-col p-0 overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-none"
             >
               <div
-                className="relative aspect-[16/11] overflow-hidden bg-cover bg-center"
+                className="relative overflow-hidden bg-cover bg-center p-6"
                 style={{
                   background: card.gradient || 'var(--gradient-accent-warm)',
                 }}
               >
-                <div
-                  className="absolute inset-0"
-                  style={{ background: 'var(--gradient-overlay-top)' }}
-                />
-              </div>
-              <div className="flex flex-col gap-3 p-6">
-                <h3 className="text-[18px] font-[var(--w500)] leading-[1.2] tracking-[-0.02em] text-[var(--color-primary)]">
+                <h3 className="text-[18px] font-[var(--w600)] leading-[1.2] tracking-[-0.02em] text-[var(--color-white)]">
                   {card.title}
                 </h3>
+                {/* <div
+                  className="absolute inset-0"
+                  style={{ background: 'var(--gradient-overlay-top)' }}
+                /> */}
+              </div>
+              <div className="flex flex-col gap-3 p-6">
                 <p className="text-[14px] leading-[1.6] text-[var(--muted)]">
                   {card.description}
                 </p>

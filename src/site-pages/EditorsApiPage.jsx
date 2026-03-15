@@ -56,7 +56,7 @@ export default function EditorsApiPage({ active, onNavigate }) {
       
       <EditorsCaseRow
         imagePosition="right"
-        imageUrl="/assets/images/questionnaire_to_call.png"
+        imageUrl="/assets/images/proms_to_vocal.png"
         title={copy.transform.title}
         description={copy.transform.description}
         items={copy.transform.items}

@@ -82,11 +82,11 @@ const fr = {
               description: 'Actions de prévention et suivi de population.',
               page: 'prevention-workplace-health',
             },
-            {
-              label: 'Parcours chroniques coordonnés',
-              description: 'Vision partagée entre intervenants.',
-              page: 'case-studies',
-            },
+            // {
+            //   label: 'Parcours chroniques coordonnés',
+            //   description: 'Vision partagée entre intervenants.',
+            //   page: 'case-studies',
+            // },
           ],
         },
         // {
@@ -1311,10 +1311,10 @@ const fr = {
         id: 'prevention-workplace-health',
         title: 'Prévention santé au travail',
       },
-      {
-        id: 'coordinated-chronic-pathways',
-        title: 'Parcours chroniques coordonnés',
-      },
+      // {
+      //   id: 'coordinated-chronic-pathways',
+      //   title: 'Parcours chroniques coordonnés',
+      // },
       { id: 'hv-transplantation', title: 'Transplantation' },
       { id: 'hv-oncology', title: 'Oncologie' },
       { id: 'hv-chronic-cardiology', title: 'Cardiologie chronique' },
@@ -2149,7 +2149,7 @@ const fr = {
               gradient: 'var(--gradient-accent-cool)',
             },
             {
-              title: 'Éducation thérapeutique',
+              title: 'Éducation thérapeutique        ',
               description: 'Suivi des indicateurs entre les séances.',
               gradient: 'var(--gradient-accent-warm-terra)',
             },
@@ -2541,27 +2541,27 @@ const fr = {
         cards: [
           {
             title: 'Télésuivi',
-            description: 'suivi patient à distance.',
+            description: 'Suivi patient à distance.',
             gradient: 'var(--gradient-accent-warm)',
           },
           {
             title: 'Coordination de parcours',
-            description: 'suivi post-hospitalisation.',
+            description: 'Suivi post-hospitalisation.',
             gradient: 'var(--gradient-accent-cool)',
           },
           {
             title: 'Plateformes RWE',
-            description: 'collecte longitudinale de données patients.',
+            description: 'Collecte longitudinale de données patients.',
             gradient: 'var(--gradient-accent-warm-terra)',
           },
           {
             title: 'Logiciels de dossiers patients',
-            description: 'compléter les interactions numériques.',
+            description: 'Compléter les interactions numériques.',
             gradient: 'var(--gradient-accent-cool-overlay)',
           },
           {
             title: 'Programmes de prévention',
-            description: 'engagement régulier des patients.',
+            description: 'Engagement régulier des patients.',
             gradient: 'var(--gradient-accent-warm)',
           },
         ],

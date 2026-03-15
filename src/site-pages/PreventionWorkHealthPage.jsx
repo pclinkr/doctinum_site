@@ -42,7 +42,7 @@ export default function PreventionWorkHealthPage({ active, onNavigate }) {
             onClick: () => onNavigate('contact'),
           },
         ]}
-        imageUrl="/assets/images/prevention_hero.png"
+        imageUrl="/assets/images/workhealth.jpg"
       />
 
       <PreventionMetricsSection metrics={copy.metrics} />
