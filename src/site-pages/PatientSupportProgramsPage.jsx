@@ -38,6 +38,7 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
             onClick: () => onNavigate('contact'),
           },
         ]}
+        imageUrl="/assets/images/accompagnants.jpg"
       />
       
       <PatientSupportChallengeSection
@@ -55,7 +56,7 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
       <PatientSupportCaseRow
         sectionTitle={copy.engagement.sectionTitle}
         imagePosition="right"
-        imageUrl="/assets/images/patient_phone_call.png"
+        imageUrl="/assets/images/nurse_headset.png"
         title={copy.engagement.title}
         description={copy.engagement.description}
         items={copy.engagement.items}
@@ -69,7 +70,7 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
       
       <PatientSupportCaseRow
         imagePosition="left"
-        imageUrl="/assets/images/patient_data_structure.png"
+        imageUrl="/assets/images/indicators.jpg"
         title={copy.structuredReturns.title}
         description={copy.structuredReturns.description}
         items={copy.structuredReturns.items}
@@ -85,7 +86,7 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
       <PatientSupportCaseRow
         sectionTitle={copy.teams.sectionTitle}
         imagePosition="left"
-        imageUrl="/assets/images/team_collaboration.png"
+        imageUrl="/assets/images/medical_team.jpg"
         title={copy.teams.title}
         description={copy.teams.description}
         description2={copy.teams.description2}
@@ -98,7 +99,7 @@ export default function PatientSupportProgramsPage({ active, onNavigate }) {
       <PatientSupportCaseRow
         sectionTitle={copy.platforms.sectionTitle}
         imagePosition="right"
-        imageUrl="/assets/images/platform_integration.png"
+        imageUrl="/assets/images/cta_desktop_image_3.png"
         title={copy.platforms.title}
         description={copy.platforms.description}
         items={copy.platforms.items}

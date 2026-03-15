@@ -110,7 +110,7 @@ function PromsApproachSection({ copy }) {
 
         <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)] min-[810px]:order-2">
           <img
-            src="/assets/images/aesthetic_patient_2.png"
+            src="/assets/images/nurse-follow-up.png"
             alt="PROMS approach"
             className="h-full w-full object-cover"
           />
@@ -437,7 +437,7 @@ function PromsHospitalsSection({ copy }) {
 
         <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)] min-[810px]:order-2">
           <img
-            src="/assets/images/aesthetic_patient.png"
+            src="/assets/images/indicators.jpg"
             alt="Quality indicators"
             className="h-full w-full object-cover"
           />
@@ -454,7 +454,7 @@ function PromsEditorsSection({ copy, onNavigate }) {
       <div className="rev grid grid-cols-2 items-center gap-10 max-[809px]:flex max-[809px]:flex-col">
         <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)] min-[810px]:order-1">
           <img
-            src="/assets/images/aesthetic_patient_2.png"
+            src="/assets/images/proms_to_vocal.png"
             alt="API integration"
             className="h-full w-full object-cover"
           />
