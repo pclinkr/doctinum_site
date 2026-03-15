@@ -10,7 +10,7 @@ import Home2SecurityStripSection from '../components/sections/page-sections/Home
 import Home2FinalCtaSection from '../components/sections/page-sections/Home2FinalCtaSection';
 import Home2VoiceSimulationOverlay from '../components/sections/page-sections/Home2VoiceSimulationOverlay';
 
-const OVERLAY_EXIT_MS = 420;
+const OVERLAY_EXIT_MS = 1000;
 
 function scrollToSection(sectionId) {
   if (typeof window === 'undefined') return;

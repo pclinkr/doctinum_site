@@ -24,7 +24,7 @@ const HOME2_SPECIALTY_TO_MEDICAL_DOMAIN = {
 
 const DEFAULT_ENDPOINT_TEMPLATE = '/api/retell/test-web-call';
 const DEFAULT_AGENT_ID = 'agent_9f250d09bcb3b222b1baa1ff88';
-const OVERLAY_CLOSE_DELAY_MS = 760;
+const OVERLAY_TRANSITION_MS = 1000;
 
 const FALLBACK_TYPING_INTERVAL_MS = 24;
 const FALLBACK_TYPING_SPEED_FACTOR = 0.72;
@@ -142,7 +142,6 @@ export default function Home2VoiceSimulationOverlay({
   const transcriptViewportRef = useRef(null);
   const fallbackAudioRef = useRef(null);
   const fallbackTimerIdsRef = useRef([]);
-  const closeTimerIdRef = useRef(null);
   const autoLaunchDoneRef = useRef(false);
   const modalFrameRef = useRef(null);
   const [modalFrameRect, setModalFrameRect] = useState(null);
@@ -158,6 +157,11 @@ export default function Home2VoiceSimulationOverlay({
     [t, i18n.resolvedLanguage, i18n.language]
   );
 
+  const simulationResults = useMemo(
+    () => t('sections.medicalVoice.results', { returnObjects: true }),
+    [t, i18n.resolvedLanguage, i18n.language]
+  );
+
   const selectedDomain = useMemo(
     () =>
       medicalDomains.find((domain) => domain.id === selectedDomainId) ||
@@ -165,20 +169,12 @@ export default function Home2VoiceSimulationOverlay({
     [selectedDomainId, medicalDomains]
   );
 
-  const clearCloseTimer = () => {
-    if (!closeTimerIdRef.current) return;
-    window.clearTimeout(closeTimerIdRef.current);
-    closeTimerIdRef.current = null;
-  };
-
-  const scheduleOverlayClose = useCallback(
-    (delayMs = OVERLAY_CLOSE_DELAY_MS) => {
-      clearCloseTimer();
-      closeTimerIdRef.current = window.setTimeout(() => {
-        onRequestClose?.();
-      }, delayMs);
-    },
-    [onRequestClose]
+  const selectedSimulationResult = useMemo(
+    () =>
+      simulationResults?.[selectedDomainId] ||
+      simulationResults?.default ||
+      null,
+    [selectedDomainId, simulationResults]
   );
 
   const clearFallbackTimers = () => {
@@ -311,14 +307,13 @@ export default function Home2VoiceSimulationOverlay({
             t('sections.medicalVoice.status.fallbackCompleted')
           );
           setOrbMode('listening');
-          scheduleOverlayClose();
         },
         (lastEntry?.delayMs || 0) + finalTypingTailMs
       );
 
       fallbackTimerIdsRef.current.push(endTimerId);
     },
-    [fallbackTranscripts, selectedDomain, scheduleOverlayClose, t]
+    [fallbackTranscripts, selectedDomain, t]
   );
 
   const startRetellCall = useCallback(async () => {
@@ -327,7 +322,6 @@ export default function Home2VoiceSimulationOverlay({
 
     stopFallbackAudio();
     clearFallbackTimers();
-    clearCloseTimer();
     await stopRetellClient();
 
     setCallState('connecting');
@@ -382,7 +376,6 @@ export default function Home2VoiceSimulationOverlay({
         setCallState('ended');
         setCallStatusLabel(t('sections.medicalVoice.status.callFinished'));
         setOrbMode('listening');
-        scheduleOverlayClose();
       });
 
       retellClient.on('update', (updatePayload) => {
@@ -413,20 +406,18 @@ export default function Home2VoiceSimulationOverlay({
       console.error('Failed to start Retell call:', error);
       runFallbackDemo('liveUnavailable');
     }
-  }, [runFallbackDemo, selectedDomain, t, scheduleOverlayClose]);
+  }, [runFallbackDemo, selectedDomain, t]);
 
-  const requestOverlayClose = useCallback(async () => {
+  const requestOverlayClose = useCallback(() => {
     callAttemptIdRef.current = Date.now();
     clearFallbackTimers();
-    clearCloseTimer();
     stopFallbackAudio();
-    await stopRetellClient();
-    setCallState('idle');
-    setCallStatusLabel(t('sections.medicalVoice.status.ready'));
-    setOrbMode('listening');
-    setTranscriptEntries([]);
+
+    // Trigger close animation immediately, then stop live call in background.
     onRequestClose?.();
-  }, [onRequestClose, t]);
+
+    stopRetellClient();
+  }, [onRequestClose]);
 
   const startCallFromPhone = () => {
     if (
@@ -502,7 +493,6 @@ export default function Home2VoiceSimulationOverlay({
     return () => {
       callAttemptIdRef.current = Date.now();
       clearFallbackTimers();
-      clearCloseTimer();
       stopFallbackAudio();
       stopRetellClient();
     };
@@ -511,8 +501,9 @@ export default function Home2VoiceSimulationOverlay({
   const shouldShowConversation =
     callState === 'connecting' ||
     callState === 'live' ||
-    callState === 'fallback' ||
-    callState === 'ended';
+    callState === 'fallback';
+
+  const shouldShowResults = callState === 'ended' && selectedSimulationResult;
 
   const modalTransformOrigin = useMemo(() => {
     if (!launchOriginRect || !modalFrameRect) return '50% 50%';
@@ -540,7 +531,8 @@ export default function Home2VoiceSimulationOverlay({
 
   return (
     <div
-      className={`fixed inset-0 z-[220] overflow-y-auto overscroll-contain transition-opacity duration-420 ease-out ${isShown && !isClosing ? 'opacity-100' : 'pointer-events-none opacity-0'}`.trim()}
+      className={`fixed inset-0 z-[220] overflow-y-auto overscroll-contain transition-opacity ease-out ${isShown && !isClosing ? 'opacity-100' : 'pointer-events-none opacity-0'}`.trim()}
+      style={{ transitionDuration: `${OVERLAY_TRANSITION_MS}ms` }}
       role="dialog"
       aria-modal="true"
       aria-label={t('sections.home2.simulation.label')}
@@ -551,10 +543,11 @@ export default function Home2VoiceSimulationOverlay({
       <div className="relative mx-auto flex min-h-screen w-full max-w-[1240px] items-start justify-center px-4 py-4 min-[980px]:items-center min-[980px]:px-8 min-[980px]:py-8">
         <div
           ref={modalFrameRef}
-          className="relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-[24px] border border-[var(--white-20)] bg-[var(--gradient-voice-simulation-overlay)] transition-all duration-420 ease-out min-[980px]:max-h-[calc(100dvh-4rem)]"
+          className="relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden rounded-[24px] border border-[var(--white-20)] bg-[var(--gradient-voice-simulation-overlay)] transition-all ease-out min-[980px]:max-h-[calc(100dvh-4rem)]"
           style={{
             transform: modalTransform,
             transformOrigin: modalTransformOrigin,
+            transitionDuration: `${OVERLAY_TRANSITION_MS}ms`,
           }}
         >
           <button
@@ -595,17 +588,70 @@ export default function Home2VoiceSimulationOverlay({
             </div>
 
             <div
-              className={`relative flex h-[300px] min-h-[300px] flex-col overflow-hidden rounded-[20px] bg-[var(--color-white)]/78 p-4 transition-all duration-300 ease-out min-[980px]:h-[520px] min-[980px]:min-h-[520px] min-[980px]:p-6 ${shouldShowConversation ? 'opacity-100' : 'opacity-88'}`.trim()}
+              className={`relative flex h-[300px] min-h-[300px] flex-col overflow-hidden rounded-[20px] bg-[var(--color-white)]/78 p-4 transition-all duration-300 ease-out min-[980px]:h-[520px] min-[980px]:min-h-[520px] min-[980px]:p-6 ${
+                shouldShowConversation || shouldShowResults
+                  ? 'opacity-100'
+                  : 'opacity-88'
+              }`.trim()}
             >
-              {/* <p className="mb-4 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
-                {t('sections.medicalVoice.headLabel')}
-              </p> */}
-              <div className="min-h-0 flex-1 overflow-hidden">
-                <VoiceTranscriptPanel
-                  transcriptEntries={transcriptEntries}
-                  transcriptViewportRef={transcriptViewportRef}
-                />
-              </div>
+              {shouldShowResults ? (
+                <div className="min-h-0 flex-1 overflow-y-auto pr-1 [scrollbar-width:thin]">
+                  <div className="space-y-4">
+                    <div className="rounded-[14px] border border-[var(--ink-08)] bg-[var(--color-white)] p-3">
+                      <p className="text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
+                        {selectedSimulationResult.header}
+                      </p>
+                      <h4 className="mt-2 text-[16px] font-[var(--w500)] leading-[1.4] text-[var(--color-primary)]">
+                        {selectedSimulationResult.title}
+                      </h4>
+                    </div>
+
+                    <div className="rounded-[14px] border border-[var(--ink-08)] bg-[var(--color-white)] p-3">
+                      <p className="mb-3 text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
+                        {selectedSimulationResult.metricsTitle}
+                      </p>
+                      <div className="space-y-2">
+                        {(selectedSimulationResult.metrics || []).map(
+                          (item) => (
+                            <div
+                              key={item.label}
+                              className="flex items-start justify-between gap-3 rounded-[10px] bg-[var(--color-surface)] px-3 py-2"
+                            >
+                              <p className="text-[12px] text-[var(--muted)]">
+                                {item.label}
+                              </p>
+                              <p className="text-right text-[12px] font-[var(--w500)] text-[var(--color-primary)]">
+                                {item.value}
+                              </p>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+
+                    {selectedSimulationResult.alert ? (
+                      <div className="rounded-[14px] border border-[#efc2c2] bg-[#fff2f2] p-3">
+                        <p className="text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[#9f3f3f]">
+                          {selectedSimulationResult.alert.badge}
+                        </p>
+                        <p className="mt-2 text-[14px] font-[var(--w500)] text-[#7a2626]">
+                          {selectedSimulationResult.alert.title}
+                        </p>
+                        <p className="mt-1 text-[12px] leading-[1.55] text-[#8d3939]">
+                          {selectedSimulationResult.alert.body}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : (
+                <div className="min-h-0 flex-1 overflow-hidden">
+                  <VoiceTranscriptPanel
+                    transcriptEntries={transcriptEntries}
+                    transcriptViewportRef={transcriptViewportRef}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
