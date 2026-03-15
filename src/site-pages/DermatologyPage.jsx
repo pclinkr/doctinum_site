@@ -16,7 +16,7 @@ function DermatologyIntroSection({ copy, onNavigate }) {
       <div className="rev grid grid-cols-2 items-center gap-10 max-[809px]:flex max-[809px]:flex-col">
         <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)] min-[810px]:order-1">
           <img
-            src="/assets/images/aesthetic_patient.png"
+            src="/assets/images/dermatology1.jpg"
             alt="Dermatology treatment"
             className="h-full w-full object-cover"
           />
@@ -183,7 +183,7 @@ export default function DermatologyPage({ active, onNavigate }) {
         badge={{ text: pageCopy.hero.badge, variant: 'secondary' }}
         title={pageCopy.hero.title}
         subtitle={pageCopy.hero.subtitle}
-        backgroundImage="/assets/images/aesthetic_patient_2.png"
+        backgroundImage="/assets/images/dermatology_simple.png"
         backgroundType="image"
         showOverlayText={true}
         showOverlayImage={true}
@@ -194,7 +194,7 @@ export default function DermatologyPage({ active, onNavigate }) {
       <TestimonialSection
         quote={pageCopy.statement}
         showVisual={true}
-        visualImageUrl="/assets/images/aesthetic_patient.png"
+        visualImageUrl="/assets/images/testimonial_dermatology.png"
         showAuthor={false}
       />
 

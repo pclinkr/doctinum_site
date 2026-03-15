@@ -3,6 +3,7 @@
   --bg-page: var(--color-bg);
   --bg-surface: var(--color-surface);
   --bg-white: var(--color-white);
+  --bg-accent: var(--color-primary);
 
   --text-primary: var(--color-text);
   --text-muted: var(--color-muted);
@@ -62,22 +63,32 @@
   --ink-96: color-mix(in srgb, var(--color-text) 96%, transparent);
   --ink-98: color-mix(in srgb, var(--color-text) 98%, transparent);
 
+  --white-03: color-mix(in srgb, var(--color-white) 3%, transparent);
+  --white-04: color-mix(in srgb, var(--color-white) 4%, transparent);
+  --white-05: color-mix(in srgb, var(--color-white) 5%, transparent);
+  --white-07: color-mix(in srgb, var(--color-white) 7%, transparent);
+  --white-08: color-mix(in srgb, var(--color-white) 8%, transparent);
+  --white-10: color-mix(in srgb, var(--color-white) 10%, transparent);
+  --white-12: color-mix(in srgb, var(--color-white) 12%, transparent);
   --white-14: color-mix(in srgb, var(--color-white) 14%, transparent);
   --white-15: color-mix(in srgb, var(--color-white) 15%, transparent);
   --white-20: color-mix(in srgb, var(--color-white) 20%, transparent);
   --white-28: color-mix(in srgb, var(--color-white) 28%, transparent);
+  --white-34: color-mix(in srgb, var(--color-white) 34%, transparent);
   --white-38: color-mix(in srgb, var(--color-white) 38%, transparent);
   --white-40: color-mix(in srgb, var(--color-white) 40%, transparent);
   --white-46: color-mix(in srgb, var(--color-white) 46%, transparent);
   --white-50: color-mix(in srgb, var(--color-white) 50%, transparent);
   --white-54: color-mix(in srgb, var(--color-white) 54%, transparent);
   --white-55: color-mix(in srgb, var(--color-white) 55%, transparent);
+  --white-60: color-mix(in srgb, var(--color-white) 60%, transparent);
   --white-65: color-mix(in srgb, var(--color-white) 65%, transparent);
   --white-70: color-mix(in srgb, var(--color-white) 70%, transparent);
   --white-72: color-mix(in srgb, var(--color-white) 72%, transparent);
   --white-75: color-mix(in srgb, var(--color-white) 75%, transparent);
   --white-78: color-mix(in srgb, var(--color-white) 78%, transparent);
   --white-84: color-mix(in srgb, var(--color-white) 84%, transparent);
+  --white-85: color-mix(in srgb, var(--color-white) 85%, transparent);
   --white-90: color-mix(in srgb, var(--color-white) 90%, transparent);
   --white-92: color-mix(in srgb, var(--color-white) 92%, transparent);
   --white-96: color-mix(in srgb, var(--color-white) 96%, transparent);

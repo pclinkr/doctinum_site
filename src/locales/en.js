@@ -361,6 +361,100 @@ const en = {
         fallbackCompleted: 'Fallback demo completed',
         liveUnavailable: 'Live unavailable. Running fallback demo...',
       },
+      results: {
+        default: {
+          header: 'Structured call summary',
+          title: 'Data collected during the simulation',
+          metricsTitle: 'Captured indicators',
+          metrics: [
+            { label: 'Primary reason', value: 'Declared symptom signal' },
+            {
+              label: 'Perceived intensity',
+              value: 'Moderate, requires monitoring',
+            },
+            { label: 'Protocol adherence', value: 'Partial' },
+            { label: 'Protocol status', value: 'Thresholds to verify' },
+          ],
+          alert: {
+            badge: 'Protocol threshold alert',
+            title: 'Protocol threshold crossed',
+            body: 'Combination of responses exceeded thresholds defined in the protocol.',
+          },
+        },
+        orthopedie: {
+          header: 'Structured call summary',
+          title: 'Post-op day 7 follow-up (orthopedics)',
+          metricsTitle: 'Captured indicators',
+          metrics: [
+            { label: 'Reported pain', value: '6/10 (higher at night)' },
+            {
+              label: 'Analgesic adherence',
+              value: 'Compliant with prescription',
+            },
+            { label: 'Local signs', value: 'No redness or discharge' },
+            { label: 'Rehabilitation', value: 'Partial restart' },
+          ],
+          alert: {
+            badge: 'Protocol threshold alert',
+            title: 'Pain threshold crossed',
+            body: 'Pain >= 6/10 with night discomfort: orthopedics alert threshold triggered.',
+          },
+        },
+        cancer: {
+          header: 'Structured call summary',
+          title: 'Between-cycle follow-up (oncology)',
+          metricsTitle: 'Captured indicators',
+          metrics: [
+            {
+              label: 'Nausea',
+              value: 'Present early in cycle, then decreased',
+            },
+            { label: 'Anti-emetic adherence', value: 'Yes' },
+            { label: 'Appetite', value: 'Progressive recovery' },
+            { label: 'Fever > 38°C', value: 'Not reported' },
+          ],
+          alert: {
+            badge: 'Protocol threshold alert',
+            title: 'Infectious threshold crossed',
+            body: 'Fever > 38°C or chills: oncology alert threshold triggered.',
+          },
+        },
+        'transplantation-hepatique': {
+          header: 'Structured call summary',
+          title: 'Post-transplant follow-up (liver)',
+          metricsTitle: 'Captured indicators',
+          metrics: [
+            {
+              label: 'Immunosuppressive adherence',
+              value: 'Reported compliant',
+            },
+            { label: 'Warning signs', value: 'Not reported' },
+            { label: 'Lab work', value: 'Done, results pending' },
+            { label: 'Hygiene instructions', value: 'Respected' },
+          ],
+          alert: {
+            badge: 'Protocol threshold alert',
+            title: 'Post-transplant threshold crossed',
+            body: 'Fever, abdominal pain, or jaundice: transplant alert threshold triggered.',
+          },
+        },
+        'chirurgie-esthetique': {
+          header: 'Structured call summary',
+          title: 'Post-procedure follow-up (cosmetic surgery)',
+          metricsTitle: 'Captured indicators',
+          metrics: [
+            { label: 'Edema / bruising', value: 'Progressive decrease' },
+            { label: 'Care protocol adherence', value: 'Compliant' },
+            { label: 'Sleep position', value: 'Adapted position respected' },
+            { label: 'Major bleeding', value: 'Not reported' },
+          ],
+          alert: {
+            badge: 'Protocol threshold alert',
+            title: 'Bleeding threshold crossed',
+            body: 'Heavy bleeding or unusual pain: cosmetic surgery alert threshold triggered.',
+          },
+        },
+      },
       fallbackTranscripts: {
         orthopedie: [
           {
@@ -1889,7 +1983,8 @@ const en = {
   cookies: {
     banner: {
       title: 'Cookie banner',
-      description: 'This site uses cookies to measure audience and improve your browsing experience.',
+      description:
+        'This site uses cookies to measure audience and improve your browsing experience.',
       choices: 'You can accept, refuse or customize the use of cookies.',
       accept: 'Accept',
       reject: 'Refuse',
@@ -1899,12 +1994,15 @@ const en = {
     },
     preferences: {
       title: 'Customize cookies',
-      description: 'Manage your cookie preferences. Necessary cookies are always active as they are essential for the site to function.',
+      description:
+        'Manage your cookie preferences. Necessary cookies are always active as they are essential for the site to function.',
       necessary: 'Necessary cookies',
       alwaysActive: 'Always active',
-      necessaryDesc: 'These cookies are essential for the proper functioning of the site and cannot be disabled.',
+      necessaryDesc:
+        'These cookies are essential for the proper functioning of the site and cannot be disabled.',
       analytics: 'Analytics cookies',
-      analyticsDesc: 'Analytics cookies allow us to understand site usage in order to improve content.',
+      analyticsDesc:
+        'Analytics cookies allow us to understand site usage in order to improve content.',
       analyticsExample: 'E.g.: Google Analytics',
       acceptAll: 'Accept all',
       save: 'Save my preferences',

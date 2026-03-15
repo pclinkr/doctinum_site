@@ -208,10 +208,10 @@ export default function LocaleShell({ locale, children }) {
           {children}
           <SiteFooter onNavigate={navigateToPage} />
         </div>
-        <FloatingCta
+        {/* <FloatingCta
           visible={isFloatingCtaVisible && !isTransitioning}
           onNavigate={navigateToPage}
-        />
+        /> */}
         <CustomCursor />
         <CookieBanner onNavigate={navigateToPage} />
       </SiteAppProvider>

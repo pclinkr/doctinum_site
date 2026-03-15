@@ -23,9 +23,12 @@
   --cta-bg: var(--action-primary-bg);
   --cta-text: var(--action-primary-fg);
   --sans: var(--font-sans);
+  --title: var(--font-title);
+  --citation: var(--font-citation);
   --serif: var(--font-serif);
   --w400: var(--font-weight-regular);
   --w500: var(--font-weight-medium);
+  --w700: var(--font-weight-bold);
   --track: var(--letter-spacing-body);
   --track-tight: -0.03em;
   --track-serif: -0.08em;
@@ -63,7 +66,7 @@ svg {
   @apply block;
 }
 button {
-  @apply cursor-pointer border-none bg-transparent;
+  @apply cursor-pointer;
 }
 input,
 textarea,
@@ -71,7 +74,7 @@ select {
   @apply text-sm outline-none;
 }
 .si.si {
-  font-family: var(--serif) !important;
+  font-family: var(--citation) !important;
   font-style: italic;
   font-weight: var(--w500);
   letter-spacing: var(--track-serif);
@@ -387,6 +390,35 @@ select {
 }
 .rev.in.d4 {
   transition-delay: 420ms;
+}
+
+/* Variante pour les medias: reveal plus marque avec zoom + blur */
+.rev-cinematic {
+  opacity: 0;
+  transform: translateY(36px) scale(1.04);
+  filter: blur(10px);
+  transition:
+    opacity 1.02s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.02s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1.02s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rev-cinematic.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rev-cinematic {
+    filter: none;
+    transform: none;
+    transition: opacity 0.2s linear;
+  }
+
+  .rev-cinematic.in {
+    opacity: 1;
+  }
 }
 
 /* ============================================================ REVEAL ANIMATIONS - Converti en classes Tailwind ============================================================ */
@@ -932,5 +964,42 @@ footer {
   }
   .cursor-dot {
     @apply hidden;
+  }
+}
+
+/* ============================================================ HOME2 ANIMATIONS ============================================================ */
+@keyframes home2Wave {
+  from {
+    transform: scaleY(0.3);
+    opacity: 0.25;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 0.82;
+  }
+}
+
+@keyframes home2RingPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.home2-wave-bar {
+  width: 2px;
+  border-radius: 1px;
+  background: var(--white-28);
+  animation: home2Wave var(--d, 0.8s) ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home2-wave-bar {
+    animation-play-state: paused;
   }
 }

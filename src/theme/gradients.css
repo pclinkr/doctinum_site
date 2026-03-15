@@ -145,6 +145,17 @@
     #efc7ad 0%,
     #c8927f 100%
   );
+  --gradient-voice-simulation-overlay: radial-gradient(
+    circle at 16% 18%,
+    color-mix(in srgb, var(--color-info) 28%, transparent) 0%,
+    transparent 45%
+  ),
+  linear-gradient(
+    140deg,
+    #f9fbff 0%,
+    #f2f5ff 52%,
+    #eef4fb 100%
+  );
   --gradient-medical-avatar-composite:
     var(--medical-avatar-image, none),
     radial-gradient(

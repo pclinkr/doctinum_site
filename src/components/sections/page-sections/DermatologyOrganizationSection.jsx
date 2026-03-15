@@ -48,7 +48,7 @@ export default function DermatologyOrganizationSection() {
         <div className="min-[810px]:order-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--r-md)]">
             <img
-              src="/assets/images/aesthetic_patient.png"
+              src="/assets/images/dermatology_act.png"
               alt="Dermatology practice"
               className="h-full w-full object-cover"
             />

@@ -234,10 +234,10 @@ export default function App() {
         <SiteFooter onNavigate={navigateToPage} />
       </div>
 
-      <FloatingCta
+      {/* <FloatingCta
         visible={isFloatingCtaVisible && !isTransitioning}
         onNavigate={navigateToPage}
-      />
+      /> */}
       <CustomCursor />
     </>
   );
