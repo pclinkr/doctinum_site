@@ -1,8 +1,8 @@
 const frSeo = {
   home: {
-    title: 'Doctinum | Partenaire de croissance créative',
+    title: 'Doctinum | Infrastructure vocale clinique IA pour le suivi patient',
     description:
-      'Systèmes créatifs, contenu social et workflows IA vocaux pour accélérer la croissance organique.',
+      "IA vocale qui applique vos protocoles médicaux, déclenche un suivi structuré entre les consultations et remonte les signaux exploitables — sous supervision médicale. Hébergement HDS France.",
   },
   about: {
     title: 'À propos | Doctinum',

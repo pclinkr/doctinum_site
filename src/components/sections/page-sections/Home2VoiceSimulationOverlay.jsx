@@ -4,26 +4,7 @@ import VoiceCallPhone from '../../ui/VoiceCallPhone';
 import VoiceTranscriptPanel from '../../ui/VoiceTranscriptPanel';
 import { getRetellWebClientClass } from '../../../lib/retellWebCall';
 
-const MEDICAL_DOMAIN_IDS = [
-  'orthopedie',
-  'cancer',
-  'transplantation-hepatique',
-  'chirurgie-esthetique',
-];
-
-const HOME2_SPECIALTY_TO_MEDICAL_DOMAIN = {
-  ortho: 'orthopedie',
-  oncologie: 'cancer',
-  cardiaque: 'transplantation-hepatique',
-  esthetique: 'chirurgie-esthetique',
-  orthopedie: 'orthopedie',
-  cancer: 'cancer',
-  'transplantation-hepatique': 'transplantation-hepatique',
-  'chirurgie-esthetique': 'chirurgie-esthetique',
-};
-
 const DEFAULT_ENDPOINT_TEMPLATE = '/api/retell/test-web-call';
-const DEFAULT_AGENT_ID = 'agent_9f250d09bcb3b222b1baa1ff88';
 const OVERLAY_TRANSITION_MS = 1000;
 
 const FALLBACK_TYPING_INTERVAL_MS = 24;
@@ -84,7 +65,7 @@ function normalizeTranscriptEntries(updatePayload) {
       if (!text) return null;
 
       return {
-        id: `live-${index}-${text.slice(0, 24)}`,
+        id: `live-${index}`,
         role: normalizeRole(row?.role ?? row?.speaker ?? row?.speaker_type),
         text,
       };
@@ -92,34 +73,6 @@ function normalizeTranscriptEntries(updatePayload) {
     .filter(Boolean);
 }
 
-function mergeTranscriptEntries(currentEntries, incomingEntries) {
-  if (!incomingEntries.length) return currentEntries;
-
-  const signatures = new Set(
-    currentEntries.map((entry) => `${entry.role}:${entry.text}`)
-  );
-  const mergedEntries = [...currentEntries];
-
-  incomingEntries.forEach((entry) => {
-    const signature = `${entry.role}:${entry.text}`;
-    if (signatures.has(signature)) return;
-
-    signatures.add(signature);
-    mergedEntries.push({
-      id: `${entry.id}-${Date.now()}-${Math.random().toString(16).slice(2, 6)}`,
-      role: entry.role,
-      text: entry.text,
-    });
-  });
-
-  return mergedEntries.slice(-80);
-}
-
-function resolveDomainId(specialtyId) {
-  return (
-    HOME2_SPECIALTY_TO_MEDICAL_DOMAIN[specialtyId] || MEDICAL_DOMAIN_IDS[0]
-  );
-}
 
 export default function Home2VoiceSimulationOverlay({
   specialtyId,
@@ -129,9 +82,6 @@ export default function Home2VoiceSimulationOverlay({
 }) {
   const { t, i18n } = useTranslation();
   const [isShown, setIsShown] = useState(false);
-  const [selectedDomainId, setSelectedDomainId] = useState(
-    resolveDomainId(specialtyId)
-  );
   const [callState, setCallState] = useState('idle');
   const [orbMode, setOrbMode] = useState('listening');
   const [callStatusLabel, setCallStatusLabel] = useState('');
@@ -141,20 +91,25 @@ export default function Home2VoiceSimulationOverlay({
   const retellClientRef = useRef(null);
   const transcriptViewportRef = useRef(null);
   const fallbackAudioRef = useRef(null);
+  const ringAudioRef = useRef(null);
   const fallbackTimerIdsRef = useRef([]);
   const autoLaunchDoneRef = useRef(false);
   const modalFrameRef = useRef(null);
   const [modalFrameRect, setModalFrameRect] = useState(null);
 
-  const medicalDomains = useMemo(
-    () => t('sections.medicalVoice.domains', { returnObjects: true }),
-    [t, i18n.resolvedLanguage, i18n.language]
-  );
-
-  const fallbackTranscripts = useMemo(
+    const fallbackTranscripts = useMemo(
     () =>
       t('sections.medicalVoice.fallbackTranscripts', { returnObjects: true }),
     [t, i18n.resolvedLanguage, i18n.language]
+  );
+
+  const specialtyLabel = useMemo(
+    () => {
+      const specialties = t('sections.home2.simulation.specialties', { returnObjects: true });
+      const specialty = specialties?.find(s => s.id === specialtyId);
+      return specialty?.label || specialtyId;
+    },
+    [t, i18n.resolvedLanguage, i18n.language, specialtyId]
   );
 
   const simulationResults = useMemo(
@@ -162,19 +117,12 @@ export default function Home2VoiceSimulationOverlay({
     [t, i18n.resolvedLanguage, i18n.language]
   );
 
-  const selectedDomain = useMemo(
+    const selectedSimulationResult = useMemo(
     () =>
-      medicalDomains.find((domain) => domain.id === selectedDomainId) ||
-      medicalDomains[0],
-    [selectedDomainId, medicalDomains]
-  );
-
-  const selectedSimulationResult = useMemo(
-    () =>
-      simulationResults?.[selectedDomainId] ||
+      simulationResults?.[specialtyId] ||
       simulationResults?.default ||
       null,
-    [selectedDomainId, simulationResults]
+    [specialtyId, simulationResults]
   );
 
   const clearFallbackTimers = () => {
@@ -189,6 +137,25 @@ export default function Home2VoiceSimulationOverlay({
     fallbackAudioRef.current.pause();
     fallbackAudioRef.current.currentTime = 0;
     fallbackAudioRef.current = null;
+  };
+
+  const playRingAudio = () => {
+    try {
+      const ringAudio = new Audio('/sounds/ring_and_pick_up.mp3');
+      ringAudioRef.current = ringAudio;
+      ringAudio.play().catch((error) => {
+        console.warn('Ring audio failed to play:', error);
+      });
+    } catch (error) {
+      console.warn('Ring audio creation failed:', error);
+    }
+  };
+
+  const stopRingAudio = () => {
+    if (!ringAudioRef.current) return;
+    ringAudioRef.current.pause();
+    ringAudioRef.current.currentTime = 0;
+    ringAudioRef.current = null;
   };
 
   const stopRetellClient = async () => {
@@ -212,6 +179,9 @@ export default function Home2VoiceSimulationOverlay({
       await stopRetellClient();
       stopFallbackAudio();
       clearFallbackTimers();
+      
+      // Jouer le son de sonnerie avant le fallback
+      playRingAudio();
 
       setCallState('fallback');
       setCallStatusLabel(t(`sections.medicalVoice.status.${reasonKey}`));
@@ -232,8 +202,8 @@ export default function Home2VoiceSimulationOverlay({
       }
 
       const script =
-        fallbackTranscripts[selectedDomain.id] ||
-        fallbackTranscripts.orthopedie ||
+        fallbackTranscripts[specialtyId] ||
+        fallbackTranscripts.ortho ||
         [];
 
       const streamFallbackLine = (lineId, fullText) => {
@@ -278,6 +248,10 @@ export default function Home2VoiceSimulationOverlay({
         const lineId = `fallback-${index}-${Date.now()}`;
 
         const lineTimerId = window.setTimeout(() => {
+          // Arrêter le son de sonnerie au début de la première ligne
+          if (index === 0) {
+            stopRingAudio();
+          }
           setOrbModeFromRole(entry.role);
           setTranscriptEntries((currentEntries) => [
             ...currentEntries,
@@ -313,7 +287,7 @@ export default function Home2VoiceSimulationOverlay({
 
       fallbackTimerIdsRef.current.push(endTimerId);
     },
-    [fallbackTranscripts, selectedDomain, t]
+    [fallbackTranscripts, specialtyId, t]
   );
 
   const startRetellCall = useCallback(async () => {
@@ -324,23 +298,24 @@ export default function Home2VoiceSimulationOverlay({
     clearFallbackTimers();
     await stopRetellClient();
 
+    if (callAttemptIdRef.current !== attemptId) {
+      return;
+    }
+
+    // Jouer le son de sonnerie
+    playRingAudio();
     setCallState('connecting');
     setCallStatusLabel(t('sections.medicalVoice.status.creating'));
     setOrbMode('listening');
     setTranscriptEntries([]);
-
+    
     try {
       const endpoint = resolveBackendEndpoint();
-      const agentId =
-        process.env.NEXT_PUBLIC_RETELL_AGENT_ID || DEFAULT_AGENT_ID;
-
       const webCallResponse = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          domain: selectedDomain.label,
-          domainKey: selectedDomain.id,
-          agentId,
+          demoType: specialtyId,
         }),
       });
 
@@ -358,14 +333,32 @@ export default function Home2VoiceSimulationOverlay({
         throw new Error('Missing data.accessToken in backend response.');
       }
 
+      if (callAttemptIdRef.current !== attemptId) return;
+
       setCallStatusLabel(t('sections.medicalVoice.status.connectingRetell'));
 
       const RetellWebClient = await getRetellWebClientClass();
+      
+      if (callAttemptIdRef.current !== attemptId) return;
+      
       const retellClient = new RetellWebClient();
       retellClientRef.current = retellClient;
 
       retellClient.on('call_started', () => {
-        if (callAttemptIdRef.current !== attemptId) return;
+        if (callAttemptIdRef.current !== attemptId) {
+          // L'appel a été annulé pendant la connexion, arrêter immédiatement
+          try {
+            retellClient.stopCall();
+          } catch (e) {
+            // Ignorer les erreurs
+          }
+          // Mettre l'état à jour pour cohérence
+          setCallState('ended');
+          setCallStatusLabel(t('sections.medicalVoice.status.callFinished'));
+          setOrbMode('listening');
+          stopRingAudio();
+          return;
+        }
         setCallState('live');
         setCallStatusLabel(t('sections.medicalVoice.status.liveRunning'));
         setOrbMode('listening');
@@ -379,7 +372,19 @@ export default function Home2VoiceSimulationOverlay({
       });
 
       retellClient.on('update', (updatePayload) => {
-        if (callAttemptIdRef.current !== attemptId) return;
+        if (callAttemptIdRef.current !== attemptId) {
+          // L'appel a été annulé, arrêter immédiatement
+          try {
+            retellClient.stopCall();
+          } catch (e) {
+            // Ignorer les erreurs
+          }
+          // Mettre l'état à jour pour cohérence
+          setCallState('ended');
+          setCallStatusLabel(t('sections.medicalVoice.status.callFinished'));
+          setOrbMode('listening');
+          return;
+        }
         const liveTranscriptEntries = normalizeTranscriptEntries(updatePayload);
         if (!liveTranscriptEntries.length) return;
 
@@ -389,9 +394,7 @@ export default function Home2VoiceSimulationOverlay({
           setOrbModeFromRole(latestEntry.role);
         }
 
-        setTranscriptEntries((currentEntries) =>
-          mergeTranscriptEntries(currentEntries, liveTranscriptEntries)
-        );
+        setTranscriptEntries(liveTranscriptEntries);
       });
 
       retellClient.on('error', (retellError) => {
@@ -400,23 +403,22 @@ export default function Home2VoiceSimulationOverlay({
         runFallbackDemo('liveUnavailable');
       });
 
+      if (callAttemptIdRef.current !== attemptId) return;
+
       await retellClient.startCall({ accessToken });
     } catch (error) {
       if (callAttemptIdRef.current !== attemptId) return;
       console.error('Failed to start Retell call:', error);
       runFallbackDemo('liveUnavailable');
     }
-  }, [runFallbackDemo, selectedDomain, t]);
+  }, [runFallbackDemo, specialtyId, t]);
 
   const requestOverlayClose = useCallback(() => {
+    // Invalider l'appel en cours
     callAttemptIdRef.current = Date.now();
-    clearFallbackTimers();
-    stopFallbackAudio();
-
-    // Trigger close animation immediately, then stop live call in background.
+    
+    // Fermer la modale (le cleanup se fera automatiquement au démontage)
     onRequestClose?.();
-
-    stopRetellClient();
   }, [onRequestClose]);
 
   const startCallFromPhone = () => {
@@ -430,13 +432,28 @@ export default function Home2VoiceSimulationOverlay({
     startRetellCall();
   };
 
-  const hangupCallFromPhone = () => {
-    requestOverlayClose();
+  const hangupCallFromPhone = async () => {
+    callAttemptIdRef.current = Date.now();
+    clearFallbackTimers();
+    stopFallbackAudio();
+    stopRingAudio();
+    await stopRetellClient();
+    
+    setCallState('ended');
+    setCallStatusLabel(t('sections.medicalVoice.status.callFinished'));
+    setOrbMode('listening');
   };
 
+
+  // Cleanup au démontage du composant
   useEffect(() => {
-    setSelectedDomainId(resolveDomainId(specialtyId));
-  }, [specialtyId]);
+    return () => {
+      clearFallbackTimers();
+      stopFallbackAudio();
+      stopRingAudio();
+      stopRetellClient();
+    };
+  }, []);
 
   useEffect(() => {
     const updateModalFrameRect = () => {
@@ -577,7 +594,7 @@ export default function Home2VoiceSimulationOverlay({
                 }}
               >
                 <VoiceCallPhone
-                  domainLabel={selectedDomain?.label || ''}
+                  domainLabel={specialtyLabel || ''}
                   state={callState}
                   orbMode={orbMode}
                   onStartCall={startCallFromPhone}
@@ -597,6 +614,12 @@ export default function Home2VoiceSimulationOverlay({
               {shouldShowResults ? (
                 <div className="min-h-0 flex-1 overflow-y-auto pr-1 [scrollbar-width:thin]">
                   <div className="space-y-4">
+                    <div className="rounded-[10px] border border-[var(--color-info)]/20 bg-[var(--color-info)]/5 px-3 py-2">
+                      <p className="text-[15px] leading-[1.6] text-[var(--color-info)]">
+                        ℹ️  {simulationResults?.disclaimer || ''}
+                      </p>
+                    </div>
+
                     <div className="rounded-[14px] border border-[var(--ink-08)] bg-[var(--color-white)] p-3">
                       <p className="text-[11px] font-[var(--w500)] uppercase tracking-[0.08em] text-[var(--muted)]">
                         {selectedSimulationResult.header}

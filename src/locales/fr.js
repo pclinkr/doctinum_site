@@ -297,10 +297,10 @@ const fr = {
       headTitlePrefix: "Simulation interactive d'un appel par",
       headTitleAccent: 'un agent IA médical',
       domains: [
-        { id: 'orthopedie', label: 'Orthopédie (chirurgie)' },
-        { id: 'cancer', label: 'Cancer' },
-        { id: 'transplantation-hepatique', label: 'Transplantation hépatique' },
-        { id: 'chirurgie-esthetique', label: 'Chirurgie esthétique' },
+        { id: 'ortho', label: 'Orthopédie (chirurgie)' },
+        { id: 'oncology', label: 'Cancer' },
+        { id: 'cardiac', label: 'Transplantation hépatique' },
+        { id: 'aesthetic', label: 'Chirurgie esthétique' },
       ],
       controls: {
         slideToCall: 'Glisser',
@@ -319,6 +319,7 @@ const fr = {
         liveUnavailable: 'Live indisponible. Lancement de la démo fallback...',
       },
       results: {
+        disclaimer: "Voici un exemple de données pouvant être extraites dans le cadre d'un protocole: ",
         default: {
           header: "Synthese structuree de l'appel",
           title: 'Donnees cliniques collectees pendant la simulation',
@@ -330,12 +331,12 @@ const fr = {
             { label: 'Statut protocole', value: 'Seuils a verifier' },
           ],
           alert: {
-            badge: 'Alerte seuil protocolaire',
+            badge: 'Alerte selon le seuil défini dans votre protocole',
             title: 'Seuil protocolaire franchi',
             body: 'Combinaison de reponses au-dessus des seuils definis dans le protocole.',
           },
         },
-        orthopedie: {
+        ortho: {
           header: "Synthese structuree de l'appel",
           title: 'Suivi post-operatoire J+7 (orthopedie)',
           metricsTitle: 'Indicateurs captures',
@@ -354,7 +355,7 @@ const fr = {
             body: "Douleur >= 6/10 et gene nocturne: seuil d'alerte orthopedie declenche.",
           },
         },
-        cancer: {
+        oncology: {
           header: "Synthese structuree de l'appel",
           title: 'Suivi inter-cure (oncologie)',
           metricsTitle: 'Indicateurs captures',
@@ -373,26 +374,27 @@ const fr = {
             body: "Fievre > 38C ou frissons: seuil d'alerte oncologie declenche.",
           },
         },
-        'transplantation-hepatique': {
+        cardiac: {
           header: "Synthese structuree de l'appel",
-          title: 'Suivi post-greffe (transplantation hepatique)',
+          title: 'Suivi post-opératoire J+10 (chirurgie cardiaque)',
           metricsTitle: 'Indicateurs captures',
           metrics: [
             {
-              label: 'Observance immunosuppresseur',
+              label: 'Observance traitement',
               value: 'Declaree conforme',
             },
             { label: "Signes d'alerte", value: 'Absents' },
+            { label: 'Activite physique', value: 'Reprise progressive' },
             { label: 'Bilan biologique', value: 'Realise, resultats attendus' },
             { label: "Consignes d'hygiene", value: 'Respectees' },
           ],
           alert: {
             badge: 'Alerte seuil protocolaire',
-            title: 'Seuil post-greffe franchi',
-            body: "Fievre, douleur abdominale ou ictere: seuil d'alerte transplantation declenche.",
+            title: 'Seuil post-chirurgie cardiaque franchi',
+            body: "Douleur thoracique, essoufflement ou palpitations: seuil d'alerte cardiaque declenche.",
           },
         },
-        'chirurgie-esthetique': {
+        aesthetic: {
           header: "Synthese structuree de l'appel",
           title: 'Suivi post-intervention (chirurgie esthetique)',
           metricsTitle: 'Indicateurs captures',
@@ -410,7 +412,7 @@ const fr = {
         },
       },
       fallbackTranscripts: {
-        orthopedie: [
+        ortho: [
           {
             role: 'agent',
             text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Êtes-vous disponible pour votre suivi post-opératoire ?",
@@ -457,7 +459,7 @@ const fr = {
             delayMs: 20500,
           },
         ],
-        cancer: [
+        oncology: [
           {
             role: 'agent',
             text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Êtes-vous disponible pour votre suivi entre deux cures de chimiothérapie ?",
@@ -504,10 +506,10 @@ const fr = {
             delayMs: 20500,
           },
         ],
-        'transplantation-hepatique': [
+        cardiac: [
           {
             role: 'agent',
-            text: "Bonjour, je suis Clara l'assistant de suivi du service de transplantation. Je vous appelle concernant votre suivi hebdomadaire post-greffe.",
+            text: "Bonjour, je suis Clara l'assistant de suivi du service de chirurgie cardiaque. Je vous appelle concernant votre suivi post-opératoire. Êtes-vous disponible pour votre suivi ?",
             delayMs: 0,
           },
           {
@@ -517,41 +519,41 @@ const fr = {
           },
           {
             role: 'agent',
-            text: 'Nous sommes à M+2 après votre transplantation. Prenez-vous bien votre traitement immunosuppresseur aux heures fixes ?',
+            text: 'Nous sommes à J+10 après votre pontage coronarien. Comment vous sentez-vous aujourd\'hui ?',
             delayMs: 3000,
           },
           {
             role: 'patient',
-            text: 'Oui, tacrolimus à 8h et 20h tous les jours, sans oubli.',
+            text: 'Je me sens mieux, mais j\'ai encore un peu d\'essoufflement quand je monte les escaliers.',
             delayMs: 5500,
           },
           {
             role: 'agent',
-            text: 'Excellent. Avez-vous constaté de la fièvre, des douleurs abdominales ou une jaunisse ?',
+            text: 'C\'est normal à ce stade. Prenez-vous bien vos traitements ? Bêtabloquants et antiagrégants plaquettaires ?',
             delayMs: 8500,
           },
           {
             role: 'patient',
-            text: 'Non, aucun de ces symptômes. Je me sens bien.',
+            text: 'Oui, je suis bien la prescription. Pas d\'effets secondaires notables.',
             delayMs: 11500,
           },
           {
             role: 'agent',
-            text: 'Parfait. Avez-vous fait votre prise de sang de contrôle cette semaine ? Bilan hépatique et taux de tacrolimus ?',
+            text: 'Parfait. Avez-vous des douleurs thoraciques, des palpitations ou un essoufflement inhabituel ?',
             delayMs: 14500,
           },
           {
             role: 'patient',
-            text: "Oui, hier matin à jeun. J'attends les résultats.",
+            text: 'Non, rien de tout ça. Juste un peu de fatigue normale.',
             delayMs: 17500,
           },
           {
             role: 'agent',
-            text: "Très bien. Respectez-vous les consignes d'hygiène ? Lavage des mains, éviter les contacts avec personnes malades ?",
+            text: 'Très bien. Respectez-vous les consignes de rééducation et les limites d\'effort ?',
             delayMs: 20500,
           },
         ],
-        'chirurgie-esthetique': [
+        aesthetic: [
           {
             role: 'agent',
             text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Je vous appelle concernant votre suivi post-rhinoplastie. Êtes-vous disponible quelques minutes ?",

@@ -181,6 +181,8 @@ export default function PhoneCallControl({ state, onStartCall, onHangupCall }) {
   };
 
   if (isCallActive) {
+    const isConnecting = state === 'connecting';
+    
     return (
       <div
         className="mx-auto mb-3 flex justify-center"
@@ -190,7 +192,12 @@ export default function PhoneCallControl({ state, onStartCall, onHangupCall }) {
       >
         <button
           type="button"
-          className="flex items-center justify-center rounded-full border border-[#be3232] bg-[#dc4343] p-0 text-white shadow-[0_12px_24px_rgba(178,43,43,.3)] transition-all duration-150 ease-out hover:translate-y-px hover:scale-[1.03] hover:shadow-[0_14px_30px_rgba(178,43,43,.35)]"
+          disabled={isConnecting}
+          className={`flex items-center justify-center rounded-full border p-0 text-white shadow-[0_12px_24px_rgba(178,43,43,.3)] transition-all duration-150 ease-out ${
+            isConnecting
+              ? 'border-[#9ca3af] bg-[#d1d5db] cursor-not-allowed opacity-50'
+              : 'border-[#be3232] bg-[#dc4343] hover:translate-y-px hover:scale-[1.03] hover:shadow-[0_14px_30px_rgba(178,43,43,.35)]'
+          }`}
           style={{
             width:
               'calc(var(--medical-phone-frame-width) * ' +

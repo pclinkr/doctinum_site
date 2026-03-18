@@ -340,10 +340,10 @@ const en = {
       headTitlePrefix: 'Interactive simulation of a call by an',
       headTitleAccent: 'AI medical agent',
       domains: [
-        { id: 'orthopedie', label: 'Orthopedics (surgery)' },
-        { id: 'cancer', label: 'Cancer' },
-        { id: 'transplantation-hepatique', label: 'Liver transplant' },
-        { id: 'chirurgie-esthetique', label: 'Cosmetic surgery' },
+        { id: 'ortho', label: 'Orthopedics (surgery)' },
+        { id: 'oncology', label: 'Cancer' },
+        { id: 'cardiac', label: 'Liver transplant' },
+        { id: 'aesthetic', label: 'Cosmetic surgery' },
       ],
       controls: {
         slideToCall: 'Slide',
@@ -362,9 +362,10 @@ const en = {
         liveUnavailable: 'Live unavailable. Running fallback demo...',
       },
       results: {
+        disclaimer: 'Example of structured data that can be extracted from a conversation',
         default: {
           header: 'Structured call summary',
-          title: 'Data collected during the simulation',
+          title: 'Clinical data collected during simulation',
           metricsTitle: 'Captured indicators',
           metrics: [
             { label: 'Primary reason', value: 'Declared symptom signal' },
@@ -381,7 +382,7 @@ const en = {
             body: 'Combination of responses exceeded thresholds defined in the protocol.',
           },
         },
-        orthopedie: {
+        ortho: {
           header: 'Structured call summary',
           title: 'Post-op day 7 follow-up (orthopedics)',
           metricsTitle: 'Captured indicators',
@@ -400,7 +401,7 @@ const en = {
             body: 'Pain >= 6/10 with night discomfort: orthopedics alert threshold triggered.',
           },
         },
-        cancer: {
+        oncology: {
           header: 'Structured call summary',
           title: 'Between-cycle follow-up (oncology)',
           metricsTitle: 'Captured indicators',
@@ -419,26 +420,27 @@ const en = {
             body: 'Fever > 38°C or chills: oncology alert threshold triggered.',
           },
         },
-        'transplantation-hepatique': {
+        cardiac: {
           header: 'Structured call summary',
-          title: 'Post-transplant follow-up (liver)',
+          title: 'Post-op day 10 follow-up (cardiac surgery)',
           metricsTitle: 'Captured indicators',
           metrics: [
             {
-              label: 'Immunosuppressive adherence',
+              label: 'Medication adherence',
               value: 'Reported compliant',
             },
             { label: 'Warning signs', value: 'Not reported' },
+            { label: 'Physical activity', value: 'Progressive restart' },
             { label: 'Lab work', value: 'Done, results pending' },
             { label: 'Hygiene instructions', value: 'Respected' },
           ],
           alert: {
             badge: 'Protocol threshold alert',
-            title: 'Post-transplant threshold crossed',
-            body: 'Fever, abdominal pain, or jaundice: transplant alert threshold triggered.',
+            title: 'Post-cardiac surgery threshold crossed',
+            body: 'Chest pain, shortness of breath or palpitations: cardiac alert threshold triggered.',
           },
         },
-        'chirurgie-esthetique': {
+        aesthetic: {
           header: 'Structured call summary',
           title: 'Post-procedure follow-up (cosmetic surgery)',
           metricsTitle: 'Captured indicators',
@@ -456,7 +458,7 @@ const en = {
         },
       },
       fallbackTranscripts: {
-        orthopedie: [
+        ortho: [
           {
             role: 'agent',
             text: "Hello, I'm the orthopedic agent. What are you feeling today?",
@@ -483,7 +485,7 @@ const en = {
             delayMs: 7600,
           },
         ],
-        cancer: [
+        oncology: [
           {
             role: 'agent',
             text: "Hello, I'm the oncology agent. I'll help you organize your information.",
@@ -510,34 +512,54 @@ const en = {
             delayMs: 8100,
           },
         ],
-        'transplantation-hepatique': [
+        cardiac: [
           {
             role: 'agent',
-            text: "Hello, I'm the liver transplant agent. Let's review your situation together.",
-            delayMs: 600,
+            text: "Hello, I'm the cardiac surgery follow-up agent. I'm calling about your post-operative care.",
+            delayMs: 0,
           },
           {
             role: 'patient',
-            text: 'I need to know which documents to prepare before evaluation.',
-            delayMs: 2400,
+            text: 'Yes, hello. I\'m available.',
+            delayMs: 1500,
           },
           {
             role: 'agent',
-            text: "I'll guide you step by step: history, blood work, and imaging.",
-            delayMs: 4300,
+            text: 'We\'re at day 10 after your coronary bypass surgery. How are you feeling today?',
+            delayMs: 3000,
           },
           {
             role: 'patient',
-            text: "Great, I'd also like to understand typical timelines.",
-            delayMs: 6200,
+            text: 'I feel better, but I still get short of breath when climbing stairs.',
+            delayMs: 5500,
           },
           {
             role: 'agent',
-            text: "Perfect, I'll outline priorities and the recommended order.",
-            delayMs: 8200,
+            text: 'Are you taking your medications properly? Beta-blockers and antiplatelet agents?',
+            delayMs: 8500,
+          },
+          {
+            role: 'patient',
+            text: 'Yes, I follow the prescription exactly. No notable side effects.',
+            delayMs: 11500,
+          },
+          {
+            role: 'agent',
+            text: 'Perfect. Do you have any chest pain, palpitations, or unusual shortness of breath?',
+            delayMs: 14500,
+          },
+          {
+            role: 'patient',
+            text: 'No, none of that. Just some normal fatigue.',
+            delayMs: 17500,
+          },
+          {
+            role: 'agent',
+            text: 'Very good. Are you following the rehabilitation guidelines and activity limits?',
+            delayMs: 20500,
           },
         ],
-        'chirurgie-esthetique': [
+        aesthetic: [
           {
             role: 'agent',
             text: "Hello, I'm the cosmetic surgery agent. What's your primary goal?",
