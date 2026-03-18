@@ -195,7 +195,7 @@ export default function NavBar({
                 onCloseMenu();
               }}
             />
-            <Button onClick={() => handleNavigate('contact')}>
+            <Button onClick={() => handleNavigate('demo')}>
               {t('nav.demo')}
             </Button>
             <button
@@ -261,12 +261,12 @@ export default function NavBar({
               <LanguageSelector />
             </div>
             <div onMouseEnter={() => setOpenMegaId('')}>
-              <Button variant="outline" onClick={() => handleNavigate('blog')}>
+              <Button variant="outline" onClick={() => handleNavigate('contact')}>
                 {t('nav.try')}
               </Button>
             </div>
             <div onMouseEnter={() => setOpenMegaId('')}>
-              <Button onClick={() => handleNavigate('contact')}>
+              <Button onClick={() => handleNavigate('demo')}>
                 {t('nav.bookDemo')}
               </Button>
             </div>
@@ -395,12 +395,12 @@ export default function NavBar({
           </div>
         </div>
 
-        <div className="pointer-events-none z-[3] -mx-5 border-t border-[var(--ink-08)] bg-[var(--bg-overlay-95)] px-5 pb-4 pt-3 shadow-[0_-8px_20px_var(--ink-10)] backdrop-blur-[10px]">
+        <div className="pointer-events-none z-[3] -mx-5 border-t border-[var(--ink-08)] bg-[var(--color-primary)] px-5 pb-4 pt-3 shadow-[0_-8px_20px_var(--ink-10)] backdrop-blur-[10px]">
           <div className="pointer-events-auto grid grid-cols-2 gap-2">
-            <Button variant="outline" onClick={() => handleNavigate('blog')}>
+            <Button variant="light" onClick={() => handleNavigate('contact')}>
               {t('nav.try')}
             </Button>
-            <Button onClick={() => handleNavigate('contact')}>
+            <Button style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-primary)' }} onClick={() => handleNavigate('demo')}>
               {t('nav.bookDemo')}
             </Button>
           </div>

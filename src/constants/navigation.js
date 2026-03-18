@@ -80,7 +80,7 @@ function buildSingleMegaMenu(t, solutionsMenu, enterpriseMenu) {
         buildSectionLink(t('nav.home'), 'home', t('megaMenu.grouped.goHome')),
         buildSectionLink(
           t('nav.bookDemo'),
-          'contact',
+          'demo',
           t('megaMenu.grouped.sectionEntry')
         ),
       ],
@@ -100,7 +100,7 @@ function buildSingleMegaMenu(t, solutionsMenu, enterpriseMenu) {
     title: t('megaMenu.main.title'),
     body: t('megaMenu.main.body'),
     groups,
-    cta: { label: t('nav.bookDemo'), page: 'contact' },
+    cta: { label: t('nav.bookDemo'), page: 'demo' },
   };
 }
 

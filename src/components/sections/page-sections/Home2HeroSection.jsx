@@ -62,7 +62,7 @@ export default function Home2HeroSection({
             </Button>
             <Button
               variant="heroSecondary"
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate('demo')}
             >
               {t('sections.home2.hero.secondaryCta')}
             </Button>

@@ -28,7 +28,7 @@ export default function Home2FinalCtaSection({
         <div className="rev d2 flex flex-wrap justify-center gap-4">
           <Button
             variant="darkPrimary"
-            onClick={() => onNavigate('contact')}
+            onClick={() => onNavigate('demo')}
           >
             {t('sections.home2.finalCta.primaryCta')}
           </Button>

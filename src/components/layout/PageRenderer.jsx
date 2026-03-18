@@ -24,6 +24,7 @@ import {
   NotFoundPage,
   PrivacyPage,
 } from '../../site-pages/ContactPrivacy404Pages';
+import DemoPage from '../../site-pages/DemoPage';
 import {
   LegalNoticePage,
   PrivacyPolicyPage,
@@ -122,6 +123,10 @@ export default function PageRenderer({ pageId }) {
 
   if (pageId === 'contact') {
     return <ContactPage active onNavigate={onNavigate} />;
+  }
+
+  if (pageId === 'demo') {
+    return <DemoPage active onNavigate={onNavigate} />;
   }
 
   if (pageId === 'privacy') {
