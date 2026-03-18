@@ -15,7 +15,7 @@ const fr = {
   nav: {
     cta: 'Discuter de votre projet',
     home: 'Accueil',
-    solutions: 'Solutions',
+    solutions: 'Parcours de soin',
     functioning: 'Fonctionnement',
     editorsApi: 'Éditeurs & API',
     pharmaResearch: 'Pharma & Recherche',
@@ -37,10 +37,10 @@ const fr = {
     },
     main: {
       title: 'Accéder rapidement aux rubriques clés',
-      body: 'Retrouvez en un seul mega menu les solutions, ressources et parcours entreprise.',
+      body: 'Retrouvez en un seul mega menu les parcours de soin, ressources et parcours entreprise.',
     },
     solutions: {
-      eyebrow: 'Solutions',
+      eyebrow: 'Parcours de soin',
       title: 'Parcours de suivi adaptés à chaque contexte clinique',
       body: 'Structurez vos parcours par spécialité, niveau de coordination et niveau de vigilance.',
       groups: [
@@ -148,7 +148,7 @@ const fr = {
     enterprise: {
       eyebrow: 'Entreprise',
       title: 'Donner une voix au suivi patient',
-      body: 'Nous concevons des solutions pour des environnements exigeants',
+      body: 'Nous concevons des parcours de soin pour des environnements exigeants',
       groups: [
         {
           title: 'Vision & équipe',
@@ -264,7 +264,7 @@ const fr = {
       titleMiddle: 'plutôt que',
       titleAccent: 'les autres',
       titleSuffix: '?',
-      otherTitle: 'Autres solutions',
+      otherTitle: 'Autres parcours de soin',
       brandTitle: 'Notre différence',
       otherItems: [
         'Contrats longue durée contraignants',
@@ -2939,6 +2939,63 @@ const fr = {
     businessPlaceholder:
       'Décrivez votre parcours de soins actuel, vos enjeux de suivi patient et ce que vous souhaitez améliorer...',
     submit: 'Planifier un échange confidentiel',
+  },
+  demoPage: {
+    badge: 'Réserver une démo',
+    title: 'Découvrez Doctinum en action',
+    subtitle: 'Planifiez une démonstration personnalisée et découvrez comment notre solution peut transformer votre suivi patient.',
+  },
+  demoForm: {
+    firstName: 'Prénom',
+    lastName: 'Nom',
+    email: 'Email professionnel',
+    phone: 'Téléphone',
+    organization: 'Organisation',
+    service: 'Type de parcours intéressé',
+    services: {
+      surgery: 'Chirurgie & médecine esthétique',
+      sportsMedicine: 'Médecine du sport',
+      dermatology: 'Dermatologie',
+      proms: 'PROMS / Questionnaires post-acte',
+      chronic: 'Parcours chroniques (diabète, insuffisance cardiaque...)',
+      oncology: 'Oncologie / Suivi post-traitement',
+      rehabilitation: 'Rééducation / Kinésithérapie',
+      preventive: 'Médecine préventive / Dépistage',
+      patientSoftware: 'Logiciel de suivi patient',
+      promsSoftware: 'Logiciel PROMS',
+      clinicalStudies: 'Études cliniques (pharma)',
+      croStudies: 'Études CRO',
+      followUpPrograms: 'Programmes de suivi patient',
+      other: 'Autre parcours',
+    },
+    structure: 'Type de structure',
+    structures: {
+      solo: 'Cabinet individuel',
+      group: 'Groupe médical (2-10 praticiens)',
+      clinic: 'Établissement de santé',
+      network: 'Réseau coordonné / Multi-sites',
+      software: 'Éditeur de logiciel / CRO',
+      other: 'Autre',
+    },
+    preferredDate: 'Date souhaitée',
+    timeSlot: 'Créneau horaire préféré',
+    timeSlots: {
+      morning: 'Matin (9h-12h)',
+      midday: 'Midi (12h-14h)',
+      afternoon: 'Après-midi (14h-18h)',
+      evening: 'Soir (18h-20h)',
+    },
+    duration: 'Durée souhaitée',
+    durations: {
+      '30min': '30 minutes',
+      '45min': '45 minutes',
+      '60min': '1 heure',
+      '90min': '1 heure 30',
+    },
+    message: 'Message supplémentaire',
+    messagePlaceholder: 'Décrivez vos besoins spécifiques, les cas d\'usage que vous souhaitez explorer...',
+    required: '* Champs obligatoires',
+    submit: 'Réserver la démo',
   },
   notFound: {
     title: '404',

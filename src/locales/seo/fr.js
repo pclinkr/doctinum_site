@@ -34,6 +34,11 @@ const frSeo = {
     description:
       'Réservez un appel pour discuter de votre stratégie growth, contenu et IA vocale.',
   },
+  demo: {
+    title: 'Réserver une démo | Doctinum',
+    description:
+      'Planifiez une démonstration personnalisée et découvrez comment Doctinum peut transformer votre suivi patient.',
+  },
   privacy: {
     title: 'Politique de confidentialité | Doctinum',
     description:
