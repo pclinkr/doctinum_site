@@ -305,6 +305,12 @@ const fr = {
       controls: {
         slideToCall: 'Glisser',
       },
+      conversion: {
+        title: 'Découvrez notre plateforme',
+        message: 'Vous avez testé plusieurs fois nos appels live. Il est temps de découvrir toute la puissance de notre plateforme dans une vraie démo.',
+        demoButton: 'Réserver une démo',
+        cancelButton: 'Annuler',
+      },
       transcript: {
         agent: 'Agent',
         patient: 'Patient',
@@ -317,6 +323,7 @@ const fr = {
         callFinished: 'Appel terminé',
         fallbackCompleted: 'Démo fallback terminée',
         liveUnavailable: 'Live indisponible. Lancement de la démo fallback...',
+        rateLimitExceeded: 'Lancement de la démo...',
       },
       results: {
         disclaimer: "Voici un exemple de données pouvant être extraites dans le cadre d'un protocole: ",
@@ -2623,8 +2630,12 @@ const fr = {
           "Entre deux consultations, les patients vivent. Leurs symptômes évoluent, leurs questions s'accumulent. Ces données critiques restent invisibles — non par manque de volonté, mais parce que le canal disponible était le mauvais.",
         stats: [
           {
-            value: '40–50%',
+            value: '+40%',
             label: 'de patients perdus de vue\nen études cliniques',
+          },
+          {
+            value: '47%',
+            label: 'patients avec pathologie chronique sans modalité de suivi à distance',
           },
           {
             value: '4',
@@ -2639,9 +2650,13 @@ const fr = {
           "Ce n'est pas un problème d'engagement. Les patients ne sont pas démotivés. C'est une <strong>incompatibilité structurelle entre le canal et la contrainte clinique.</strong>",
         body: "Les applications supposent une capacité d'action que l'état post-chimio, post-opératoire ou simplement la fragilité rendent impossible. Le suivi fiable ne peut pas reposer sur la motivation du patient.",
         statPill: {
-          value: '40–50%',
-          label: 'de lost-to-follow-up moyen · Kyte et al., 2016',
+          value: '47%',
+          label: 'des patients avec pathologie chronique n\'ont accès à aucune modalité de suivi à distance (Lenfant et al., JAMA 2026)',
         },
+        // statPill: {
+        //   value: '40-50%',
+        //   label: 'de lost-to-follow-up moyen · Kyte et al., 2016',
+        // },
         barriers: [
           {
             title: 'État clinique',

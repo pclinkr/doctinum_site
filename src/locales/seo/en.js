@@ -1,8 +1,8 @@
 const enSeo = {
   home: {
-    title: 'Doctinum | Creative Growth Partner',
+    title: 'Doctinum | Clinical Voice AI Infrastructure for Patient Follow-up',
     description:
-      'Creative systems, social content, and AI voice workflows to help brands scale organic growth.',
+      'Voice AI that applies your medical protocols, triggers structured follow-up between consultations, and surfaces actionable signals — under medical supervision. HDS hosting in France.',
   },
   about: {
     title: 'About | Doctinum',
@@ -12,27 +12,27 @@ const enSeo = {
   'case-studies': {
     title: 'Case Studies | Doctinum',
     description:
-      'Real execution examples with strategy, creative testing, and growth outcomes.',
+      'Real patient voice follow-up deployments: protocols, clinical results, and field feedback.',
   },
   'case-detail': {
     title: 'Case Detail | Doctinum',
     description:
-      'Detailed breakdown of a complete growth and content execution cycle.',
+      'Detailed analysis of a patient voice follow-up deployment: protocol, implementation, and measured results.',
   },
   blog: {
     title: 'Blog | Doctinum',
     description:
-      'Playbooks, insights, and practical tactics for creative-led growth.',
+      'Insights, analyses, and field experience on patient voice follow-up and clinical AI infrastructure.',
   },
   'blog-post': {
-    title: 'Growth Blueprint | Doctinum',
+    title: 'Article | Doctinum',
     description:
-      'A practical blueprint to structure monthly organic growth through content systems.',
+      'In-depth analysis on patient voice follow-up, clinical protocols, and AI infrastructure in healthcare.',
   },
   contact: {
     title: 'Contact | Doctinum',
     description:
-      'Book a call and discuss your growth, content, and AI voice strategy.',
+      'Let\'s discuss your clinical context and evaluate together the relevance of a patient voice follow-up pilot project.',
   },
   privacy: {
     title: 'Privacy Policy | Doctinum',
@@ -107,6 +107,55 @@ const enSeo = {
   404: {
     title: 'Page Not Found | Doctinum',
     description: 'The page you requested could not be found.',
+  },
+  'pharma-research': {
+    title: 'Pharma & Research | Doctinum',
+    description:
+      'Voice infrastructure for PRO endpoint collection and lost-to-follow-up reduction in clinical studies. ICH E6 compatible, timestamped audit trail.',
+  },
+  'functioning-demo': {
+    title: 'Demo | Doctinum',
+    description:
+      'Discover how structured voice follow-up works with Doctinum in realistic conditions.',
+  },
+  'functioning-features': {
+    title: 'Features | Doctinum',
+    description:
+      'Core capabilities and configuration options of the Doctinum clinical voice infrastructure.',
+  },
+  'enterprise-partnerships': {
+    title: 'Experimentation & Partnerships | Doctinum',
+    description:
+      'Pilots, research protocols, and strategic collaborations with Doctinum.',
+  },
+  styleguide: {
+    title: 'Styleguide | Doctinum',
+    description: 'Internal UI reference and design system for Doctinum.',
+  },
+  'coordinated-chronic-pathways': {
+    title: 'Coordinated Chronic Pathways | Doctinum',
+    description:
+      'Voice follow-up infrastructure for chronic pathways with shared visibility across care teams and enhanced coordination.',
+  },
+  demo: {
+    title: 'Book a Demo | Doctinum',
+    description:
+      'Schedule a personalized demonstration and discover how Doctinum can transform your patient follow-up.',
+  },
+  'patient-support-programs': {
+    title: 'Patient Support Programs | Doctinum',
+    description:
+      'Voice AI infrastructure to apply your support protocols, maintain regular patient contact, and structure feedback over time.',
+  },
+  'editors-api': {
+    title: 'Editors & API | Doctinum',
+    description:
+      'Integrate a voice infrastructure capable of applying follow-up protocols, contacting patients, and structuring declarative feedback via API.',
+  },
+  'prevention-workplace-health': {
+    title: 'Prevention & Workplace Health | Doctinum',
+    description:
+      'Longitudinal voice follow-up system to engage employees in prevention programs and structure indicators over time.',
   },
 };
 

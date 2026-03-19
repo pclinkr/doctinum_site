@@ -2,13 +2,14 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from '../locales/en';
 import fr from '../locales/fr';
-import { home2En, home2Fr } from '../locales/home2';
+import enHome2 from '../locales/en_home2';
+import frHome2 from '../locales/fr_home2';
 
 const enTranslation = {
   ...en,
   sections: {
     ...(en.sections || {}),
-    home2: home2En,
+    home2: enHome2,
   },
 };
 
@@ -16,7 +17,7 @@ const frTranslation = {
   ...fr,
   sections: {
     ...(fr.sections || {}),
-    home2: home2Fr,
+    home2: frHome2,
   },
 };
 

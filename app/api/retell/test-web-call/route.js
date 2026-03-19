@@ -1,80 +1,65 @@
 import { NextResponse } from 'next/server';
-
-const RETELL_API_URL = 'https://api.retellai.com/v2/create-web-call';
+import { getClientIdentifier, getOrCreateSessionId, setSessionCookie } from '../../../../services/sessionService.js';
+import { checkRateLimits, incrementCallCount, incrementDailyBudget } from '../../../../services/rateLimitService.js';
+import { createRetellWebCall } from '../../../../services/retellService.js';
 
 export async function POST(request) {
   try {
     const payload = await request.json();
     const { agentId, metadata, retell_llm_dynamic_variables } = payload;
 
-    const apiKey = process.env.RETELL_DEMO_API_KEY;
-    if (!apiKey) {
+    // Get client identifiers
+    const ip = getClientIdentifier(request);
+    const sessionId = await getOrCreateSessionId();
+
+    // Check rate limits
+    const rateLimitResult = await checkRateLimits(ip, sessionId);
+
+    if (!rateLimitResult.allowed) {
       return NextResponse.json(
         {
-          error: 'missing_api_key',
-          message: 'DOCTINUM_DEMO_API_KEY is not configured on the server',
+          error: rateLimitResult.reason,
+          message: rateLimitResult.message,
+          callCount: rateLimitResult.callCount,
         },
-        { status: 500 }
+        { status: 429 }
       );
     }
 
-    const retellPayload = {
-      agent_id: agentId || process.env.ORTHO_RETELL_AGENT_ID,
-      agent_version: 0,
-    };
-
-    if (metadata) {
-      retellPayload.metadata = metadata;
-    }
-
-    retellPayload.retell_llm_dynamic_variables = {
-      next_call_time: "neuf heures demain matin",
-      organization_name_with_article: "la Clinique Lumière",
-      patient_name: "Jean Dupont",
-      recall_time: "neuf heures",
-      say_trust_phrase: "false",
-      trust_phrase: "himalaya",
-      ask_consent: "true",
-      authenticate_with_year_of_birth: "false",
-      organization_name_with_from: "de la Clinique Lumière",
-      authenticate_with_pin_code: "false",
-      test_mode: "true",
-      ...retell_llm_dynamic_variables
-    };
-
-    const retellResponse = await fetch(RETELL_API_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(retellPayload),
+    // Create Retell web call
+    const retellData = await createRetellWebCall({
+      agentId,
+      metadata,
+      retell_llm_dynamic_variables,
     });
 
-    if (!retellResponse.ok) {
-      const errorText = await retellResponse.text();
-      console.error('Retell API error:', retellResponse.status, errorText);
-      return NextResponse.json(
-        {
-          error: 'retell_api_failed',
-          message: `Retell API returned status ${retellResponse.status}`,
-          details: errorText,
-        },
-        { status: retellResponse.status }
-      );
-    }
-
-    const retellData = await retellResponse.json();
+    // Track the call
+    await Promise.all([
+      incrementCallCount(ip, sessionId),
+      incrementDailyBudget(2), // Estimate 2 minutes per call
+      setSessionCookie(sessionId),
+    ]);
 
     return NextResponse.json({
-      data: {
-        accessToken: retellData.access_token,
-        callId: retellData.call_id,
-        agentId: retellData.agent_id,
-      },
+      data: retellData,
+      callCount: rateLimitResult.callCount + 1,
     });
   } catch (error) {
     console.error('Error in /api/retell/test-web-call:', error);
+
+    // Handle Retell API errors with specific status codes
+    if (error.status) {
+      return NextResponse.json(
+        {
+          error: 'retell_api_failed',
+          message: error.message,
+          details: error.details,
+        },
+        { status: error.status }
+      );
+    }
+
+    // Handle other errors
     return NextResponse.json(
       {
         error: 'internal_error',

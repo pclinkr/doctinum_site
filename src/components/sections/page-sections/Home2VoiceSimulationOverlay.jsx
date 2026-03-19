@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import VoiceCallPhone from '../../ui/VoiceCallPhone';
 import VoiceTranscriptPanel from '../../ui/VoiceTranscriptPanel';
+import ConversionModal from '../../ui/ConversionModal';
 import { getRetellWebClientClass } from '../../../lib/retellWebCall';
 
 const DEFAULT_ENDPOINT_TEMPLATE = '/api/retell/test-web-call';
@@ -86,6 +87,7 @@ export default function Home2VoiceSimulationOverlay({
   const [orbMode, setOrbMode] = useState('listening');
   const [callStatusLabel, setCallStatusLabel] = useState('');
   const [transcriptEntries, setTranscriptEntries] = useState([]);
+  const [showConversionModal, setShowConversionModal] = useState(false);
 
   const callAttemptIdRef = useRef(0);
   const retellClientRef = useRef(null);
@@ -93,6 +95,7 @@ export default function Home2VoiceSimulationOverlay({
   const fallbackAudioRef = useRef(null);
   const ringAudioRef = useRef(null);
   const fallbackTimerIdsRef = useRef([]);
+  const maxDurationTimerRef = useRef(null);
   const autoLaunchDoneRef = useRef(false);
   const modalFrameRef = useRef(null);
   const [modalFrameRect, setModalFrameRect] = useState(null);
@@ -126,10 +129,26 @@ export default function Home2VoiceSimulationOverlay({
   );
 
   const clearFallbackTimers = () => {
-    fallbackTimerIdsRef.current.forEach((timerId) =>
-      window.clearTimeout(timerId)
-    );
+    fallbackTimerIdsRef.current.forEach((id) => {
+      window.clearTimeout(id);
+      window.clearInterval(id);
+    });
     fallbackTimerIdsRef.current = [];
+  };
+
+  const clearMaxDurationTimer = () => {
+    if (maxDurationTimerRef.current) {
+      window.clearTimeout(maxDurationTimerRef.current);
+      maxDurationTimerRef.current = null;
+    }
+  };
+
+  const startMaxDurationTimer = () => {
+    clearMaxDurationTimer();
+    // 2 minutes = 120000 ms
+    maxDurationTimerRef.current = window.setTimeout(() => {
+      hangupCallFromPhone();
+    }, 120000);
   };
 
   const stopFallbackAudio = () => {
@@ -158,6 +177,16 @@ export default function Home2VoiceSimulationOverlay({
     ringAudioRef.current = null;
   };
 
+  const handleConversionDemo = () => {
+    setShowConversionModal(false);
+    window.location.href = '/demo';
+  };
+
+  const handleConversionCancel = () => {
+    setShowConversionModal(false);
+    runFallbackDemo('rateLimitExceeded');
+  };
+
   const stopRetellClient = async () => {
     if (!retellClientRef.current) return;
 
@@ -179,6 +208,7 @@ export default function Home2VoiceSimulationOverlay({
       await stopRetellClient();
       stopFallbackAudio();
       clearFallbackTimers();
+      
       
       // Jouer le son de sonnerie avant le fallback
       playRingAudio();
@@ -251,6 +281,7 @@ export default function Home2VoiceSimulationOverlay({
           // Arrêter le son de sonnerie au début de la première ligne
           if (index === 0) {
             stopRingAudio();
+            startMaxDurationTimer();
           }
           setOrbModeFromRole(entry.role);
           setTranscriptEntries((currentEntries) => [
@@ -319,13 +350,26 @@ export default function Home2VoiceSimulationOverlay({
         }),
       });
 
+      const webCallPayload = await webCallResponse.json();
+      
+      // Handle rate limit or budget exceeded
       if (!webCallResponse.ok) {
+        if (webCallResponse.status === 429) {
+          stopRingAudio();
+          setCallState('idle');
+          setCallStatusLabel('');
+          setOrbMode('listening');
+          
+          // Show conversion modal
+          setShowConversionModal(true);
+          return;
+        }
+        
         throw new Error(
           `Backend request failed with status ${webCallResponse.status}`
         );
       }
-
-      const webCallPayload = await webCallResponse.json();
+      
       if (callAttemptIdRef.current !== attemptId) return;
 
       const accessToken = extractAccessToken(webCallPayload);
@@ -359,6 +403,8 @@ export default function Home2VoiceSimulationOverlay({
           stopRingAudio();
           return;
         }
+        stopRingAudio();
+        startMaxDurationTimer();
         setCallState('live');
         setCallStatusLabel(t('sections.medicalVoice.status.liveRunning'));
         setOrbMode('listening');
@@ -435,6 +481,7 @@ export default function Home2VoiceSimulationOverlay({
   const hangupCallFromPhone = async () => {
     callAttemptIdRef.current = Date.now();
     clearFallbackTimers();
+    clearMaxDurationTimer();
     stopFallbackAudio();
     stopRingAudio();
     await stopRetellClient();
@@ -449,6 +496,7 @@ export default function Home2VoiceSimulationOverlay({
   useEffect(() => {
     return () => {
       clearFallbackTimers();
+      clearMaxDurationTimer();
       stopFallbackAudio();
       stopRingAudio();
       stopRetellClient();
@@ -679,6 +727,12 @@ export default function Home2VoiceSimulationOverlay({
           </div>
         </div>
       </div>
+
+      <ConversionModal
+        isOpen={showConversionModal}
+        onCancel={handleConversionCancel}
+        onDemo={handleConversionDemo}
+      />
     </div>
   );
 }

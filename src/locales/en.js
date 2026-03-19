@@ -348,6 +348,12 @@ const en = {
       controls: {
         slideToCall: 'Slide',
       },
+      conversion: {
+        title: 'Discover our platform',
+        message: 'You have tested our live calls multiple times. It\'s time to discover the full power of our platform in a real demo.',
+        demoButton: 'Book a demo',
+        cancelButton: 'Cancel',
+      },
       transcript: {
         agent: 'Agent',
         patient: 'Patient',
@@ -360,6 +366,7 @@ const en = {
         callFinished: 'Call finished',
         fallbackCompleted: 'Fallback demo completed',
         liveUnavailable: 'Live unavailable. Running fallback demo...',
+        rateLimitExceeded: 'Running demo...',
       },
       results: {
         disclaimer: 'Example of structured data that can be extracted from a conversation',
@@ -1953,36 +1960,958 @@ const en = {
           cta: 'View API documentation',
         },
       },
+      patientSupport: {
+        hero: {
+          title: 'Patient Support Programs',
+          subtitle:
+            'A hybrid system that frees up time for your support teams by automating routine calls, while keeping critical decisions and empathy under human control.',
+          cta1: 'Evaluate a pilot project',
+          cta2: 'Explore an integration',
+        },
+        challenge: {
+          title:
+            'Patient support relies on continuity that is difficult to maintain.',
+          items: [
+            {
+              title: 'In many support programs:',
+              listItems: [
+                'patients are followed for several weeks or months',
+                'teams must maintain regular contact',
+                'indicators are collected at defined intervals',
+              ],
+            },
+            {
+              title: 'But in practice:',
+              listItems: [
+                'manual follow-ups are time-consuming',
+                'engagement decreases over time',
+                'data is heterogeneous',
+                'interactions are poorly structured',
+              ],
+            },
+            {
+              title: 'Impact on teams:',
+              listItems: [
+                'considerable time spent on repetitive routine calls',
+                'less availability for complex cases requiring expertise and empathy',
+                'difficulty prioritizing patients who truly need attention',
+              ],
+            },
+          ],
+        },
+        protocol: {
+          title: 'Apply your support protocols at scale.',
+          subtitle:
+            'The system enables structured follow-up by applying protocols defined by your program. Each program can define:',
+          items: [
+            {
+              title: 'call frequency',
+              description: 'Rhythm adapted to protocol',
+            },
+            {
+              title: 'declarative indicators to track',
+              description: 'Structured data',
+            },
+            {
+              title: 'alert thresholds',
+              description: 'Vigilance criteria',
+            },
+            {
+              title: 'program duration',
+              description: 'Defined follow-up period',
+            },
+          ],
+          footer:
+            'The system automatically applies this protocol to routine calls, freeing your teams to focus on patients requiring special attention.',
+        },
+        engagement: {
+          sectionTitle: 'Maintain engagement over time',
+          title: 'The voice channel: a simple and universal link',
+          description:
+            'Digital tools (apps, portals, web questionnaires) assume availability, motivation, and digital familiarity. The phone remains accessible to all patient profiles.',
+          items: [
+            'No app to install',
+            'Simple and natural interaction',
+            'Accessible regardless of digital literacy',
+          ],
+          description2: 'For your teams:',
+          items2: [
+            'Time saved on routine calls',
+            'Focus on cases requiring empathy and expertise',
+            'Supervision of priority alerts only',
+          ],
+        },
+        structuredReturns: {
+          title:
+            'Transform exchanges into exploitable longitudinal data.',
+          description: 'Each interaction collects:',
+          items: [
+            'declarative symptoms',
+            'treatment perception',
+            'protocol adherence',
+            'declarative side effects',
+            'quality of life indicators',
+          ],
+          description2: 'Responses are:',
+          items2: ['structured', 'historized', 'analyzable over time'],
+        },
+        useCases: {
+          title: 'Typical use cases',
+          cards: [
+            {
+              title: 'Therapeutic adherence programs',
+              description:
+                'Treatment adherence monitoring in chronic pathologies.',
+              gradient: 'var(--gradient-accent-warm)',
+            },
+            {
+              title: 'Post-hospitalization support',
+              description: 'Follow-up after home return.',
+              gradient: 'var(--gradient-accent-cool)',
+            },
+            {
+              title: 'Therapeutic education',
+              description: 'Indicator tracking between sessions.',
+              gradient: 'var(--gradient-accent-warm-terra)',
+            },
+            {
+              title: 'Pharma support programs',
+              description:
+                'Maintaining patient connection in PSP programs.',
+              gradient: 'var(--gradient-accent-cool-overlay)',
+            },
+          ],
+        },
+        teams: {
+          sectionTitle: 'For support teams',
+          title: 'A hybrid human-AI system',
+          description:
+            'AI handles standardized routine calls. Teams remain essential for empathy, critical decisions, and complex situations.',
+          items: [
+            'Automated routine calls (D+7, D+14, D+30...)',
+            'Indicator collection and structuring',
+            'Alert signal detection according to your criteria',
+          ],
+          description2: 'Teams focus on:',
+          items2: [
+            'Patients triggering alerts',
+            'Situations requiring empathy and expertise',
+            'Medical decisions and protocol adjustments',
+          ],
+          footer:
+            'AI automates repetitive tasks, humans keep control over what matters.',
+        },
+        platforms: {
+          sectionTitle: 'For platforms and operators',
+          title: 'Infrastructure integrable into your systems',
+          description:
+            'Standalone solution, integrable module, or complementary channel to existing applications.',
+          items: [
+            'Secure API and structured data export',
+            'Dashboard integration and protocol planning',
+            'Configurable human supervision',
+          ],
+        },
+      },
+      prevention: {
+        hero: {
+          title:
+            'Multiply engagement in your prevention programs by 5',
+          subtitle:
+            'Transform your workplace health initiatives into structured programs with automated voice follow-up achieving over 75% engagement rate. Collect reliable longitudinal data without overloading your teams.',
+          cta1: 'Request a demo',
+          cta2: 'Discuss your context',
+        },
+        metrics: [
+          {
+            value: '75%',
+            label: 'Participation rate',
+            description: 'instead of 15% for classic apps',
+          },
+          {
+            value: '5x',
+            label: 'More engagement',
+            description: 'Maintained over time',
+          },
+          {
+            value: '-40%',
+            label: 'MSDs sick leave',
+            description: 'After 6 months of follow-up',
+          },
+        ],
+        fieldObservation: {
+          title:
+            'Prevention programs fail due to lack of engagement',
+          intro:
+            'You invest in prevention programs, but results don\'t follow. 85% of employees abandon health apps after 3 weeks. Manual follow-up is time-consuming and irregular.',
+          blocks: [
+            {
+              title: '15% average engagement rate',
+              description:
+                'Prevention apps lose 85% of users after 3 weeks. Impossible to collect reliable longitudinal data.',
+            },
+            {
+              title: 'Fragmented and unusable data',
+              description:
+                'Punctual questionnaires don\'t allow tracking evolution over time. Impossible to identify trends or adapt programs.',
+            },
+            {
+              title: 'Significant administrative burden',
+              description:
+                'HR and OSH teams spend hours following up with participants and manually compiling data. Program ROI becomes negative.',
+            },
+            {
+              title: 'Exclusion of vulnerable populations',
+              description:
+                'Employees uncomfortable with digital or without smartphones are excluded from programs. You lose 30% of your target.',
+            },
+          ],
+          footer:
+            'Without regular engagement and structured data, your prevention programs generate no measurable impact.',
+        },
+        approach: {
+          title: 'Automated follow-up generating 75% participation',
+          intro:
+            'The phone is universal, familiar, and requires no installation. Scheduled voice calls enable regular follow-up without effort for your teams.',
+          steps: [
+            {
+              title: 'Program co-construction (1 week)',
+              description:
+                'We define together follow-up indicators, call frequency, and alert criteria according to your business objectives.',
+            },
+            {
+              title: 'Participant enrollment (2 days)',
+              description:
+                'Clear information about the system, informed consent, and registration with just a phone number. No app to download.',
+            },
+            {
+              title: 'Automated voice calls',
+              description:
+                'Regular calls (weekly, bi-monthly...) collect defined indicators. Average duration: 3-5 minutes. Response rate: 75%.',
+            },
+            {
+              title: 'Real-time structuring and analysis',
+              description:
+                'Responses are automatically transcribed, structured, and analyzed according to your criteria. Automatic alerts if thresholds exceeded.',
+            },
+            {
+              title: 'Dashboards and exports',
+              description:
+                'Real-time access to aggregated and individual data. CSV exports for your analyses. Automatic monthly reports.',
+            },
+          ],
+        },
+        whyVoice: {
+          title: 'Why voice generates 5x more engagement than apps',
+          blocks: [
+            {
+              title: '100% accessibility',
+              description:
+                'All your employees have a phone. No smartphone required, no installation, no forgotten password.',
+            },
+            {
+              title: 'Zero friction',
+              description:
+                'The employee receives a call, picks up, and answers. 3 minutes flat. No login, no navigation, no abandonment.',
+            },
+            {
+              title: 'Natural and rich expression',
+              description:
+                'Voice allows nuancing responses and expressing feelings that a multiple-choice questionnaire cannot capture.',
+            },
+            {
+              title: 'Integrated automatic reminders',
+              description:
+                'The scheduled call acts as a reminder. No need to manually follow up. Response rate maintained over time.',
+            },
+          ],
+          footer:
+            'Result: 75% participation rate vs 15% for classic prevention apps.',
+        },
+        useCases: {
+          title: 'Use cases with expected results',
+          cards: [
+            {
+              title: 'MSD prevention (industry, logistics)',
+              description:
+                'Weekly collection of pain and discomfort. Early identification of at-risk situations. 40% reduction in MSD-related sick leave after 6 months.',
+            },
+            {
+              title: 'Stress management programs (tertiary)',
+              description:
+                'Bi-monthly self-assessment of stress, fatigue, and mental workload. Automatic alerts if deterioration. Participation rate: 78% over 12 months.',
+            },
+            {
+              title: 'Physical activity programs (all sectors)',
+              description:
+                'Declarative tracking of activity, motivation, and obstacles. Personalized voice coaching. Engagement maintained 3x higher than apps.',
+            },
+            {
+              title: 'Return to work post-leave (HR/OSH)',
+              description:
+                'Progressive return support. Early detection of difficulties. 30% reduction in relapses and prolonged leaves.',
+            },
+            {
+              title: 'Global wellness programs (QWL)',
+              description:
+                'Perceived health, sleep, nutrition indicators. Longitudinal vision of QWL action impact. Measurable program ROI.',
+            },
+          ],
+        },
+        beyondAgent: {
+          title:
+            'Exploitable data that proves your program impact',
+          description:
+            'Unlike punctual questionnaires, regular voice follow-up generates structured longitudinal data. You can finally:',
+          items: [
+            'measure real indicator evolution over time (before/after)',
+            'identify at-risk populations and trends by department/site',
+            'prove your prevention program ROI with quantified data',
+            'adapt your actions in real-time based on field feedback',
+            'produce automatic reports for management and employee representatives',
+          ],
+        },
+        organizations: {
+          title: 'Who deploys these voice follow-up programs',
+          cards: [
+            {
+              title: 'Companies (HR, QWL, HSE)',
+              description:
+                'MSD, stress, wellness prevention programs. Post-leave follow-up. QWL action impact measurement. Employee representative and management reporting.',
+            },
+            {
+              title: 'Occupational health services (OHS)',
+              description:
+                'Exposed employee cohort follow-up. Longitudinal studies. Early risk detection. Medical visit optimization.',
+            },
+            {
+              title: 'Insurers and mutuals',
+              description:
+                'Prevention programs for insured. Claims reduction. Health pathway engagement. Competitive differentiation.',
+            },
+            {
+              title: 'Health and wellness providers',
+              description:
+                'Offer enrichment with voice follow-up. Competitive differentiation. Impact data for your clients. Scalability without hiring.',
+            },
+          ],
+        },
+        regulatory: {
+          title: 'Compliance and data security',
+          description:
+            'An organizational tool compliant with GDPR and occupational health requirements',
+          certifications: [
+            {
+              badge: 'HDS',
+              label: 'Certified host',
+            },
+            {
+              badge: 'GDPR',
+              label: 'Compliant',
+            },
+            {
+              badge: 'HIPAA',
+              label: 'Compliant',
+            },
+          ],
+          items: [
+            'HDS-certified health data hosting (Health Data Host)',
+            'GDPR compliance: informed consent, right of access, rectification, and erasure',
+            'Labor Code compliance: aggregated data anonymization, confidentiality',
+            'Organizational tool (not medical device): declarative information collection',
+            'No medical diagnosis: data are prevention indicators',
+            'Complementary to health professionals: does not replace medical follow-up',
+          ],
+        },
+        pilot: {
+          title: '3-month pilot to measure impact on your population',
+          description:
+            'We deploy a pilot on a sample of employees (50-200 people) to measure engagement, data quality, and ROI before large-scale deployment.',
+          steps: [
+            'Program and indicator co-construction (1 week)',
+            'Technical setup and participant enrollment (1 week)',
+            'Experimentation phase with regular voice follow-up (3 months)',
+            'Results analysis and deployment recommendations (1 week)',
+          ],
+          objectives: 'Measured objectives:',
+          objectiveItems: [
+            'Participation and engagement rate over time',
+            'Quality and usability of collected data',
+            'Participant and HR/OSH team satisfaction',
+            'Estimated ROI of large-scale deployment',
+          ],
+        },
+        finalCta: {
+          title: 'Deploy a 3-month pilot in your organization',
+          subtitle:
+            'Let\'s discuss your context and prevention challenges for 30 minutes. We\'ll propose an adapted pilot with measurable objectives and projected ROI.',
+          primaryCta: 'Schedule a confidential discussion',
+          secondaryCta: 'Receive documentation',
+        },
+      },
+    },
+    editorsApi: {
+      hero: {
+        title: 'Add a medical voice agent to your platform',
+        subtitle:
+          'Easily and securely integrate a structured voice channel via API without worrying about call, conversation, or data extraction issues',
+        description:
+          'The infrastructure integrates via API and enables adding a structured voice channel without developing your own call system.',
+        cta1: 'Explore integration',
+        cta2: 'Request sandbox access',
+      },
+      problem: {
+        title:
+          'Patient follow-up platforms all encounter the same limitation',
+        intro:
+          'Digital solutions today enable patient follow-up via apps or questionnaires. But patient engagement remains difficult to maintain over time.',
+        blocks: [
+          {
+            title: 'Incomplete questionnaires',
+            description:
+              'Digital questionnaires frequently remain uncompleted.',
+          },
+          {
+            title: 'Human follow-ups',
+            description:
+              'Teams must manually follow up with patients.',
+          },
+          {
+            title: 'Fragmented interactions',
+            description: 'Information comes through different channels.',
+          },
+          {
+            title: 'Variable digital engagement',
+            description:
+              'Some patients use apps or portals infrequently.',
+          },
+        ],
+        footer:
+          'A follow-up protocol is only effective if patients actually respond.',
+      },
+      infrastructure: {
+        title: 'A voice infrastructure designed for health platforms',
+        blocks: [
+          {
+            title: 'Configurable protocols',
+            description:
+              'Call scenarios are defined from existing protocols or questionnaires.',
+          },
+          {
+            title: 'Longitudinal follow-up',
+            description:
+              'Each interaction is historized and structured over time.',
+          },
+          {
+            title: 'Medical supervision',
+            description:
+              'The system acts as an organizational tool supervised by teams.',
+          },
+        ],
+      },
+      transform: {
+        title: 'Transform your patient questionnaires into voice calls',
+        description:
+          'If your platform already uses patient questionnaires (PROMS, ePRO, self-assessments, follow-up questionnaires), they can be transformed into structured voice call protocols. Responses are then sent back to your system as structured data.',
+        items: ['PROMS', 'ePRO', 'Self-assessment', 'Follow-up questionnaire'],
+      },
+      architecture: {
+        title: 'Integration architecture',
+        steps: [
+          'Your platform',
+          'API',
+          'Voice infrastructure',
+          'Patient call',
+          'Analysis',
+          'Data webhook',
+          'Your system',
+        ],
+        description:
+          'The infrastructure can be integrated via API and webhooks. Your platform retains product logic and receives structured data.',
+      },
+      apiExample: {
+        title: 'API logic example',
+        examples: [
+          {
+            title: 'Create a patient in a workspace',
+            method: 'POST',
+            endpoint: 'api/public/v1/patients',
+            body: '{\n  "workspace_id": "ws_123",\n  "first_name": "Marie",\n  "last_name": "Dupont",\n  "phone": "+33612345678"\n}',
+          },
+          {
+            title: 'Start a follow-up',
+            method: 'POST',
+            endpoint: 'api/public/v1/follow-up',
+            body: '{\n  "patient_id": "pat_456",\n  "agent_id": "agent_789"\n}',
+          },
+          {
+            title: 'Receive data',
+            method: 'WEBHOOK',
+            endpoint: 'Webhook JSON',
+            response:
+              '{\n  "call_id": "call_abc",\n  "patient_id": "pat_456",\n  "responses": [\n    {\n      "question": "Pain (0-10)",\n      "answer": "3"\n    }\n  ]\n}',
+          },
+        ],
+      },
+      integrationCases: {
+        title: 'Platforms that can integrate the voice module',
+        cards: [
+          {
+            title: 'Remote monitoring',
+            description: 'Remote patient follow-up.',
+            gradient: 'var(--gradient-accent-warm)',
+          },
+          {
+            title: 'Pathway coordination',
+            description: 'Post-hospitalization follow-up.',
+            gradient: 'var(--gradient-accent-cool)',
+          },
+          {
+            title: 'RWE platforms',
+            description: 'Longitudinal patient data collection.',
+            gradient: 'var(--gradient-accent-warm-terra)',
+          },
+          {
+            title: 'Patient record software',
+            description: 'Complement digital interactions.',
+            gradient: 'var(--gradient-accent-cool-overlay)',
+          },
+          {
+            title: 'Prevention programs',
+            description: 'Regular patient engagement.',
+            gradient: 'var(--gradient-accent-warm)',
+          },
+        ],
+      },
+      questionnaireCreation: {
+        title: 'Creating a call from a questionnaire',
+        description:
+          'Already have a questionnaire? Your form becomes a structured voice call.',
+        items: [
+          'JSON import',
+          'Simple mapping',
+          'Conditional logic definition',
+          'Automatic scheduling',
+        ],
+      },
+      pricing: {
+        title: 'Pricing',
+        leftTitle: 'Contact us for:',
+        leftItems: [
+          'Monthly platform package',
+          'Conversation time billing',
+          'Credit packs',
+        ],
+        rightTitle: 'Plans',
+        rightItems: ['Starter', 'Growth', 'Enterprise: Negotiated volume'],
+      },
+      collaborationModels: {
+        title: 'Different integration models',
+        models: [
+          {
+            title: 'Full API',
+            description: 'Native product integration.',
+          },
+          {
+            title: 'Pilot project',
+            description: 'Limited experimentation.',
+          },
+          {
+            title: 'Product partnership',
+            description: 'Co-development.',
+          },
+        ],
+      },
+      finalCta: {
+        title: 'Add a voice layer to your platform',
+        subtitle:
+          'Let\'s discuss integration possibilities with your solution.',
+        primaryCta: 'Request sandbox access',
+        secondaryCta: 'Schedule a technical discussion',
+      },
+    },
+    vision: {
+      hero: {
+        eyebrow: 'Clinical voice infrastructure',
+        title: 'The missing channel for patient follow-up.',
+        subtitle:
+          'Between consultations, patients live. Their symptoms evolve, their questions accumulate. This critical data remains invisible — not from lack of will, but because the available channel was wrong.',
+        stats: [
+          {
+            value: '40–50%',
+            label: 'patients lost to follow-up\nin clinical studies',
+          },
+          {
+            value: '4',
+            label: 'clinical infrastructure\nengines built',
+          },
+        ],
+      },
+      problem: {
+        label: 'The real problem',
+        title: 'A structural incompatibility',
+        intro:
+          'This is not an engagement problem. Patients are not unmotivated. It is a <strong>structural incompatibility between the channel and the clinical constraint.</strong>',
+        body: 'Apps assume an action capacity that post-chemo, post-operative state, or simply fragility makes impossible. Reliable follow-up cannot rely on patient motivation.',
+        statPill: {
+          value: '40–50%',
+          label: 'average lost-to-follow-up · Kyte et al., 2016',
+        },
+        barriers: [
+          {
+            title: 'Clinical state',
+            text: 'Opening an app, navigating, checking — the cognitive load is incompatible with post-chemo or post-operative state.',
+          },
+          {
+            title: 'Digital literacy',
+            text: 'Elderly, low-digital, fragile populations are structurally excluded from the app channel.',
+          },
+          {
+            title: 'Passive engagement required',
+            text: 'The app waits for the patient to come. Reliable follow-up requires a channel that goes to them.',
+          },
+        ],
+      },
+      thesis: {
+        label: 'Our thesis',
+        title:
+          'Voice solves the channel. But making it clinically reliable is an engineering problem.',
+        body: 'Integrating a voice assistant is trivial. Building a voice infrastructure that withstands real clinical constraints — identity, protocol, structured data, longitudinal continuity — is a specialized engineering problem. This is the barrier we have crossed.',
+        pillars: [
+          {
+            title: 'Identity & consent',
+            text: 'Patient verification before collection, anti-impersonation, native GDPR traceability.',
+          },
+          {
+            title: 'Call orchestration',
+            text: 'No-answers, voicemails, third parties online, human escalation — complete auditable log.',
+          },
+          {
+            title: 'Protocol fidelity',
+            text: 'Maintaining clinical logic under conversational deviation, knowledge base configured by clinician.',
+          },
+          {
+            title: 'Structured data',
+            text: 'Clean clinical extraction, threshold alerts, HL7 FHIR export — not transcription.',
+          },
+        ],
+      },
+      founders: {
+        label: 'At the origin',
+        title: 'Two trajectories, one conviction',
+        intro:
+          'Doctinum was born from the convergence of field frustration and technical expertise. Not from a hypothesis — from a lived observation.',
+        founders: [
+          {
+            role: 'CEO & Co-founder',
+            name: 'Michael Ramassamy',
+            story: [
+              'Entrepreneur in digital health, Michael worked on facility reputation and patient experience. There, he observed a recurring paradox: <strong>questionnaires didn\'t come back, data was missing — not from indifference, but because the channel imposed too much effort.</strong>',
+              'The experience became personal. Facing his father\'s health problems — uncomfortable with digital — he measured the reality of the void between consultations: no tool, no feedback, no structured follow-up possible.',
+            ],
+            insight:
+              'This is not a motivation problem. It is a channel problem. And voice is the only channel that goes to the patient.',
+          },
+          {
+            role: 'CTO & Co-founder',
+            name: 'Régis Anclades',
+            story: [
+              'Engineer and technology entrepreneur, Régis designed and deployed several large-scale automated voice infrastructures — notably for customer support systems in production.',
+              'This experience taught him what generic voice bots ignore: <strong>large-scale reliability is an architecture problem, not an interface one.</strong> Handling no-answers, third parties online, refusals, time windows, clean data — it\'s infrastructure, not LLM.',
+            ],
+            insight:
+              'Large-scale voice reliability is an architecture problem, not an interface one. This is precisely what we built.',
+          },
+        ],
+      },
+      conviction: {
+        label: 'Our convictions',
+        title: 'What we deeply believe',
+        cards: [
+          {
+            label: 'On the channel',
+            text: 'Voice is the only universal channel. It requires no account, no app, no digital mastery. It is the only channel that goes to the patient — not the reverse.',
+          },
+          {
+            label: 'On the technical barrier',
+            text: 'Clinically reliable voice is not a design problem. It is an engineering problem. The barrier is there — it is our advantage.',
+          },
+          {
+            label: 'On positioning',
+            text: 'We do not replace platforms. We are the voice layer they don\'t have — and building it in-house would cost them 12 months of R&D.',
+          },
+          {
+            label: 'On timing',
+            text: 'Multimodal voice LLMs have reached a maturity level and cost that finally make reliable clinical voice infrastructure possible. The window opens now.',
+          },
+        ],
+      },
+      roadmap: {
+        label: 'Our ambition',
+        title: 'Become the reference infrastructure for clinical voice follow-up',
+        timeline: [
+          {
+            year: 'Today',
+            title: 'Validation in real conditions',
+            text: 'Functional infrastructure deployed with partner practitioners. Validation of four clinical engines on concrete use cases: post-operative follow-up, medical aesthetics, clinical studies.',
+            tags: ['Functional beta', 'Active clinical pilots'],
+          },
+          {
+            year: 'Tomorrow',
+            title: 'Infrastructure for platforms',
+            text: 'Become the voice layer that patient follow-up publishers integrate via API — rather than rebuild. Native interoperability with industry standards.',
+            tags: ['API-first', 'HL7 FHIR interoperability'],
+          },
+          {
+            year: 'Vision',
+            title: 'Standard for voice follow-up in healthcare',
+            text: 'A certified clinical voice infrastructure, deployed at scale — from primary care to international clinical trials. Patient follow-up accessible to all, everywhere, without friction.',
+            tags: ['Regulatory certification', 'International expansion'],
+          },
+        ],
+      },
+      cta: {
+        title: 'A conversation, not a pitch.',
+        subtitle:
+          'If our reasoning interests you — or if you think it is wrong — we want to hear it. 60 minutes to verify our thesis together.',
+        primaryCta: 'Request a demo',
+        secondaryCta: 'View investor deck',
+      },
+    },
+    security: {
+      hero: {
+        eyebrow: 'Security & Regulation',
+        title: 'An infrastructure designed for healthcare environments.',
+        subtitle:
+          'Patient data protection, interaction traceability, and human supervision are not options in Doctinum — they are constitutive of the architecture.',
+        badges: [
+          'HDS hosting · France',
+          'Native GDPR',
+          'Outside MD classification',
+          'Complete traceability',
+        ],
+      },
+      guarantees: {
+        label: 'What we guarantee today',
+        title: 'Verifiable foundations, not statements of intent.',
+        intro:
+          'Here is what is in place, operational, and verifiable — without overselling certifications we don\'t yet have.',
+        items: [
+          {
+            icon: '🏥',
+            title: 'HDS-certified hosting',
+            text: 'Health data is hosted in France with a certified Health Data Host (HDS) provider, in accordance with French regulatory requirements.',
+            tag: 'France · Health data',
+          },
+          {
+            icon: '🔒',
+            title: 'Data encryption',
+            text: 'Data is encrypted in transit and at rest. No patient data circulates in clear text at any processing stage.',
+            tag: 'In-transit encryption · At rest',
+          },
+          {
+            icon: '✅',
+            title: 'Logged & auditable consent',
+            text: 'Patient consent is collected online before any collection, timestamped and retained. Each interaction is logged with complete exportable traceability.',
+            tag: 'GDPR · Auditable log',
+          },
+          {
+            icon: '👤',
+            title: 'Access control',
+            text: 'Data access is strictly limited to authorized users. Access is recorded and traceable. No unauthenticated access to patient data is possible.',
+            tag: 'Authentication · Logging',
+          },
+          {
+            icon: '🌍',
+            title: 'Data location · EU',
+            text: 'All data is hosted on infrastructures located in France and the European Union. Any transfers outside the EU are contractually framed and documented.',
+            tag: 'France · European Union',
+          },
+          {
+            icon: '🔍',
+            title: 'Patient identity verification',
+            text: 'Patient identity is verified before any data collection. The system integrates anti-impersonation mechanisms to ensure collected data corresponds to the right person.',
+            tag: 'Anti-impersonation · Verified identity',
+          },
+        ],
+      },
+      posture: {
+        label: 'Regulatory posture',
+        title: 'What we are. What we are not yet.',
+        intro:
+          'Transparency about our current regulatory status is a principle, not a constraint. Here is an exact statement of our situation.',
+        activeItems: [
+          'Outside Medical Device classification — organizational and declarative collection tool, without diagnosis or autonomous clinical decision',
+          'Native GDPR compliance — documented legal basis, exercised individual rights',
+          'HDS-certified hosting in France',
+          'Pilot agreements framing each deployment',
+          'Up-to-date privacy policy and legal notices',
+        ],
+        pendingItems: [
+          'CE MDR trajectory analysis in progress — scope to be defined according to retained uses',
+          'Engagement with specialized digital health regulatory firm in structuring process',
+          'Security review clause available for institutional partners upon request',
+          'ISO 27001 certification considered for large-scale institutional deployments',
+        ],
+        note: 'we do not claim certifications we don\'t have. If your context requires a specific certification level, we will clearly indicate it — and if the trajectory is compatible, we will build it together.',
+      },
+      supervision: {
+        label: 'Human supervision & governance',
+        title: 'The clinician remains the decision-maker. Always.',
+        intro:
+          'Doctinum collects and structures declarative data. It does not diagnose, does not prescribe, and does not replace any medical decision. Here is how governance is architected.',
+        items: [
+          {
+            title: 'No autonomous decision',
+            text: 'The system makes no medical decision autonomously. It collects, structures, and alerts — the healthcare professional remains the sole decision-maker on clinical interpretation and action.',
+          },
+          {
+            title: 'Integrated human escalation',
+            text: 'Protocols provide systematic human escalation for situations exceeding the defined collection scope. The practitioner is notified in real-time on alerts defined by themselves.',
+          },
+          {
+            title: 'Real-time practitioner access',
+            text: 'The healthcare professional has access to all collected data, transcriptions, and call logs at any time. Nothing is opaque between the system and the supervising clinician.',
+          },
+          {
+            title: 'Protocol configured by clinician',
+            text: 'The knowledge base and follow-up questions are defined and validated by the healthcare professional responsible for the protocol. Doctinum executes — the clinician designs and supervises.',
+          },
+        ],
+      },
+      roadmap: {
+        label: 'Trajectory',
+        title: 'A regulatory framework that evolves with our uses.',
+        intro:
+          'We build the regulatory trajectory based on real deployments — not from an abstract list of certifications. Here is the current state.',
+        items: [
+          {
+            status: 'active',
+            title: 'HDS hosting & GDPR compliance',
+            text: 'Operational infrastructure, HDS-certified hosting in France, documented GDPR compliance. Applicable today for all deployments.',
+          },
+          {
+            status: 'active',
+            title: 'Pilot agreement & contractual framework',
+            text: 'Each deployment is framed by a pilot agreement defining usage scope, responsibilities, and data processing conditions. This contractual framework is available for review before any commitment.',
+          },
+          {
+            status: 'engaged',
+            title: 'CE MDR analysis & regulatory engagement',
+            text: 'Medical Device trajectory analysis is in progress. Certification scope will depend on retained uses. A specialized digital health regulatory firm will be engaged soon to define the precise trajectory.',
+          },
+          {
+            status: 'horizon',
+            title: 'CE MDR certification & complementary certifications',
+            text: 'CE MDR certification will be engaged according to retained usage scope. Complementary certifications (ISO 27001, etc.) will be considered based on institutional partner requirements. These certifications do not condition current deployments.',
+          },
+        ],
+      },
     },
   },
-  contactForm: {
-    badge: 'Book a call',
-    titleLine1: "Let's get",
-    titleLine2: 'started',
-    subtitle:
-      "Ready to transform your social media? Get in touch and we'll show you what's possible for your brand.",
-    nameLabel: 'Name',
-    namePlaceholder: 'Your name',
-    emailLabel: 'Email',
-    emailPlaceholder: 'your@email.com',
-    servicesLabel: 'What services are you interested in?',
+  demoPage: {
+    badge: 'Book a demo',
+    title: 'Discover Doctinum in action',
+    subtitle: 'Schedule a personalized demonstration and discover how our solution can transform your patient follow-up.',
+  },
+  demoForm: {
+    firstName: 'First name',
+    lastName: 'Last name',
+    email: 'Professional email',
+    phone: 'Phone',
+    organization: 'Organization',
+    service: 'Interested pathway type',
     services: {
-      contentCreation: 'Content Creation',
-      socialManagement: 'Social Management',
-      paidMedia: 'Paid Media',
-      all: 'All',
+      surgery: 'Surgery & aesthetic medicine',
+      sportsMedicine: 'Sports medicine',
+      dermatology: 'Dermatology',
+      proms: 'PROMS / Post-procedure questionnaires',
+      chronic: 'Chronic pathways (diabetes, heart failure...)',
+      oncology: 'Oncology / Post-treatment follow-up',
+      rehabilitation: 'Rehabilitation / Physiotherapy',
+      preventive: 'Preventive medicine / Screening',
+      patientSoftware: 'Patient follow-up software',
+      promsSoftware: 'PROMS software',
+      clinicalStudies: 'Clinical studies (pharma)',
+      croStudies: 'CRO studies',
+      followUpPrograms: 'Patient follow-up programs',
+      other: 'Other pathway',
     },
-    budgetLabel: 'Current monthly social media budget?',
+    structure: 'Structure type',
+    structures: {
+      solo: 'Individual practice',
+      group: 'Medical group (2-10 practitioners)',
+      clinic: 'Healthcare facility',
+      network: 'Coordinated network / Multi-site',
+      software: 'Software publisher / CRO',
+      other: 'Other',
+    },
+    preferredDate: 'Preferred date',
+    timeSlot: 'Preferred time slot',
+    timeSlots: {
+      morning: 'Morning (9am-12pm)',
+      midday: 'Midday (12pm-2pm)',
+      afternoon: 'Afternoon (2pm-6pm)',
+      evening: 'Evening (6pm-8pm)',
+    },
+    duration: 'Desired duration',
+    durations: {
+      '30min': '30 minutes',
+      '45min': '45 minutes',
+      '60min': '1 hour',
+      '90min': '1 hour 30',
+    },
+    message: 'Additional message',
+    messagePlaceholder: 'Describe your specific needs, use cases you wish to explore...',
+    required: '* Required fields',
+    submit: 'Book the demo',
+  },
+  contactForm: {
+    badge: 'Pilot project evaluation',
+    titleLine1: 'Let\'s discuss your',
+    titleLine2: 'use case',
+    subtitle:
+      'Let\'s discuss your clinical context and evaluate together the relevance of a patient voice follow-up pilot project.',
+    nameLabel: 'Name',
+    namePlaceholder: 'Dr. Martin Dupont',
+    roleLabel: 'Role',
+    rolePlaceholder: 'Aesthetic surgeon',
+    emailLabel: 'Professional email',
+    emailPlaceholder: 'your@email.com',
+    servicesLabel: 'Envisioned pathway type',
+    services: {
+      surgery: 'Surgery & aesthetic medicine',
+      sportsMedicine: 'Sports medicine',
+      dermatology: 'Dermatology',
+      proms: 'PROMS / Post-procedure questionnaires',
+      chronic: 'Chronic pathways (diabetes, heart failure...)',
+      oncology: 'Oncology / Post-treatment follow-up',
+      rehabilitation: 'Rehabilitation / Physiotherapy',
+      preventive: 'Preventive medicine / Screening',
+      patientSoftware: 'Patient follow-up software',
+      promsSoftware: 'PROMS software',
+      clinicalStudies: 'Clinical studies (pharma)',
+      croStudies: 'CRO studies',
+      followUpPrograms: 'Patient follow-up programs',
+      other: 'Other pathway',
+    },
+    budgetLabel: 'Structure type',
     budgets: {
-      under2k: 'Under $2K',
-      between2k5k: '$2K-$5K',
-      between5k10k: '$5K-$10K',
-      over10k: '$10K+',
+      solo: 'Individual practice',
+      group: 'Medical group (2-10 practitioners)',
+      clinic: 'Healthcare facility',
+      network: 'Coordinated network / Multi-site',
+      software: 'Software publisher / CRO',
+      pharma: 'Pharmaceutical laboratory',
+      researcher: 'Physician researcher / Academic',
+      patientProgram: 'Patient follow-up program (company)',
+      association: 'Patient association / Foundation',
+      other: 'Other',
     },
-    businessLabel: 'Tell us about your business...',
+    businessLabel: 'Context and objectives',
     businessPlaceholder:
-      'What do you sell, who are your customers, what are your goals?',
-    submit: 'Book a call ↗',
+      'Describe your current care pathway, patient follow-up challenges, and what you wish to improve...',
+    submit: 'Schedule a confidential discussion',
   },
   notFound: {
     title: '404',
