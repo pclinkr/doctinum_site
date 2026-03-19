@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import BrandIcon from './BrandIcon';
+import LiveCallBadge from './LiveCallButton';
 
 export default function StorySliderPhone({
   start,
@@ -13,6 +14,8 @@ export default function StorySliderPhone({
   borderRadius = '10px',
   instant = false,
   reveal = true,
+  onNavigate,
+  badgeLabel,
 }) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
@@ -93,6 +96,14 @@ export default function StorySliderPhone({
             </div>
           ))}
         </div>
+        {onNavigate && badgeLabel && (
+          <div className="absolute bottom-6 left-0 right-0 z-[10] flex items-center justify-center">
+            <LiveCallBadge
+              onClick={() => onNavigate('medicalVoiceDemo')}
+              label={badgeLabel}
+            />
+          </div>
+        )}
       </div>
       <div className="absolute -bottom-2 -right-6 z-[5] flex h-[66px] w-[66px] items-center justify-center rounded-[18px] bg-[var(--action-primary-bg)] shadow-[0_8px_24px_var(--ink-28)]">
         <BrandIcon stroke="var(--action-primary-fg)" width={30} height={30} />

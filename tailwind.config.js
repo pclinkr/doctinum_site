@@ -60,6 +60,12 @@ const config = {
         'color-border-strong': 'var(--color-border-strong)',
         'color-primary': 'var(--color-primary)',
         'color-primary-contrast': 'var(--color-primary-contrast)',
+        'color-accent-1': 'var(--color-accent-1)',
+        'color-accent-2': 'var(--color-accent-2)',
+        'color-success': 'var(--color-success)',
+        'color-danger': 'var(--color-danger)',
+        'color-info': 'var(--color-info)',
+        'color-secondary': 'var(--color-secondary)',
 
         // Alpha overlays
         'ink-00': 'var(--ink-00)',
@@ -306,6 +312,11 @@ const config = {
           from: { width: '0' },
           to: { width: '100%' },
         },
+        'ping-slow': {
+          '0%': { transform: 'scale(1)', opacity: '0.3' },
+          '50%': { transform: 'scale(1.15)', opacity: '0.15' },
+          '100%': { transform: 'scale(1.3)', opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -354,6 +365,7 @@ const config = {
           'pageRouteExit .52s cubic-bezier(.22,.61,.36,1) both',
         pageRouteEnterFull:
           'pageRouteEnter .62s cubic-bezier(.22,.61,.36,1) both',
+        'ping-slow': 'ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
     },
   },

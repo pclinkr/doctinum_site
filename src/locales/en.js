@@ -239,6 +239,7 @@ const en = {
         'The voice AI infrastructure that applies your protocols, triggers structured follow-up, and surfaces actionable signals — under medical supervision.',
       cta: 'Evaluate a pilot project',
       cta2: 'Schedule a confidential discussion',
+      liveCallBadge: 'Live test',
     },
     services: {
       titlePrefix: 'How we can help you',

@@ -41,7 +41,7 @@ const enHome2 = {
         { value: '↗', label: 'vs Day 3' },
         { value: '⚑', label: 'Threshold alert' },
       ],
-      cta: 'Simulate full call →',
+      cta: 'Live test',
     },
   },
   tension: {
