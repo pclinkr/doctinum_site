@@ -731,6 +731,12 @@ select {
   }
 }
 
+/* ============================================================ LIVE CALL BUTTON ANIMATION ============================================================ */
+.live-call-shadow-pulse {
+  @apply absolute inset-0 rounded-full opacity-20 animate-ping-slow pointer-events-none;
+  background: var(--color-success);
+}
+
 /* ============================================================ ===== HOME PAGE - Converti en classes Tailwind ===== ============================================================ */
 @keyframes barProg {
   from {
@@ -994,7 +1000,7 @@ footer {
 .home2-wave-bar {
   width: 2px;
   border-radius: 1px;
-  background: var(--white-28);
+  background: var(--white-55);
   animation: home2Wave var(--d, 0.8s) ease-in-out infinite alternate;
 }
 

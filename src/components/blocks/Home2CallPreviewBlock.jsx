@@ -1,4 +1,5 @@
 import Home2Waveform from '../ui/Home2Waveform';
+import LiveCallButton from '../ui/LiveCallButton';
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 
@@ -60,12 +61,12 @@ export default function Home2CallPreviewBlock({ content, onJumpToSimulation }) {
 
   return (
     <div className="relative z-[1] w-full max-w-[420px] bg-primary p-6 rounded-sm">
-      <p className="mb-6 text-center text-[10px] font-[var(--w500)] uppercase tracking-[0.16em] text-[var(--color-accent-1)]">
+      <p className="mb-4 text-center text-[10px] font-[var(--w500)] uppercase tracking-[0.16em] text-[var(--color-accent-1)]">
         {content?.label}
       </p>
 
-      <div className="rounded-sm border border-[var(--white-14)] bg-[var(--white-04)] px-5 py-7">
-        <div className="mb-5 flex items-center gap-3">
+      <div className="rounded-sm border border-[var(--white-14)] bg-[var(--white-04)] px-4 py-5">
+        <div className="mb-4 flex items-center gap-3">
           <div className="flex-shrink-0 h-8 w-8 flex items-center justify-center rounded-full bg-[var(--color-info)] font-serif text-[var(--color-white)] overflow-hidden">
             {content?.avatar}
           </div>
@@ -83,7 +84,7 @@ export default function Home2CallPreviewBlock({ content, onJumpToSimulation }) {
           </div>
         </div>
 
-        <Home2Waveform className="mb-5" />
+        <Home2Waveform className="mb-4" />
 
         <div className="flex flex-col gap-2">
           {bubbles.map((bubble, index) => {
@@ -93,7 +94,7 @@ export default function Home2CallPreviewBlock({ content, onJumpToSimulation }) {
             return (
               <div
                 key={`${bubble.role}-${index}-${animationKey}`}
-                className={`border-l-2 px-4 py-3 text-[13px] leading-[1.6] transition-all duration-700 ease-out ${
+                className={`border-l-2 px-3 py-2.5 text-[13px] leading-[1.5] transition-all duration-700 ease-out ${
                   isPatient 
                     ? 'border-[var(--color-accent-2)] bg-[var(--white-04)] text-[var(--white-55)] italic' 
                     : 'border-[var(--color-accent-1)] bg-[var(--white-07)] text-[var(--white-84)]'
@@ -108,18 +109,18 @@ export default function Home2CallPreviewBlock({ content, onJumpToSimulation }) {
                 >
                   {bubble.roleLabel}
                 </p>
-                <p className="text-[16px] leading-[1.6]">{bubble.text}</p>
+                <p className="text-[14px] leading-[1.5]">{bubble.text}</p>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-px border border-[var(--white-14)] bg-[var(--white-14)]">
+      <div className="mt-3 grid grid-cols-3 gap-px border border-[var(--white-14)] bg-[var(--white-14)]">
         {metrics.map((metric) => (
           <div
             key={metric.label}
-            className="bg-primary px-3 py-4 text-center"
+            className="bg-primary px-3 py-3 text-center"
           >
             <p className="text-[var(--color-accent-1)]">
               {metric.value}
@@ -131,14 +132,11 @@ export default function Home2CallPreviewBlock({ content, onJumpToSimulation }) {
         ))}
       </div>
 
-      <div className="mt-5 text-center">
-        <button
-          type="button"
+      <div className="mt-4 flex justify-center">
+        <LiveCallButton
           onClick={onJumpToSimulation}
-          className="border-b border-[var(--white-28)] pb-0.5 text-[11px] font-[var(--w500)] uppercase tracking-[0.1em] text-[var(--color-white)] transition-colors duration-200 ease-out hover:border-[var(--color-accent-1)] hover:text-[var(--color-accent-1)]"
-        >
-          {content?.cta}
-        </button>
+          label={content?.cta}
+        />
       </div>
     </div>
   );

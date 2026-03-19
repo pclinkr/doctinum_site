@@ -193,9 +193,10 @@ const fr = {
       titleMiddle: 'ne doit pas rester',
       titleAccent: 'silencieux',
       subtitle:
-        'L’infrastructure d’IA vocale qui applique des protocoles de suivi et structure les retours patients dans le temps — sous supervision médicale.',
+        "L'infrastructure d'IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.",
       cta: 'Evaluez un projet pilote',
       cta2: 'Planifier un échange confidentiel',
+      liveCallBadge: 'Essai live',
     },
     services: {
       titlePrefix: 'Comment nous pouvons vous aider à',

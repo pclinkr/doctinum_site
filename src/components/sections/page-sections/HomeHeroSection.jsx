@@ -77,6 +77,8 @@ export default function HomeHeroSection({
         reveal={storyStarted}
         instant={instant}
         phoneSize={{ width: '380px', height: '600px' }}
+        onNavigate={onNavigate}
+        badgeLabel={t('sections.hero.liveCallBadge')}
       />
     </Container>
   );
