@@ -1,8 +1,8 @@
 const frSeo = {
   home: {
-    title: 'Doctinum | Partenaire de croissance créative',
+    title: 'Doctinum | Infrastructure vocale clinique IA pour le suivi patient',
     description:
-      'Systèmes créatifs, contenu social et workflows IA vocaux pour accélérer la croissance organique.',
+      "IA vocale qui applique vos protocoles médicaux, déclenche un suivi structuré entre les consultations et remonte les signaux exploitables — sous supervision médicale. Hébergement HDS France.",
   },
   about: {
     title: 'À propos | Doctinum',
@@ -12,27 +12,27 @@ const frSeo = {
   'case-studies': {
     title: 'Cas clients | Doctinum',
     description:
-      'Exemples concrets d’exécution avec stratégie, tests créatifs et résultats de croissance.',
+      'Déploiements réels de suivi vocal patient : protocoles, résultats cliniques et retours terrain.',
   },
   'case-detail': {
     title: 'Détail du cas | Doctinum',
     description:
-      "Analyse détaillée d’un cycle complet d'exécution growth et contenu.",
+      'Analyse détaillée d\'un déploiement de suivi vocal patient : protocole, mise en œuvre et résultats mesurés.',
   },
   blog: {
     title: 'Blog | Doctinum',
     description:
-      'Playbooks, analyses et tactiques concrètes pour une croissance pilotée par la création.',
+      'Réflexions, analyses et retours d\'expérience sur le suivi vocal patient et l\'infrastructure clinique IA.',
   },
   'blog-post': {
-    title: 'Blueprint croissance | Doctinum',
+    title: 'Article | Doctinum',
     description:
-      'Un blueprint concret pour structurer la croissance organique mensuelle via le contenu.',
+      'Analyse approfondie sur le suivi vocal patient, les protocoles cliniques et l\'infrastructure IA en santé.',
   },
   contact: {
     title: 'Contact | Doctinum',
     description:
-      'Réservez un appel pour discuter de votre stratégie growth, contenu et IA vocale.',
+      'Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d\'un projet pilote de suivi vocal patient.',
   },
   demo: {
     title: 'Réserver une démo | Doctinum',
@@ -128,6 +128,35 @@ const frSeo = {
   404: {
     title: 'Page introuvable | Doctinum',
     description: 'La page demandée est introuvable.',
+  },
+  'pharma-research': {
+    title: 'Pharma & Recherche | Doctinum',
+    description:
+      "Infrastructure vocale pour la collecte de PRO endpoints et la réduction du lost-to-follow-up dans les études cliniques. Compatible ICH E6, audit trail horodaté.",
+  },
+  'functioning-demo': {
+    title: 'Démo | Doctinum',
+    description:
+      'Découvrez en conditions réelles comment fonctionne le suivi vocal structuré avec Doctinum.',
+  },
+  'functioning-features': {
+    title: 'Fonctionnalités | Doctinum',
+    description:
+      'Capacités cœur et options de configuration de l\'infrastructure vocale clinique Doctinum.',
+  },
+  'enterprise-partnerships': {
+    title: 'Expérimentations & Partenariats | Doctinum',
+    description:
+      'Pilotes, protocoles de recherche et collaborations stratégiques avec Doctinum.',
+  },
+  styleguide: {
+    title: 'Styleguide | Doctinum',
+    description: 'Référentiel UI et design system interne de Doctinum.',
+  },
+  'coordinated-chronic-pathways': {
+    title: 'Parcours chroniques coordonnés | Doctinum',
+    description:
+      'Infrastructure de suivi vocal pour parcours chroniques avec vision partagée entre intervenants et coordination renforcée.',
   },
 };
 

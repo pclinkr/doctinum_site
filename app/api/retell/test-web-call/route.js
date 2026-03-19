@@ -1,61 +1,71 @@
 import { NextResponse } from 'next/server';
-
-const DEFAULT_ENDPOINT_TEMPLATE =
-  'https://58d18d6412a7.ngrok.app/api/agents/[id]/test-web-call';
-const DEFAULT_ROUTE_ID = '7fb97f42-3284-4fee-a2d4-e742fc9c7d32';
-
-function resolveBackendEndpoint() {
-  const endpointTemplate =
-    process.env.RETELL_WEB_CALL_ENDPOINT_TEMPLATE ||
-    process.env.NEXT_PUBLIC_RETELL_WEB_CALL_ENDPOINT_TEMPLATE ||
-    DEFAULT_ENDPOINT_TEMPLATE;
-  const routeId =
-    process.env.RETELL_WEB_CALL_ROUTE_ID ||
-    process.env.NEXT_PUBLIC_RETELL_WEB_CALL_ROUTE_ID ||
-    DEFAULT_ROUTE_ID;
-
-  if (endpointTemplate.includes('[id]')) {
-    return endpointTemplate.replace('[id]', encodeURIComponent(routeId));
-  }
-
-  return endpointTemplate;
-}
+import { getClientIdentifier, getOrCreateSessionId, setSessionCookie } from '../../../../services/sessionService.js';
+import { checkRateLimits, incrementCallCount, incrementDailyBudget } from '../../../../services/rateLimitService.js';
+import { createRetellWebCall } from '../../../../services/retellService.js';
 
 export async function POST(request) {
   try {
     const payload = await request.json();
-    const endpoint = resolveBackendEndpoint();
+    const { agentId, metadata, retell_llm_dynamic_variables } = payload;
 
-    const upstreamHeaders = { 'Content-Type': 'application/json' };
-    const serverAuthToken =
-      process.env.RETELL_DEMO_AUTH_TOKEN ||
-      process.env.NEXT_PUBLIC_RETELL_DEMO_AUTH_TOKEN;
-    if (serverAuthToken) {
-      upstreamHeaders.Authorization = `Bearer ${serverAuthToken}`;
+    // Get client identifiers
+    const ip = getClientIdentifier(request);
+    const sessionId = await getOrCreateSessionId();
+
+    // Check rate limits
+    const rateLimitResult = await checkRateLimits(ip, sessionId);
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        {
+          error: rateLimitResult.reason,
+          message: rateLimitResult.message,
+          callCount: rateLimitResult.callCount,
+        },
+        { status: 429 }
+      );
     }
 
-    const upstreamResponse = await fetch(endpoint, {
-      method: 'POST',
-      headers: upstreamHeaders,
-      body: JSON.stringify(payload),
-      cache: 'no-store',
+    // Create Retell web call
+    const retellData = await createRetellWebCall({
+      agentId,
+      metadata,
+      retell_llm_dynamic_variables,
     });
 
-    const responseText = await upstreamResponse.text();
-    const contentType =
-      upstreamResponse.headers.get('content-type') || 'application/json';
+    // Track the call
+    await Promise.all([
+      incrementCallCount(ip, sessionId),
+      incrementDailyBudget(2), // Estimate 2 minutes per call
+      setSessionCookie(sessionId),
+    ]);
 
-    return new NextResponse(responseText, {
-      status: upstreamResponse.status,
-      headers: { 'content-type': contentType },
+    return NextResponse.json({
+      data: retellData,
+      callCount: rateLimitResult.callCount + 1,
     });
   } catch (error) {
+    console.error('Error in /api/retell/test-web-call:', error);
+
+    // Handle Retell API errors with specific status codes
+    if (error.status) {
+      return NextResponse.json(
+        {
+          error: 'retell_api_failed',
+          message: error.message,
+          details: error.details,
+        },
+        { status: error.status }
+      );
+    }
+
+    // Handle other errors
     return NextResponse.json(
       {
-        error: 'retell_proxy_failed',
-        message: error instanceof Error ? error.message : 'Unknown proxy error',
+        error: 'internal_error',
+        message: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 502 }
+      { status: 500 }
     );
   }
 }
