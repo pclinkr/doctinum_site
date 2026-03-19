@@ -1,6 +1,6 @@
 const RETELL_API_URL = 'https://api.retellai.com/v2/create-web-call';
 
-export async function createRetellWebCall({ agentId, metadata, retell_llm_dynamic_variables }) {
+export async function createRetellWebCall({ agentId, agentVersion,metadata, retell_llm_dynamic_variables }) {
   const apiKey = process.env.RETELL_DEMO_API_KEY;
 
   if (!apiKey) {
@@ -9,7 +9,7 @@ export async function createRetellWebCall({ agentId, metadata, retell_llm_dynami
 
   const retellPayload = {
     agent_id: agentId || process.env.ORTHO_RETELL_AGENT_ID,
-    agent_version: 0,
+    agent_version: agentVersion || process.env.ORTHO_RETELL_AGENT_VERSION || 0,
   };
 
   if (metadata) {
