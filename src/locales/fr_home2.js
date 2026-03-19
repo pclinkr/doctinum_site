@@ -41,7 +41,7 @@ const frHome2 = {
         { value: '↗', label: 'vs J+3' },
         { value: '⚑', label: 'Alerte seuil' },
       ],
-      cta: 'Simuler un appel complet →',
+      cta: 'Essai live',
     },
   },
   tension: {
