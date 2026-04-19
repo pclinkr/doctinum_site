@@ -32,7 +32,7 @@ export default function DemoBookingSection() {
 
         <div 
           className="calendly-inline-widget" 
-          data-url="https://calendly.com/contact-doctinum/15-min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f5f6f7&text_color=0e1b29&primary_color=0c243c" 
+          data-url="https://calendly.com/contact-doctinum/20-min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f5f6f7&text_color=0e1b29&primary_color=0c243c" 
           style={{ minWidth: '320px', height: '700px' }}
         />
       </div>
