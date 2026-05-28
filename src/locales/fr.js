@@ -1390,6 +1390,56 @@ const fr = {
           ],
         },
       },
+      surgeryAesthetic: {
+        hero: {
+          eyebrow: 'Doctinum pour la chirurgie et la médecine esthétique',
+          title:
+            'L\'IA qui transforme votre premier contact patient en répuation',
+          subtitle:
+            'Doctinum met à votre disposition une IA vocale et visuelle pour accueillir, informer vos patients et préparer vos consultations.',
+          cta: 'Demander une démo',
+        },
+        product: {
+          eyebrow: 'Vocal interactif pré-consultation',
+          title: 'Préparez la consultation, automatiquement',
+          text: 'Un assistant vocal interactif échange avec le patient avant sa venue : recueil des informations, réponses aux questions fréquentes, préparation du dossier. Vous gagnez du temps, le patient arrive informé et serein.',
+          benefits: [
+            'Recueil structuré des informations patient',
+            'Réponses aux questions récurrentes 24h/24',
+            'Dossier pré-rempli avant la consultation',
+            'Moins d’appels à gérer pour le secrétariat',
+          ],
+        },
+        why: {
+          eyebrow: 'Pourquoi Doctinum',
+          title: 'Une solution pensée pour votre cabinet',
+          items: [
+            {
+              title: 'Conçu pour l’esthétique française',
+              text: 'Une IA pensée pour le secteur médical esthétique français et ses spécificités.',
+            },
+            {
+              title: 'Hébergement HDS',
+              text: 'Vos données de santé hébergées dans un environnement certifié Hébergeur de Données de Santé.',
+            },
+            {
+              title: 'Conforme au RGPD',
+              text: 'Respect du RGPD et du cadre réglementaire applicable aux données de santé.',
+            },
+            {
+              title: 'Intégration simple',
+              text: 'S’insère dans votre organisation existante, sans bouleverser vos habitudes.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Envie de voir Doctinum sur votre cabinet ?',
+          titleHighlight: 'Votre audit d’organisation IA offert',
+          subtitle:
+            '30 minutes pour identifier où vous perdez du temps et où l’IA peut fluidifier votre cabinet : organisation, communication patients, suivi post-opératoire.',
+          button: 'Réserver un audit / une démo gratuite',
+        },
+      },
       sports: {
         hero: {
           badge: 'Coordination & récupération',
