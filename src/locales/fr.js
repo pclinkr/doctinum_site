@@ -1392,7 +1392,7 @@ const fr = {
       },
       surgeryAesthetic: {
         hero: {
-          eyebrow: 'Doctinum pour la chirurgie et la médecine esthétique',
+          eyebrow: 'Chirurgie et médecine esthétique',
           title:
             'L\'IA qui transforme votre premier contact patient en réputation',
           subtitle:
