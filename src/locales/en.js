@@ -1326,6 +1326,56 @@ const en = {
           ],
         },
       },
+      surgeryAesthetic: {
+        hero: {
+          eyebrow: 'Doctinum for surgery and aesthetic medicine',
+          title:
+            'The AI that supports your patients, before and after the procedure',
+          subtitle:
+            'Doctinum gives you a voice and visual AI to welcome and inform your patients and prepare your consultations.',
+          cta: 'Request a demo',
+        },
+        product: {
+          eyebrow: 'Interactive pre-consultation voice assistant',
+          title: 'Prepare the consultation, automatically',
+          text: 'An interactive voice assistant talks with the patient before their visit: gathering information, answering frequent questions, preparing the file. You save time, and the patient arrives informed and at ease.',
+          benefits: [
+            'Structured collection of patient information',
+            'Answers to recurring questions, 24/7',
+            'Pre-filled file before the consultation',
+            'Fewer calls to handle for the front desk',
+          ],
+        },
+        why: {
+          eyebrow: 'Why Doctinum',
+          title: 'A solution built for your practice',
+          items: [
+            {
+              title: 'Built for French aesthetics',
+              text: 'An AI designed for the French aesthetic medical sector and its specifics.',
+            },
+            {
+              title: 'HDS hosting',
+              text: 'Your health data hosted in a certified Health Data Hosting (HDS) environment.',
+            },
+            {
+              title: 'GDPR compliant',
+              text: 'Compliance with GDPR and the regulatory framework for health data.',
+            },
+            {
+              title: 'Easy integration',
+              text: 'Fits into your existing organization, without disrupting your habits.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Want to see Doctinum at your practice?',
+          titleHighlight: 'Your AI organization audit, on us',
+          subtitle:
+            '30 minutes to identify where you lose time and where AI can streamline your practice: organization, patient communication, post-operative follow-up.',
+          button: 'Book a free audit / demo',
+        },
+      },
       sports: {
         hero: {
           badge: 'Coordination & recovery',
