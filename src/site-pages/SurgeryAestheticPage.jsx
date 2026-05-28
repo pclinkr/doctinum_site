@@ -1,8 +1,44 @@
 import { useTranslation } from 'react-i18next';
 import Container from '../components/layout/Container';
-import SolutionHeroSection from '../components/sections/page-sections/SolutionHeroSection';
+import Button from '../components/ui/Button';
 
 const AUDIT_URL = 'https://audit.doctinum.com';
+
+// Section A — Hero (responsive : la carte grandit avec son contenu,
+// le texte reste en flux pour ne jamais être tronqué sur mobile)
+function HeroSection({ copy, onNavigate }) {
+  return (
+    <Container className="pt-[calc(var(--nav-h)+20px)]">
+      <div className="relative flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[var(--r-lg)] md:min-h-[560px]">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/assets/images/esthetique_hero.png)' }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'var(--gradient-accent-warm-terra-overlay)' }}
+        />
+        <div
+          className="relative z-[1] w-full p-12 max-[809px]:p-7"
+          style={{ background: 'var(--gradient-overlay-top)' }}
+        >
+          <span className="mb-5 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-4 py-[6px] text-[12px] font-medium uppercase tracking-[0.1em] text-white backdrop-blur-[4px]">
+            {copy.eyebrow}
+          </span>
+          <h1 className="mb-4 max-w-[760px] text-[clamp(30px,6vw,60px)] font-[var(--w500)] leading-[1.08] tracking-[-0.04em] text-white">
+            {copy.title}
+          </h1>
+          <p className="mb-7 max-w-[540px] text-[clamp(15px,2.2vw,18px)] leading-[1.6] text-[var(--white-75)]">
+            {copy.subtitle}
+          </p>
+          <Button variant="light" size="lg" onClick={() => onNavigate('demo')}>
+            {copy.cta}
+          </Button>
+        </div>
+      </div>
+    </Container>
+  );
+}
 
 function CheckIcon() {
   return (
@@ -175,24 +211,7 @@ export default function SurgeryAestheticPage({ active, onNavigate }) {
       id="page-surgery-aesthetic"
       className={`page ${active ? 'active' : ''}`.trim()}
     >
-      <SolutionHeroSection
-        onNavigate={onNavigate}
-        badge={{ text: copy.hero.eyebrow, variant: 'secondary' }}
-        title={copy.hero.title}
-        subtitle={copy.hero.subtitle}
-        backgroundImage="/assets/images/esthetique_hero.png"
-        backgroundType="image"
-        showOverlayText={true}
-        showOverlayImage={true}
-        overlayGradientImage="var(--gradient-accent-warm-terra-overlay)"
-        ctaButtons={[
-          {
-            text: copy.hero.cta,
-            variant: 'primary',
-            onClick: () => onNavigate('demo'),
-          },
-        ]}
-      />
+      <HeroSection copy={copy.hero} onNavigate={onNavigate} />
       <VoiceProductSection copy={copy.product} />
       <WhyDoctinumSection copy={copy.why} />
       <AuditCtaSection copy={copy.finalCta} />

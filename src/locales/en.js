@@ -1330,7 +1330,7 @@ const en = {
         hero: {
           eyebrow: 'Doctinum for surgery and aesthetic medicine',
           title:
-            'The AI that supports your patients, before and after the procedure',
+            'The AI that turns your first patient contact into reputation',
           subtitle:
             'Doctinum gives you a voice and visual AI to welcome and inform your patients and prepare your consultations.',
           cta: 'Request a demo',
