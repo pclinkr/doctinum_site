@@ -1394,7 +1394,7 @@ const fr = {
         hero: {
           eyebrow: 'Doctinum pour la chirurgie et la médecine esthétique',
           title:
-            'L\'IA qui transforme votre premier contact patient en répuation',
+            'L\'IA qui transforme votre premier contact patient en réputation',
           subtitle:
             'Doctinum met à votre disposition une IA vocale et visuelle pour accueillir, informer vos patients et préparer vos consultations.',
           cta: 'Demander une démo',
@@ -1402,7 +1402,7 @@ const fr = {
         product: {
           eyebrow: 'Vocal interactif pré-consultation',
           title: 'Préparez la consultation, automatiquement',
-          text: 'Un assistant vocal interactif échange avec le patient avant sa venue : recueil des informations, réponses aux questions fréquentes, préparation du dossier. Vous gagnez du temps, le patient arrive informé et serein.',
+          text: 'Un assistant vocal interactif échange avec le patient avant sa venue : recueil des informations, réponses aux questions fréquentes, mise en avant des actes du cabinet en visuel, préparation du dossier. Vous gagnez du temps, le patient arrive informé et serein.',
           benefits: [
             'Recueil structuré des informations patient',
             'Réponses aux questions récurrentes 24h/24',
