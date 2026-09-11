@@ -1,6 +1,16 @@
 :root {
   --nav-opaque-threshold: 15px;
 
+  /* Champ nacré du récit d'accueil ET de la zone de blocs qui le suit. Une
+     seule déclaration pour les deux: c'est la condition pour que le champ se
+     poursuive sans rupture d'une section à l'autre. */
+  --gradient-story-field: radial-gradient(
+    128% 96% at 52% 6%,
+    var(--color-white) 0%,
+    var(--color-bg) 54%,
+    var(--color-surface) 100%
+  );
+
   /* Navigation / overlays */
   --gradient-nav-fade-dynamic: linear-gradient(
     180deg,
@@ -145,17 +155,13 @@
     #efc7ad 0%,
     #c8927f 100%
   );
-  --gradient-voice-simulation-overlay: radial-gradient(
-    circle at 16% 18%,
-    color-mix(in srgb, var(--color-info) 28%, transparent) 0%,
-    transparent 45%
-  ),
-  linear-gradient(
-    140deg,
-    #f9fbff 0%,
-    #f2f5ff 52%,
-    #eef4fb 100%
-  );
+  --gradient-voice-simulation-overlay:
+    radial-gradient(
+      circle at 16% 18%,
+      color-mix(in srgb, var(--color-info) 28%, transparent) 0%,
+      transparent 45%
+    ),
+    linear-gradient(140deg, #f9fbff 0%, #f2f5ff 52%, #eef4fb 100%);
   --gradient-medical-avatar-composite:
     var(--medical-avatar-image, none),
     radial-gradient(

@@ -8,21 +8,28 @@ export default function Home2SecurityStripSection({ onNavigate }) {
     returnObjects: true,
   });
 
+  /* Pas de filet pleine largeur en haut ni en bas: rien ne traverse l'écran
+     d'un bord à l'autre dans cette page. Le rythme vient des panneaux en
+     retrait, pas de lignes de séparation. */
   return (
-    <section className="border-b border-t border-[var(--color-border)] px-5 py-16 min-[810px]:px-8 min-[1200px]:px-12">
-      <div className="mb-6 mx-auto flex w-full max-w-[1100px] flex-wrap items-start justify-between gap-6">
-        <p className="rev text-[12px] font-[var(--w500)] uppercase tracking-[0.1em] text-[var(--color-muted)]">
+    <section className="bg-[var(--color-bg)] px-[clamp(14px,3vw,34px)] py-[clamp(48px,6vw,88px)]">
+      <div className="mx-auto mb-8 flex w-full max-w-[1100px] flex-wrap items-center justify-between gap-6">
+        <p className="rev text-[11px] font-[var(--w500)] uppercase tracking-[0.14em] text-[var(--color-action)]">
           {t('sections.home2.securityStrip.label')}
         </p>
         <Button
           onClick={() => onNavigate('security')}
-          className="rev d2 text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-border)]"
+          className="rev d2"
           variant="outline"
         >
           {t('sections.home2.securityStrip.link')}
         </Button>
       </div>
-      <RollingWordsBanner className="rev d2" words={badges} bgColor="var(--color-bg)" />
+      <RollingWordsBanner
+        className="rev d2"
+        words={badges}
+        bgColor="var(--color-bg)"
+      />
     </section>
   );
 }

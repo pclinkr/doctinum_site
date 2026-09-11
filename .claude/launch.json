@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "doctinum-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "dev:isolated"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}

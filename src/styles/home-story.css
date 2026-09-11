@@ -1,0 +1,1465 @@
+/* =========================================================================
+   SCÈNE D'ACCUEIL ANIMÉE — feuille de style.
+
+   Portée depuis le prototype `motion_design_homepage`, intégralement scopée
+   sous `.home-story`: sans quoi des noms aussi communs que `.set`, `.full`,
+   `.ui` ou `.btn` fuiraient dans tout le site.
+
+   ATTENTION EN ÉDITANT. Ne jamais supprimer de lignes par heuristique
+   « ligne finissant par } sans { »: ce sont les fermetures des règles
+   multi-lignes, majoritaires ici. Une passe de ce type a déjà détruit la
+   feuille d'origine. Vérifier l'équilibre des accolades après toute édition
+   automatisée — et que les sélecteurs de @keyframes (0%, from, to) ne sont
+   PAS préfixés, sinon les animations cessent silencieusement de jouer.
+   ========================================================================= */
+
+.home-story {
+  color-scheme: light;
+  /* Jetons de la scène. Ceux qui ont un équivalent au catalogue du site le
+     réutilisent — la scène suit alors la palette retenue sans rien dupliquer.
+     Les autres (verre, sphère, voiles) n'existent que pour cette page. */
+  --ground: var(--color-bg);
+  --ground-2: var(--color-white);
+  --veil: var(--color-white);
+  --deep: var(--color-surface);
+  /* Triplet RVB du fond, DUPLIQUÉ à la main: le scrim et les voiles en ont
+     besoin sous forme `rgba(r, g, b, a)` et CSS ne sait pas décomposer une
+     couleur hexadécimale en composantes de façon portable. À tenir synchronisé
+     avec --color-bg (#f4f1ec) de tokens.css, la borne médiane du dégradé du
+     repère — sinon le voile qui rend les titres lisibles sur les photos
+     dessine un rectangle d'une autre teinte que le fond. */
+  --ground-rgb: 244, 241, 236;
+  --ink: var(--color-text);
+  --ink-2: var(--color-muted);
+  --ink-3: var(--color-subtle);
+  --accent: var(--color-action);
+  --accent-hover: var(--color-action-hover);
+  --accent-soft: var(--ink-08);
+  --accent-line: var(--ink-30);
+  --accent-2: var(--color-accent-1);
+  --stone: var(--color-muted);
+  --stone-soft: var(--ink-10);
+  --glass: var(--white-92);
+  --glass-2: var(--white-72);
+  --stroke: var(--white-96);
+  --hair: var(--color-border);
+  --shade: var(--ink-20);
+  --shade-deep: var(--ink-34);
+  --orb-1: #ffffff;
+  --orb-2: #fefbf6;
+  --orb-3: #f7f0e5;
+  --orb-4: #e9decd;
+  --orb-5: #d3c3ab;
+  --core: rgba(140, 116, 86, 0.24);
+  --halo: rgba(255, 250, 240, 0.95);
+  --silk-a: rgba(255, 255, 255, 0.95);
+  --silk-b: rgba(138, 108, 87, 0.34);
+  --night: var(--color-text);
+  --on-night: var(--color-bg);
+  --on-night-2: var(--color-subtle);
+  --rail-off: var(--ink-16);
+}
+
+/* ====================================================== espace de scène === */
+/* Repère fixe 1920×1080 mis à l'échelle par une seule transformation : les
+   valeurs en pixels restent valables de l'écran de téléphone au grand écran. */
+/* Le repère 1920x1080 est contenu dans la fenêtre puis recentré: rien n'est
+   jamais rogné, et le fond continue jusqu'aux bords — aucun cadre visible. */
+.home-story .viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--gradient-story-field);
+}
+/* Le repère 1920×1080 est contenu dans la fenêtre puis recentré : rien n'est
+   jamais rogné, et le fond continue jusqu'aux bords — aucun cadre visible.  */
+.home-story .stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  transform: translate(var(--ox, 0px), var(--oy, 0px)) scale(var(--fit, 1));
+  perspective: 1700px;
+  font-family:
+    'Inter',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--ink);
+}
+/* La couche d'interface a son PROPRE repère : en paysage le même 1920×1080
+   que le décor, en portrait un repère 1080×1920 où les textes retrouvent une
+   taille lisible. Elle est hors de .stage, sinon elle subirait son échelle. */
+.home-story .ui {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--uiw, 1920px);
+  height: var(--uih, 1080px);
+  transform-origin: 0 0;
+  transform: translate(var(--uox, 0px), var(--uoy, 0px)) scale(var(--ufit, 1));
+  z-index: 20;
+  pointer-events: none;
+  font-family:
+    'Inter',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--ink);
+}
+.home-story .ui .btn {
+  pointer-events: auto;
+}
+
+/* Les décors débordent volontairement du repère pour atteindre les bords de la
+   fenêtre quel que soit son format. */
+/* Le décor déborde volontairement du repère pour remplir la fenêtre quel que
+   soit son format ; --decor-x recadre vers le sujet sur écran étroit. */
+/* L'ORDRE compte : `translateX` placé APRÈS `scale` opère dans l'espace mis à
+   l'échelle, donc un pourcentage y vaut vraiment ce pourcentage de la photo
+   telle qu'on la voit. Avant le `scale`, il était divisé par le facteur de
+   recouvrement (près de 4 en portrait) et ne déplaçait presque rien. */
+.home-story .decor {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  transform: scale(var(--cover, 1)) translateX(var(--decor-x, 0));
+  transition: transform 0.9s ease;
+}
+.home-story .cam {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+/* La sphère et les perles partagent l'échelle de recouvrement du décor mais
+   pas son recadrage : --decor-x sert à garder le sujet photographié (à
+   droite) dans le cadre, il décentrerait la sphère. */
+.home-story .subject {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  transform-origin: 50% 50%;
+  transform: scale(var(--cover, 1));
+}
+.home-story .vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 62;
+  opacity: 0.5;
+  background: radial-gradient(
+    118% 90% at 50% 42%,
+    transparent 50%,
+    var(--shade) 152%
+  );
+}
+/* grain : casse le côté « rendu propre » et rapproche les photos du décor */
+.home-story .grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 63;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+/* ============================================================ voiles ====== */
+.home-story .silk {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: 1;
+}
+.home-story .silk path {
+  fill: url(#story-silkgrad);
+}
+/* La section d'invitation porte ses propres définitions SVG: un identifiant ne
+   peut pas être présent deux fois dans un document, et pointer vers celui du
+   récit rendrait ses voiles vides si le récit n'était pas rendu. */
+.home-story .silk--invite path {
+  fill: url(#invite-silkgrad);
+}
+.home-story .g-silk-a {
+  stop-color: var(--silk-a);
+}
+.home-story .g-silk-b {
+  stop-color: var(--silk-b);
+}
+
+/* ========================================================= photographies == */
+/* =========================================================================
+   Les deux couches d'une même photographie partagent EXACTEMENT la même
+   géométrie : même boîte 1920×1080, même object-fit, donc même recadrage au
+   pixel près. La découpe reste dessous en permanence ; c'est la photo complète
+   qui s'efface par-dessus. Dans la zone du sujet les deux couches sont
+   identiques, la composition y est donc constante — seul le décor disparaît,
+   et le détourage se détache sur l'ivoire. Aucune échelle, aucun flou, aucun
+   déplacement sur ces couches : le moindre écart casse l'illusion.
+   ========================================================================= */
+.home-story .set {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 8;
+  will-change: opacity;
+}
+.home-story .full {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 10;
+  will-change: opacity;
+}
+.home-story .full img,
+.home-story .cut {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  display: block;
+}
+/* L'ombre portée n'existe que hors du sujet : invisible tant que la photo
+   complète la recouvre, elle apparaît avec le détourage. */
+.home-story .cut {
+  filter: drop-shadow(0 40px 60px rgba(90, 68, 48, 0.22));
+}
+
+/* Dans .cam, entre le décor (z ≤ 14) et les blocs (z 24) : à l'extérieur il
+   recouvrirait tout le contenu de la caméra, qui est un contexte d'empilement. */
+.home-story .scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(var(--cover, 1));
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    96deg,
+    rgba(var(--ground-rgb), 0.98) 0%,
+    rgba(var(--ground-rgb), 0.96) 34%,
+    rgba(var(--ground-rgb), 0.82) 52%,
+    rgba(var(--ground-rgb), 0.34) 66%,
+    rgba(var(--ground-rgb), 0) 82%
+  );
+}
+
+/* ============================================================ sphère ====== */
+.home-story .orb-slot {
+  position: absolute;
+  left: 960px;
+  top: 470px;
+  width: 544px;
+  height: 544px;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+.home-story .orb-float {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+.home-story .orb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.home-story .orb.live {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.home-story .orb-halo {
+  position: absolute;
+  inset: -32%;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(22px);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--halo) 0%,
+    transparent 66%
+  );
+}
+.home-story .orb-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 340px;
+  height: 340px;
+  margin: -170px 0 0 -170px;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(26px);
+  z-index: 1;
+  background: radial-gradient(50% 50% at 50% 50%, var(--halo), transparent 70%);
+}
+
+/* La sphère est désormais un rendu, pas un dessin CSS : le verre, le visage et
+   les volutes viennent de l'image, détourée sur un masque circulaire adouci. */
+.home-story .orb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 34px 54px rgba(90, 68, 48, 0.26));
+}
+
+/* ------------------------------------------------------------- aura ------
+   Deux arcs de lumière contra-rotatifs POSÉS AUTOUR de la sphère, et trois
+   points d'or rosé en orbite qui passent devant puis derrière. Tout est en
+   CSS : l'effet vit sa vie, indépendamment du défilement.
+   Le disque de l'aura vaut 1,6 fois la sphère ; `closest-side` fixe donc le
+   100 % du masque à son propre rayon, et le bord de la sphère tombe à 62,5 %.
+   Sans cela, le dégradé se réfère au coin le plus lointain et les anneaux
+   retombent À L'INTÉRIEUR du verre, où ils sont invisibles.  ------------- */
+.home-story .aura {
+  position: absolute;
+  inset: -30%;
+  z-index: 3;
+  pointer-events: none;
+}
+/* Deux anneaux de lumière contra-rotatifs, POSÉS AUTOUR du verre. Le disque
+   de l'aura vaut 1,6 fois la sphère ; `closest-side` fixe donc le 100 % du
+   masque à son propre rayon, et le bord de la sphère tombe à 62,5 %. Sans
+   cela, le dégradé se réfère au coin le plus lointain et les anneaux
+   retombent À L'INTÉRIEUR du verre, où ils sont invisibles.
+   L'or rosé de la charte tombe à ~1,9:1 sur l'ivoire : sur un trait de cette
+   finesse il disparaît, on reprend `--accent-2`, la même teinte assombrie. */
+.home-story .aura-band {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(1.2px);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--accent-2) 20deg,
+    rgba(255, 255, 255, 0.98) 42deg,
+    var(--accent-2) 64deg,
+    transparent 96deg,
+    transparent 198deg,
+    var(--accent-2) 228deg,
+    transparent 262deg
+  );
+  mask: radial-gradient(
+    closest-side circle,
+    transparent 62%,
+    #000 65%,
+    #000 72%,
+    transparent 75%
+  );
+  -webkit-mask: radial-gradient(
+    closest-side circle,
+    transparent 62%,
+    #000 65%,
+    #000 72%,
+    transparent 75%
+  );
+  opacity: 0.9;
+  animation: aura-spin 19s linear infinite;
+}
+.home-story .aura-band.b2 {
+  inset: -9%;
+  opacity: 0.5;
+  filter: blur(3px);
+  mask: radial-gradient(
+    closest-side circle,
+    transparent 69%,
+    #000 72%,
+    #000 76%,
+    transparent 79%
+  );
+  -webkit-mask: radial-gradient(
+    closest-side circle,
+    transparent 69%,
+    #000 72%,
+    #000 76%,
+    transparent 79%
+  );
+  animation: aura-spin 31s linear infinite reverse;
+}
+@keyframes aura-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Respiration : la bulle n'est jamais tout à fait immobile. */
+.home-story .orb-img {
+  animation: orb-breathe 7s ease-in-out infinite;
+}
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.018);
+  }
+}
+
+/* ------------------------------------------- vidéo de la scène finale ----
+   Masquée par le même cercle que la sphère : la présentation se joue DANS la
+   bulle, pas dans un cadre posé dessus. */
+/* Le détourage circulaire mord de quelques pixels À L'INTÉRIEUR du disque :
+   le fond blanc de la vidéo affleurait sinon en liseré sur le pourtour. Le
+   masque est adouci pour qu'aucune arête ne trahisse la découpe. */
+.home-story .orb-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  mask: radial-gradient(closest-side circle, #000 95.5%, transparent 98.5%);
+  -webkit-mask: radial-gradient(
+    closest-side circle,
+    #000 95.5%,
+    transparent 98.5%
+  );
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.home-story .orb.playing .orb-video {
+  opacity: 1;
+}
+.home-story .orb.playing .orb-img {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+/* La commande sort de la bulle : au centre elle masquait le visage. Elle
+   chevauche le bord bas, en pastille lisible, et reste le seul élément
+   cliquable quand la sphère traverse le reste du récit. */
+.home-story .orb-play {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  z-index: 6;
+  transform: translate(-50%, -52%);
+  pointer-events: auto;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 21px 36px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink);
+  font: inherit;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  backdrop-filter: blur(12px) saturate(1.3);
+  box-shadow: 0 22px 46px -20px var(--shade-deep);
+  /* Pas de transformation au survol : la pastille est portée par la sphère,
+     qui flotte en continu. Une mise à l'échelle sur un élément dont l'ancêtre
+     se déplace tremble sous le curseur. Le fond et l'ombre suffisent. */
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+/* L'attribut `hidden` doit l'emporter, EXPLICITEMENT. `[hidden]{display:none}`
+   vient de la feuille du navigateur et cède devant n'importe quelle
+   déclaration `display` d'auteur — ici `inline-flex`. Sans cette règle, le
+   bouton « Écouter Clara » reste affiché sur tous les actes où la sphère est
+   visible, alors que le script le masque bien: la commande n'a de sens qu'à la
+   scène finale, où la présentation vidéo se joue. */
+.home-story .orb-play[hidden] {
+  display: none;
+}
+.home-story .orb-play svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--accent-2);
+  flex: none;
+}
+.home-story .orb-play .i-stop {
+  display: none;
+}
+.home-story .orb.playing .orb-play .i-play {
+  display: none;
+}
+.home-story .orb.playing .orb-play .i-stop {
+  display: block;
+}
+.home-story .orb-play:hover {
+  background: #fff;
+  border-color: var(--accent-line);
+  box-shadow: 0 26px 54px -18px var(--shade-deep);
+}
+.home-story .orb-play:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+
+/* ============================================================ perles ====== */
+.home-story .pearl {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 11;
+  background: radial-gradient(
+    58% 58% at 32% 28%,
+    var(--orb-1) 0%,
+    var(--orb-3) 52%,
+    var(--orb-5) 100%
+  );
+  box-shadow:
+    0 8px 18px -5px var(--shade),
+    inset 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================================= blocs ====== */
+/* Le slot est un simple point d'ancrage sans dimension : le bloc s'y centre
+   (xPercent/yPercent -50), donc les coordonnées de mise en page désignent
+   un centre — en paysage comme en portrait. */
+.home-story .slot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 24;
+}
+/* `--tk` : facteur de COMPENSATION d'échelle, posé par fit(). Le repère est
+   mis à l'échelle par la fenêtre ; sans compensation le corps des blocs
+   rétrécit linéairement avec elle et devient illisible bien avant le passage
+   en portrait. En dessous d'un certain palier, `--tk` grandit exactement de
+   ce que l'échelle perd : la taille RÉELLE du texte ne bouge plus. */
+.home-story .blk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: calc(20px * var(--tk, 1));
+  background: linear-gradient(152deg, var(--glass), var(--glass-2));
+  border: 1px solid var(--stroke);
+  border-radius: calc(24px * var(--tk, 1));
+  padding: calc(21px * var(--tk, 1)) calc(25px * var(--tk, 1));
+  box-shadow:
+    0 34px 68px -30px var(--shade-deep),
+    inset 0 1px 0 var(--stroke);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  will-change: transform;
+  visibility: hidden;
+}
+.home-story .blk .t1 {
+  font-weight: 600;
+  font-size: calc(27px * var(--tk, 1));
+  letter-spacing: -0.016em;
+  line-height: 1.26;
+}
+.home-story .blk .t2 {
+  color: var(--ink-3);
+  font-size: calc(22px * var(--tk, 1));
+  margin-top: calc(5px * var(--tk, 1));
+  font-variant-numeric: tabular-nums;
+}
+.home-story .blk .ico {
+  flex: none;
+  width: calc(60px * var(--tk, 1));
+  height: calc(60px * var(--tk, 1));
+  border-radius: calc(19px * var(--tk, 1));
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--hair);
+}
+.home-story .blk .ico svg {
+  width: calc(29px * var(--tk, 1));
+  height: calc(29px * var(--tk, 1));
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-story .blk.warn .ico {
+  color: var(--ink);
+  background: var(--stone-soft);
+}
+.home-story .blk.good .ico {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.home-story .blk .face {
+  flex: none;
+  width: calc(56px * var(--tk, 1));
+  height: calc(56px * var(--tk, 1));
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px var(--stroke),
+    0 0 0 3px var(--accent-soft);
+}
+.home-story .blk .face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.home-story .blk.sm {
+  padding: calc(15px * var(--tk, 1)) calc(21px * var(--tk, 1));
+  border-radius: calc(19px * var(--tk, 1));
+  gap: calc(14px * var(--tk, 1));
+}
+.home-story .blk.sm .t1 {
+  font-size: calc(24px * var(--tk, 1));
+}
+.home-story .blk.sm .ico {
+  width: calc(45px * var(--tk, 1));
+  height: calc(45px * var(--tk, 1));
+  border-radius: calc(14px * var(--tk, 1));
+}
+.home-story .blk.sm .face {
+  width: calc(46px * var(--tk, 1));
+  height: calc(46px * var(--tk, 1));
+}
+.home-story .blk.sm .ico svg {
+  width: calc(22px * var(--tk, 1));
+  height: calc(22px * var(--tk, 1));
+}
+
+.home-story .stat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 26;
+  visibility: hidden;
+}
+.home-story .stat b {
+  display: block;
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 400;
+  font-size: 176px;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.home-story .stat b span {
+  font-size: 74px;
+  letter-spacing: -0.02em;
+  margin-left: 6px;
+}
+.home-story .stat em {
+  display: block;
+  font-style: normal;
+  font-size: calc(36px * var(--tk, 1));
+  line-height: 1.28;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 22px;
+  max-width: 520px;
+  letter-spacing: -0.012em;
+}
+
+/* ============================================================ titres ====== */
+/* `--top-anchor` est calculé par fit() : il maintient une distance constante
+   au haut de la FENÊTRE, quelle que soit l'échelle du repère. */
+.home-story .titles {
+  position: absolute;
+  left: 104px;
+  top: var(--top-anchor, 212px);
+  z-index: 44;
+  width: 1180px;
+}
+.home-story .act {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+}
+.home-story .act h2 {
+  margin: 0;
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 500;
+  font-size: 82px;
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  max-width: 1120px;
+  text-wrap: balance;
+}
+/* Le titre du temps administratif est long : sur une colonne plus étroite il
+   reste sur la moitié gauche et ne traverse pas le praticien. */
+.home-story .act[data-act='3'] h2 {
+  max-width: 880px;
+}
+
+/* ============================================================== hero ====== */
+.home-story .hero {
+  position: absolute;
+  left: 110px;
+  top: calc(var(--top-anchor, 212px) + 38px);
+  width: 1010px;
+  z-index: 46;
+}
+.home-story .brandline {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 30px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.home-story .brandline i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.home-story .hero .ln {
+  overflow: hidden;
+  display: block;
+}
+.home-story .hero h1 {
+  margin: 0;
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 500;
+  font-size: 92px;
+  line-height: 0.99;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.home-story .hero h1 em {
+  font-style: normal;
+  color: var(--accent-2);
+}
+.home-story .hero p {
+  margin: 30px 0 0;
+  font-size: 29px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 790px;
+}
+.home-story .actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 46px;
+  flex-wrap: wrap;
+}
+.home-story .btn {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  padding: 19px 34px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.home-story .btn svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-story .btn-primary {
+  background: var(--accent);
+  color: #faf7f3;
+  border: 1px solid var(--accent);
+  box-shadow: 0 18px 38px -18px var(--shade-deep);
+}
+.home-story .btn-primary:hover {
+  background: #3b2e26;
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px -18px var(--shade-deep);
+}
+.home-story .btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--hair);
+}
+.home-story .btn-ghost:hover {
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+.home-story .btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+/* Repère de défilement : centré, et animé en propre — la molette descend dans
+   la souris, deux chevrons la relancent. `left/right` plutôt qu'un
+   `translateX(-50%)` : GSAP anime `#cue` en `y`, et sa transformation
+   écraserait un centrage porté par le même canal. */
+.home-story .cue-in {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 58px;
+  z-index: 46;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+/* Posé sur une photographie : au gris de repos il se perdait. */
+.home-story .cue-in .mouse {
+  position: relative;
+  width: 48px;
+  height: 78px;
+  border-radius: 999px;
+  border: 2.8px solid var(--ink-2);
+}
+.home-story .cue-in .mouse i {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 6px;
+  height: 13px;
+  margin-left: -3px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  animation: cue-wheel 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.home-story .cue-in .chevs {
+  display: block;
+  margin-top: -4px;
+  line-height: 0;
+}
+.home-story .cue-in .chevs svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-top: -13px;
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: cue-chev 2.1s ease-in-out infinite;
+}
+.home-story .cue-in .chevs svg:last-child {
+  animation-delay: 0.22s;
+  opacity: 0.5;
+}
+@keyframes cue-wheel {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  16% {
+    opacity: 1;
+  }
+  62% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+@keyframes cue-chev {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-story .cue-in .mouse i,
+  .home-story .cue-in .chevs svg {
+    animation: none;
+  }
+}
+
+/* ============================================================ finale ====== */
+.home-story .finale {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1260px;
+  margin-left: -630px;
+  margin-top: -46px;
+  z-index: 48;
+  text-align: center;
+  visibility: hidden;
+}
+/* `visibility:hidden` ci-dessus est la garde anti-flash du récit: la timeline
+   la lève au dernier acte. La section d'invitation n'a pas de timeline — elle
+   affiche la scène finale d'emblée — et doit donc la lever elle-même. */
+.home-story .finale--static {
+  visibility: visible;
+}
+.home-story .finale h2 {
+  margin: 0;
+  font-family: 'Noto Serif', Georgia, serif;
+  font-weight: 500;
+  font-size: 86px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.home-story .finale p {
+  margin: 26px auto 0;
+  font-size: 28px;
+  color: var(--ink-2);
+  max-width: 760px;
+  line-height: 1.5;
+}
+.home-story .finale .actions {
+  justify-content: center;
+  margin-top: 48px;
+}
+/* Mentions de conformité : discrètes, elles rassurent sans capter l'œil.
+   L'or rosé n'apparaît que dans le pictogramme, la charte le réserve. */
+.home-story .badges {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.home-story .badges li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  line-height: 1.2;
+  color: var(--ink-3);
+  white-space: nowrap;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 11px 20px;
+  background: rgba(255, 255, 255, 0.44);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.home-story .badges svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================================== HUD ======= */
+/* Pas de barre de progression au bas de la scène. Remplie en espresso, elle
+   traçait à 100 % un trait plein sur toute la largeur, exactement à la
+   jonction entre la piste épinglée et la section suivante — une bordure que
+   rien ne justifiait. Le rail de droite porte déjà l'avancement, avec le
+   numéro et le libellé de l'étape. */
+
+/* Garde anti-flash. Avant que le script n'ait posé les états initiaux, le
+   navigateur peint le document TEL QUEL : titre hero, titres d'actes, finale
+   et sphère à pleine opacité — un fantôme de la page, aussitôt effacé quand
+   GSAP prend la main. On masque donc par défaut, dans la feuille de style
+   elle-même (donc avant le premier rendu, sans dépendre d'un script), et on
+   ne lève le voile qu'une fois la scène prête.
+   L'ancienne garde visait `.pre` sur #stage : depuis que l'interface a son
+   propre repère, #ui n'est plus un descendant de #stage et le sélecteur ne
+   matchait plus rien. */
+.home-story:not(.is-ready) .ui,
+.home-story:not(.is-ready) .subject {
+  opacity: 0;
+}
+
+/* ========================================================== portrait ======
+   Sur un écran vertical la couche d'interface bascule dans un repère
+   1080×1920 : les blocs s'empilent, les corps de texte sont redimensionnés
+   pour rester lisibles une fois le repère mis à l'échelle (~0,36 sur un
+   téléphone de 390 px). Aucune valeur ci-dessous n'affecte le paysage. */
+.home-story.is-portrait .blk {
+  gap: 26px;
+  border-radius: 34px;
+  padding: 30px 34px;
+}
+.home-story.is-portrait .blk .t1 {
+  font-size: 46px;
+  line-height: 1.24;
+}
+.home-story.is-portrait .blk .t2 {
+  font-size: 37px;
+  margin-top: 9px;
+}
+.home-story.is-portrait .blk .ico {
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+}
+.home-story.is-portrait .blk .ico svg {
+  width: 46px;
+  height: 46px;
+}
+.home-story.is-portrait .blk .face {
+  width: 88px;
+  height: 88px;
+}
+.home-story.is-portrait .blk.sm {
+  padding: 26px 30px;
+  border-radius: 30px;
+  gap: 22px;
+}
+.home-story.is-portrait .blk.sm .t1 {
+  font-size: 43px;
+}
+.home-story.is-portrait .blk.sm .ico {
+  width: 78px;
+  height: 78px;
+  border-radius: 24px;
+}
+.home-story.is-portrait .blk.sm .ico svg {
+  width: 39px;
+  height: 39px;
+}
+.home-story.is-portrait .blk.sm .face {
+  width: 76px;
+  height: 76px;
+}
+
+.home-story.is-portrait .stat b {
+  font-size: 264px;
+  line-height: 1;
+}
+.home-story.is-portrait .stat b span {
+  font-size: 118px;
+}
+.home-story.is-portrait .stat em {
+  font-size: 54px;
+  margin-top: 16px;
+  max-width: 900px;
+}
+
+.home-story.is-portrait .titles {
+  left: 72px;
+  top: 236px;
+  width: 936px;
+} /* repère propre au portrait */
+.home-story.is-portrait .act h2 {
+  font-size: 98px;
+  line-height: 1.1;
+  max-width: none;
+}
+/* Titre long : un cran plus bas, il tient sur une ligne de moins et
+   dégage le visage du praticien. */
+.home-story.is-portrait .act[data-act='3'] h2 {
+  font-size: 84px;
+}
+
+.home-story.is-portrait .hero {
+  left: 72px;
+  top: 300px;
+  width: 936px;
+}
+.home-story.is-portrait .hero h1 {
+  font-size: 108px;
+  line-height: 1.02;
+}
+.home-story.is-portrait .hero p {
+  font-size: 41px;
+  line-height: 1.46;
+  margin-top: 44px;
+  max-width: none;
+}
+.home-story.is-portrait .actions {
+  margin-top: 60px;
+}
+.home-story.is-portrait .btn {
+  font-size: 40px;
+  padding: 30px 52px;
+  gap: 18px;
+}
+.home-story.is-portrait .btn svg {
+  width: 38px;
+  height: 38px;
+}
+.home-story.is-portrait .cue-in {
+  bottom: 150px;
+  font-size: 29px;
+  gap: 18px;
+}
+.home-story.is-portrait .cue-in .mouse {
+  width: 62px;
+  height: 100px;
+  border-width: 3.5px;
+}
+.home-story.is-portrait .cue-in .mouse i {
+  width: 9px;
+  height: 19px;
+  margin-left: -4.5px;
+  top: 16px;
+}
+.home-story.is-portrait .cue-in .chevs svg {
+  width: 44px;
+  height: 44px;
+  margin-top: -19px;
+  stroke-width: 2.4;
+}
+
+.home-story.is-portrait .finale {
+  left: 50%;
+  top: 50%;
+  width: 960px;
+  margin-left: -480px;
+  margin-top: -90px;
+}
+.home-story.is-portrait .finale h2 {
+  font-size: 96px;
+  line-height: 1.06;
+}
+.home-story.is-portrait .finale p {
+  font-size: 40px;
+  margin-top: 38px;
+  max-width: none;
+}
+.home-story.is-portrait .finale .actions {
+  margin-top: 62px;
+}
+/* En colonne : trois pastilles côte à côte deviendraient illisibles. */
+.home-story.is-portrait .badges {
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 52px;
+}
+.home-story.is-portrait .badges li {
+  font-size: 33px;
+  padding: 19px 34px;
+  gap: 16px;
+  white-space: normal;
+  text-align: center;
+}
+.home-story.is-portrait .badges svg {
+  width: 31px;
+  height: 31px;
+}
+
+/* Le voile de lisibilité suit l'axe de lecture : horizontal en paysage (le
+   sujet est à droite), vertical en portrait (le titre est en haut). Le
+   dégradé est mis à l'échelle par --cover ; en portrait ce facteur mappe la
+   hauteur du repère presque exactement sur celle de l'écran, l'axe vertical
+   reste donc fidèle là où l'axe horizontal serait étiré quatre fois. */
+.home-story.is-portrait .scrim {
+  background: linear-gradient(
+    184deg,
+    rgba(var(--ground-rgb), 0.97) 0%,
+    rgba(var(--ground-rgb), 0.95) 20%,
+    rgba(var(--ground-rgb), 0.86) 50%,
+    rgba(var(--ground-rgb), 0.4) 68%,
+    rgba(var(--ground-rgb), 0) 84%
+  );
+}
+
+/* La sphère vit dans le repère du décor (1920×1080), très réduit en portrait :
+   elle y occupe presque toute la largeur. On la resserre et on la remonte pour
+   dégager la colonne de blocs, sans toucher aux transformations animées de
+   .orb-slot et .orb-float. */
+.home-story.is-portrait .orb {
+  transform: translateY(-140px) scale(0.68);
+  transition: transform 0.6s ease;
+}
+/* Finale : plus de sphère, pas de blocs — elle occupe toute la bande libre
+   entre la barre de navigation et le titre, centrée dedans. */
+.home-story.is-portrait.is-at-finale .orb {
+  transform: translateY(-31px) scale(1.06);
+}
+.home-story.is-portrait .stat {
+  text-align: center;
+}
+.home-story.is-portrait .stat em {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mouvement réduit : l'aura et la respiration s'arrêtent, la sphère reste. */
+@media (prefers-reduced-motion: reduce) {
+  .home-story .aura-band,
+  .home-story .pearl,
+  .home-story .orb-img {
+    animation: none;
+  }
+}
+
+/* ======================================================= palier compact ===
+   Écrans intermédiaires (échelle du repère sous 0,66). Deux principes :
+   les corps de texte remontent pour rester lisibles une fois le repère
+   réduit, et les blocs prennent la LARGEUR DE LEUR CONTENU au lieu d'une
+   largeur figée — la page a la place de les tenir sur une ligne, une largeur
+   héritée du grand écran les faisait passer à deux. */
+/* Le palier ne touche plus aux TAILLES — `--tk` les tient — seulement à la
+   façon dont les blocs occupent la place.
+   `max-content` donne au bloc sa largeur d'une seule ligne ; `max-width` la
+   borne, et au-delà le texte PLIE. Un `nowrap` borné par `max-width`, lui,
+   garantissait le débordement : la boîte s'arrêtait, pas le texte. La mise en
+   page mesure les hauteurs, deux ou trois lignes ne la gênent pas. */
+.home-story.is-compact .blk {
+  width: max-content !important;
+  max-width: 720px;
+}
+
+/* Le titre était trop gros et trop bas : il mordait sur le compteur et sur
+   les blocs. */
+.home-story.is-compact .act h2 {
+  font-size: 84px;
+  max-width: 1240px;
+}
+.home-story.is-compact .act[data-act='3'] h2 {
+  max-width: 1080px;
+}
+.home-story.is-compact .hero h1 {
+  font-size: 96px;
+}
+.home-story.is-compact .hero p {
+  font-size: 32px;
+}
+
+/* Compteur : resserré et descendu pour dégager le titre, et aligné à gauche
+   sur lui — sa position est posée par layout(), qui a sa propre valeur. */
+.home-story.is-compact .stat b {
+  font-size: 180px;
+}
+.home-story.is-compact .stat b span {
+  font-size: 80px;
+}
+.home-story.is-compact .stat em {
+  margin-top: 16px;
+  max-width: 520px;
+}
+
+.home-story.is-compact .btn {
+  font-size: 28px;
+  padding: 20px 38px;
+}
+.home-story.is-compact .btn svg {
+  width: 26px;
+  height: 26px;
+}
+/* Finale : les trois pastilles tiennent sur une ligne, et l'ensemble descend
+   d'autant pour dégager la barre de navigation. */
+/* La pastille « Écouter Clara » touchait le titre : on écarte des deux côtés
+   à la fois, la sphère remonte et le bloc de texte descend. */
+.home-story.is-compact .finale {
+  width: 1560px;
+  margin-left: -780px;
+  margin-top: 74px;
+}
+.home-story.is-compact .finale h2 {
+  font-size: 92px;
+}
+.home-story.is-compact .finale p {
+  font-size: 32px;
+  max-width: 900px;
+}
+.home-story.is-compact .badges {
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+.home-story.is-compact .badges li {
+  font-size: 21px;
+  padding: 12px 22px;
+  white-space: nowrap;
+}
+.home-story.is-compact .badges svg {
+  width: 20px;
+  height: 20px;
+}
+.home-story.is-compact.is-at-finale .orb {
+  transform: translateY(100px);
+}
+.home-story.is-compact .cue-in {
+  font-size: 22px;
+}
+
+/* =========================================================================
+   PISTE ET RAIL — venus du gabarit du prototype, pas de sa feuille de scène.
+   ========================================================================= */
+
+/* Le sticky doit avoir pour bloc conteneur la piste ENTIÈRE. Enfermé dans un
+   conteneur qui ne fait que sa propre hauteur, il se décolle aussitôt et la
+   page défile devant l'animation au lieu de la retenir. Un sticky ne voyage
+   jamais au-delà de son bloc conteneur — et aucun ancêtre ne doit porter
+   d'overflow autre que visible. La hauteur est posée en style inline depuis
+   TIMING.trackVh, pour qu'un seul fichier règle le rythme. */
+.home-story.track {
+  position: relative;
+  display: block;
+}
+.home-story .sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Rail minimal: un tiret et un numéro. Le libellé n'apparaît que sur l'étape
+   active ou au survol — sinon il masquerait les blocs de la scène. */
+.home-story .rail {
+  position: absolute;
+  right: clamp(16px, 2vw, 34px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+.home-story .rail button {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+  color: var(--ink-3);
+  background: none;
+  border: 0;
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 11px;
+  transition: color 0.3s;
+}
+.home-story .rail button:hover {
+  color: var(--ink);
+}
+.home-story .rail button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+.home-story .rail .l {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--hair);
+  background: rgba(var(--ground-rgb), 0.66);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  transform: translateX(8px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+  pointer-events: none;
+}
+.home-story .rail button:hover .l,
+.home-story .rail button[aria-current='true'] .l {
+  opacity: 1;
+  transform: none;
+}
+.home-story .rail .n {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+}
+.home-story .rail .tick {
+  width: 16px;
+  height: 1.5px;
+  background: currentColor;
+  opacity: 0.45;
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s;
+}
+.home-story .rail button[aria-current='true'] {
+  color: var(--accent);
+}
+.home-story .rail button[aria-current='true'] .tick {
+  width: 34px;
+  opacity: 1;
+}
+
+@media (max-width: 920px) {
+  .home-story .rail {
+    display: none;
+  }
+}
+
+/* =========================================================================
+   VARIANTE EN FLUX — section d'invitation de fin de page.
+
+   Le récit place ses éléments en pixels dans un repère 1920x1080 mis à
+   l'échelle: c'est ce qui permet à une timeline de viser des coordonnées
+   fixes. Une section ordinaire n'a pas ce besoin, et hériter de ce repère y
+   faisait se chevaucher le titre, la sphère et les boutons.
+
+   Ici tout revient au flux normal: des blocs, des marges, des rembourrages.
+   On ne reprend du décor que le champ nacré, les voiles et la sphère.
+   ========================================================================= */
+
+/* Les voiles couvrent la section au lieu du repère fixe. */
+.home-story .silk--invite {
+  width: 100%;
+  height: 100%;
+}
+
+/* La sphère prend une taille de page, pas de repère. */
+.home-story .invite-orb {
+  position: relative;
+  width: clamp(168px, 20vw, 232px);
+  height: clamp(168px, 20vw, 232px);
+}
+
+/* La commande de lecture est dimensionnée pour le repère mis à l'échelle:
+   dans le flux, ses trente pixels de police écraseraient la sphère. */
+.home-story .invite-orb .orb-play {
+  font-size: 14px;
+  gap: 9px;
+  padding: 10px 18px;
+}
+.home-story .invite-orb .orb-play svg {
+  width: 16px;
+  height: 16px;
+}

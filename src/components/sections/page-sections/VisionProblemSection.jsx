@@ -1,32 +1,39 @@
 import Container from '../../layout/Container';
 
-export default function VisionProblemSection({ 
+export default function VisionProblemSection({
   label,
   title,
   intro,
   body,
   statPill,
-  barriers = []
+  barriers = [],
 }) {
   return (
-    <section className="border-y border-color-border bg-color-surface py-28">
+    <section className="border-y border-color-border bg-color-surface py-[clamp(56px,7vw,110px)]">
       <Container>
         <div className="mx-auto max-w-[800px]">
           <div className="rev mb-16">
-            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.18em] text-color-primary">
+            <p className="mb-5 text-[12px] font-[var(--w500)] uppercase tracking-[0.16em] text-color-primary">
               {label}
             </p>
-            <h2 className="mb-6 text-[clamp(29px,3vw,42px)] font-[var(--w500)] leading-[1.2] tracking-[-0.02em]">
+            <h2 className="mb-6 font-serif text-[clamp(1.9rem,3.2vw,2.8rem)] font-[600] leading-[1.16] tracking-[-0.02em]">
               {title}
             </h2>
-            <p className="mb-8 text-[17px] font-light leading-[1.8] text-ink-72" dangerouslySetInnerHTML={{ __html: intro }} />
+            <p
+              className="mb-8 text-[17px] font-light leading-[1.8] text-ink-72"
+              dangerouslySetInnerHTML={{ __html: intro }}
+            />
             <p className="mb-8 text-[17px] font-light leading-[1.8] text-ink-72">
               {body}
             </p>
             {statPill && (
-              <div className="mt-4 inline-flex items-baseline gap-2 rounded-sm bg-color-primary px-5 py-[10px] text-white">
-                <span className="text-[24px] font-[var(--w600)]">{statPill.value}</span>
-                <span className="text-[13px] opacity-85">{statPill.label}</span>
+              <div className="mt-4 inline-flex items-baseline gap-2 rounded-full bg-color-primary px-6 py-[10px] text-white">
+                <span className="text-[24px] font-[var(--w600)]">
+                  {statPill.value}
+                </span>
+                <span className="text-[13.5px] opacity-85">
+                  {statPill.label}
+                </span>
               </div>
             )}
           </div>
@@ -39,14 +46,14 @@ export default function VisionProblemSection({
                   index === 0 ? 'border-t' : ''
                 } border-b`}
               >
-                <span className="pt-[2px] font-serif text-[14.5px] text-color-accent-1">
+                <span className="pt-[2px] font-serif text-[15px] text-color-accent-1">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <div>
-                  <div className="mb-2 text-[13.5px] font-medium uppercase tracking-[0.05em]">
+                  <div className="mb-2 text-[14px] font-[var(--w500)] uppercase tracking-[0.06em]">
                     {barrier.title}
                   </div>
-                  <div className="text-[14.5px] font-light text-ink-65">
+                  <div className="text-[15px] leading-[1.7] text-ink-65">
                     {barrier.text}
                   </div>
                 </div>

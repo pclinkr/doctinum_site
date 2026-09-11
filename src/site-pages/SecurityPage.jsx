@@ -4,6 +4,7 @@ import SecurityGuaranteesSection from '../components/sections/page-sections/Secu
 import SecurityPostureSection from '../components/sections/page-sections/SecurityPostureSection';
 import SecuritySupervisionSection from '../components/sections/page-sections/SecuritySupervisionSection';
 import SecurityRoadmapSection from '../components/sections/page-sections/SecurityRoadmapSection';
+import WhyDifferentSection from '../components/sections/page-sections/WhyDifferentSection';
 
 export default function SecurityPage({ active, onNavigate }) {
   const { t } = useTranslation();
@@ -14,10 +15,7 @@ export default function SecurityPage({ active, onNavigate }) {
   }
 
   return (
-    <div
-      id="page-security"
-      className={`page ${active ? 'active' : ''}`.trim()}
-    >
+    <div id="page-security" className={`page ${active ? 'active' : ''}`.trim()}>
       <SecurityHeroSection
         eyebrow={copy.hero.eyebrow}
         title={copy.hero.title}
@@ -31,6 +29,10 @@ export default function SecurityPage({ active, onNavigate }) {
         intro={copy.guarantees.intro}
         guarantees={copy.guarantees.items}
       />
+
+      {/* `linkPage` reste nul: la carte mise en avant pointe vers la sécurité,
+          et la section vit déjà sur cette page. */}
+      <WhyDifferentSection onNavigate={onNavigate} />
 
       <SecurityPostureSection
         label={copy.posture.label}

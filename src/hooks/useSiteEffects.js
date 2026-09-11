@@ -3,11 +3,26 @@ import { useEffect, useRef, useState } from 'react';
 const LOAD_DURATION_MS = 1950;
 const CURTAIN_DURATION_MS = 1360;
 const REVEAL_ENTRY_DELAY_MS = 360;
+const REVEAL_SWEEP_INTERVAL_MS = 900;
+const PENDING_REVEAL_SELECTOR = [
+  '.page.active .rev:not(.in)',
+  '.page.active .rev-no-scale:not(.in)',
+  '.page.active .rev-mask:not(.in)',
+  '.page.active .rev-frame:not(.in)',
+].join(', ');
+
+// L'écran de chargement de marque est désactivé par défaut.
+// Pour le réactiver: NEXT_PUBLIC_ENABLE_LOADER=true
+const IS_LOADER_ENABLED = process.env.NEXT_PUBLIC_ENABLE_LOADER === 'true';
 
 export function useLoader() {
-  const [loaderStage, setLoaderStage] = useState('loading');
+  const [loaderStage, setLoaderStage] = useState(
+    IS_LOADER_ENABLED ? 'loading' : 'done'
+  );
 
   useEffect(() => {
+    if (!IS_LOADER_ENABLED) return undefined;
+
     document.body.style.overflow = 'hidden';
     const loadingTimeoutId = window.setTimeout(() => {
       setLoaderStage('curtain');
@@ -29,22 +44,20 @@ export function useLoader() {
 }
 
 export function useScrollState() {
+  /* Pas de valeur continue ici. `navBlurProgress` changeait à CHAQUE événement
+     de défilement sur les 140 premiers pixels, donc rendait toute la coquille
+     autant de fois — et avec elle les effets qui dépendaient de ses fonctions.
+     Plus personne ne le lisait: le dégradé qui l'utilisait a disparu avec
+     l'ancienne barre. Ne restent que deux booléens, qui ne changent qu'aux
+     franchissements de seuil. */
   const [isNavScrolled, setIsNavScrolled] = useState(false);
   const [isFloatingCtaVisible, setIsFloatingCtaVisible] = useState(false);
-  const [navBlurProgress, setNavBlurProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const blurRampDistance = 140;
-      const nextBlurProgress = Math.min(
-        1,
-        Math.max(0, scrollY / blurRampDistance)
-      );
-
       setIsNavScrolled(scrollY > 24);
       setIsFloatingCtaVisible(scrollY > window.innerHeight * 0.65);
-      setNavBlurProgress(nextBlurProgress);
     };
 
     handleScroll();
@@ -52,7 +65,7 @@ export function useScrollState() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return { isNavScrolled, isFloatingCtaVisible, navBlurProgress };
+  return { isNavScrolled, isFloatingCtaVisible };
 }
 
 export function useRevealAnimation(currentPage) {
@@ -96,16 +109,44 @@ export function useRevealAnimation(currentPage) {
     observerRef.current = revealObserver;
     const timerId = window.setTimeout(() => {
       document
-        .querySelectorAll(
-          '.page.active .rev:not(.in), .page.active .rev-no-scale:not(.in)'
-        )
+        .querySelectorAll(PENDING_REVEAL_SELECTOR)
         .forEach((element) => revealObserver.observe(element));
     }, observeDelayMs);
+
+    // Filet de sécurité: si l'IntersectionObserver ne signale rien (onglet
+    // masqué, viewport de hauteur nulle, navigateur exotique), on révèle
+    // quand même ce qui se trouve dans la fenêtre. Sans ça, un bloc peut
+    // rester invisible pour toujours.
+    const sweepIntervalId = window.setInterval(() => {
+      const pendingElements = document.querySelectorAll(
+        PENDING_REVEAL_SELECTOR
+      );
+
+      if (!pendingElements.length) {
+        window.clearInterval(sweepIntervalId);
+        return;
+      }
+
+      const viewportHeight = window.innerHeight || 0;
+
+      pendingElements.forEach((element) => {
+        const bounds = element.getBoundingClientRect();
+        const isWithinViewport =
+          viewportHeight === 0 ||
+          (bounds.top < viewportHeight * 0.92 && bounds.bottom > 0);
+
+        if (isWithinViewport) {
+          revealObserver.unobserve(element);
+          element.classList.add('in');
+        }
+      });
+    }, REVEAL_SWEEP_INTERVAL_MS);
 
     hasPlayedInitialRevealRef.current = true;
 
     return () => {
       window.clearTimeout(timerId);
+      window.clearInterval(sweepIntervalId);
       revealTimeoutIdsRef.current.forEach((timeoutId) =>
         window.clearTimeout(timeoutId)
       );

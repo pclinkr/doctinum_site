@@ -1,10 +1,10 @@
 import Container from '../../layout/Container';
 
-export default function SecurityRoadmapSection({ 
+export default function SecurityRoadmapSection({
   label,
   title,
   intro,
-  items = []
+  items = [],
 }) {
   const getStatusClass = (status) => {
     switch (status) {
@@ -33,19 +33,19 @@ export default function SecurityRoadmapSection({
   };
 
   return (
-    <section className="bg-color-surface py-28">
+    <section className="bg-color-surface py-[clamp(56px,7vw,110px)]">
       <Container>
         <div className="mx-auto max-w-[860px]">
-          <p className="rev mb-5 text-[11px] font-medium uppercase tracking-[0.18em] text-color-primary">
+          <p className="rev mb-5 text-[12px] font-[var(--w500)] uppercase tracking-[0.16em] text-color-primary">
             {label}
           </p>
-          <h2 className="rev mb-5 text-[clamp(1.6rem,2.5vw,2.2rem)] font-[var(--w400)] leading-[1.25] tracking-[-0.02em]">
+          <h2 className="rev mb-5 font-serif text-[clamp(1.9rem,3.2vw,2.8rem)] font-[600] leading-[1.16] tracking-[-0.02em]">
             {title}
           </h2>
-          <p className="rev mb-8 max-w-[680px] text-[1rem] font-light leading-[1.8] text-ink-68">
+          <p className="rev mb-8 max-w-[680px] text-[17px] font-light leading-[1.8] text-ink-68">
             {intro}
           </p>
-          
+
           <div className="flex flex-col gap-0">
             {items.map((item, index) => (
               <div
@@ -55,15 +55,17 @@ export default function SecurityRoadmapSection({
                 }`}
               >
                 <div className="pt-[0.1rem]">
-                  <span className={`inline-block border px-[0.6rem] py-1 text-[0.7rem] font-medium uppercase tracking-[0.1em] ${getStatusClass(item.status)}`}>
+                  <span
+                    className={`inline-block rounded-full border px-3 py-1 text-[11.5px] font-[var(--w500)] uppercase tracking-[0.1em] ${getStatusClass(item.status)}`}
+                  >
                     {getStatusLabel(item.status)}
                   </span>
                 </div>
                 <div>
-                  <div className="mb-2 text-[0.88rem] font-medium uppercase tracking-[0.06em]">
+                  <div className="mb-2 text-[14px] font-[var(--w500)] uppercase tracking-[0.06em]">
                     {item.title}
                   </div>
-                  <div className="text-[0.9rem] font-light leading-[1.7] text-ink-65">
+                  <div className="text-[15px] leading-[1.7] text-ink-65">
                     {item.text}
                   </div>
                 </div>
