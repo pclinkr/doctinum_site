@@ -30,15 +30,6 @@ const en = {
     mobileMenu: 'Menu',
   },
   megaMenu: {
-    soon: 'Soon',
-    grouped: {
-      sectionEntry: 'Open this section',
-      goHome: 'Go back to home',
-    },
-    main: {
-      title: 'Reach key sections quickly',
-      body: 'Use a single mega menu to access solutions, resources, and enterprise pathways.',
-    },
     solutions: {
       eyebrow: 'Solutions',
       title: 'Follow-up paths adapted to each clinical context',
@@ -123,6 +114,15 @@ const en = {
         // },
       ],
       cta: { label: 'Discuss a pilot project', page: 'contact' },
+    },
+    soon: 'Soon',
+    grouped: {
+      sectionEntry: 'Open this section',
+      goHome: 'Go back to home',
+    },
+    main: {
+      title: 'Reach key sections quickly',
+      body: 'Use a single mega menu to access solutions, resources, and enterprise pathways.',
     },
     functioning: {
       eyebrow: 'How it works',
@@ -230,43 +230,47 @@ const en = {
     storyDurationMs: 3000,
   },
   sections: {
+    whyDifferent: {
+      label: 'Why it is different',
+      titlePrefix: 'One conversation, two surfaces.',
+      titleAccent: 'And an engine that keeps the AI in check.',
+      body: '',
+      cards: [
+        {
+          icon: 'phone',
+          title: 'Voice + screen',
+          body: 'Voice and screen form a single conversation: patients answer aloud or with a tap, and precise data (dates, contact details, photos) flows through the screen. Each patient chooses their own mode.',
+          tag: 'Multimodal',
+        },
+        {
+          icon: 'check-badge',
+          title: 'AI kept in check',
+          body: 'The AI model decides nothing on its own: an orchestration engine frames every exchange. Every conversation is traceable and replayable: compliance lives in the architecture, not in a promise.',
+          tag: 'Traceable & replayable',
+        },
+        {
+          icon: 'server-stack',
+          title: 'Built for French aesthetic medicine',
+          body: 'Journeys, vocabulary, and regulatory framework tailored to the French aesthetic medicine sector. HDS-certified health hosting, data hosted in France.',
+          tag: 'HDS hosting · France',
+          highlight: true,
+        },
+      ],
+    },
     hero: {
       ariaLabel: 'Hero',
       titlePrefix: 'Patient follow-up',
       titleMiddle: 'should not remain',
       titleAccent: 'silent',
       subtitle:
-        'The voice AI infrastructure that applies your protocols, triggers structured follow-up, and surfaces actionable signals — under medical supervision.',
+        'The voice AI infrastructure that applies your protocols, triggers structured follow-up, and surfaces actionable signals, under medical supervision.',
       cta: 'Evaluate a pilot project',
       cta2: 'Schedule a confidential discussion',
       liveCallBadge: 'Live test',
     },
-    services: {
-      titlePrefix: 'How we can help you',
-      titleAccent: 'grow',
-    },
     faq: {
       label: 'Questions',
       title: 'Frequently Asked Questions',
-    },
-    process: {
-      titlePrefix: 'We like to keep things',
-      titleAccent: 'simple',
-      titleSuffix: 'and effective',
-      cards: [
-        {
-          title: 'Strategy first',
-          body: 'We audit your brand, audience, and competitors, then build a clear, precise, results-oriented strategy.',
-        },
-        {
-          title: 'Create & manage',
-          body: 'We create, schedule, and manage your content so you can stay focused on your business.',
-        },
-        {
-          title: 'Analyze & optimize',
-          body: 'Monthly reviews and clear reporting. We strengthen what works and eliminate the rest.',
-        },
-      ],
     },
     mission: {
       label: 'Our mission',
@@ -281,55 +285,6 @@ const en = {
         'If you want to grow with intention, we can help.',
       ],
     },
-    homeCases: {
-      label: 'Client results',
-      titlePrefix: 'Work that speaks',
-      titleAccent: 'for itself',
-      viewAll: 'View all cases',
-      case1: {
-        tag: 'Results · Beauty',
-        titlePrefix: 'Scaling a beauty brand with',
-        titleAccent: 'Reels',
-        body: 'We redesigned their content approach, from long tutorials to short Reels, paired with targeted paid ads on Meta.',
-        kpi1: 'Reel Views',
-        kpi2: 'Engagement',
-      },
-      case2: {
-        tag: 'Results · Fashion',
-        titlePrefix: 'Growing a fashion brand with',
-        titleAccent: 'video',
-        body: 'Shift from a static feed to video-first content showing the product in real use.',
-        kpi1: 'Followers',
-        kpi2: 'Engagement',
-      },
-    },
-    whyChoose: {
-      titlePrefix: 'Why choose Doctinum',
-      titleMiddle: 'over',
-      titleAccent: 'others',
-      titleSuffix: '?',
-      otherTitle: 'Other solutions',
-      brandTitle: 'Our difference',
-      otherItems: [
-        'Binding long-term contracts',
-        'Generic non-tailored content',
-        'Slow production timelines',
-        'Vague reporting without insights',
-      ],
-      brandItems: [
-        'Flexible plans without commitment',
-        'Brand-specific content strategy',
-        '48-hour turnaround guarantee',
-        'Clear KPIs tied to business objectives',
-      ],
-    },
-    testimonial: {
-      quotePrefix:
-        'They completely took over managing our social media, and our audience has never been',
-      quoteAccent: 'so engaged.',
-      author: 'Elena Chen',
-      role: 'Founder · Bloom Skincare',
-    },
     finalCta: {
       label: 'Get started',
       titlePrefix: 'Your voice follow-up starts',
@@ -342,8 +297,6 @@ const en = {
       headTitleAccent: 'AI medical agent',
       domains: [
         { id: 'ortho', label: 'Orthopedics (surgery)' },
-        { id: 'oncology', label: 'Cancer' },
-        { id: 'cardiac', label: 'Liver transplant' },
         { id: 'aesthetic', label: 'Cosmetic surgery' },
       ],
       controls: {
@@ -351,7 +304,8 @@ const en = {
       },
       conversion: {
         title: 'Discover our platform',
-        message: 'You have tested our live calls multiple times. It\'s time to discover the full power of our platform in a real demo.',
+        message:
+          "You have tested our live calls multiple times. It's time to discover the full power of our platform in a real demo.",
         demoButton: 'Book a demo',
         cancelButton: 'Cancel',
       },
@@ -370,7 +324,8 @@ const en = {
         rateLimitExceeded: 'Running demo...',
       },
       results: {
-        disclaimer: 'Example of structured data that can be extracted from a conversation',
+        disclaimer:
+          'Example of information that can be collected during a pre-consultation:',
         default: {
           header: 'Structured call summary',
           title: 'Clinical data collected during simulation',
@@ -409,60 +364,23 @@ const en = {
             body: 'Pain >= 6/10 with night discomfort: orthopedics alert threshold triggered.',
           },
         },
-        oncology: {
-          header: 'Structured call summary',
-          title: 'Between-cycle follow-up (oncology)',
-          metricsTitle: 'Captured indicators',
-          metrics: [
-            {
-              label: 'Nausea',
-              value: 'Present early in cycle, then decreased',
-            },
-            { label: 'Anti-emetic adherence', value: 'Yes' },
-            { label: 'Appetite', value: 'Progressive recovery' },
-            { label: 'Fever > 38°C', value: 'Not reported' },
-          ],
-          alert: {
-            badge: 'Protocol threshold alert',
-            title: 'Infectious threshold crossed',
-            body: 'Fever > 38°C or chills: oncology alert threshold triggered.',
-          },
-        },
-        cardiac: {
-          header: 'Structured call summary',
-          title: 'Post-op day 10 follow-up (cardiac surgery)',
-          metricsTitle: 'Captured indicators',
-          metrics: [
-            {
-              label: 'Medication adherence',
-              value: 'Reported compliant',
-            },
-            { label: 'Warning signs', value: 'Not reported' },
-            { label: 'Physical activity', value: 'Progressive restart' },
-            { label: 'Lab work', value: 'Done, results pending' },
-            { label: 'Hygiene instructions', value: 'Respected' },
-          ],
-          alert: {
-            badge: 'Protocol threshold alert',
-            title: 'Post-cardiac surgery threshold crossed',
-            body: 'Chest pain, shortness of breath or palpitations: cardiac alert threshold triggered.',
-          },
-        },
         aesthetic: {
-          header: 'Structured call summary',
-          title: 'Post-procedure follow-up (cosmetic surgery)',
-          metricsTitle: 'Captured indicators',
+          header: 'Pre-consultation summary',
+          title: 'File ready for the first consultation (aesthetic medicine)',
+          metricsTitle: 'Information collected',
           metrics: [
-            { label: 'Edema / bruising', value: 'Progressive decrease' },
-            { label: 'Care protocol adherence', value: 'Compliant' },
-            { label: 'Sleep position', value: 'Adapted position respected' },
-            { label: 'Major bleeding', value: 'Not reported' },
+            { label: 'Reason expressed', value: 'Rhinoplasty (nasal bump)' },
+            {
+              label: 'How long it has been a concern',
+              value: 'Since adolescence',
+            },
+            { label: 'ENT history', value: 'None reported' },
+            { label: 'Photos', value: 'Link sent to patient' },
+            {
+              label: 'Medical decision',
+              value: 'Reserved for the practitioner',
+            },
           ],
-          alert: {
-            badge: 'Protocol threshold alert',
-            title: 'Bleeding threshold crossed',
-            body: 'Heavy bleeding or unusual pain: cosmetic surgery alert threshold triggered.',
-          },
         },
       },
       fallbackTranscripts: {
@@ -493,105 +411,51 @@ const en = {
             delayMs: 7600,
           },
         ],
-        oncology: [
+        aesthetic: [
           {
             role: 'agent',
-            text: "Hello, I'm the oncology agent. I'll help you organize your information.",
-            delayMs: 600,
-          },
-          {
-            role: 'patient',
-            text: 'I got my results yesterday and want to understand the next steps.',
-            delayMs: 2300,
-          },
-          {
-            role: 'agent',
-            text: "Perfect. We'll review symptoms, ongoing treatments, and exams.",
-            delayMs: 4100,
-          },
-          {
-            role: 'patient',
-            text: "Great, I'd also like to prepare my questions for the consultation.",
-            delayMs: 6000,
-          },
-          {
-            role: 'agent',
-            text: "Excellent, I'll prepare a clear summary to share with your doctor.",
-            delayMs: 8100,
-          },
-        ],
-        cardiac: [
-          {
-            role: 'agent',
-            text: "Hello, I'm the cardiac surgery follow-up agent. I'm calling about your post-operative care.",
+            text: "Hello, I'm Clara, the practice's front-desk assistant. I'm here to understand your project and prepare your visit. What brings you in today?",
             delayMs: 0,
           },
           {
             role: 'patient',
-            text: 'Yes, hello. I\'m available.',
+            text: "Hi. I'm looking into a rhinoplasty, I've had a complex about the bump on my nose since I was a teenager.",
             delayMs: 1500,
           },
           {
             role: 'agent',
-            text: 'We\'re at day 10 after your coronary bypass surgery. How are you feeling today?',
-            delayMs: 3000,
+            text: 'I understand. Dr. Leroy performs this procedure regularly at the practice. Have you already consulted a surgeon about this?',
+            delayMs: 3500,
           },
           {
             role: 'patient',
-            text: 'I feel better, but I still get short of breath when climbing stairs.',
-            delayMs: 5500,
+            text: "No, never. I'm not really sure what to expect.",
+            delayMs: 6000,
           },
           {
             role: 'agent',
-            text: 'Are you taking your medications properly? Beta-blockers and antiplatelet agents?',
+            text: "That's completely normal, the consultation is exactly where those questions get answered. May I ask how long this has been bothering you?",
             delayMs: 8500,
           },
           {
             role: 'patient',
-            text: 'Yes, I follow the prescription exactly. No notable side effects.',
+            text: 'Since my teenage years, but I finally decided to look into it seriously this year.',
             delayMs: 11500,
           },
           {
             role: 'agent',
-            text: 'Perfect. Do you have any chest pain, palpitations, or unusual shortness of breath?',
+            text: 'Thank you. Do you have any medical history or previous ENT procedures on your nose?',
             delayMs: 14500,
           },
           {
             role: 'patient',
-            text: 'No, none of that. Just some normal fatigue.',
-            delayMs: 17500,
+            text: 'No, no particular history.',
+            delayMs: 17000,
           },
           {
             role: 'agent',
-            text: 'Very good. Are you following the rehabilitation guidelines and activity limits?',
-            delayMs: 20500,
-          },
-        ],
-        aesthetic: [
-          {
-            role: 'agent',
-            text: "Hello, I'm the cosmetic surgery agent. What's your primary goal?",
-            delayMs: 600,
-          },
-          {
-            role: 'patient',
-            text: 'I want to understand options and recovery time after surgery.',
-            delayMs: 2300,
-          },
-          {
-            role: 'agent',
-            text: 'I can compare options, benefits, risks, and recovery time.',
-            delayMs: 4200,
-          },
-          {
-            role: 'patient',
-            text: "Great, I'd like to schedule an initial consultation next.",
-            delayMs: 6100,
-          },
-          {
-            role: 'agent',
-            text: "Perfect, I'll prepare a summary and available slots.",
-            delayMs: 8100,
+            text: "Perfect, noted. I'll send you a link to add a few photos, they'll help Dr. Leroy prepare for your consultation. Any other questions before then?",
+            delayMs: 19000,
           },
         ],
       },
@@ -782,126 +646,6 @@ const en = {
     logosStrip: {
       title: 'Supported brands',
     },
-    structureSupervise: {
-      title: 'Structure. Supervise. Differentiate.',
-      items: [
-        {
-          title: 'Custom protocols',
-          body: 'Personalized scenarios\nMilestone setup (D-7, D-1, D+1, D+7, D+30…)\nConfigured by procedure type.',
-        },
-        {
-          title: 'Longitudinal follow-up',
-          body: 'Historized feedback over time.\nTrend views',
-        },
-        {
-          title: 'Medical supervision',
-          body: 'No automated decision.\nClinic-defined vigilance thresholds\nFull traceability of feedback',
-        },
-      ],
-    },
-    imagineProtocol: {
-      heading: 'Build your own follow-up protocol',
-      left: {
-        label: 'Before intervention',
-        prepTitle: 'Structured preparation:',
-        prepItems: [
-          'Medical instruction check',
-          'Logistics confirmation',
-          'Concern collection',
-          'Anxiety self-rating (0–10)',
-          'Patient question handling',
-          'Exchange documentation',
-        ],
-        benefitsTitle: 'Benefits:',
-        benefitsItems: [
-          'Fewer cancellations',
-          'Better-documented consent',
-          'Optimized preparation',
-        ],
-      },
-      right: {
-        brand: 'DOCTINUM',
-        label: 'After intervention',
-        monitorTitle: 'Methodical monitoring:',
-        monitorLead: 'By procedure at defined checkpoints (D+1, D+7 ...)',
-        monitorItems: [
-          'Pain (0–10)',
-          'Sensitive declarative signs',
-          'Instruction adherence',
-          'Edema evolution',
-          'Progressive satisfaction',
-        ],
-        responsesTitle: 'Responses are:',
-        responsesItems: ['Structured', 'Historized', 'Prioritized'],
-      },
-    },
-    sportsStructure: {
-      title: 'COORDINATING THE PATHWAY WITH MULTIPLE ACTORS',
-      subtitle: 'The system does not replace doctors or physiotherapists.',
-      items: [
-        { title: 'A longitudinal structuring tool' },
-        { title: 'An organizational support layer' },
-        { title: 'A declarative-indicator objectivation system' },
-        { title: 'A visibility point for the lead physician' },
-      ],
-      closing:
-        'Rehabilitation remains central. The system structures information around it.',
-    },
-    sportsProtocol: {
-      heading: 'Build your own follow-up protocol',
-      leftTitle: 'OBJECTIFY RECOVERY OVER TIME',
-      leftIntro: 'The protocol can include:',
-      leftList: [
-        'Pain (0-10)',
-        'Perceived mobility',
-        'Instability sensation',
-        'Muscle fatigue',
-        'Physiotherapy adherence',
-        'Progressive return to activity',
-      ],
-      leftBottomIntro: 'These indicators are:',
-      leftBottom: [
-        'Historized',
-        'Visualized longitudinally',
-        'Prioritized with team-defined thresholds',
-      ],
-      rightTitle: 'DETECT DROPOFFS AND PREMATURE RETURNS',
-      rightIntro: 'In practice, the system helps identify:',
-      rightList: [
-        'Sudden pain increase',
-        'Reduced adherence to sessions',
-        'Unplanned return to activity',
-        'Perceived mobility deterioration',
-      ],
-      rightBottom:
-        'The system makes no decisions. It structures and prioritizes information.',
-      brand: 'DOCTINUM',
-    },
-    sportsCases: {
-      case1: {
-        title: 'COORDINATION WITH REHABILITATION',
-        body: 'In a structured center:',
-        listItems: [
-          'The physician defines the protocol',
-          'Indicators can be shared',
-          'Recovery becomes objective',
-          'Decisions remain human',
-          'The system acts as a transversal layer improving pathway coherence.',
-        ],
-        brand: 'Rehab',
-      },
-      case2: {
-        title: 'ADAPTED TO INTEGRATED CENTERS',
-        listItems: [
-          'Sports medicine centers',
-          'Private orthopedic clinics',
-          'Centers with in-house physiotherapy',
-          'Performance institutes',
-        ],
-        brand: 'Centers',
-        buttonLabel: 'Learn more',
-      },
-    },
     notCallbot: {
       title: 'A',
       titleAccent: 'clinical infrastructure',
@@ -923,123 +667,6 @@ const en = {
     },
     slidingBanner: {
       items: ['No app to install', 'Explicit consent', 'Full traceability'],
-    },
-    dermatologyNarrative: {
-      badge: 'Dermatology pathways',
-      title: 'Treatment does not end with the prescription.',
-      intro:
-        'In dermatology, many pathways rely on long and evolving treatments:',
-      firstList: [
-        'Severe acne under isotretinoin',
-        'Psoriasis under biologic therapy',
-        'Chronic eczema',
-        'Post-laser or peel recovery',
-      ],
-      betweenIntro: 'Between two consultations, follow-up often depends on:',
-      secondList: [
-        'Patient reactivity',
-        'Informal exchanges',
-        'Unstructured self-evaluation',
-        'Heterogeneous feedback',
-      ],
-      conclusion: 'Yet dermatology treatments require:',
-      lastList: [
-        'Rigorous adherence',
-        'Side-effect monitoring',
-        'Progressive efficacy evaluation',
-        'Regular documentation',
-      ],
-    },
-    dermatologyFragile: {
-      title: 'Long treatments, fragile follow-up',
-      items: {
-        effects: {
-          title: 'Side effects',
-          body: 'Some treatments require regular follow-up of declarative side effects.',
-        },
-        adherence: {
-          title: 'Variable adherence',
-          body: 'Treatment adherence can fluctuate over time.',
-        },
-        subjective: {
-          title: 'Subjective perception',
-          body: 'Symptom evolution is often described without structure or temporal comparison.',
-        },
-      },
-    },
-    dermatologyTrajectory: {
-      weeksChip: 'Weeks 1 → 12',
-      severityChip: 'Severity (0-10)',
-      drynessChip: 'Dryness',
-      adherenceChip: 'Adherence',
-      title: 'Turn isolated feedback into a structured trajectory.',
-      intro: 'The system enables:',
-      items: [
-        'Weekly or monthly symptom collection',
-        'Standardized declarative structuring',
-        'Automatic historization',
-        'Trend visualization',
-        'Vigilance threshold definition',
-      ],
-      closing:
-        'Responses are no longer isolated exchanges. They become a documented evolution.',
-    },
-    dermatologyConfigurations: {
-      heading: 'Build your own follow-up protocol',
-      intro: 'Examples of possible configurations',
-      warning:
-        'Illustrative scenarios. Protocols are defined by the medical team.',
-      cards: [
-        {
-          title: 'Severe acne - Isotretinoin',
-          items: [
-            'Skin dryness (0-10)',
-            'Irritation',
-            'Mood self-report',
-            'Treatment adherence',
-            'Perceived evolution',
-          ],
-        },
-        {
-          title: 'Psoriasis with biologics',
-          items: [
-            'Plaque intensity',
-            'Itching',
-            'Associated fatigue',
-            'Quality-of-life impact',
-            'Treatment tolerance',
-          ],
-        },
-        {
-          title: 'Post-laser dermatology',
-          items: [
-            'Pain',
-            'Redness',
-            'Edema',
-            'Abnormal crusting',
-            'Satisfaction at D+7',
-          ],
-        },
-      ],
-    },
-    dermatologyOrganization: {
-      title: 'Adapt follow-up intensity to your practice.',
-      systemIntro: 'The system enables:',
-      systemList: [
-        'Variable intensity by pathology',
-        'Adaptable frequency',
-        'Distinct protocols per indication',
-        'Selective activation by patient',
-      ],
-      clinicIntro: 'Each clinic defines:',
-      clinicList: ['Its milestones', 'Its thresholds', 'Its granularity level'],
-      schema: {
-        pathology: 'Pathology',
-        protocol: 'Protocol',
-        frequency: 'Frequency',
-        milestones: 'Milestones',
-        alerts: 'Alerts',
-      },
     },
   },
   content: {
@@ -2402,6 +2029,7 @@ const en = {
       },
     },
     editorsApi: {
+      preparationNotice: 'Offering in preparation, open to pilot partnerships.',
       hero: {
         title: 'Add a medical voice agent to your platform',
         subtitle:
@@ -2412,8 +2040,7 @@ const en = {
         cta2: 'Request sandbox access',
       },
       problem: {
-        title:
-          'Patient follow-up platforms all encounter the same limitation',
+        title: 'Patient follow-up platforms all encounter the same limitation',
         intro:
           'Digital solutions today enable patient follow-up via apps or questionnaires. But patient engagement remains difficult to maintain over time.',
         blocks: [
@@ -2424,8 +2051,7 @@ const en = {
           },
           {
             title: 'Human follow-ups',
-            description:
-              'Teams must manually follow up with patients.',
+            description: 'Teams must manually follow up with patients.',
           },
           {
             title: 'Fragmented interactions',
@@ -2433,8 +2059,7 @@ const en = {
           },
           {
             title: 'Variable digital engagement',
-            description:
-              'Some patients use apps or portals infrequently.',
+            description: 'Some patients use apps or portals infrequently.',
           },
         ],
         footer:
@@ -2575,18 +2200,17 @@ const en = {
       },
       finalCta: {
         title: 'Add a voice layer to your platform',
-        subtitle:
-          'Let\'s discuss integration possibilities with your solution.',
+        subtitle: "Let's discuss integration possibilities with your solution.",
         primaryCta: 'Request sandbox access',
         secondaryCta: 'Schedule a technical discussion',
       },
     },
     vision: {
       hero: {
-        eyebrow: 'Clinical voice infrastructure',
-        title: 'The missing channel for patient follow-up.',
+        eyebrow: 'Our vision',
+        title: 'Giving a voice to the entire patient journey.',
         subtitle:
-          'Between consultations, patients live. Their symptoms evolve, their questions accumulate. This critical data remains invisible — not from lack of will, but because the available channel was wrong.',
+          'Doctinum is building the conversational trust layer of the care journey. We start where the pain is sharpest and deployment fastest, the front desk and pre-consultation of private practices, then extend the same technology across the whole journey.',
         stats: [
           {
             value: '40–50%',
@@ -2611,7 +2235,7 @@ const en = {
         barriers: [
           {
             title: 'Clinical state',
-            text: 'Opening an app, navigating, checking — the cognitive load is incompatible with post-chemo or post-operative state.',
+            text: 'Opening an app, navigating, checking, the cognitive load is incompatible with post-chemo or post-operative state.',
           },
           {
             title: 'Digital literacy',
@@ -2624,10 +2248,9 @@ const en = {
         ],
       },
       thesis: {
-        label: 'Our thesis',
-        title:
-          'Voice solves the channel. But making it clinically reliable is an engineering problem.',
-        body: 'Integrating a voice assistant is trivial. Building a voice infrastructure that withstands real clinical constraints — identity, protocol, structured data, longitudinal continuity — is a specialized engineering problem. This is the barrier we have crossed.',
+        label: 'Under the hood',
+        title: 'Four engines. Not just a voice bot.',
+        body: 'Integrating a conversational assistant is trivial. Building an infrastructure that withstands real clinical constraints, identity, protocol, structured data, longitudinal continuity, is a specialized engineering problem. This is the barrier we have crossed.',
         pillars: [
           {
             title: 'Identity & consent',
@@ -2635,7 +2258,7 @@ const en = {
           },
           {
             title: 'Call orchestration',
-            text: 'No-answers, voicemails, third parties online, human escalation — complete auditable log.',
+            text: 'No-answers, voicemails, third parties online, human escalation, complete auditable log.',
           },
           {
             title: 'Protocol fidelity',
@@ -2643,7 +2266,7 @@ const en = {
           },
           {
             title: 'Structured data',
-            text: 'Clean clinical extraction, threshold alerts, HL7 FHIR export — not transcription.',
+            text: 'Clean clinical extraction, threshold alerts, HL7 FHIR export, not transcription.',
           },
         ],
       },
@@ -2651,14 +2274,14 @@ const en = {
         label: 'At the origin',
         title: 'Two trajectories, one conviction',
         intro:
-          'Doctinum was born from the convergence of field frustration and technical expertise. Not from a hypothesis — from a lived observation.',
+          'Doctinum was born from the convergence of field frustration and technical expertise. Not from a hypothesis, from a lived observation.',
         founders: [
           {
             role: 'CEO & Co-founder',
             name: 'Michael Ramassamy',
             story: [
-              'Entrepreneur in digital health, Michael worked on facility reputation and patient experience. There, he observed a recurring paradox: <strong>questionnaires didn\'t come back, data was missing — not from indifference, but because the channel imposed too much effort.</strong>',
-              'The experience became personal. Facing his father\'s health problems — uncomfortable with digital — he measured the reality of the void between consultations: no tool, no feedback, no structured follow-up possible.',
+              "Entrepreneur in digital health, Michael worked on facility reputation and patient experience. There, he observed a recurring paradox: <strong>questionnaires didn't come back, data was missing, not from indifference, but because the channel imposed too much effort.</strong>",
+              "The experience became personal. Facing his father's health problems, uncomfortable with digital, he measured the reality of the void between consultations: no tool, no feedback, no structured follow-up possible.",
             ],
             insight:
               'This is not a motivation problem. It is a channel problem. And voice is the only channel that goes to the patient.',
@@ -2667,8 +2290,8 @@ const en = {
             role: 'CTO & Co-founder',
             name: 'Régis Anclades',
             story: [
-              'Engineer and technology entrepreneur, Régis designed and deployed several large-scale automated voice infrastructures — notably for customer support systems in production.',
-              'This experience taught him what generic voice bots ignore: <strong>large-scale reliability is an architecture problem, not an interface one.</strong> Handling no-answers, third parties online, refusals, time windows, clean data — it\'s infrastructure, not LLM.',
+              'Engineer and technology entrepreneur, Régis designed and deployed several large-scale automated voice infrastructures, notably for customer support systems in production.',
+              "This experience taught him what generic voice bots ignore: <strong>large-scale reliability is an architecture problem, not an interface one.</strong> Handling no-answers, third parties online, refusals, time windows, clean data, it's infrastructure, not LLM.",
             ],
             insight:
               'Large-scale voice reliability is an architecture problem, not an interface one. This is precisely what we built.',
@@ -2681,15 +2304,15 @@ const en = {
         cards: [
           {
             label: 'On the channel',
-            text: 'Voice is the only universal channel. It requires no account, no app, no digital mastery. It is the only channel that goes to the patient — not the reverse.',
+            text: 'Voice is the only universal channel. It requires no account, no app, no digital mastery. It is the only channel that goes to the patient, not the reverse.',
           },
           {
             label: 'On the technical barrier',
-            text: 'Clinically reliable voice is not a design problem. It is an engineering problem. The barrier is there — it is our advantage.',
+            text: 'Clinically reliable voice is not a design problem. It is an engineering problem. The barrier is there, it is our advantage.',
           },
           {
             label: 'On positioning',
-            text: 'We do not replace platforms. We are the voice layer they don\'t have — and building it in-house would cost them 12 months of R&D.',
+            text: "We do not replace platforms. We are the voice layer they don't have, and building it in-house would cost them 12 months of R&D.",
           },
           {
             label: 'On timing',
@@ -2698,35 +2321,35 @@ const en = {
         ],
       },
       roadmap: {
-        label: 'Our ambition',
-        title: 'Become the reference infrastructure for clinical voice follow-up',
+        label: 'Our trajectory',
+        title: 'Three horizons.',
         timeline: [
           {
             year: 'Today',
-            title: 'Validation in real conditions',
-            text: 'Functional infrastructure deployed with partner practitioners. Validation of four clinical engines on concrete use cases: post-operative follow-up, medical aesthetics, clinical studies.',
-            tags: ['Functional beta', 'Active clinical pilots'],
+            title: 'The front desk and pre-consultation',
+            text: 'The multimodal assistant for aesthetic surgery and medicine practices. Outside the medical device framework by design: it understands, collects, and reports back. The practitioner decides.',
+            tags: ['Not a medical device', 'Aesthetic practices'],
           },
           {
             year: 'Tomorrow',
-            title: 'Infrastructure for platforms',
-            text: 'Become the voice layer that patient follow-up publishers integrate via API — rather than rebuild. Native interoperability with industry standards.',
-            tags: ['API-first', 'HL7 FHIR interoperability'],
+            title: 'The full journey, across every channel',
+            text: 'Booking, pre-procedure, post-operative follow-up. Web, phone, SMS, app. Voice and telephone bring back into the journey the patients that apps leave behind: older, less connected, precisely those who need the most vigilance. Protocols defined by the team, structured calls, data returned, supervised alerts.',
+            tags: ['Web, phone, SMS', 'Supervised alerts'],
           },
           {
-            year: 'Vision',
-            title: 'Standard for voice follow-up in healthcare',
-            text: 'A certified clinical voice infrastructure, deployed at scale — from primary care to international clinical trials. Patient follow-up accessible to all, everywhere, without friction.',
-            tags: ['Regulatory certification', 'International expansion'],
+            year: 'Next',
+            title: 'Certified clinical follow-up',
+            text: 'Our architecture is designed for medical device certification. It will activate the clinical module, pre-triage, post-operative monitoring, warning signal detection, and open up integration with clinics, hospitals, and existing patient follow-up applications, along with access to the reimbursed remote medical monitoring framework.',
+            tags: ['MD certification', 'Reimbursed remote monitoring'],
           },
         ],
       },
       cta: {
         title: 'A conversation, not a pitch.',
         subtitle:
-          'If our reasoning interests you — or if you think it is wrong — we want to hear it. 60 minutes to verify our thesis together.',
+          'If our reasoning interests you, or if you think it is wrong, we want to hear it.',
         primaryCta: 'Request a demo',
-        secondaryCta: 'View investor deck',
+        secondaryCta: 'Publishers & API',
       },
     },
     security: {
@@ -2734,7 +2357,7 @@ const en = {
         eyebrow: 'Security & Regulation',
         title: 'An infrastructure designed for healthcare environments.',
         subtitle:
-          'Patient data protection, interaction traceability, and human supervision are not options in Doctinum — they are constitutive of the architecture.',
+          'Patient data protection, interaction traceability, and human supervision are not options in Doctinum, they are constitutive of the architecture.',
         badges: [
           'HDS hosting · France',
           'Native GDPR',
@@ -2746,7 +2369,7 @@ const en = {
         label: 'What we guarantee today',
         title: 'Verifiable foundations, not statements of intent.',
         intro:
-          'Here is what is in place, operational, and verifiable — without overselling certifications we don\'t yet have.',
+          "Here is what is in place, operational, and verifiable, without overselling certifications we don't yet have.",
         items: [
           {
             icon: '🏥',
@@ -2792,19 +2415,19 @@ const en = {
         intro:
           'Transparency about our current regulatory status is a principle, not a constraint. Here is an exact statement of our situation.',
         activeItems: [
-          'Outside Medical Device classification — organizational and declarative collection tool, without diagnosis or autonomous clinical decision',
-          'Native GDPR compliance — documented legal basis, exercised individual rights',
+          'Outside Medical Device classification, organizational and declarative collection tool, without diagnosis or autonomous clinical decision',
+          'Native GDPR compliance, documented legal basis, exercised individual rights',
           'HDS-certified hosting in France',
           'Pilot agreements framing each deployment',
           'Up-to-date privacy policy and legal notices',
         ],
         pendingItems: [
-          'CE MDR trajectory analysis in progress — scope to be defined according to retained uses',
+          'CE MDR trajectory analysis in progress, scope to be defined according to retained uses',
           'Engagement with specialized digital health regulatory firm in structuring process',
           'Security review clause available for institutional partners upon request',
           'ISO 27001 certification considered for large-scale institutional deployments',
         ],
-        note: 'we do not claim certifications we don\'t have. If your context requires a specific certification level, we will clearly indicate it — and if the trajectory is compatible, we will build it together.',
+        note: "we do not claim certifications we don't have. If your context requires a specific certification level, we will clearly indicate it, and if the trajectory is compatible, we will build it together.",
       },
       supervision: {
         label: 'Human supervision & governance',
@@ -2814,7 +2437,7 @@ const en = {
         items: [
           {
             title: 'No autonomous decision',
-            text: 'The system makes no medical decision autonomously. It collects, structures, and alerts — the healthcare professional remains the sole decision-maker on clinical interpretation and action.',
+            text: 'The system makes no medical decision autonomously. It collects, structures, and alerts, the healthcare professional remains the sole decision-maker on clinical interpretation and action.',
           },
           {
             title: 'Integrated human escalation',
@@ -2826,7 +2449,7 @@ const en = {
           },
           {
             title: 'Protocol configured by clinician',
-            text: 'The knowledge base and follow-up questions are defined and validated by the healthcare professional responsible for the protocol. Doctinum executes — the clinician designs and supervises.',
+            text: 'The knowledge base and follow-up questions are defined and validated by the healthcare professional responsible for the protocol. Doctinum executes, the clinician designs and supervises.',
           },
         ],
       },
@@ -2834,7 +2457,7 @@ const en = {
         label: 'Trajectory',
         title: 'A regulatory framework that evolves with our uses.',
         intro:
-          'We build the regulatory trajectory based on real deployments — not from an abstract list of certifications. Here is the current state.',
+          'We build the regulatory trajectory based on real deployments, not from an abstract list of certifications. Here is the current state.',
         items: [
           {
             status: 'active',
@@ -2863,7 +2486,8 @@ const en = {
   demoPage: {
     badge: 'Book a demo',
     title: 'Discover Doctinum in action',
-    subtitle: 'Schedule a personalized demonstration and discover how our solution can transform your patient follow-up.',
+    subtitle:
+      'Schedule a personalized demonstration and discover how our solution can transform your patient follow-up.',
   },
   demoForm: {
     firstName: 'First name',
@@ -2913,16 +2537,16 @@ const en = {
       '90min': '1 hour 30',
     },
     message: 'Additional message',
-    messagePlaceholder: 'Describe your specific needs, use cases you wish to explore...',
+    messagePlaceholder:
+      'Describe your specific needs, use cases you wish to explore...',
     required: '* Required fields',
     submit: 'Book the demo',
   },
   contactForm: {
-    badge: 'Pilot project evaluation',
-    titleLine1: 'Let\'s discuss your',
+    titleLine1: "Let's discuss your",
     titleLine2: 'use case',
     subtitle:
-      'Let\'s discuss your clinical context and evaluate together the relevance of a patient voice follow-up pilot project.',
+      "Let's discuss your clinical context and evaluate together the relevance of a conversational AI assistant: voice, chat, interactive interface.",
     nameLabel: 'Name',
     namePlaceholder: 'Dr. Martin Dupont',
     roleLabel: 'Role',
@@ -2969,16 +2593,35 @@ const en = {
     message: "Whoops, that page doesn't exist",
     goHome: 'Go home',
   },
+  mainNav: {
+    solution: 'Solution',
+    howItWorks: 'How it works',
+    security: 'Security',
+    vision: 'Vision',
+    contact: 'Contact',
+  },
   footer: {
-    tagline: 'Giving voice to patient follow-up',
-    subtitle: 'AI clinical voice infrastructure for patient follow-up.',
-    solutionsTitle: 'Solutions',
+    tagline: 'Your first patient contact, turned into reputation.',
+    subtitle:
+      'The AI front-desk and pre-consultation assistant for aesthetic surgery and medicine practices.',
+    solutionsTitle: 'Solution',
     resourcesTitle: 'Resources',
     companyTitle: 'Company',
+    legalTitle: 'Legal',
+    aesthetics: 'Aesthetic surgery & medicine',
     contact: 'Contact',
     legalNotice: 'Legal notice',
     privacyPolicy: 'Privacy policy',
     cookies: 'Cookie management',
+    soonTitle: 'Coming next',
+    soonItems: [
+      'Sports medicine',
+      'Dermatology',
+      'PROMS & post-procedure questionnaires',
+      'Chronic pathways',
+      'Prevention & workplace health',
+      'Pharma & research',
+    ],
     copyright: '© 2026 Doctinum',
     manageCookies: 'Manage cookie preferences',
   },

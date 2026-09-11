@@ -1,40 +1,46 @@
 import Container from '../../layout/Container';
+import AppLink from '../../ui/AppLink';
+import Button from '../../ui/Button';
 
-export default function VisionCtaSection({ 
+export default function VisionCtaSection({
   title,
   subtitle,
   primaryCta,
   secondaryCta,
-  onNavigate
+  secondaryPage = 'editors-api',
+  onNavigate,
 }) {
   return (
-    <section className="bg-color-primary py-28 text-center text-white">
+    <section className="bg-color-primary py-[clamp(56px,7vw,110px)] text-center text-white">
       <Container>
-        <h2 className="rev mx-auto mb-6 max-w-[600px] text-[clamp(29px,3vw,45px)] font-[var(--w500)] leading-[1.25] tracking-[-0.02em]">
+        <h2 className="rev mx-auto mb-6 max-w-[600px] font-serif text-[clamp(1.9rem,3.2vw,2.8rem)] font-[600] leading-[1.16] tracking-[-0.02em]">
           {title}
         </h2>
-        
+
         <p className="rev mx-auto mb-10 max-w-[440px] text-[16px] font-light leading-[1.7] text-white-70">
           {subtitle}
         </p>
-        
+
         <div className="rev flex flex-col items-center justify-center gap-4 sm:flex-row">
           {primaryCta && (
-            <button
+            <Button
+              variant="darkPrimary"
               onClick={() => onNavigate && onNavigate('contact')}
-              className="inline-flex items-center gap-[10px] bg-white px-8 py-[14px] text-[13.5px] font-medium uppercase tracking-[0.06em] text-color-primary transition-all duration-200 hover:-translate-y-[1px] hover:bg-color-accent-1"
             >
               {primaryCta}
-            </button>
+            </Button>
           )}
-          
+
+          {/* Un vrai <a href> — le référencement doit voir le lien — mais habillé
+              exactement comme la variante `darkSecondary` du bouton. */}
           {secondaryCta && (
-            <a
-              href="#"
-              className="inline-flex items-center gap-[10px] border border-white-40 bg-transparent px-8 py-[14px] text-[13.5px] font-medium uppercase tracking-[0.06em] text-white transition-all duration-200 hover:bg-white-10"
+            <AppLink
+              page={secondaryPage}
+              onNavigate={onNavigate}
+              className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[var(--white-38)] px-7 py-[14px] font-sans text-[13px] font-medium leading-none tracking-[var(--track)] text-[var(--color-white)] transition-[transform,background-color,border-color] duration-300 ease-out hover:-translate-y-[2px] hover:border-[var(--color-white)] hover:bg-[var(--white-10)] motion-reduce:hover:translate-y-0"
             >
               {secondaryCta}
-            </a>
+            </AppLink>
           )}
         </div>
       </Container>

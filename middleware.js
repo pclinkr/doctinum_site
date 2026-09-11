@@ -29,12 +29,24 @@ export function middleware(request) {
       pathname === `/${localeValue}` || pathname.startsWith(`/${localeValue}/`)
   );
   if (hasLocalePrefix) {
-    return NextResponse.next();
+    // On transmet la locale de l'URL pour que la page 404 racine puisse
+    // répondre dans la bonne langue au lieu de renvoyer tout le monde en anglais.
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-doctinum-locale', pathname.split('/')[1] || '');
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   const localeCode = detectPreferredLocale(request);
-  const normalizedPath = pathname === '/' ? '' : pathname;
-  const targetPath = `/${localeCode}${normalizedPath}`;
+  const segments = pathname.split('/').filter(Boolean);
+
+  /* Premier segment qui RESSEMBLE à un code de langue sans en être un
+     (`/de/securite`, `/es/contact`): on le REMPLACE au lieu de le préfixer.
+     Préfixé, il donnait `/en/de/securite` — une 404 là où l'intention était
+     limpide, et un lien entrant perdu. */
+  const looksLikeLocaleCode = /^[a-z]{2}(-[a-z]{2})?$/i.test(segments[0] || '');
+  const remainingSegments = looksLikeLocaleCode ? segments.slice(1) : segments;
+  const targetPath = `/${[localeCode, ...remainingSegments].join('/')}`;
+
   return NextResponse.redirect(new URL(targetPath, request.url));
 }
 

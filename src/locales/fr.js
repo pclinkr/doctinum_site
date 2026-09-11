@@ -30,15 +30,6 @@ const fr = {
     mobileMenu: 'Menu',
   },
   megaMenu: {
-    soon: 'Bientôt',
-    grouped: {
-      sectionEntry: 'Accéder à cette section',
-      goHome: "Retourner à l'accueil",
-    },
-    main: {
-      title: 'Accéder rapidement aux rubriques clés',
-      body: 'Retrouvez en un seul mega menu les parcours de soin, ressources et parcours entreprise.',
-    },
     solutions: {
       eyebrow: 'Parcours de soin',
       title: 'Parcours de suivi adaptés à chaque contexte clinique',
@@ -101,6 +92,15 @@ const fr = {
         // }
       ],
       cta: { label: 'Discuter d’un projet pilote', page: 'contact' },
+    },
+    soon: 'Bientôt',
+    grouped: {
+      sectionEntry: 'Accéder à cette section',
+      goHome: "Retourner à l'accueil",
+    },
+    main: {
+      title: 'Accéder rapidement aux rubriques clés',
+      body: 'Retrouvez en un seul mega menu les parcours de soin, ressources et parcours entreprise.',
     },
     functioning: {
       eyebrow: 'Fonctionnement',
@@ -187,43 +187,47 @@ const fr = {
     storyDurationMs: 3000,
   },
   sections: {
+    whyDifferent: {
+      label: 'Pourquoi c’est différent',
+      titlePrefix: 'Une conversation, deux surfaces.',
+      titleAccent: 'Et un moteur qui encadre l’IA.',
+      body: '',
+      cards: [
+        {
+          icon: 'phone',
+          title: 'Voix + écran',
+          body: 'La voix et l’écran ne font qu’une conversation : on répond à l’oral ou d’un clic, les données précises (dates, coordonnées, photos) passent par l’écran. Chaque patient choisit sa modalité.',
+          tag: 'Multimodal',
+        },
+        {
+          icon: 'check-badge',
+          title: 'L’IA sous contrôle',
+          body: 'Le modèle d’IA ne décide de rien : un moteur d’orchestration encadre chaque échange. Toute conversation est traçable et rejouable : la conformité est dans l’architecture, pas dans une promesse.',
+          tag: 'Traçable & rejouable',
+        },
+        {
+          icon: 'server-stack',
+          title: 'Conçu pour l’esthétique française',
+          body: 'Parcours, vocabulaire et cadre réglementaire du secteur esthétique français. Hébergement de santé certifié HDS, données en France.',
+          tag: 'Hébergement HDS · France',
+          highlight: true,
+        },
+      ],
+    },
     hero: {
       ariaLabel: 'Héros',
       titlePrefix: 'Le suivi patient',
       titleMiddle: 'ne doit pas rester',
       titleAccent: 'silencieux',
       subtitle:
-        "L'infrastructure d'IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles — sous supervision médicale.",
+        "L'infrastructure d'IA vocale qui applique vos protocoles, déclenche un suivi structuré et remonte les signaux utiles, sous supervision médicale.",
       cta: 'Evaluez un projet pilote',
       cta2: 'Planifier un échange confidentiel',
       liveCallBadge: 'Essai live',
     },
-    services: {
-      titlePrefix: 'Comment nous pouvons vous aider à',
-      titleAccent: 'croître',
-    },
     faq: {
       label: 'Questions',
       title: 'Questions fréquentes',
-    },
-    process: {
-      titlePrefix: 'Nous aimons garder les choses',
-      titleAccent: 'simples',
-      titleSuffix: 'et efficaces',
-      cards: [
-        {
-          title: 'La stratégie d’abord',
-          body: 'Nous auditons votre marque, audience et concurrents puis construisons une stratégie claire, précise et orientée résultats.',
-        },
-        {
-          title: 'Créer & gérer',
-          body: 'Nous créons, planifions et gérons votre contenu pour que vous restiez focalisé sur votre business.',
-        },
-        {
-          title: 'Analyser & optimiser',
-          body: 'Revues mensuelles et reporting clair. Nous renforçons ce qui fonctionne et supprimons le reste.',
-        },
-      ],
     },
     mission: {
       label: 'Notre mission',
@@ -238,55 +242,6 @@ const fr = {
         'Si vous voulez grandir avec intention, nous pouvons vous aider.',
       ],
     },
-    homeCases: {
-      label: 'Résultats clients',
-      titlePrefix: 'Un travail qui parle',
-      titleAccent: 'de lui-même',
-      viewAll: 'Voir tous les cas',
-      case1: {
-        tag: 'Résultats · Beauté',
-        titlePrefix: 'Scaler une marque beauté avec des',
-        titleAccent: 'Reels',
-        body: 'Nous avons repensé leur approche contenu, des tutoriels longs aux Reels courts, couplés à du paid ciblé sur Meta.',
-        kpi1: 'Vues Reels',
-        kpi2: 'Engagement',
-      },
-      case2: {
-        tag: 'Résultats · Mode',
-        titlePrefix: 'Développer une marque mode avec la',
-        titleAccent: 'vidéo',
-        body: 'Passage d’un flux statique à un contenu vidéo-first montrant le produit en usage réel.',
-        kpi1: 'Abonnés',
-        kpi2: 'Engagement',
-      },
-    },
-    whyChoose: {
-      titlePrefix: 'Pourquoi choisir Doctinum',
-      titleMiddle: 'plutôt que',
-      titleAccent: 'les autres',
-      titleSuffix: '?',
-      otherTitle: 'Autres parcours de soin',
-      brandTitle: 'Notre différence',
-      otherItems: [
-        'Contrats longue durée contraignants',
-        'Contenu générique non adapté',
-        'Délais de production lents',
-        'Reporting flou sans insights',
-      ],
-      brandItems: [
-        'Plans flexibles sans engagement',
-        'Stratégie contenu spécifique à votre marque',
-        'Garantie de turnaround en 48h',
-        'KPIs clairs liés aux objectifs business',
-      ],
-    },
-    testimonial: {
-      quotePrefix:
-        'Ils ont complètement repris la gestion de nos réseaux, et notre audience n’a jamais été',
-      quoteAccent: 'aussi engagée.',
-      author: 'Elena Chen',
-      role: 'Fondatrice · Bloom Skincare',
-    },
     finalCta: {
       label: 'Démarrer',
       titlePrefix: 'Votre suivi vocal commence',
@@ -299,8 +254,6 @@ const fr = {
       headTitleAccent: 'un agent IA médical',
       domains: [
         { id: 'ortho', label: 'Orthopédie (chirurgie)' },
-        { id: 'oncology', label: 'Cancer' },
-        { id: 'cardiac', label: 'Transplantation hépatique' },
         { id: 'aesthetic', label: 'Chirurgie esthétique' },
       ],
       controls: {
@@ -308,7 +261,8 @@ const fr = {
       },
       conversion: {
         title: 'Découvrez notre plateforme',
-        message: 'Vous avez testé plusieurs fois nos appels live. Il est temps de découvrir toute la puissance de notre plateforme dans une vraie démo.',
+        message:
+          'Vous avez testé plusieurs fois nos appels live. Il est temps de découvrir toute la puissance de notre plateforme dans une vraie démo.',
         demoButton: 'Réserver une démo',
         cancelButton: 'Annuler',
       },
@@ -327,7 +281,8 @@ const fr = {
         rateLimitExceeded: 'Lancement de la démo...',
       },
       results: {
-        disclaimer: "Voici un exemple de données pouvant être extraites dans le cadre d'un protocole: ",
+        disclaimer:
+          "Voici un exemple d'informations pouvant être collectées lors d'une pré-consultation : ",
         default: {
           header: "Synthese structuree de l'appel",
           title: 'Donnees cliniques collectees pendant la simulation',
@@ -363,60 +318,21 @@ const fr = {
             body: "Douleur >= 6/10 et gene nocturne: seuil d'alerte orthopedie declenche.",
           },
         },
-        oncology: {
-          header: "Synthese structuree de l'appel",
-          title: 'Suivi inter-cure (oncologie)',
-          metricsTitle: 'Indicateurs captures',
-          metrics: [
-            {
-              label: 'Nausees',
-              value: 'Presentes en debut de cycle puis en baisse',
-            },
-            { label: 'Adhesion anti-emetique', value: 'Oui' },
-            { label: 'Appetit', value: 'Reprise progressive' },
-            { label: 'Fievre > 38C', value: 'Non declaree' },
-          ],
-          alert: {
-            badge: 'Alerte seuil protocolaire',
-            title: 'Seuil infectieux franchi',
-            body: "Fievre > 38C ou frissons: seuil d'alerte oncologie declenche.",
-          },
-        },
-        cardiac: {
-          header: "Synthese structuree de l'appel",
-          title: 'Suivi post-opératoire J+10 (chirurgie cardiaque)',
-          metricsTitle: 'Indicateurs captures',
-          metrics: [
-            {
-              label: 'Observance traitement',
-              value: 'Declaree conforme',
-            },
-            { label: "Signes d'alerte", value: 'Absents' },
-            { label: 'Activite physique', value: 'Reprise progressive' },
-            { label: 'Bilan biologique', value: 'Realise, resultats attendus' },
-            { label: "Consignes d'hygiene", value: 'Respectees' },
-          ],
-          alert: {
-            badge: 'Alerte seuil protocolaire',
-            title: 'Seuil post-chirurgie cardiaque franchi',
-            body: "Douleur thoracique, essoufflement ou palpitations: seuil d'alerte cardiaque declenche.",
-          },
-        },
         aesthetic: {
-          header: "Synthese structuree de l'appel",
-          title: 'Suivi post-intervention (chirurgie esthetique)',
-          metricsTitle: 'Indicateurs captures',
+          header: 'Synthese pre-consultation',
+          title:
+            'Dossier pret pour la premiere consultation (medecine esthetique)',
+          metricsTitle: 'Elements collectes',
           metrics: [
-            { label: 'Oedeme / ecchymoses', value: 'Regression progressive' },
-            { label: 'Application des soins', value: 'Conforme' },
-            { label: 'Sommeil en position adaptee', value: 'Oui' },
-            { label: 'Saignements importants', value: 'Non declares' },
+            { label: 'Motif exprime', value: 'Rhinoplastie (bosse nasale)' },
+            {
+              label: 'Anciennete de la demande',
+              value: "Depuis l'adolescence",
+            },
+            { label: 'Antecedents ORL', value: 'Aucun declare' },
+            { label: 'Photos', value: 'Lien transmis a la patiente' },
+            { label: 'Decision medicale', value: 'Reservee au praticien' },
           ],
-          alert: {
-            badge: 'Alerte seuil protocolaire',
-            title: 'Seuil hemorragique franchi',
-            body: "Saignement important ou douleur inhabituelle: seuil d'alerte chirurgie esthetique declenche.",
-          },
         },
       },
       fallbackTranscripts: {
@@ -467,145 +383,51 @@ const fr = {
             delayMs: 20500,
           },
         ],
-        oncology: [
-          {
-            role: 'agent',
-            text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Êtes-vous disponible pour votre suivi entre deux cures de chimiothérapie ?",
-            delayMs: 0,
-          },
-          {
-            role: 'patient',
-            text: 'Oui, bonjour. Je suis disponible.',
-            delayMs: 1500,
-          },
-          {
-            role: 'agent',
-            text: 'Nous sommes à J+10 après votre 3ème cure. Avez-vous eu des nausées ou vomissements cette semaine ?',
-            delayMs: 3000,
-          },
-          {
-            role: 'patient',
-            text: 'Oui, des nausées les 3 premiers jours, mais ça va mieux maintenant.',
-            delayMs: 5500,
-          },
-          {
-            role: 'agent',
-            text: "D'accord. Avez-vous pris les anti-émétiques prescrits ? Ondansétron si besoin ?",
-            delayMs: 8500,
-          },
-          {
-            role: 'patient',
-            text: "Oui, j'ai pris 2 comprimés les premiers jours. Ça m'a bien aidé.",
-            delayMs: 11500,
-          },
-          {
-            role: 'agent',
-            text: 'Très bien. Comment est votre appétit ? Arrivez-vous à maintenir une alimentation suffisante ?',
-            delayMs: 14500,
-          },
-          {
-            role: 'patient',
-            text: 'Ça revient progressivement. Je mange des petites portions plusieurs fois par jour.',
-            delayMs: 17500,
-          },
-          {
-            role: 'agent',
-            text: 'Parfait. Avez-vous constaté de la fièvre supérieure à 38°C ou des frissons ?',
-            delayMs: 20500,
-          },
-        ],
-        cardiac: [
-          {
-            role: 'agent',
-            text: "Bonjour, je suis Clara l'assistant de suivi du service de chirurgie cardiaque. Je vous appelle concernant votre suivi post-opératoire. Êtes-vous disponible pour votre suivi ?",
-            delayMs: 0,
-          },
-          {
-            role: 'patient',
-            text: 'Oui, bonjour. Je suis disponible.',
-            delayMs: 1500,
-          },
-          {
-            role: 'agent',
-            text: 'Nous sommes à J+10 après votre pontage coronarien. Comment vous sentez-vous aujourd\'hui ?',
-            delayMs: 3000,
-          },
-          {
-            role: 'patient',
-            text: 'Je me sens mieux, mais j\'ai encore un peu d\'essoufflement quand je monte les escaliers.',
-            delayMs: 5500,
-          },
-          {
-            role: 'agent',
-            text: 'C\'est normal à ce stade. Prenez-vous bien vos traitements ? Bêtabloquants et antiagrégants plaquettaires ?',
-            delayMs: 8500,
-          },
-          {
-            role: 'patient',
-            text: 'Oui, je suis bien la prescription. Pas d\'effets secondaires notables.',
-            delayMs: 11500,
-          },
-          {
-            role: 'agent',
-            text: 'Parfait. Avez-vous des douleurs thoraciques, des palpitations ou un essoufflement inhabituel ?',
-            delayMs: 14500,
-          },
-          {
-            role: 'patient',
-            text: 'Non, rien de tout ça. Juste un peu de fatigue normale.',
-            delayMs: 17500,
-          },
-          {
-            role: 'agent',
-            text: 'Très bien. Respectez-vous les consignes de rééducation et les limites d\'effort ?',
-            delayMs: 20500,
-          },
-        ],
         aesthetic: [
           {
             role: 'agent',
-            text: "Bonjour, je suis Clara l'assistant de suivi de votre médecin. Je vous appelle concernant votre suivi post-rhinoplastie. Êtes-vous disponible quelques minutes ?",
+            text: "Bonjour, je suis Clara, l'assistante d'accueil du cabinet. Je suis là pour comprendre votre projet et préparer votre venue. Qu'est-ce qui vous amène aujourd'hui ?",
             delayMs: 0,
           },
           {
             role: 'patient',
-            text: 'Oui, bonjour. Je suis disponible.',
+            text: "Bonjour. Je me renseigne sur la rhinoplastie, j'ai un complexe sur la bosse de mon nez depuis l'adolescence.",
             delayMs: 1500,
           },
           {
             role: 'agent',
-            text: "Nous sommes à J+5 après votre intervention. Comment évaluez-vous les ecchymoses et l'œdème ?",
-            delayMs: 3000,
+            text: 'Je comprends. Le Dr. Leroy pratique cet acte régulièrement au cabinet. Avez-vous déjà consulté un chirurgien pour ce projet ?',
+            delayMs: 3500,
           },
           {
             role: 'patient',
-            text: "Les bleus commencent à diminuer. Le gonflement est encore présent mais moins qu'avant.",
-            delayMs: 5500,
+            text: "Non, jamais. Je ne sais pas trop à quoi m'attendre.",
+            delayMs: 6000,
           },
           {
             role: 'agent',
-            text: "C'est normal à ce stade. Appliquez-vous bien les compresses froides 3 fois par jour comme prescrit ?",
+            text: "C'est tout à fait normal, la consultation sert justement à répondre à ces questions. Puis-je vous demander depuis quand cette gêne vous préoccupe ?",
             delayMs: 8500,
           },
           {
             role: 'patient',
-            text: "Oui, je fais attention. J'applique les compresses régulièrement.",
+            text: "Depuis l'adolescence, mais j'ai enfin décidé de me renseigner sérieusement cette année.",
             delayMs: 11500,
           },
           {
             role: 'agent',
-            text: "Parfait. Dormez-vous bien en position semi-assise avec 2 oreillers pour limiter l'œdème ?",
+            text: 'Merci. Avez-vous des antécédents médicaux ou des interventions ORL déjà réalisées sur le nez ?',
             delayMs: 14500,
           },
           {
             role: 'patient',
-            text: "Oui, je dors avec la tête surélevée. C'est un peu inconfortable mais je m'habitue.",
-            delayMs: 17500,
+            text: 'Non, aucun antécédent particulier.',
+            delayMs: 17000,
           },
           {
             role: 'agent',
-            text: 'Très bien. Avez-vous des saignements de nez importants ou des douleurs inhabituelles ?',
-            delayMs: 20500,
+            text: 'Parfait, je note. Je vais vous transmettre un lien pour ajouter quelques photos, elles aideront le Dr. Leroy à préparer votre consultation. Avez-vous d’autres questions d’ici là ?',
+            delayMs: 19000,
           },
         ],
       },
@@ -797,127 +619,6 @@ const fr = {
     logosStrip: {
       title: 'Marques accompagnées',
     },
-    structureSupervise: {
-      title: 'Structurer. Superviser. Différencier.',
-      items: [
-        {
-          title: 'Protocoles personnalisés',
-          body: 'Définition de scénarios personnalisés\nParamétrage des jalons (J-7, J-1, J+1, J+7, J+30…)\nParamétrés selon chaque acte.',
-        },
-        {
-          title: 'Suivi longitudinal',
-          body: 'Historisation des retours dans le temps.\nGraphiques de suivi',
-        },
-        {
-          title: 'Supervision médicale',
-          body: 'Aucune décision automatisée.\nSeuils de vigilance définis par la clinique\nTraçabilité de tous les retours',
-        },
-      ],
-    },
-    imagineProtocol: {
-      heading: 'Imaginer votre propre protocole de suivi',
-      left: {
-        label: "Avant l'intervention",
-        prepTitle: 'Préparation structurée:',
-        prepItems: [
-          'Vérification des consignes médicales',
-          'Confirmation logistique',
-          "Recueil d'inquiétudes",
-          'Évaluation anxiété (0–10)',
-          'Réponses aux questions du patient',
-          'Documentation des échanges',
-        ],
-        benefitsTitle: 'Bénéfices:',
-        benefitsItems: [
-          'Réduction annulations',
-          'Consentement mieux documenté',
-          'Préparation optimisée',
-        ],
-      },
-      right: {
-        brand: 'DOCTINUM',
-        label: "Après l'intervention",
-        monitorTitle: 'Surveillance méthodique:',
-        monitorLead: "Selon l'acte à des moments définis (J+1, J+7 ...)",
-        monitorItems: [
-          'Douleur (0–10)',
-          'Signes déclaratifs sensibles',
-          'Respect des consignes',
-          'Évolution œdème',
-          'Satisfaction progressive',
-        ],
-        responsesTitle: 'Les réponses sont:',
-        responsesItems: ['Structurées', 'Historisées', 'Priorisées'],
-      },
-    },
-    sportsStructure: {
-      title: 'COORDONNER LE PARCOURS AVEC PLUSIEURS ACTEURS',
-      subtitle:
-        'Le dispositif ne remplace ni le médecin ni le kinésithérapeute.',
-      items: [
-        { title: 'Un outil de structuration longitudinale' },
-        { title: 'Un support organisationnel' },
-        { title: 'Un système d’objectivation des indicateurs déclaratifs' },
-        { title: 'Un point de visibilité pour le médecin référent' },
-      ],
-      closing:
-        'La rééducation reste centrale. Le dispositif structure l’information autour d’elle.',
-    },
-    sportsProtocol: {
-      heading: 'Imaginer votre propre protocole de suivi',
-      leftTitle: 'OBJECTIVER LA RÉCUPÉRATION DANS LE TEMPS',
-      leftIntro: 'Le protocole peut inclure :',
-      leftList: [
-        'Douleur (0-10)',
-        'Perception de mobilité',
-        'Sensation d’instabilité',
-        'Fatigue musculaire',
-        'Adhésion aux séances de kinésithérapie',
-        'Reprise progressive d’activité',
-      ],
-      leftBottomIntro: 'Ces indicateurs sont :',
-      leftBottom: [
-        'Historisés',
-        'Visualisés longitudinalement',
-        'Priorisés selon des seuils définis par l’équipe',
-      ],
-      rightTitle: 'DÉTECTER LES DÉCROCHAGES ET LES REPRISES PRÉMATURÉES',
-      rightIntro: 'En pratique, le dispositif permet d’identifier :',
-      rightList: [
-        'Une augmentation brutale de douleur',
-        'Une baisse d’adhésion aux séances',
-        'Une reprise d’activité non planifiée',
-        'Une dégradation perçue de la mobilité',
-      ],
-      rightBottom:
-        'Le système ne prend aucune décision. Il structure et priorise l’information.',
-      brand: 'DOCTINUM',
-    },
-    sportsCases: {
-      case1: {
-        title: 'COORDINATION AVEC LA RÉÉDUCATION',
-        body: 'Dans un centre structuré :',
-        listItems: [
-          'Le médecin définit le protocole',
-          'Les indicateurs peuvent être partagés',
-          'La récupération devient objectivée',
-          'Les décisions restent humaines',
-          'Le dispositif agit comme une couche transversale, facilitant la cohérence du parcours.',
-        ],
-        brand: 'Rééducation',
-      },
-      case2: {
-        title: 'ADAPTÉ AUX CENTRES INTÉGRÉS',
-        listItems: [
-          'Centres de médecine du sport',
-          'Cliniques orthopédiques privées',
-          'Structures avec kinésithérapie interne',
-          'Instituts de performance',
-        ],
-        brand: 'Centres',
-        buttonLabel: 'En savoir plus',
-      },
-    },
     notCallbot: {
       title: 'Une',
       titleAccent: 'infrastructure clinique',
@@ -943,123 +644,6 @@ const fr = {
         'Consentement explicite',
         'Traçabilité complète',
       ],
-    },
-    dermatologyNarrative: {
-      badge: 'Parcours dermatologiques',
-      title: 'Le traitement ne s’arrête pas à la prescription.',
-      intro:
-        'En dermatologie, de nombreux parcours reposent sur des traitements longs et évolutifs :',
-      firstList: [
-        'Acné sévère sous isotrétinoïne',
-        'Psoriasis sous biothérapie',
-        'Eczéma chronique',
-        'Suites post-laser ou peelings',
-      ],
-      betweenIntro: 'Entre deux consultations, le suivi repose souvent sur :',
-      secondList: [
-        'La réactivité du patient',
-        'Des échanges informels',
-        'Une auto-évaluation non structurée',
-        'Des retours hétérogènes',
-      ],
-      conclusion: 'Or, les traitements dermatologiques impliquent :',
-      lastList: [
-        'Une observance rigoureuse',
-        'Une surveillance des effets secondaires',
-        'Une évaluation progressive de l’efficacité',
-        'Une documentation régulière',
-      ],
-    },
-    dermatologyFragile: {
-      title: 'Traitements longs, suivi fragile',
-      items: {
-        effects: {
-          title: 'Effets secondaires',
-          body: 'Certains traitements nécessitent un suivi régulier des effets indésirables déclaratifs.',
-        },
-        adherence: {
-          title: 'Observance variable',
-          body: 'L’adhésion au traitement peut fluctuer dans le temps.',
-        },
-        subjective: {
-          title: 'Perception subjective',
-          body: 'L’évolution des symptômes est souvent décrite sans structuration ni comparaison temporelle.',
-        },
-      },
-    },
-    dermatologyTrajectory: {
-      weeksChip: 'Semaines 1 → 12',
-      severityChip: 'Sévérité (0-10)',
-      drynessChip: 'Sécheresse',
-      adherenceChip: 'Adhésion',
-      title: 'Transformer les retours isolés en trajectoire structurée.',
-      intro: 'Le dispositif permet :',
-      items: [
-        'Recueil hebdomadaire ou mensuel des symptômes',
-        'Structuration déclarative standardisée',
-        'Historisation automatique',
-        'Visualisation des tendances',
-        'Définition de seuils de vigilance',
-      ],
-      closing:
-        'Les réponses ne sont plus des échanges ponctuels. Elles deviennent une évolution documentée.',
-    },
-    dermatologyConfigurations: {
-      heading: 'Imaginer votre propre protocole de suivi',
-      intro: 'Exemples de configurations possibles',
-      warning:
-        'Scénarios illustratifs. Protocoles définis par l’équipe médicale.',
-      cards: [
-        {
-          title: 'Acné sévère - Isotrétinoïne',
-          items: [
-            'Sécheresse cutanée (0-10)',
-            'Irritation',
-            'Humeur déclarative',
-            'Adhésion traitement',
-            'Évolution perçue',
-          ],
-        },
-        {
-          title: 'Psoriasis sous biothérapie',
-          items: [
-            'Intensité plaques',
-            'Démangeaisons',
-            'Fatigue associée',
-            'Impact qualité de vie',
-            'Tolérance traitement',
-          ],
-        },
-        {
-          title: 'Post-laser dermatologique',
-          items: [
-            'Douleur',
-            'Rougeur',
-            'Œdème',
-            'Croûtes anormales',
-            'Satisfaction à J+7',
-          ],
-        },
-      ],
-    },
-    dermatologyOrganization: {
-      title: 'Adapter le niveau de suivi à votre pratique.',
-      systemIntro: 'Le dispositif permet :',
-      systemList: [
-        'Intensité variable selon pathologie',
-        'Fréquence adaptable',
-        'Protocoles distincts par indication',
-        'Activation sélective selon patient',
-      ],
-      clinicIntro: 'Chaque cabinet définit :',
-      clinicList: ['Ses jalons', 'Ses seuils', 'Son niveau de granularité'],
-      schema: {
-        pathology: 'Pathologie',
-        protocol: 'Protocole',
-        frequency: 'Fréquence',
-        milestones: 'Jalons',
-        alerts: 'Alertes',
-      },
     },
   },
   content: {
@@ -2494,6 +2078,8 @@ const fr = {
       },
     },
     editorsApi: {
+      preparationNotice:
+        'Offre en préparation, ouverte aux partenariats pilotes.',
       hero: {
         title: 'Ajoutez un agent vocal médical à votre plateforme',
         subtitle:
@@ -2675,10 +2261,10 @@ const fr = {
     },
     vision: {
       hero: {
-        eyebrow: 'Infrastructure vocale clinique',
-        title: 'Le canal qui manquait au suivi patient.',
+        eyebrow: 'Notre vision',
+        title: 'Donner une voix au suivi patient.',
         subtitle:
-          "Entre deux consultations, les patients vivent. Leurs symptômes évoluent, leurs questions s'accumulent. Ces données critiques restent invisibles — non par manque de volonté, mais parce que le canal disponible était le mauvais.",
+          "Doctinum construit la couche conversationnelle de confiance du parcours de soin. Nous commençons là où la douleur est la plus vive et le déploiement le plus rapide, l'accueil et la pré-consultation des cabinets, puis nous étendons la même technologie à tout le parcours.",
         stats: [
           {
             value: '+40%',
@@ -2686,7 +2272,8 @@ const fr = {
           },
           {
             value: '47%',
-            label: 'patients avec pathologie chronique sans modalité de suivi à distance',
+            label:
+              'patients avec pathologie chronique sans modalité de suivi à distance',
           },
           {
             value: '4',
@@ -2702,7 +2289,8 @@ const fr = {
         body: "Les applications supposent une capacité d'action que l'état post-chimio, post-opératoire ou simplement la fragilité rendent impossible. Le suivi fiable ne peut pas reposer sur la motivation du patient.",
         statPill: {
           value: '47%',
-          label: 'des patients avec pathologie chronique n\'ont accès à aucune modalité de suivi à distance (Lenfant et al., JAMA 2026)',
+          label:
+            "des patients avec pathologie chronique n'ont accès à aucune modalité de suivi à distance (Lenfant et al., JAMA 2026)",
         },
         // statPill: {
         //   value: '40-50%',
@@ -2711,7 +2299,7 @@ const fr = {
         barriers: [
           {
             title: 'État clinique',
-            text: "Ouvrir une app, naviguer, cocher — la charge cognitive est incompatible avec l'état post-chimio ou post-opératoire.",
+            text: "Ouvrir une app, naviguer, cocher, la charge cognitive est incompatible avec l'état post-chimio ou post-opératoire.",
           },
           {
             title: 'Digital literacy',
@@ -2724,10 +2312,9 @@ const fr = {
         ],
       },
       thesis: {
-        label: 'Notre thèse',
-        title:
-          "La voix résout le canal. Mais la rendre cliniquement fiable est un problème d'ingénierie.",
-        body: "Intégrer un assistant vocal est trivial. Construire une infrastructure vocale qui résiste aux contraintes cliniques réelles — identité, protocole, données structurées, continuité longitudinale — est un problème d'ingénierie spécialisée. C'est cette barrière que nous avons franchie.",
+        label: 'Sous le capot',
+        title: 'Quatre moteurs. Pas un simple agent vocal.',
+        body: "Intégrer un assistant conversationnel est trivial. Construire une infrastructure qui résiste aux contraintes cliniques réelles, identité, protocole, données structurées, continuité longitudinale, est un problème d'ingénierie spécialisée. C'est cette barrière que nous avons franchie.",
         pillars: [
           {
             title: 'Identité & consentement',
@@ -2735,7 +2322,7 @@ const fr = {
           },
           {
             title: 'Orchestration des appels',
-            text: 'Absents, répondeurs, tiers en ligne, escalade humaine — journal auditable complet.',
+            text: 'Absents, répondeurs, tiers en ligne, escalade humaine, journal auditable complet.',
           },
           {
             title: 'Fidélité protocolaire',
@@ -2743,7 +2330,7 @@ const fr = {
           },
           {
             title: 'Données structurées',
-            text: 'Extraction clinique propre, alertes sur seuils, export HL7 FHIR — pas de la transcription.',
+            text: 'Extraction clinique propre, alertes sur seuils, export HL7 FHIR, pas de la transcription.',
           },
         ],
       },
@@ -2751,14 +2338,14 @@ const fr = {
         label: "À l'origine",
         title: 'Deux trajectoires, une même conviction',
         intro:
-          "Doctinum est né de la convergence d'une frustration terrain et d'une expertise technique. Non d'une hypothèse — d'une observation vécue.",
+          "Doctinum est né de la convergence d'une frustration terrain et d'une expertise technique. Non d'une hypothèse, d'une observation vécue.",
         founders: [
           {
             role: 'CEO & Co-fondateur',
             name: 'Michael Ramassamy',
             story: [
-              "Entrepreneur dans la santé numérique, Michael a travaillé sur la réputation des établissements et l'expérience patient. Là, il a observé un paradoxe récurrent : <strong>les questionnaires ne revenaient pas, les données manquaient — non par indifférence, mais parce que le canal imposait trop d'effort.</strong>",
-              "L'expérience est devenue personnelle. Face aux problèmes de santé de son père — peu à l'aise avec le numérique — il a mesuré la réalité du vide entre deux consultations : pas d'outil, pas de remontée, pas de suivi structuré possible.",
+              "Entrepreneur dans la santé numérique, Michael a travaillé sur la réputation des établissements et l'expérience patient. Là, il a observé un paradoxe récurrent : <strong>les questionnaires ne revenaient pas, les données manquaient, non par indifférence, mais parce que le canal imposait trop d'effort.</strong>",
+              "L'expérience est devenue personnelle. Face aux problèmes de santé de son père, peu à l'aise avec le numérique, il a mesuré la réalité du vide entre deux consultations : pas d'outil, pas de remontée, pas de suivi structuré possible.",
             ],
             insight:
               "Ce n'est pas un problème de motivation. C'est un problème de canal. Et la voix est le seul canal qui va vers le patient.",
@@ -2767,8 +2354,8 @@ const fr = {
             role: 'CTO & Co-fondateur',
             name: 'Régis Anclades',
             story: [
-              'Ingénieur et entrepreneur technologique, Régis a conçu et déployé plusieurs infrastructures vocales automatisées à grande échelle — notamment pour des systèmes de support client en production.',
-              "Cette expérience lui a appris ce que les voice bots génériques ignorent : <strong>la fiabilité à grande échelle est un problème d'architecture, pas d'interface.</strong> Gérer les absents, les tiers en ligne, les refus, les plages horaires, les données propres — c'est l'infrastructure, pas le LLM.",
+              'Ingénieur et entrepreneur technologique, Régis a conçu et déployé plusieurs infrastructures vocales automatisées à grande échelle, notamment pour des systèmes de support client en production.',
+              "Cette expérience lui a appris ce que les voice bots génériques ignorent : <strong>la fiabilité à grande échelle est un problème d'architecture, pas d'interface.</strong> Gérer les absents, les tiers en ligne, les refus, les plages horaires, les données propres, c'est l'infrastructure, pas le LLM.",
             ],
             insight:
               "La fiabilité vocale à grande échelle est un problème d'architecture, pas d'interface. C'est précisément ce que nous avons construit.",
@@ -2781,15 +2368,15 @@ const fr = {
         cards: [
           {
             label: 'Sur le canal',
-            text: "La voix est le seul canal universel. Elle ne requiert ni compte, ni app, ni maîtrise numérique. C'est le seul canal qui va vers le patient — et non l'inverse.",
+            text: "La voix est le seul canal universel. Elle ne requiert ni compte, ni app, ni maîtrise numérique. C'est le seul canal qui va vers le patient, et non l'inverse.",
           },
           {
             label: 'Sur la barrière technique',
-            text: "La voix cliniquement fiable n'est pas un problème de design. C'est un problème d'ingénierie. La barrière est là — c'est notre avantage.",
+            text: "La voix cliniquement fiable n'est pas un problème de design. C'est un problème d'ingénierie. La barrière est là, c'est notre avantage.",
           },
           {
             label: 'Sur le positionnement',
-            text: "Nous ne remplaçons pas les plateformes. Nous sommes la couche vocale qu'elles n'ont pas — et que construire en interne leur coûterait 12 mois de R&D.",
+            text: "Nous ne remplaçons pas les plateformes. Nous sommes la couche vocale qu'elles n'ont pas, et que construire en interne leur coûterait 12 mois de R&D.",
           },
           {
             label: 'Sur le timing',
@@ -2798,35 +2385,35 @@ const fr = {
         ],
       },
       roadmap: {
-        label: 'Notre ambition',
-        title: "Devenir l'infrastructure de référence du suivi clinique vocal",
+        label: 'Notre trajectoire',
+        title: 'Trois horizons.',
         timeline: [
           {
             year: "Aujourd'hui",
-            title: 'Validation en conditions réelles',
-            text: "Infrastructure fonctionnelle déployée avec des praticiens partenaires. Validation des quatre moteurs cliniques sur des cas d'usage concrets : suivi post-opératoire, esthétique médicale, études cliniques.",
-            tags: ['Beta fonctionnelle', 'Pilotes cliniques actifs'],
+            title: "L'accueil et la pré-consultation",
+            text: "L'assistante multimodale des cabinets de chirurgie et médecine esthétiques. Hors dispositif médical par construction : elle comprend, collecte et restitue. Le praticien décide.",
+            tags: ['Hors dispositif médical', 'Cabinets esthétiques'],
           },
           {
             year: 'Demain',
-            title: 'Infrastructure pour les plateformes',
-            text: 'Devenir la couche vocale que les éditeurs de suivi patient intègrent par API — plutôt que de la reconstruire. Interopérabilité native avec les standards du secteur.',
-            tags: ['API-first', 'Interopérabilité HL7 FHIR'],
+            title: 'Le parcours complet, sur tous les canaux',
+            text: "Réservation, pré-intervention, suivi post-opératoire. Web, téléphone, SMS, application. La voix et le téléphone ramènent dans le parcours les patients que les applications laissent de côté : âgés, peu connectés, précisément ceux qui demandent le plus de vigilance. Protocoles définis par l'équipe, appels structurés, données restituées, alertes supervisées.",
+            tags: ['Web, téléphone, SMS', 'Alertes supervisées'],
           },
           {
-            year: 'Vision',
-            title: 'Standard du suivi vocal en santé',
-            text: "Une infrastructure vocale clinique certifiée, déployée à l'échelle — de la médecine de ville aux essais cliniques internationaux. Le suivi patient accessible à tous, partout, sans friction.",
-            tags: ['Certification réglementaire', 'Expansion internationale'],
+            year: 'Ensuite',
+            title: 'Le suivi clinique certifié',
+            text: "Notre architecture est conçue pour la certification dispositif médical. Elle activera le module clinique, pré-tri, surveillance post-opératoire, détection de signaux d'alerte, et ouvrira l'intégration aux cliniques, hôpitaux et applications de suivi patient existantes, ainsi que l'accès au cadre de la télésurveillance médicale remboursée.",
+            tags: ['Certification DM', 'Télésurveillance remboursée'],
           },
         ],
       },
       cta: {
         title: 'Une conversation, pas un pitch.',
         subtitle:
-          "Si notre raisonnement vous intéresse — ou si vous pensez qu'il est faux — nous voulons l'entendre. 60 minutes pour vérifier notre thèse ensemble.",
+          "Si notre raisonnement vous intéresse, ou si vous pensez qu'il est faux, nous voulons l'entendre.",
         primaryCta: 'Demander une démo',
-        secondaryCta: 'Voir le deck investisseur',
+        secondaryCta: 'Éditeurs & API',
       },
     },
     security: {
@@ -2834,7 +2421,7 @@ const fr = {
         eyebrow: 'Sécurité & Réglementation',
         title: 'Une infrastructure conçue pour les environnements de santé.',
         subtitle:
-          "La protection des données patient, la traçabilité des interactions et la supervision humaine ne sont pas des options dans Doctinum — elles sont constitutives de l'architecture.",
+          "La protection des données patient, la traçabilité des interactions et la supervision humaine ne sont pas des options dans Doctinum, elles sont constitutives de l'architecture.",
         badges: [
           'Hébergement HDS · France',
           'RGPD natif',
@@ -2846,7 +2433,7 @@ const fr = {
         label: "Ce que nous garantissons aujourd'hui",
         title: "Des fondations vérifiables, pas des déclarations d'intention.",
         intro:
-          "Voici ce qui est en place, opérationnel, et vérifiable — sans sur-vente de certifications que nous n'avons pas encore.",
+          "Voici ce qui est en place, opérationnel, et vérifiable, sans sur-vente de certifications que nous n'avons pas encore.",
         items: [
           {
             icon: '🏥',
@@ -2892,19 +2479,19 @@ const fr = {
         intro:
           'La transparence sur notre statut réglementaire actuel est un principe, pas une contrainte. Voici un état exact de notre situation.',
         activeItems: [
-          "Hors classification Dispositif Médical — outil d'organisation et de collecte déclarative, sans diagnostic ni décision clinique autonome",
-          'Conformité RGPD native — base légale documentée, droits des personnes exercés',
+          "Hors classification Dispositif Médical, outil d'organisation et de collecte déclarative, sans diagnostic ni décision clinique autonome",
+          'Conformité RGPD native, base légale documentée, droits des personnes exercés',
           'Hébergement HDS certifié en France',
           'Conventions de pilote encadrant chaque déploiement',
           'Politique de confidentialité et mentions légales à jour',
         ],
         pendingItems: [
-          'Analyse de trajectoire CE MDR en cours — périmètre à définir selon les usages retenus',
+          'Analyse de trajectoire CE MDR en cours, périmètre à définir selon les usages retenus',
           'Engagement avec un cabinet réglementaire spécialisé santé numérique en cours de structuration',
           'Clause de revue sécurité disponible pour les partenaires institutionnels qui en font la demande',
           'Certification ISO 27001 envisagée pour les déploiements institutionnels à grande échelle',
         ],
-        note: "nous ne revendiquons pas de certifications que nous n'avons pas. Si votre contexte requiert un niveau de certification spécifique, nous vous l'indiquerons clairement — et si la trajectoire est compatible, nous la construirons ensemble.",
+        note: "nous ne revendiquons pas de certifications que nous n'avons pas. Si votre contexte requiert un niveau de certification spécifique, nous vous l'indiquerons clairement, et si la trajectoire est compatible, nous la construirons ensemble.",
       },
       supervision: {
         label: 'Supervision humaine & gouvernance',
@@ -2914,7 +2501,7 @@ const fr = {
         items: [
           {
             title: 'Aucune décision autonome',
-            text: "Le système ne prend aucune décision médicale de manière autonome. Il collecte, structure et alerte — le professionnel de santé reste le seul décisionnaire sur l'interprétation et l'action clinique.",
+            text: "Le système ne prend aucune décision médicale de manière autonome. Il collecte, structure et alerte, le professionnel de santé reste le seul décisionnaire sur l'interprétation et l'action clinique.",
           },
           {
             title: 'Escalade humaine intégrée',
@@ -2926,7 +2513,7 @@ const fr = {
           },
           {
             title: 'Protocole paramétré par le clinicien',
-            text: 'La base de connaissances et les questions de suivi sont définies et validées par le professionnel de santé responsable du protocole. Doctinum exécute — le clinicien conçoit et supervise.',
+            text: 'La base de connaissances et les questions de suivi sont définies et validées par le professionnel de santé responsable du protocole. Doctinum exécute, le clinicien conçoit et supervise.',
           },
         ],
       },
@@ -2934,7 +2521,7 @@ const fr = {
         label: 'Trajectoire',
         title: 'Un cadre réglementaire qui évolue avec nos usages.',
         intro:
-          "Nous construisons la trajectoire réglementaire en fonction des déploiements réels — pas d'une liste de certifications abstraites. Voici l'état actuel.",
+          "Nous construisons la trajectoire réglementaire en fonction des déploiements réels, pas d'une liste de certifications abstraites. Voici l'état actuel.",
         items: [
           {
             status: 'actif',
@@ -2962,11 +2549,10 @@ const fr = {
   },
 
   contactForm: {
-    badge: 'Évaluation projet pilote',
     titleLine1: 'Discutons de votre',
     titleLine2: "cas d'usage",
     subtitle:
-      "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un projet pilote de suivi vocal patient.",
+      "Échangeons sur votre contexte clinique et évaluons ensemble la pertinence d'un assistant IA conversationnel voix, chat, interface interactive.",
     nameLabel: 'Nom',
     namePlaceholder: 'Dr. Martin Dupont',
     roleLabel: 'Fonction',
@@ -3011,7 +2597,8 @@ const fr = {
   demoPage: {
     badge: 'Réserver une démo',
     title: 'Découvrez Doctinum en action',
-    subtitle: 'Planifiez une démonstration personnalisée et découvrez comment notre solution peut transformer votre suivi patient.',
+    subtitle:
+      'Planifiez une démonstration personnalisée et découvrez comment notre solution peut transformer votre suivi patient.',
   },
   demoForm: {
     firstName: 'Prénom',
@@ -3061,7 +2648,8 @@ const fr = {
       '90min': '1 heure 30',
     },
     message: 'Message supplémentaire',
-    messagePlaceholder: 'Décrivez vos besoins spécifiques, les cas d\'usage que vous souhaitez explorer...',
+    messagePlaceholder:
+      "Décrivez vos besoins spécifiques, les cas d'usage que vous souhaitez explorer...",
     required: '* Champs obligatoires',
     submit: 'Réserver la démo',
   },
@@ -3070,16 +2658,35 @@ const fr = {
     message: "Oups, cette page n'existe pas",
     goHome: "Retour à l'accueil",
   },
+  mainNav: {
+    solution: 'Solution',
+    howItWorks: 'Comment ça marche',
+    security: 'Sécurité',
+    vision: 'Vision',
+    contact: 'Contact',
+  },
   footer: {
-    tagline: 'Donner une voix au suivi patient',
-    subtitle: 'Infrastructure vocale clinique IA pour le suivi patient.',
-    solutionsTitle: 'Solutions',
+    tagline: 'Votre premier contact patient, transformé en réputation.',
+    subtitle:
+      "L'assistante IA d'accueil et de pré-consultation des cabinets de chirurgie et médecine esthétiques.",
+    solutionsTitle: 'Solution',
     resourcesTitle: 'Ressources',
     companyTitle: 'Entreprise',
+    legalTitle: 'Informations légales',
+    aesthetics: 'Chirurgie & médecine esthétique',
     contact: 'Contact',
     legalNotice: 'Mentions légales',
     privacyPolicy: 'Politique de confidentialité',
     cookies: 'Gestion des cookies',
+    soonTitle: 'Prochainement',
+    soonItems: [
+      'Médecine du sport',
+      'Dermatologie',
+      'PROMS & questionnaires post-acte',
+      'Parcours chroniques',
+      'Prévention & santé au travail',
+      'Pharma & recherche',
+    ],
     copyright: '© 2026 Doctinum',
     manageCookies: 'Modifier mes préférences cookies',
   },

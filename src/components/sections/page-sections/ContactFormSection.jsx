@@ -4,40 +4,18 @@ import { useTranslation } from 'react-i18next';
 import TextInput from '../../ui/TextInput';
 import TextArea from '../../ui/TextArea';
 import Select from '../../ui/Select';
-import Badge from '../../ui/Badge';
 import Container from '../../layout/Container';
 
 export default function ContactFormSection({ socialProofText }) {
   const { t } = useTranslation();
 
+  // Offre du jour: accueil et pré-consultation en esthétique. Les verticales
+  // retirées du site ne sont plus proposées ici.
   const serviceOptions = [
     { value: 'surgery', label: t('contactForm.services.surgery') },
     {
-      value: 'sportsMedicine',
-      label: t('contactForm.services.sportsMedicine'),
-    },
-    { value: 'dermatology', label: t('contactForm.services.dermatology') },
-    { value: 'proms', label: t('contactForm.services.proms') },
-    { value: 'chronic', label: t('contactForm.services.chronic') },
-    { value: 'oncology', label: t('contactForm.services.oncology') },
-    {
-      value: 'rehabilitation',
-      label: t('contactForm.services.rehabilitation'),
-    },
-    { value: 'preventive', label: t('contactForm.services.preventive') },
-    {
       value: 'patientSoftware',
       label: t('contactForm.services.patientSoftware'),
-    },
-    { value: 'promsSoftware', label: t('contactForm.services.promsSoftware') },
-    {
-      value: 'clinicalStudies',
-      label: t('contactForm.services.clinicalStudies'),
-    },
-    { value: 'croStudies', label: t('contactForm.services.croStudies') },
-    {
-      value: 'followUpPrograms',
-      label: t('contactForm.services.followUpPrograms'),
     },
     { value: 'other', label: t('contactForm.services.other') },
   ];
@@ -48,19 +26,12 @@ export default function ContactFormSection({ socialProofText }) {
     { value: 'clinic', label: t('contactForm.budgets.clinic') },
     { value: 'network', label: t('contactForm.budgets.network') },
     { value: 'software', label: t('contactForm.budgets.software') },
-    { value: 'pharma', label: t('contactForm.budgets.pharma') },
-    { value: 'researcher', label: t('contactForm.budgets.researcher') },
-    { value: 'patientProgram', label: t('contactForm.budgets.patientProgram') },
-    { value: 'association', label: t('contactForm.budgets.association') },
     { value: 'other', label: t('contactForm.budgets.other') },
   ];
 
   return (
     <Container className="grid grid-cols-2 items-start gap-20 pb-20 pt-[calc(var(--nav-h)+40px)] max-[1199px]:gap-12 max-[809px]:grid-cols-1 max-[809px]:gap-9">
       <div className="rev">
-        <Badge className="mb-6 inline-block rounded-full border border-[var(--border-mid)] bg-[var(--surface)] px-[14px] py-2 text-[13px] font-[var(--w500)] tracking-[var(--track)]">
-          {t('contactForm.badge')}
-        </Badge>
         <h1 className="mb-5">
           {t('contactForm.titleLine1')}
           <br />

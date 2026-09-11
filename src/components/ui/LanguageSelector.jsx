@@ -73,7 +73,10 @@ export default function LanguageSelector({
 
   const handleSelect = (languageCode) => {
     const normalizedCode = normalizeLanguageCode(languageCode);
-    i18n.changeLanguage(normalizedCode);
+    /* Pas de `changeLanguage` ici. Chaque locale a désormais son instance,
+       épinglée à sa langue; la muter ferait basculer l'instance française en
+       anglais le temps de la navigation. C'est l'URL qui porte la langue, et
+       LocaleShell choisit l'instance qui va avec. */
     router.push(switchLocaleInPath(pathname, normalizedCode));
     setIsOpen(false);
     onOpenChange?.(false);
@@ -208,7 +211,7 @@ export default function LanguageSelector({
         type="button"
         className="flex h-[44px] items-center justify-center p-0 border-none bg-transparent"
         aria-expanded={isOpen}
-        aria-label="Select language"
+        aria-label={t('language.title')}
         onClick={() =>
           setIsOpen((currentValue) => {
             const nextValue = !currentValue;

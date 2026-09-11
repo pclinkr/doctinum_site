@@ -20,14 +20,8 @@ export async function POST(request) {
         agentId: process.env.AESTHETIC_RETELL_AGENT_ID,
         agentVersion: parseInt(process.env.AESTHETIC_RETELL_AGENT_VERSION, 10),
       },
-      cardiac: {
-        agentId: process.env.CARDIOLOGY_RETELL_AGENT_ID,
-        agentVersion: parseInt(process.env.CARDIOLOGY_RETELL_AGENT_VERSION, 10),
-      },
-      oncology: {
-        agentId: process.env.ONCOLOGY_RETELL_AGENT_ID,
-        agentVersion: parseInt(process.env.ONCOLOGY_RETELL_AGENT_VERSION, 10),
-      },
+      // Les contextes oncologie et chirurgie cardiaque sont retirés de l'offre:
+      // hors cible et risqués pour un produit hors dispositif médical.
     };
 
     // Validate demoType and get corresponding agent config
@@ -35,7 +29,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           error: 'invalid_demo_type',
-          message: 'demoType must be one of: ortho, aesthetic, cardiac, oncology',
+          message: 'demoType must be one of: ortho, aesthetic',
         },
         { status: 400 }
       );

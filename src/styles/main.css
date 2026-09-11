@@ -52,9 +52,12 @@
 *::after {
   @apply box-border m-0 p-0;
 }
-html {
-  @apply scroll-smooth;
-}
+/* PAS de `scroll-smooth` global. Une remise à zéro devient alors une
+   animation: la position ne bouge pas dans la foulée, et le code qui vient de
+   la demander croit avoir remonté la page. C'est mesurable — un scrollTop
+   assigné restait à 0 puis rampait de 20 px en 600 ms. Les défilements
+   volontaires (ancres de la navigation, saut vers la simulation) passent leur
+   `behavior:'smooth'` explicitement au moment de l'appel. */
 body {
   @apply bg-[var(--bg)] text-[var(--black)] font-[var(--sans)] antialiased overflow-x-hidden;
 }
@@ -294,56 +297,129 @@ select {
   }
 }
 
-/* ============================================================ NAVIGATION - Converti en classes Tailwind ============================================================ */
-.nav {
-  --nav-scroll-progress: 0;
-  @apply fixed top-0 left-0 right-0 w-full max-w-none h-[var(--nav-h)] flex items-center p-0 gap-6 z-[100] transition-colors duration-300 ease-out isolate overflow-visible;
+/* ============================================================ NAVIGATION — barre bento ============================================================ */
+/* La barre ne fond PAS d'un état à l'autre: c'est le MÊME conteneur qui se
+   resserre. Le logo est ancré à gauche, les actions à droite; réduire la
+   largeur maximale et le rembourrage suffit à les amener à leur place exacte
+   dans la pastille de verre, sans mesurer ni dupliquer quoi que ce soit. */
+.site-nav {
+  @apply fixed left-0 right-0 top-0 z-[100];
 }
-.nav::before {
-  content: '';
-  @apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] backdrop-blur-[calc(24px+var(--nav-scroll-progress)*-8px)] bg-[var(--bg-overlay-10)] pointer-events-none z-[2] transition-opacity duration-200 ease-out;
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    rgba(0, 0, 0, 0.82) 60%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    rgba(0, 0, 0, 0.82) 60%,
-    transparent 100%
-  );
+.site-nav-inner {
+  @apply relative mx-auto flex max-w-[1420px] items-center gap-[10px] px-[clamp(16px,3.2vw,44px)] py-[18px] min-[560px]:gap-[22px] min-[560px]:py-[22px];
+  transition:
+    max-width 0.55s var(--ease-out),
+    padding 0.55s var(--ease-out),
+    margin-top 0.55s var(--ease-out);
 }
-.nav::after {
-  content: '';
-  @apply absolute left-0 right-0 top-0 h-[calc(var(--nav-h)+100px)] opacity-[calc(.82+var(--nav-scroll-progress)*.14)] pointer-events-none z-[1] transition-opacity duration-200 ease-out;
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    rgba(0, 0, 0, 0.9) 10%,
-    rgba(0, 0, 0, 0.46) 56%,
-    transparent 96%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    180deg,
-    #000 0%,
-    rgba(0, 0, 0, 0.9) 10%,
-    rgba(0, 0, 0, 0.46) 56%,
-    transparent 96%,
-    transparent 100%
-  );
-  background: linear-gradient(
-    180deg,
-    var(--bg-page) 0%,
-    var(--bg-page) calc(var(--nav-h) - var(--nav-opaque-threshold)),
-    var(--bg-overlay-92) calc(var(--nav-h) + 8px),
-    var(--bg-overlay-00) 100%
-  );
+/* `min()` plutôt qu'une largeur fixe: sous 1140px la pastille touchait les
+   bords de la fenêtre, faute de marge latérale. */
+/* Le retrait latéral de la pastille est plus court sur téléphone: à 375 px,
+   soixante-douze pixels de marge ne laissaient plus la place au logo et aux
+   actions, la rangée débordait et le bouton de menu sortait du verre. */
+.site-nav.is-condensed .site-nav-inner {
+  @apply mt-[10px] py-[9px] pl-[16px] pr-[9px] min-[560px]:mt-[14px] min-[560px]:py-[11px] min-[560px]:pl-[26px] min-[560px]:pr-[12px];
+  max-width: min(1140px, calc(100% - 24px));
 }
-.nav.scrolled {
-  @apply bg-transparent border-b-0;
+@media (min-width: 560px) {
+  .site-nav.is-condensed .site-nav-inner {
+    max-width: min(1140px, calc(100% - 72px));
+  }
+}
+
+/* Le verre est un calque à part, pour que son opacité se règle seule. */
+.site-nav-glass {
+  @apply pointer-events-none absolute inset-0 z-[-1] rounded-[var(--radius-pill)] border border-[var(--white-40)] opacity-0;
+  background: var(--white-28);
+  box-shadow:
+    0 22px 48px -23px var(--ink-30),
+    inset 0 1px 0 var(--white-20);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  backdrop-filter: blur(22px) saturate(1.5);
+  transition: opacity 0.45s ease;
+}
+.site-nav.is-condensed .site-nav-glass {
+  @apply opacity-100;
+}
+
+/* Pas de `display` ici: la classe composant est déclarée APRÈS les utilitaires
+   Tailwind et l'emporterait à specificite egale sur le `hidden` du JSX — les
+   liens réapparaissaient en pleine largeur mobile. La visibilité appartient au
+   composant, la géométrie à cette règle. */
+.site-nav-links {
+  @apply flex-1 justify-center gap-[6px];
+}
+.site-nav-link {
+  @apply whitespace-nowrap rounded-[var(--radius-pill)] px-[17px] py-[9px] text-[15px] font-medium tracking-[-0.006em] text-[var(--color-muted)];
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    color 0.25s ease,
+    background-color 0.25s ease;
+}
+.site-nav-link:hover,
+.site-nav-link[aria-current='page'] {
+  @apply bg-[var(--ink-05)] text-[var(--color-text)];
+}
+/* Les liens occupent leur place dès le départ, invisibles: la géométrie du
+   logo et du bouton ne bouge donc pas quand ils apparaissent. Ce régime ne
+   vaut que sur la page-récit, dont le premier écran veut de l'air; ailleurs
+   la navigation doit être lisible sans avoir à faire défiler. */
+.site-nav.reveals-links-on-scroll .site-nav-link {
+  @apply pointer-events-none translate-y-[-5px] opacity-0;
+}
+.site-nav.reveals-links-on-scroll.is-condensed .site-nav-link {
+  @apply pointer-events-auto translate-y-0 opacity-100;
+}
+
+/* Sans les liens pour les pousser — c'est le cas sur mobile — les actions
+   retomberaient contre le logo. */
+.site-nav-actions {
+  @apply ml-auto flex flex-none items-center gap-[6px] min-[560px]:gap-[10px];
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav-inner,
+  .site-nav-glass,
+  .site-nav-link {
+    transition: none;
+  }
+}
+
+/* ================================================ SÉQUENCE D'ÉTAPES AU SCROLL === */
+/* L'épinglage est décidé par le CSS, pas par un état React: une classe posée
+   depuis JavaScript au premier rendu produirait un écart d'hydratation, et le
+   serveur ne peut pas connaître la largeur de la fenêtre. JavaScript ne
+   calcule ici que l'étape active. */
+.steps-track {
+  position: relative;
+}
+.steps-sticky {
+  display: flex;
+  align-items: center;
+}
+/* Épinglé à TOUTES les largeurs. Le seuil de 980px désynchronisait tout: la
+   section s'épinglait dès 980 alors que sa mise en page ne passait en trois
+   colonnes qu'à 1080. Entre les deux, on défilait dans une piste épinglée
+   devant une composition empilée — les étapes et leur maquette n'étaient plus
+   visibles ensemble. Sur petit écran la section montre une étape à la fois,
+   ce qui demande justement de suivre le défilement. */
+.steps-track {
+  height: calc(100vh + var(--steps-extra, 200vh));
+}
+.steps-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+}
+@media (prefers-reduced-motion: reduce) {
+  .steps-track {
+    height: auto;
+  }
+  .steps-sticky {
+    position: static;
+    min-height: 0;
+  }
 }
 
 /* ============================================================ ANIMATIONS RÉUTILISABLES - CODE DRY ============================================================ */
@@ -390,6 +466,200 @@ select {
 }
 .rev.in.d4 {
   transition-delay: 420ms;
+}
+
+/* Révélation ligne à ligne pour les titres serif (masque typographique) */
+.rev-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.rev-mask > span {
+  display: block;
+  transform: translateY(115%);
+  transition: transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rev-mask.in > span {
+  transform: translateY(0);
+}
+
+.rev-mask.in.d1 > span {
+  transition-delay: 100ms;
+}
+.rev-mask.in.d2 > span {
+  transition-delay: 200ms;
+}
+.rev-mask.in.d3 > span {
+  transition-delay: 300ms;
+}
+
+/* Masque de ligne piloté par l'état du hero (et non par le scroll) */
+@keyframes maskUp {
+  from {
+    transform: translateY(118%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.mask-line > span {
+  display: block;
+  transform: translateY(118%);
+}
+
+.mask-line > span.mask-in {
+  animation: maskUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-line > span,
+  .mask-line > span.mask-in {
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Révélation d'image en rideau vertical + léger dézoom */
+.rev-frame {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rev-frame.in {
+  clip-path: inset(0 0 0 0);
+}
+
+.rev-frame .rev-frame-media {
+  transform: scale(1.14);
+  transition: transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rev-frame.in .rev-frame-media {
+  transform: scale(1);
+}
+
+.rev-frame.in.d1 {
+  transition-delay: 120ms;
+}
+.rev-frame.in.d2 {
+  transition-delay: 240ms;
+}
+
+/* Photo du hero: rideau vertical + dézoom lent */
+.hero-figure {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+}
+
+.hero-figure.is-shown {
+  clip-path: inset(0 0 0 0);
+}
+
+.hero-figure .hero-figure-media {
+  transform: scale(1.16);
+  transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+}
+
+.hero-figure.is-shown .hero-figure-media {
+  transform: scale(1);
+}
+
+.hero-figure.is-instant,
+.hero-figure.is-instant .hero-figure-media {
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-figure,
+  .hero-figure.is-shown {
+    clip-path: none;
+    transition: none;
+  }
+
+  .hero-figure .hero-figure-media,
+  .hero-figure.is-shown .hero-figure-media {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Défilement vertical infini du hero */
+@keyframes heroMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.hero-marquee-track {
+  animation: heroMarquee var(--hero-marquee-duration, 38s) linear infinite;
+  will-change: transform;
+}
+
+.hero-marquee-track.is-reverse {
+  animation-direction: reverse;
+}
+
+.hero-figure:hover .hero-marquee-track,
+.hero-figure:focus-within .hero-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-track {
+    animation: none;
+  }
+}
+
+/* Barres de voix, indice sonore discret */
+@keyframes voiceBar {
+  0%,
+  100% {
+    transform: scaleY(0.32);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.voice-bar {
+  transform-origin: center;
+  animation: voiceBar 1.15s ease-in-out infinite;
+}
+
+/* Parallaxe: la valeur est posée en JS via --parallax-y */
+.parallax-layer {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rev-mask > span,
+  .rev-frame,
+  .rev-frame .rev-frame-media {
+    transform: none;
+    clip-path: none;
+    transition: opacity 0.2s linear;
+  }
+
+  .voice-bar {
+    animation: none;
+  }
+
+  .parallax-layer {
+    transform: none;
+  }
 }
 
 /* Variante pour les medias: reveal plus marque avec zoom + blur */
@@ -805,7 +1075,7 @@ select {
 
 /* ============================================================ FOOTER - Converti en classes Tailwind ============================================================ */
 footer {
-  @apply bg-[var(--bg)] px-5 py-6 pt-16 pb-6 flex justify-center border-t border-[var(--border)];
+  @apply bg-[var(--bg)] px-5 pt-8 pb-6 flex justify-center border-t border-[var(--border)];
 }
 
 /* ============================================================ FLOATING CTA - Converti en classes Tailwind ============================================================ */
@@ -829,9 +1099,6 @@ footer {
 
 /* ============================================================ RESPONSIVE TABLET ≤1199 - Converti en classes Tailwind ============================================================ */
 @media (max-width: 1199px) {
-  .nav {
-    @apply px-8;
-  }
   .voice-demo-sticky {
     @apply px-8;
   }
@@ -876,15 +1143,6 @@ footer {
 @media (max-width: 809px) {
   :root {
     --nav-h: 64px;
-  }
-  .nav {
-    @apply p-0 h-auto flex-col items-stretch w-full gap-0;
-  }
-  .nav::before {
-    @apply top-0 h-[var(--nav-h)];
-  }
-  .nav::after {
-    @apply top-0 h-[calc(var(--nav-h)+104px)];
   }
   .float-cta {
     @apply bottom-4 right-6;

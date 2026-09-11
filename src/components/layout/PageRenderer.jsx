@@ -1,22 +1,11 @@
 'use client';
 
 import { BlogPage, BlogPostPage } from '../../site-pages/BlogPages';
-import HomePage from '../../site-pages/HomePage';
 import HomePage2 from '../../site-pages/HomePage2';
 import AboutPage from '../../site-pages/AboutPage';
 import CaseStudiesPage from '../../site-pages/CaseStudiesPage';
 import CaseDetailPage from '../../site-pages/CaseDetailPage';
-import SurgeryAestheticPage from '../../site-pages/SurgeryAestheticPage';
-import RhinoplastyPage from '../../site-pages/RhinoplastyPage';
-import LiposuctionPage from '../../site-pages/LiposuctionPage';
-import HyaluronicInjectionPage from '../../site-pages/HyaluronicInjectionPage';
-import SportsMedicinePage from '../../site-pages/SportsMedicinePage';
-import IntegratedCentersPage from '../../site-pages/IntegratedCentersPage';
-import DermatologyPage from '../../site-pages/DermatologyPage';
-import PromsPage from '../../site-pages/PromsPage';
-import PatientSupportProgramsPage from '../../site-pages/PatientSupportProgramsPage';
 import EditorsApiPage from '../../site-pages/EditorsApiPage';
-import PreventionWorkHealthPage from '../../site-pages/PreventionWorkHealthPage';
 import VisionPage from '../../site-pages/VisionPage';
 import SecurityPage from '../../site-pages/SecurityPage';
 import {
@@ -35,20 +24,9 @@ import { useSiteAppContext } from '../../context/SiteAppContext';
 export default function PageRenderer({ pageId }) {
   const { onNavigate, storyStarted, hasLeftHomeOnce } = useSiteAppContext();
 
-  if (pageId === 'home2') {
-    return (
-      <HomePage2
-        active
-        onNavigate={onNavigate}
-        storyStarted={storyStarted}
-        instantHero={hasLeftHomeOnce}
-      />
-    );
-  }
-
   if (pageId === 'home') {
     return (
-      <HomePage
+      <HomePage2
         active
         onNavigate={onNavigate}
         storyStarted={storyStarted}
@@ -69,48 +47,8 @@ export default function PageRenderer({ pageId }) {
     return <CaseDetailPage active onNavigate={onNavigate} />;
   }
 
-  if (pageId === 'surgery-aesthetic') {
-    return <SurgeryAestheticPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'surgery-rhinoplasty') {
-    return <RhinoplastyPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'surgery-liposuction') {
-    return <LiposuctionPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'surgery-hyaluronic-injection') {
-    return <HyaluronicInjectionPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'sports-medicine') {
-    return <SportsMedicinePage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'sports-integrated-centers') {
-    return <IntegratedCentersPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'dermatology') {
-    return <DermatologyPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'proms') {
-    return <PromsPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'patient-support-programs') {
-    return <PatientSupportProgramsPage active onNavigate={onNavigate} />;
-  }
-
   if (pageId === 'editors-api') {
     return <EditorsApiPage active onNavigate={onNavigate} />;
-  }
-
-  if (pageId === 'prevention-workplace-health') {
-    return <PreventionWorkHealthPage active onNavigate={onNavigate} />;
   }
 
   if (pageId === 'blog') {

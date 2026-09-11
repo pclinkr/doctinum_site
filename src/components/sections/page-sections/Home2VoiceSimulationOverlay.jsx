@@ -592,7 +592,7 @@ export default function Home2VoiceSimulationOverlay({
 
   const phoneAvatarUrl =
     process.env.NEXT_PUBLIC_VOICE_DEMO_AVATAR_URL ||
-    '/assets/voice-demo/avatar-default.jpg';
+    '/assets/images/nurse_headset.png';
 
   return (
     <div

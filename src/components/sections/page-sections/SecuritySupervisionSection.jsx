@@ -1,26 +1,26 @@
 import Container from '../../layout/Container';
 
-export default function SecuritySupervisionSection({ 
+export default function SecuritySupervisionSection({
   label,
   title,
   intro,
-  items = []
+  items = [],
 }) {
   return (
-    <section className="bg-color-primary py-28 text-white">
+    <section className="bg-color-primary py-[clamp(56px,7vw,110px)] text-white">
       <Container>
         <div className="mx-auto max-w-[860px]">
-          <p className="rev mb-5 text-[11px] font-medium uppercase tracking-[0.18em] text-color-accent-1">
+          <p className="rev mb-5 text-[12px] font-[var(--w500)] uppercase tracking-[0.16em] text-color-accent-1">
             {label}
           </p>
-          <h2 className="rev mb-5 text-[clamp(1.6rem,2.5vw,2.2rem)] font-[var(--w400)] leading-[1.25] tracking-[-0.02em] text-white">
+          <h2 className="rev mb-5 font-serif text-[clamp(1.9rem,3.2vw,2.8rem)] font-[600] leading-[1.16] tracking-[-0.02em] text-white">
             {title}
           </h2>
-          <p className="rev mb-8 max-w-[680px] text-[1rem] font-light leading-[1.8] text-white-60">
+          <p className="rev mb-8 max-w-[680px] text-[17px] font-light leading-[1.8] text-white-60">
             {intro}
           </p>
-          
-          <div className="flex flex-col gap-0 border border-white-10">
+
+          <div className="flex flex-col gap-0 overflow-hidden rounded-[20px] border border-white-10">
             {items.map((item, index) => (
               <div
                 key={index}
@@ -32,10 +32,10 @@ export default function SecuritySupervisionSection({
                   {String(index + 1).padStart(2, '0')}
                 </div>
                 <div>
-                  <div className="mb-2 text-[0.85rem] font-medium uppercase tracking-[0.07em] text-white">
+                  <div className="mb-2 text-[14px] font-[var(--w500)] uppercase tracking-[0.06em] text-white">
                     {item.title}
                   </div>
-                  <div className="text-[0.88rem] font-light leading-[1.7] text-white-55">
+                  <div className="text-[15px] leading-[1.7] text-white-60">
                     {item.text}
                   </div>
                 </div>

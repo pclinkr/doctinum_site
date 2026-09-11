@@ -1,58 +1,84 @@
+/* =========================================================================
+   Palette du site — direction Espresso, reprise du motion design de
+   l'accueil. Crème #f4f1ec, encre chaude #2a2320, espresso #4a3b31 comme
+   couleur des boutons pleins, moka #8a6c57 pour les accents graphiques.
+
+   Aucun composant ne connaît de couleur en dur: tout passe par --color-*, et
+   semantic.css en dérive quelque quatre-vingt-dix alias par var()/color-mix().
+   Changer une valeur ici rhabille le site entier.
+
+   Les états sémantiques (danger, succès) restent des teintes distinctes: la
+   charte les bannirait, mais un message d'erreur de formulaire a besoin d'être
+   reconnu comme tel.
+   ========================================================================= */
 :root {
   /* Color tokens */
-  --color-bg: #ddecf9;
-  --color-surface: #ebf0f4;
-  --color-white: #f5f6f7;
-  --color-text: #0e1b29; /* same as rgb(14, 27, 41); */
-  --color-muted: rgb(12, 36, 60, 0.55);
-  --color-subtle: rgb(12, 36, 60, 0.32);
-  --color-border: rgb(12, 36, 60, 0.08);
-  --color-border-strong: rgb(12, 36, 60, 0.12);
-  --color-primary: #0c243c;
+  --color-bg: #f4f1ec; /* crème */
+  --color-surface: #e7e2da; /* profond */
+  --color-white: #fefdfb; /* voile */
+  --color-text: #2a2320; /* noir CHAUD: un noir neutre tire au bleu sur ce fond */
+  --color-muted: #5e564f; /* gris pierre */
+  --color-subtle: #958d85;
+  --color-border: rgba(42, 35, 32, 0.12);
+  --color-border-strong: rgba(42, 35, 32, 0.2);
+  --color-primary: #524841; /* marron de la maquette */
   --color-primary-contrast: var(--color-white);
-  --color-accent-1: #d8c8a8;
-  --color-accent-2: #d9a895;
-  --color-danger: #fe5f55;
-  --color-success: #23ac7e;
-  --color-secondary: #566574;
-  --color-info: #969fe0;
+  --color-action: #524841; /* l'accent EST la couleur des boutons pleins */
+  --color-action-hover: #453c36;
+  --color-accent-1: #8a6c57; /* moka: mot accentué, filets, pictogrammes */
+  --color-accent-2: #8a6c57;
+  --color-danger: #b4614c; /* terre cuite */
+  --color-success: #6e8f6a; /* sauge */
+  --color-secondary: #5e564f;
+  --color-info: #8a6c57;
+
+  /* Fonds de panneaux. Deux crèmes très proches: le panneau et les cartouches
+     qu'il contient ne se distinguent que d'un cheveu, juste assez pour que les
+     secondes se détachent sans qu'un cadre soit nécessaire. */
+  --color-panel: #f9f7f7;
+  --color-panel-card: #f3efec;
   --logo-normal: var(--color-primary);
   --logo-contrast: var(--color-primary-contrast);
 
   /* Typography tokens */
-  --font-title: 'Poppins', sans-serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-citation: 'Noto Serif', serif;
-  --font-serif: 'Source serif 4', serif;
+  --font-title: var(--font-noto-serif), Georgia, 'Times New Roman', serif;
+  --font-sans:
+    var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-citation: var(--font-noto-serif), Georgia, serif;
+  --font-serif: var(--font-noto-serif), Georgia, serif;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
   /* Variables pour compatibilité avec l'original */
-  --title: 'Poppins', sans-serif;
-  --sans: 'Inter', sans-serif;
-  --citation: 'Noto Serif', serif;
-  --serif: 'Cormorant', serif;
+  --title: var(--font-noto-serif), Georgia, serif;
+  --sans:
+    var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --citation: var(--font-noto-serif), Georgia, serif;
+  --serif: var(--font-noto-serif), Georgia, serif;
   --w400: 400;
   --w500: 500;
+  --w600: 600;
   --w700: 700;
-  --track: -0.04em;
-  --track-tight: -0.06em;
-  --track-serif: -0.08em;
+  --track: -0.01em;
+  --track-tight: -0.02em;
+  --track-serif: -0.015em;
 
   --font-size-body: 20px;
   --line-height-body: normal;
   --letter-spacing-body: normal;
 
-  --font-size-h1: 72px;
-  --line-height-h1: normal;
-  --letter-spacing-h1: -4px;
-  --font-weight-h1: 500;
+  --font-size-h1: 76px;
+  --line-height-h1: 1.02;
+  --letter-spacing-h1: -0.015em;
+  --font-weight-h1: 600;
 
-  --font-size-h2: 52px;
-  --line-height-h2: 1.08;
-  --letter-spacing-h2: -0.055em;
-  --font-weight-h2: 500;
+  --font-size-h2: 50px;
+  --line-height-h2: 1.1;
+  --letter-spacing-h2: -0.012em;
+  --font-weight-h2: 600;
 
   --font-size-h3: 32px;
   --line-height-h3: 1.15;
