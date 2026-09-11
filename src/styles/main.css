@@ -306,7 +306,7 @@ select {
   @apply fixed left-0 right-0 top-0 z-[100];
 }
 .site-nav-inner {
-  @apply relative mx-auto flex max-w-[1420px] items-center gap-[10px] px-[clamp(16px,3.2vw,44px)] py-[18px] min-[560px]:gap-[22px] min-[560px]:py-[22px];
+  @apply relative mx-auto flex max-w-[1420px] items-center gap-[10px] px-[clamp(24px,3.2vw,44px)] py-[18px] min-[560px]:gap-[22px] min-[560px]:py-[22px];
   transition:
     max-width 0.55s var(--ease-out),
     padding 0.55s var(--ease-out),
@@ -318,7 +318,7 @@ select {
    soixante-douze pixels de marge ne laissaient plus la place au logo et aux
    actions, la rangée débordait et le bouton de menu sortait du verre. */
 .site-nav.is-condensed .site-nav-inner {
-  @apply mt-[10px] py-[9px] pl-[16px] pr-[9px] min-[560px]:mt-[14px] min-[560px]:py-[11px] min-[560px]:pl-[26px] min-[560px]:pr-[12px];
+  @apply mt-[10px] py-[9px] pl-[24px] pr-[12px] min-[560px]:mt-[14px] min-[560px]:py-[11px] min-[560px]:pl-[26px] min-[560px]:pr-[12px];
   max-width: min(1140px, calc(100% - 24px));
 }
 @media (min-width: 560px) {
@@ -403,22 +403,38 @@ select {
    colonnes qu'à 1080. Entre les deux, on défilait dans une piste épinglée
    devant une composition empilée — les étapes et leur maquette n'étaient plus
    visibles ensemble. Sur petit écran la section montre une étape à la fois,
-   ce qui demande justement de suivre le défilement. */
-.steps-track {
-  height: calc(100vh + var(--steps-extra, 200vh));
-}
+   ce qui demande justement de suivre le défilement.
+
+   `--steps-sticky-top` est posé par le composant: zéro quand le panneau tient
+   dans la fenêtre, négatif sinon, pour l'épingler par le bas et garder
+   l'étape et sa maquette à l'écran. La piste d'élan (`.steps-runway`) suit le
+   panneau: sa hauteur est exactement la course pendant laquelle il reste
+   fixé. */
 .steps-sticky {
   position: sticky;
-  top: 0;
+  top: var(--steps-sticky-top, 0px);
   min-height: 100vh;
+  min-height: 100svh;
 }
 @media (prefers-reduced-motion: reduce) {
-  .steps-track {
-    height: auto;
-  }
   .steps-sticky {
     position: static;
     min-height: 0;
+  }
+  .steps-runway {
+    display: none;
+  }
+}
+/* Entrée de la carte d'étape sous 1080 px: la carte précédente disparaît et
+   celle-ci arrive d'un léger glissement, pour qu'on remarque le changement. */
+@keyframes steps-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

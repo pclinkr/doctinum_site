@@ -3,7 +3,6 @@ import VisionHeroSection from '../components/sections/page-sections/VisionHeroSe
 import VisionQuoteSection from '../components/sections/page-sections/VisionQuoteSection';
 import VisionProblemSection from '../components/sections/page-sections/VisionProblemSection';
 import VisionThesisSection from '../components/sections/page-sections/VisionThesisSection';
-import VisionFoundersSection from '../components/sections/page-sections/VisionFoundersSection';
 import VisionConvictionSection from '../components/sections/page-sections/VisionConvictionSection';
 import VisionRoadmapSection from '../components/sections/page-sections/VisionRoadmapSection';
 import VisionCtaSection from '../components/sections/page-sections/VisionCtaSection';
@@ -17,11 +16,7 @@ export default function VisionPage({ active, onNavigate }) {
   }
 
   return (
-    <div
-      id="page-vision"
-      className={`page ${active ? 'active' : ''}`.trim()}
-    >
-
+    <div id="page-vision" className={`page ${active ? 'active' : ''}`.trim()}>
       <VisionHeroSection
         eyebrow={copy.hero.eyebrow}
         title={copy.hero.title}
@@ -47,12 +42,9 @@ export default function VisionPage({ active, onNavigate }) {
         pillars={copy.thesis.pillars}
       />
 
-      <VisionFoundersSection
-        label={copy.founders.label}
-        title={copy.founders.title}
-        intro={copy.founders.intro}
-        founders={copy.founders.founders}
-      />
+      {/* Les fondateurs sont masqués pour le moment. Le composant
+          `VisionFoundersSection` et ses textes (`pages.vision.founders`) sont
+          conservés: le réafficher, c'est remettre l'appel ici. */}
 
       <VisionConvictionSection
         label={copy.conviction.label}
