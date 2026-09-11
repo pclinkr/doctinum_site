@@ -882,6 +882,1201 @@ const fr = {
       description:
         'Des stratégies actionnables et des tendances pour transformer votre présence social en croissance business.',
     },
+    solutionsList: [
+      { id: 'surgery-aesthetic', title: 'Chirurgie & médecine esthétique' },
+      { id: 'surgery-rhinoplasty', title: 'Rhinoplastie' },
+      { id: 'surgery-liposuction', title: 'Liposuccion' },
+      {
+        id: 'surgery-hyaluronic-injection',
+        title: 'Injections acide hyaluronique',
+      },
+      { id: 'sports-medicine', title: 'Médecine du sport' },
+      {
+        id: 'sports-integrated-centers',
+        title: 'Centres Intégrés Médecine du Sport',
+      },
+      { id: 'dermatology', title: 'Dermatologie' },
+      { id: 'proms', title: 'PROMs' },
+      {
+        id: 'patient-support-programs',
+        title: "Programmes d'accompagnement patients",
+      },
+      {
+        id: 'prevention-workplace-health',
+        title: 'Prévention santé au travail',
+      },
+      // {
+      //   id: 'coordinated-chronic-pathways',
+      //   title: 'Parcours chroniques coordonnés',
+      // },
+      { id: 'hv-transplantation', title: 'Transplantation' },
+      { id: 'hv-oncology', title: 'Oncologie' },
+      { id: 'hv-chronic-cardiology', title: 'Cardiologie chronique' },
+      { id: 'hv-rare-diseases', title: 'Maladies rares' },
+      { id: 'hv-mental-health', title: 'Santé mentale' },
+    ],
+    solutions: {
+      surgery: {
+        hero: {
+          badge: 'Suivi pré & post intervention',
+          title: 'Chirurgie & médecine esthétique',
+        },
+        testimonial:
+          'En chirurgie et médecine esthétique, la qualité perçue repose autant sur le suivi que sur l’acte lui-même.',
+        challengeItems: [
+          {
+            label: 'Constat',
+            title:
+              'Entre la préparation et la récupération, le suivi peut devenir :',
+            listItems: [
+              'Fragmenté',
+              'Réactif',
+              "Dépendant d'appels manuels",
+              'Peu traçable',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title:
+              'Un positionnement haut de gamme exige une continuité structurée.',
+          },
+        ],
+        examples: {
+          badge: 'Situations cliniques',
+          title: 'Exemples de configuration de suivi',
+          description:
+            'Chaque structure définit son propre modèle de suivi. Voici quelques illustrations',
+          cards: [
+            {
+              title: 'Rhinoplastie',
+              imageUrl: '/assets/images/rhinoplastie.png',
+              overlayGradient: 'var(--gradient-accent-warm-overlay)',
+              description:
+                'Créer un suivi pré et post-opératoire clair, rassurant et traçable.',
+              page: 'surgery-rhinoplasty',
+            },
+            {
+              title: 'Liposuccion',
+              imageUrl: '/assets/images/liposuccion.png',
+              overlayGradient: 'var(--gradient-accent-warm-terra-overlay)',
+              description:
+                'Structurer les jalons de récupération et prioriser les signaux utiles.',
+              page: 'surgery-liposuction',
+            },
+            {
+              title: 'Injection',
+              imageUrl: '/assets/images/injection.png',
+              overlayGradient: 'var(--gradient-accent-cool-overlay)',
+              description:
+                'Assurer un accompagnement homogène, de la préparation au contrôle tardif.',
+              page: 'surgery-hyaluronic-injection',
+            },
+          ],
+        },
+      },
+      surgeryAesthetic: {
+        hero: {
+          eyebrow: 'Chirurgie et médecine esthétique',
+          title:
+            'L\'IA qui transforme votre premier contact patient en réputation',
+          subtitle:
+            'Doctinum met à votre disposition une IA vocale et visuelle pour accueillir, informer vos patients et préparer vos consultations.',
+          cta: 'Demander une démo',
+        },
+        product: {
+          eyebrow: 'Vocal interactif pré-consultation',
+          title: 'Préparez la consultation, automatiquement',
+          text: 'Un assistant vocal interactif échange avec le patient avant sa venue : recueil des informations, réponses aux questions fréquentes, mise en avant des actes du cabinet en visuel, préparation du dossier. Vous gagnez du temps, le patient arrive informé et serein.',
+          benefits: [
+            'Recueil structuré des informations patient',
+            'Réponses aux questions récurrentes 24h/24',
+            'Dossier pré-rempli avant la consultation',
+            'Moins d’appels à gérer pour le secrétariat',
+          ],
+        },
+        why: {
+          eyebrow: 'Pourquoi Doctinum',
+          title: 'Une solution pensée pour votre cabinet',
+          items: [
+            {
+              title: 'Conçu pour l’esthétique française',
+              text: 'Une IA pensée pour le secteur médical esthétique français et ses spécificités.',
+            },
+            {
+              title: 'Hébergement HDS',
+              text: 'Vos données de santé hébergées dans un environnement certifié Hébergeur de Données de Santé.',
+            },
+            {
+              title: 'Conforme au RGPD',
+              text: 'Respect du RGPD et du cadre réglementaire applicable aux données de santé.',
+            },
+            {
+              title: 'Intégration simple',
+              text: 'S’insère dans votre organisation existante, sans bouleverser vos habitudes.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Envie de voir Doctinum sur votre cabinet ?',
+          titleHighlight: 'Votre audit d’organisation IA offert',
+          subtitle:
+            '30 minutes pour identifier où vous perdez du temps et où l’IA peut fluidifier votre cabinet : organisation, communication patients, suivi post-opératoire.',
+          button: 'Réserver un audit / une démo gratuite',
+        },
+      },
+      sports: {
+        hero: {
+          badge: 'Coordination & récupération',
+          title: 'Médecine du sport',
+          subtitle:
+            'Structurer la récupération et coordonner les acteurs du parcours',
+        },
+        testimonial:
+          'Structurer la récupération et coordonner les acteurs du parcours',
+        challengeItems: [
+          {
+            label: 'Parcours',
+            title:
+              'En médecine du sport, le parcours est rarement linéaire. Le patient peut être suivi par :',
+            description: '',
+            listItems: [
+              'Un médecin du sport',
+              'Un chirurgien orthopédiste',
+              'Un kinésithérapeute',
+              'Parfois un préparateur physique',
+            ],
+          },
+          {
+            label: 'Enjeu',
+            title:
+              'Le problème n’est pas l’absence de rééducation. Le problème est souvent :',
+            description: '',
+            listItems: [
+              'La fragmentation du suivi',
+              'Le manque de visibilité longitudinale',
+              'La reprise prématurée',
+              'L’adhésion irrégulière',
+              'Entre deux consultations médicales, la récupération reste peu objectivée.',
+            ],
+          },
+        ],
+      },
+      dermatology: {
+        hero: {
+          badge: 'Suivi dermatologique longitudinal',
+          title: 'Dermatologie',
+          subtitle: 'Structurer les traitements dermatologiques dans la durée',
+        },
+        testimonial:
+          "Structurer les traitements dermatologiques dans la durée et objectiver l'évolution.",
+        intro: {
+          title: 'Structurer les traitements dermatologiques dans la durée.',
+          description:
+            "Une infrastructure d'intelligence artificielle vocale qui applique vos protocoles de suivi, contacte les patients à intervalles définis et structure les retours déclaratifs dans le temps — sous supervision médicale.",
+          primaryCta: 'Évaluer un projet pilote',
+          secondaryCta: 'Échanger avec notre équipe',
+        },
+        statement: "Le traitement ne s'arrête pas à la prescription.",
+        challengeItems: [
+          {
+            label: 'Constat',
+            title:
+              'En dermatologie, de nombreux parcours reposent sur des traitements longs et évolutifs :',
+            listItems: [
+              'Acné sévère sous isotrétinoïne',
+              'Psoriasis sous biothérapie',
+              'Eczéma chronique',
+              'Suites post-laser ou peelings',
+            ],
+          },
+          {
+            label: 'Suivi actuel',
+            title: 'Entre deux consultations, le suivi repose souvent sur :',
+            listItems: [
+              'La réactivité du patient',
+              'Des échanges informels',
+              'Une auto-évaluation non structurée',
+              'Des retours hétérogènes',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'Or, les traitements dermatologiques impliquent :',
+            listItems: [
+              'Une observance rigoureuse',
+              'Une surveillance des effets secondaires',
+              "Une évaluation progressive de l'efficacité",
+              'Une documentation régulière',
+            ],
+          },
+        ],
+        organizationTool: {
+          title: "Un outil d'organisation, pas un substitut clinique.",
+          items: [
+            {
+              title: 'Priorisation des consultations',
+              body: 'Identification des situations nécessitant un rendez-vous anticipé.',
+            },
+            {
+              title: 'Documentation structurée',
+              body: 'Historique exportable des retours déclaratifs.',
+            },
+            {
+              title: 'Vision globale',
+              body: 'Lecture longitudinale facilitée entre deux consultations.',
+            },
+            {
+              title: 'Supervision constante',
+              body: "Aucune décision automatisée. Les critères d'alerte sont définis par le praticien.",
+            },
+          ],
+        },
+      },
+      rhinoplasty: {
+        hero: {
+          badge: 'Scénario illustratif',
+          title: 'Exemple de parcours configuré — Rhinoplastie',
+        },
+        statement:
+          'Un protocole structuré avant et après intervention, permettant de sécuriser les suites opératoires et de proposer une expérience patient premium.',
+        challengeItems: [
+          {
+            label: 'Constat',
+            title: 'La rhinoplastie est :',
+            listItems: [
+              'Un acte chirurgical ambulatoire',
+              'Avec œdème et ecchymoses fréquents',
+              "Risque d'hématome ou saignement",
+              'Forte charge émotionnelle pour le patient',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title:
+              'Le suivi repose souvent sur des appels manuels ou la réactivité du patient.',
+          },
+        ],
+        protocolConfiguration: {
+          badge: 'Configuration possible',
+          title: 'Configuration possible du protocole',
+          disclaimer:
+            "Scénario illustratif. Les protocoles sont définis par l'équipe médicale.",
+          phases: [
+            {
+              title: 'Phase pré-opératoire',
+              milestones: [
+                {
+                  timing: 'J-7',
+                  items: [
+                    'Vérification arrêt tabac',
+                    'Vérification anticoagulants',
+                    'Confirmation compréhension des suites',
+                    "Recueil niveau d'anxiété (0–10)",
+                  ],
+                },
+                {
+                  timing: 'J-1',
+                  items: [
+                    'Confirmation horaire',
+                    'Organisation retour domicile',
+                    'Rappel consignes',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Phase post-opératoire',
+              milestones: [
+                {
+                  timing: 'J+1',
+                  items: [
+                    'Douleur (0–10)',
+                    'Saignement inhabituel ?',
+                    'Température',
+                  ],
+                },
+                {
+                  timing: 'J+7',
+                  items: ['Intensité œdème', 'Écoulement', 'Ressenti global'],
+                },
+                {
+                  timing: 'J+30',
+                  items: [
+                    'Perception du résultat',
+                    'Satisfaction (0–10)',
+                    'Recommandation du cabinet',
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Expérience patient premium',
+          description:
+            'Un accompagnement structuré qui renforce la confiance et la satisfaction.',
+          patientPerception: {
+            label: 'Le patient perçoit',
+            items: [
+              'Un accompagnement continu',
+              'Une présence rassurante',
+              'Une attention structurée',
+              'Un suivi personnalisé',
+            ],
+          },
+          clinicBenefits: {
+            label: 'Cela renforce',
+            items: [
+              'La confiance',
+              'La satisfaction',
+              'La réputation du cabinet',
+            ],
+          },
+        },
+        clinicalBenefits: {
+          title: 'Solution et bénéfices',
+          subtitle:
+            'Une infrastructure qui structure le suivi et valorise votre pratique.',
+          items: [
+            {
+              title: 'Structuration et traçabilité',
+              body: 'Tous les échanges sont documentés, horodatés et structurés pour une visibilité complète du parcours patient.',
+            },
+            {
+              title: 'Priorisation des situations sensibles',
+              body: "Les signaux faibles sont détectés selon vos critères et remontés à l'équipe médicale pour action.",
+            },
+            {
+              title: 'Réduction des appels imprévisibles',
+              body: 'Le suivi proactif diminue les appels spontanés et permet une meilleure organisation du temps soignant.',
+            },
+            {
+              title: 'Image premium différenciante',
+              body: 'Un accompagnement structuré qui renforce la perception de qualité et la réputation de votre pratique.',
+            },
+          ],
+        },
+      },
+      liposuction: {
+        hero: {
+          badge: 'Scénario illustratif',
+          title: 'Exemple de parcours configuré — Liposuccion',
+        },
+        statement:
+          'Suivi intensif et vigilance prolongée pour sécuriser la récupération et optimiser les résultats.',
+        challengeItems: [
+          {
+            label: 'Constat',
+            title: 'La liposuccion entraîne :',
+            listItems: [
+              'Douleur variable',
+              'Risque hématome',
+              'Surveillance mobilité',
+              'Récupération progressive',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title:
+              'Un suivi structuré et prolongé pour accompagner la récupération.',
+          },
+        ],
+        protocolConfiguration: {
+          title: 'Configuration possible du protocole',
+          disclaimer:
+            "Scénario illustratif. Les protocoles sont définis par l'équipe médicale.",
+          phases: [
+            {
+              title: 'Phase pré-opératoire',
+              milestones: [
+                {
+                  timing: 'Pré-op',
+                  items: [
+                    'Vérification aide à domicile',
+                    'Rappel consignes mobilité',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Phase post-opératoire',
+              milestones: [
+                {
+                  timing: 'J+1 / J+3 / J+7',
+                  items: [
+                    'Douleur',
+                    'Tension excessive',
+                    'Rougeur',
+                    'Mobilisation',
+                  ],
+                },
+                {
+                  timing: 'J+30',
+                  items: [
+                    'Satisfaction',
+                    'Perception silhouette',
+                    "Suivi possible prolongé jusqu'à J+60",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        clinicalBenefits: {
+          title: 'Solution et bénéfices',
+          subtitle:
+            'Une infrastructure qui structure le suivi et valorise votre pratique.',
+          items: [
+            {
+              title: 'Structuration et traçabilité',
+              body: 'Tous les échanges sont documentés, horodatés et structurés pour une visibilité complète du parcours patient.',
+            },
+            {
+              title: 'Priorisation des situations sensibles',
+              body: "Les signaux faibles sont détectés selon vos critères et remontés à l'équipe médicale pour action.",
+            },
+            {
+              title: 'Réduction des appels imprévisibles',
+              body: 'Le suivi proactif diminue les appels spontanés et permet une meilleure organisation du temps soignant.',
+            },
+            {
+              title: 'Image premium différenciante',
+              body: 'Un accompagnement structuré qui renforce la perception de qualité et la réputation de votre pratique.',
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Dimension premium',
+          description:
+            "Possibilité d'enrichir l'expérience patient avec des éléments personnalisés.",
+          label: "Possibilité d'ajouter",
+          items: [
+            'Message personnalisé du chirurgien',
+            'Rappel des étapes de récupération',
+            'Suivi satisfaction progressif',
+          ],
+        },
+      },
+      hyaluronicInjection: {
+        hero: {
+          badge: 'Scénario illustratif',
+          title: 'Exemple de parcours configuré — Injection acide hyaluronique',
+        },
+        statement:
+          "Suivi léger et valorisation de l'expérience pour renforcer la fidélisation et l'image premium.",
+        challengeItems: [
+          {
+            label: 'Contexte',
+            title: 'Acte non chirurgical, mais :',
+            listItems: [
+              'Œdème possible',
+              'Ecchymoses',
+              'Attentes élevées',
+              'Demandes de retouches',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: "En médecine esthétique, le suivi devient un outil d'image.",
+          },
+        ],
+        protocolConfiguration: {
+          title: 'Configuration possible du protocole',
+          disclaimer:
+            "Scénario illustratif. Les protocoles sont définis par l'équipe médicale.",
+          phases: [
+            {
+              title: 'Phase pré-injection',
+              milestones: [
+                {
+                  timing: 'J-1',
+                  items: [
+                    'Rappel contre-indications',
+                    'Vérification absence infection active',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Phase post-injection',
+              milestones: [
+                {
+                  timing: 'J+1',
+                  items: [
+                    'Œdème inhabituel ?',
+                    'Douleur',
+                    'Ecchymose importante ?',
+                  ],
+                },
+                {
+                  timing: 'J+7',
+                  items: ['Satisfaction', 'Souhait de retouche ?'],
+                },
+              ],
+            },
+          ],
+        },
+        clinicalBenefits: {
+          title: 'Solution et bénéfices',
+          subtitle:
+            'Une infrastructure qui structure le suivi et valorise votre pratique.',
+          items: [
+            {
+              title: 'Structuration et traçabilité',
+              body: 'Tous les échanges sont documentés, horodatés et structurés pour une visibilité complète du parcours patient.',
+            },
+            {
+              title: 'Priorisation des situations sensibles',
+              body: "Les signaux faibles sont détectés selon vos critères et remontés à l'équipe médicale pour action.",
+            },
+            {
+              title: 'Réduction des appels imprévisibles',
+              body: 'Le suivi proactif diminue les appels spontanés et permet une meilleure organisation du temps soignant.',
+            },
+            {
+              title: 'Image premium différenciante',
+              body: 'Un accompagnement structuré qui renforce la perception de qualité et la réputation de votre pratique.',
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Dimension premium très forte ici',
+          description:
+            'Le suivi devient un levier de différenciation et de fidélisation.',
+          label: 'Impact',
+          items: [
+            'Suivi perçu comme haut de gamme',
+            'Augmentation du taux de retour',
+            'Meilleure fidélisation',
+            'Différenciation marketing',
+          ],
+        },
+      },
+      integratedCenters: {
+        hero: {
+          badge: 'Centres pluridisciplinaires',
+          title: 'Centres Intégrés Médecine du Sport',
+        },
+        statement:
+          'Une infrastructure transversale pour centres pluridisciplinaires',
+        centerChallenge: {
+          label: 'Dans les centres intégrés réunissant',
+          title: '',
+          actors: [
+            'Médecins',
+            'Chirurgiens',
+            'Kinésithérapeutes',
+            'Préparateurs physiques',
+          ],
+          challenge: 'Le défi est la cohérence.',
+        },
+        deviceCapabilities: {
+          title: 'Le dispositif permet',
+          items: [
+            'Une visibilité partagée des indicateurs déclaratifs',
+            'Une structuration commune du parcours',
+            'Une harmonisation des jalons',
+            'Une priorisation centralisée des signaux sensibles',
+          ],
+        },
+        centerBenefits: {
+          title: 'Bénéfices pour le centre',
+          items: [
+            'Coordination améliorée',
+            'Objectivation de la récupération',
+            'Image innovante et structurée',
+            'Différenciation sur le marché',
+            'Optimisation organisationnelle',
+          ],
+        },
+        useCases: {
+          title: "Cas d'usage typiques",
+          cases: [
+            'Reconstruction LCA',
+            'Réparation coiffe des rotateurs',
+            'Tendinopathie chronique',
+            'Retour au sport progressif',
+          ],
+        },
+        deploymentPathway: {
+          title: 'Déploiement possible',
+          steps: [
+            {
+              title: 'Paramétrage spécifique centre',
+              description:
+                'Configuration adaptée aux protocoles et acteurs du centre',
+            },
+            {
+              title: 'Configuration multi-acteurs',
+              description:
+                'Définition des rôles et visibilités pour chaque intervenant',
+            },
+            {
+              title: 'Intégration progressive',
+              description: 'Déploiement par étapes avec accompagnement continu',
+            },
+            {
+              title: "Phase d'expérimentation encadrée",
+              description: 'Test sur cas pilotes avec ajustements itératifs',
+            },
+          ],
+        },
+      },
+      proms: {
+        hero: {
+          badge: 'PROMS & Questionnaires',
+          title: 'PROMS & Questionnaires post-acte',
+        },
+        intro: {
+          title:
+            'Transformer vos questionnaires en suivi vocal structuré et longitudinal.',
+          description:
+            "Appliquez vos PROMS existants via une infrastructure d'IA vocale spécialisée, augmentez la complétion et structurez les données dans le temps — sous supervision médicale.",
+          primaryCta: 'Évaluer un projet pilote',
+          secondaryCta: 'Transformer un questionnaire existant',
+        },
+        statement:
+          'Les PROMS sont essentiels. Leur mise en œuvre reste fragile.',
+        challengeItems: [
+          {
+            label: 'Taux de complétion hétérogènes',
+            title:
+              'Les questionnaires post-acte sont souvent partiellement remplis ou ignorés.',
+          },
+          {
+            label: 'Dépendance au numérique',
+            title:
+              'Portails patients et applications nécessitent disponibilité et aisance digitale.',
+          },
+          {
+            label: 'Données isolées',
+            title:
+              'Les réponses sont collectées ponctuellement, sans structuration longitudinale.',
+          },
+          {
+            label: 'Charge organisationnelle',
+            title:
+              'Les équipes relancent manuellement ou abandonnent le suivi.',
+          },
+        ],
+        approach: {
+          title: 'Appliquer vos questionnaires autrement.',
+          description: 'Le dispositif permet :',
+          items: [
+            "D'importer vos PROMS existants",
+            'De les transformer en protocole vocal structuré',
+            'De planifier automatiquement les jalons (J+7, J+30…)',
+            'De structurer les réponses dans le temps',
+            'De prioriser selon des seuils définis par votre équipe',
+          ],
+          disclaimer:
+            'Aucune modification du contenu clinique. Aucun algorithme décisionnel autonome.',
+        },
+        beforeAfter: {
+          heading: 'Du questionnaire ponctuel au suivi longitudinal.',
+          left: {
+            label: 'Approche classique',
+            items: [
+              'Envoi email',
+              'Formulaire isolé',
+              'Donnée ponctuelle',
+              'Relance manuelle',
+              'Priorisation humaine tardive',
+            ],
+          },
+          right: {
+            label: 'Approche structurée',
+            items: [
+              'Appel planifié',
+              'Dialogue structuré',
+              'Historique longitudinal',
+              'Planification automatique',
+              'Seuils paramétrés',
+            ],
+          },
+        },
+        conversion: {
+          title: "Comment fonctionne la conversion d'un PROMS ?",
+          steps: [
+            {
+              title: 'Import',
+              description: 'Import de vos PROMS en PDF / Excel / JSON.',
+            },
+            {
+              title: 'Transformation intelligente',
+              items: [
+                'Logique conditionnelle des questions',
+                'Ordre des questions',
+                "Seuils d'alerte",
+                'Adaptation conversationnelle',
+              ],
+            },
+            {
+              title: 'Planification',
+              description: 'Définition des jalons temporels.',
+            },
+            {
+              title: 'Restitution',
+              items: [
+                'Visualisation des réponses',
+                'Graphique de suivi',
+                'Export',
+              ],
+            },
+          ],
+        },
+        useCases: {
+          title: "Cas d'usage concrets",
+          cases: [
+            {
+              title: 'Chirurgie ambulatoire',
+              description: 'PROMS douleur + satisfaction.',
+            },
+            {
+              title: 'Orthopédie',
+              description: 'Mobilité + récupération fonctionnelle.',
+            },
+            {
+              title: 'Oncologie',
+              description: 'Symptômes inter-cycle.',
+            },
+            {
+              title: 'Dermatologie',
+              description: 'Effets secondaires traitement long.',
+            },
+          ],
+        },
+        benefits: {
+          title: 'Bénéfices organisationnels',
+          items: [
+            {
+              title: 'Amélioration de la complétion',
+              body: 'Canal vocal universel.',
+            },
+            {
+              title: 'Données longitudinales exploitables',
+              body: 'Vision évolution patient dans le temps.',
+            },
+            {
+              title: 'Intégration sans rupture',
+              body: 'Compatible avec vos outils existants.',
+            },
+          ],
+        },
+        hospitals: {
+          title: 'Structurer les indicateurs qualité.',
+          items: [
+            'Meilleure traçabilité',
+            'Documentation exportable',
+            'Historisation complète',
+            'Vision cohérente des parcours',
+          ],
+        },
+        editors: {
+          title: 'Intégrer une brique vocale à vos PROMS numériques.',
+          items: [
+            'API simple',
+            'Webhooks structurés',
+            'Conversion automatisée',
+            "Facturation à l'usage",
+          ],
+          cta: 'Voir la documentation API',
+        },
+      },
+      patientSupport: {
+        hero: {
+          title: "Programmes d'accompagnement patient",
+          subtitle:
+            "Un système hybride qui libère du temps à vos équipes d'accompagnement en automatisant les appels de routine, tout en gardant les décisions critiques et l'empathie sous contrôle humain.",
+          cta1: 'Évaluer un projet pilote',
+          cta2: 'Explorer une intégration',
+        },
+        challenge: {
+          title:
+            "L'accompagnement patient repose sur une continuité difficile à maintenir.",
+          items: [
+            {
+              title: "Dans de nombreux programmes d'accompagnement :",
+              listItems: [
+                'les patients sont suivis sur plusieurs semaines ou plusieurs mois',
+                'les équipes doivent maintenir un contact régulier',
+                'les indicateurs sont collectés à intervalles définis',
+              ],
+            },
+            {
+              title: 'Mais en pratique :',
+              listItems: [
+                'les relances manuelles sont chronophages',
+                "l'engagement diminue avec le temps",
+                'les données sont hétérogènes',
+                'les interactions sont peu structurées',
+              ],
+            },
+            {
+              title: 'Impact sur les équipes :',
+              listItems: [
+                'temps considérable passé sur des appels de routine répétitifs',
+                'moins de disponibilité pour les cas complexes nécessitant expertise et empathie',
+                "difficulté à prioriser les patients qui ont vraiment besoin d'attention",
+              ],
+            },
+          ],
+        },
+        protocol: {
+          title: "Appliquer vos protocoles d'accompagnement à grande échelle.",
+          subtitle:
+            "Le dispositif permet d'organiser un suivi structuré en appliquant les protocoles définis par votre programme. Chaque programme peut définir :",
+          items: [
+            {
+              title: 'la fréquence des appels',
+              description: 'Rythme adapté au protocole',
+            },
+            {
+              title: 'les indicateurs déclaratifs à suivre',
+              description: 'Données structurées',
+            },
+            {
+              title: "les seuils d'alerte",
+              description: 'Critères de vigilance',
+            },
+            {
+              title: 'la durée du programme',
+              description: 'Période de suivi définie',
+            },
+          ],
+          footer:
+            'Le système applique ce protocole automatiquement sur les appels de routine, libérant vos équipes pour se concentrer sur les patients qui nécessitent une attention particulière.',
+        },
+        engagement: {
+          sectionTitle: "Maintenir l'engagement dans la durée",
+          title: 'Le canal vocal : un lien simple et universel',
+          description:
+            'Les outils numériques (applications, portails, questionnaires web) supposent disponibilité, motivation et familiarité numérique. Le téléphone reste accessible à tous les profils patients.',
+          items: [
+            'Aucune application à installer',
+            'Interaction simple et naturelle',
+            'Accessible quel que soit le niveau numérique',
+          ],
+          description2: 'Pour vos équipes :',
+          items2: [
+            'Gain de temps sur les appels de routine',
+            'Focus sur les cas nécessitant empathie et expertise',
+            'Supervision des alertes prioritaires uniquement',
+          ],
+        },
+        structuredReturns: {
+          title:
+            'Transformer les échanges en données longitudinales exploitables.',
+          description: 'Chaque interaction permet de recueillir :',
+          items: [
+            'symptômes déclaratifs',
+            'perception du traitement',
+            'adhérence au protocole',
+            'effets indésirables déclaratifs',
+            'indicateurs qualité de vie',
+          ],
+          description2: 'Les réponses sont :',
+          items2: ['structurées', 'historisées', 'analysables dans le temps'],
+        },
+        useCases: {
+          title: "Cas d'usage typiques",
+          cards: [
+            {
+              title: "Programmes d'observance thérapeutique",
+              description:
+                "Suivi de l'adhérence aux traitements dans des pathologies chroniques.",
+              gradient: 'var(--gradient-accent-warm)',
+            },
+            {
+              title: 'Accompagnement post-hospitalisation',
+              description: 'Suivi après retour à domicile.',
+              gradient: 'var(--gradient-accent-cool)',
+            },
+            {
+              title: 'Éducation thérapeutique        ',
+              description: 'Suivi des indicateurs entre les séances.',
+              gradient: 'var(--gradient-accent-warm-terra)',
+            },
+            {
+              title: "Programmes d'accompagnement pharma",
+              description:
+                'Maintien du lien avec les patients dans les programmes PSP.',
+              gradient: 'var(--gradient-accent-cool-overlay)',
+            },
+          ],
+        },
+        teams: {
+          sectionTitle: "Pour les équipes d'accompagnement",
+          title: 'Un système hybride humain-IA',
+          description:
+            "L'IA gère les appels de routine standardisés. Les équipes restent essentielles pour l'empathie, les décisions critiques et les situations complexes.",
+          items: [
+            'Appels de routine automatisés (J+7, J+14, J+30...)',
+            'Collecte et structuration des indicateurs',
+            "Détection des signaux d'alerte selon vos critères",
+          ],
+          description2: 'Les équipes se concentrent sur :',
+          items2: [
+            'Patients déclenchant des alertes',
+            'Situations nécessitant empathie et expertise',
+            'Décisions médicales et ajustements de protocole',
+          ],
+          footer:
+            "L'IA automatise les tâches répétitives, les humains gardent le contrôle sur ce qui compte.",
+        },
+        platforms: {
+          sectionTitle: 'Pour les plateformes et opérateurs',
+          title: 'Infrastructure intégrable à vos dispositifs',
+          description:
+            'Solution autonome, brique intégrable ou canal complémentaire aux applications existantes.',
+          items: [
+            'API sécurisée et export de données structurées',
+            'Intégration dashboards et planification protocole',
+            'Supervision humaine paramétrable',
+          ],
+        },
+      },
+      prevention: {
+        hero: {
+          title:
+            "Multipliez par 5 l'engagement dans vos programmes de prévention",
+          subtitle:
+            "Transformez vos initiatives de santé au travail en programmes structurés avec un suivi vocal automatisé avec un taux d'engagement supérieur à 75%. Collectez des données longitudinales fiables sans surcharger vos équipes.",
+          cta1: 'Demander une démo',
+          cta2: 'Échanger sur votre contexte',
+        },
+        metrics: [
+          {
+            value: '75%',
+            label: 'Taux de participation',
+            description: 'au lieu de 15% pour les applications classiques',
+          },
+          {
+            value: '5x',
+            label: "Plus d'engagement",
+            description: 'Maintenu dans le temps',
+          },
+          {
+            value: '-40%',
+            label: 'Arrêts de travail TMS',
+            description: 'Après 6 mois de suivi',
+          },
+        ],
+        fieldObservation: {
+          title:
+            "Les programmes de prévention échouent par manque d'engagement",
+          intro:
+            'Vous investissez dans des programmes de prévention, mais les résultats ne suivent pas. 85% des collaborateurs abandonnent les applications de santé après 3 semaines. Le suivi manuel est chronophage et irrégulier.',
+          blocks: [
+            {
+              title: "15% de taux d'engagement moyen",
+              description:
+                'Les applications de prévention perdent 85% de leurs utilisateurs après 3 semaines. Impossible de collecter des données longitudinales fiables.',
+            },
+            {
+              title: 'Données fragmentées et inexploitables',
+              description:
+                "Les questionnaires ponctuels ne permettent pas de suivre l'évolution dans le temps. Impossible d'identifier les tendances ou d'adapter les programmes.",
+            },
+            {
+              title: 'Charge administrative importante',
+              description:
+                'Les équipes RH et SST passent des heures à relancer les participants et compiler manuellement les données. Le ROI du programme devient négatif.',
+            },
+            {
+              title: 'Exclusion des populations fragiles',
+              description:
+                "Les collaborateurs peu à l'aise avec le numérique ou sans smartphone sont exclus des programmes. Vous perdez 30% de votre cible.",
+            },
+          ],
+          footer:
+            'Sans engagement régulier et données structurées, vos programmes de prévention ne génèrent aucun impact mesurable.',
+        },
+        approach: {
+          title: 'Un suivi automatisé qui génère 75% de participation',
+          intro:
+            'Le téléphone est universel, familier et ne nécessite aucune installation. Les appels vocaux programmés permettent un suivi régulier sans effort pour vos équipes.',
+          steps: [
+            {
+              title: 'Co-construction du programme (1 semaine)',
+              description:
+                "Nous définissons ensemble les indicateurs de suivi, la fréquence des appels et les critères d'alerte selon vos objectifs métier.",
+            },
+            {
+              title: 'Enrôlement des participants (2 jours)',
+              description:
+                'Information claire sur le dispositif, consentement éclairé et inscription par simple numéro de téléphone. Aucune app à télécharger.',
+            },
+            {
+              title: 'Appels vocaux automatisés',
+              description:
+                'Des appels réguliers (hebdomadaires, bi-mensuels...) collectent les indicateurs définis. Durée moyenne : 3-5 minutes. Taux de réponse : 75%.',
+            },
+            {
+              title: 'Structuration et analyse en temps réel',
+              description:
+                'Les réponses sont automatiquement transcrites, structurées et analysées selon vos critères. Alertes automatiques si seuils dépassés.',
+            },
+            {
+              title: 'Tableaux de bord et exports',
+              description:
+                'Accès en temps réel aux données agrégées et individuelles. Exports CSV pour vos analyses. Rapports mensuels automatiques.',
+            },
+          ],
+        },
+        whyVoice: {
+          title: "Pourquoi la voix génère 5x plus d'engagement que les apps",
+          blocks: [
+            {
+              title: "100% d'accessibilité",
+              description:
+                "Tous vos collaborateurs ont un téléphone. Pas de smartphone requis, pas d'installation, pas de mot de passe oublié.",
+            },
+            {
+              title: 'Zéro friction',
+              description:
+                "Le collaborateur reçoit un appel, décroche et répond. 3 minutes chrono. Pas de connexion, pas de navigation, pas d'abandon.",
+            },
+            {
+              title: 'Expression naturelle et riche',
+              description:
+                "La voix permet de nuancer les réponses et d'exprimer des ressentis qu'un questionnaire à choix multiples ne capte pas.",
+            },
+            {
+              title: 'Rappels automatiques intégrés',
+              description:
+                "L'appel programmé agit comme un rappel. Pas besoin de relancer manuellement. Taux de réponse maintenu dans le temps.",
+            },
+          ],
+          footer:
+            'Résultat : 75% de taux de participation vs 15% pour les applications de prévention classiques.',
+        },
+        useCases: {
+          title: "Cas d'usage avec résultats attendus",
+          cards: [
+            {
+              title: 'Prévention des TMS (industrie, logistique)',
+              description:
+                'Recueil hebdomadaire des douleurs et gênes. Identification précoce des situations à risque. Réduction de 40% des arrêts de travail liés aux TMS après 6 mois.',
+            },
+            {
+              title: 'Programmes de gestion du stress (tertiaire)',
+              description:
+                'Auto-évaluation bi-mensuelle du stress, fatigue et charge mentale. Alertes automatiques si dégradation. Taux de participation : 78% sur 12 mois.',
+            },
+            {
+              title: "Programmes d'activité physique (tous secteurs)",
+              description:
+                "Suivi déclaratif de l'activité, motivation et obstacles. Coaching vocal personnalisé. Maintien de l'engagement 3x supérieur aux apps.",
+            },
+            {
+              title: 'Retour au travail post-arrêt (RH/SST)',
+              description:
+                'Accompagnement progressif du retour. Détection précoce des difficultés. Réduction de 30% des rechutes et arrêts prolongés.',
+            },
+            {
+              title: 'Programmes de bien-être global (QVT)',
+              description:
+                "Indicateurs de santé perçue, sommeil, alimentation. Vision longitudinale de l'impact des actions QVT. ROI mesurable des programmes.",
+            },
+          ],
+        },
+        beyondAgent: {
+          title:
+            "Des données exploitables qui prouvent l'impact de vos programmes",
+          description:
+            'Contrairement aux questionnaires ponctuels, le suivi vocal régulier génère des données longitudinales structurées. Vous pouvez enfin :',
+          items: [
+            "mesurer l'évolution réelle des indicateurs dans le temps (avant/après)",
+            'identifier les populations à risque et les tendances par service/site',
+            'prouver le ROI de vos programmes de prévention avec des données chiffrées',
+            'adapter vos actions en temps réel selon les remontées terrain',
+            'produire des rapports automatiques pour la direction et les IRP',
+          ],
+        },
+        organizations: {
+          title: 'Qui déploie ces programmes de suivi vocal',
+          cards: [
+            {
+              title: 'Entreprises (RH, QVT, HSE)',
+              description:
+                "Programmes de prévention TMS, stress, bien-être. Suivi post-arrêt. Mesure de l'impact des actions QVT. Reporting IRP et direction.",
+            },
+            {
+              title: 'Services de santé au travail (SST, SSTI)',
+              description:
+                'Suivi de cohortes de salariés exposés. Études longitudinales. Détection précoce des risques. Optimisation des visites médicales.',
+            },
+            {
+              title: 'Assureurs et mutuelles',
+              description:
+                'Programmes de prévention pour assurés. Réduction de la sinistralité. Engagement dans les parcours santé. Différenciation concurrentielle.',
+            },
+            {
+              title: 'Prestataires santé et bien-être',
+              description:
+                "Enrichissement de l'offre avec un suivi vocal. Différenciation vs concurrence. Données d'impact pour vos clients. Scalabilité sans recruter.",
+            },
+          ],
+        },
+        regulatory: {
+          title: 'Conformité et sécurité des données',
+          description:
+            'Un outil organisationnel conforme aux exigences RGPD et santé au travail',
+          certifications: [
+            {
+              badge: 'HDS',
+              label: 'Hébergeur certifié',
+            },
+            {
+              badge: 'RGPD',
+              label: 'Conforme',
+            },
+            {
+              badge: 'Hipaa',
+              label: 'Conforme',
+            },
+            // {
+            //   badge: 'ISO 27001',
+            //   label: 'Sécurité',
+            // },
+          ],
+          items: [
+            'Hébergement de données de santé certifié HDS (Hébergeur de Données de Santé)',
+            "Conformité RGPD : consentement éclairé, droit d'accès, de rectification et d'effacement",
+            'Respect du Code du travail : anonymisation des données agrégées, confidentialité',
+            "Outil organisationnel (non dispositif médical) : collecte d'informations déclaratives",
+            'Pas de diagnostic médical : les données sont des indicateurs de prévention',
+            'Complémentaire aux professionnels de santé : ne remplace pas le suivi médical',
+          ],
+        },
+        pilot: {
+          title: "Pilote de 3 mois pour mesurer l'impact sur votre population",
+          description:
+            "Nous déployons un pilote sur un échantillon de collaborateurs (50-200 personnes) pour mesurer l'engagement, la qualité des données et le ROI avant un déploiement à grande échelle.",
+          steps: [
+            'Co-construction du programme et des indicateurs (1 semaine)',
+            'Paramétrage technique et enrôlement des participants (1 semaine)',
+            "Phase d'expérimentation avec suivi vocal régulier (3 mois)",
+            'Analyse des résultats et recommandations de déploiement (1 semaine)',
+          ],
+          objectives: 'Objectifs mesurés :',
+          objectiveItems: [
+            "Taux de participation et d'engagement dans le temps",
+            'Qualité et exploitabilité des données collectées',
+            'Satisfaction des participants et des équipes RH/SST',
+            "ROI estimé d'un déploiement à grande échelle",
+          ],
+        },
+        finalCta: {
+          title: 'Déployez un pilote de 3 mois dans votre organisation',
+          subtitle:
+            'Échangeons 30 minutes sur votre contexte et vos enjeux de prévention. Nous vous proposerons un pilote adapté avec objectifs mesurables et ROI projeté.',
+          primaryCta: 'Planifier un échange confidentiel',
+          secondaryCta: 'Recevoir une documentation',
+        },
+      },
+    },
     editorsApi: {
       preparationNotice:
         'Offre en préparation, ouverte aux partenariats pilotes.',

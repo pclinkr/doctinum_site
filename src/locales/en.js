@@ -866,6 +866,1168 @@ const en = {
       description:
         'Actionable strategies and trends to transform your social presence into business growth.',
     },
+    solutionsList: [
+      { id: 'surgery-aesthetic', title: 'Surgery & aesthetic medicine' },
+      { id: 'surgery-rhinoplasty', title: 'Rhinoplasty' },
+      { id: 'surgery-liposuction', title: 'Liposuction' },
+      {
+        id: 'surgery-hyaluronic-injection',
+        title: 'Hyaluronic acid injections',
+      },
+      { id: 'sports-medicine', title: 'Sports medicine' },
+      {
+        id: 'sports-integrated-centers',
+        title: 'Integrated Sports Medicine Centers',
+      },
+      { id: 'dermatology', title: 'Dermatology' },
+      { id: 'proms', title: 'PROMs' },
+      { id: 'patient-support-programs', title: 'Patient support programs' },
+      {
+        id: 'prevention-workplace-health',
+        title: 'Prevention & workplace health',
+      },
+      {
+        id: 'coordinated-chronic-pathways',
+        title: 'Coordinated chronic pathways',
+      },
+      { id: 'hv-transplantation', title: 'Transplantation' },
+      { id: 'hv-oncology', title: 'Oncology' },
+      { id: 'hv-chronic-cardiology', title: 'Chronic cardiology' },
+      { id: 'hv-rare-diseases', title: 'Rare diseases' },
+      { id: 'hv-mental-health', title: 'Mental health' },
+    ],
+    solutions: {
+      surgery: {
+        hero: {
+          badge: 'Pre & post intervention follow-up',
+          title: 'Surgery & aesthetic medicine',
+        },
+        testimonial:
+          'In surgery and aesthetic medicine, perceived quality relies as much on follow-up as on the procedure itself.',
+        challengeItems: [
+          {
+            label: 'Observation',
+            title: 'Between preparation and recovery, follow-up can become:',
+            listItems: [
+              'Fragmented',
+              'Reactive',
+              'Dependent on manual calls',
+              'Poorly traceable',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'A premium positioning requires structured continuity.',
+          },
+        ],
+        examples: {
+          badge: 'Clinical situations',
+          title: 'Follow-up configuration examples',
+          description:
+            'Each organization defines its own follow-up model. Here are a few illustrations',
+          cards: [
+            {
+              title: 'Rhinoplasty',
+              imageUrl: '/assets/images/rhinoplastie.png',
+              overlayGradient: 'var(--gradient-accent-warm-overlay)',
+              description:
+                'Create a clear, reassuring, and traceable pre/post-operative follow-up.',
+              page: 'surgery-rhinoplasty',
+            },
+            {
+              title: 'Liposuction',
+              imageUrl: '/assets/images/liposuccion.png',
+              overlayGradient: 'var(--gradient-accent-warm-terra-overlay)',
+              description:
+                'Structure recovery milestones and prioritize meaningful reported signals.',
+              page: 'surgery-liposuction',
+            },
+            {
+              title: 'Injection',
+              imageUrl: '/assets/images/injection.png',
+              overlayGradient: 'var(--gradient-accent-cool-overlay)',
+              description:
+                'Ensure consistent support from preparation to delayed check-ins.',
+              page: 'surgery-hyaluronic-injection',
+            },
+          ],
+        },
+      },
+      surgeryAesthetic: {
+        hero: {
+          eyebrow: 'Doctinum for surgery and aesthetic medicine',
+          title:
+            'The AI that turns your first patient contact into reputation',
+          subtitle:
+            'Doctinum gives you a voice and visual AI to welcome and inform your patients and prepare your consultations.',
+          cta: 'Request a demo',
+        },
+        product: {
+          eyebrow: 'Interactive pre-consultation voice assistant',
+          title: 'Prepare the consultation, automatically',
+          text: 'An interactive voice assistant talks with the patient before their visit: gathering information, answering frequent questions, preparing the file. You save time, and the patient arrives informed and at ease.',
+          benefits: [
+            'Structured collection of patient information',
+            'Answers to recurring questions, 24/7',
+            'Pre-filled file before the consultation',
+            'Fewer calls to handle for the front desk',
+          ],
+        },
+        why: {
+          eyebrow: 'Why Doctinum',
+          title: 'A solution built for your practice',
+          items: [
+            {
+              title: 'Built for French aesthetics',
+              text: 'An AI designed for the French aesthetic medical sector and its specifics.',
+            },
+            {
+              title: 'HDS hosting',
+              text: 'Your health data hosted in a certified Health Data Hosting (HDS) environment.',
+            },
+            {
+              title: 'GDPR compliant',
+              text: 'Compliance with GDPR and the regulatory framework for health data.',
+            },
+            {
+              title: 'Easy integration',
+              text: 'Fits into your existing organization, without disrupting your habits.',
+            },
+          ],
+        },
+        finalCta: {
+          title: 'Want to see Doctinum at your practice?',
+          titleHighlight: 'Your AI organization audit, on us',
+          subtitle:
+            '30 minutes to identify where you lose time and where AI can streamline your practice: organization, patient communication, post-operative follow-up.',
+          button: 'Book a free audit / demo',
+        },
+      },
+      sports: {
+        hero: {
+          badge: 'Coordination & recovery',
+          title: 'Sports medicine',
+          subtitle: 'Structure recovery and coordinate care stakeholders',
+        },
+        testimonial: 'Structure recovery and coordinate pathway stakeholders',
+        challengeItems: [
+          {
+            label: 'Pathway',
+            title: 'In sports medicine, the pathway is rarely linear.',
+            description: 'The patient may be followed by:',
+            listItems: [
+              'A sports physician',
+              'An orthopedic surgeon',
+              'A physiotherapist',
+              'Sometimes a performance coach',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'The issue is not the absence of rehabilitation.',
+            description: 'The issue is often:',
+            listItems: [
+              'Fragmented follow-up',
+              'Lack of longitudinal visibility',
+              'Premature return to activity',
+              'Irregular adherence',
+              'Between consultations, recovery remains weakly objectified.',
+            ],
+          },
+        ],
+      },
+      dermatology: {
+        hero: {
+          badge: 'Longitudinal dermatological follow-up',
+          title: 'Dermatology',
+          subtitle: 'Structure dermatology treatments over time',
+        },
+        testimonial:
+          'Structure dermatology treatments over time and objectify progression.',
+        intro: {
+          title: 'Structure dermatology treatments over time.',
+          description:
+            'A voice AI infrastructure that applies your follow-up protocols, contacts patients at defined intervals, and structures declarative feedback over time — under medical supervision.',
+          primaryCta: 'Evaluate a pilot project',
+          secondaryCta: 'Talk with our team',
+        },
+        statement: "Treatment doesn't stop at prescription.",
+        challengeItems: [
+          {
+            label: 'Context',
+            title:
+              'In dermatology, many pathways rely on long and evolving treatments:',
+            listItems: [
+              'Severe acne under isotretinoin',
+              'Psoriasis under biotherapy',
+              'Chronic eczema',
+              'Post-laser or peeling follow-up',
+            ],
+          },
+          {
+            label: 'Current follow-up',
+            title: 'Between consultations, follow-up often relies on:',
+            listItems: [
+              'Patient reactivity',
+              'Informal exchanges',
+              'Unstructured self-assessment',
+              'Heterogeneous feedback',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'Yet, dermatological treatments require:',
+            listItems: [
+              'Rigorous adherence',
+              'Side effects monitoring',
+              'Progressive efficacy evaluation',
+              'Regular documentation',
+            ],
+          },
+        ],
+        organizationTool: {
+          title: 'An organizational tool, not a clinical substitute.',
+          items: [
+            {
+              title: 'Consultation prioritization',
+              body: 'Identification of situations requiring early appointment.',
+            },
+            {
+              title: 'Structured documentation',
+              body: 'Exportable history of declarative feedback.',
+            },
+            {
+              title: 'Global vision',
+              body: 'Facilitated longitudinal reading between consultations.',
+            },
+            {
+              title: 'Constant supervision',
+              body: 'No automated decisions. Alert criteria are defined by the practitioner.',
+            },
+          ],
+        },
+      },
+      rhinoplasty: {
+        hero: {
+          badge: 'Illustrative scenario',
+          title: 'Configured pathway example — Rhinoplasty',
+        },
+        statement:
+          'A structured protocol before and after the procedure, ensuring safe post-operative recovery and delivering a premium patient experience.',
+        challengeItems: [
+          {
+            label: 'Context',
+            title: 'Rhinoplasty is:',
+            listItems: [
+              'An outpatient surgical procedure',
+              'With frequent edema and bruising',
+              'Risk of hematoma or bleeding',
+              'High emotional burden for the patient',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title:
+              'Follow-up often relies on manual calls or patient reactivity.',
+          },
+        ],
+        protocolConfiguration: {
+          badge: 'Possible configuration',
+          title: 'Possible protocol configuration',
+          disclaimer:
+            'Illustrative scenario. Protocols are defined by the medical team.',
+          phases: [
+            {
+              title: 'Pre-operative phase',
+              milestones: [
+                {
+                  timing: 'D-7',
+                  items: [
+                    'Smoking cessation verification',
+                    'Anticoagulant verification',
+                    'Confirmation of post-op understanding',
+                    'Anxiety level assessment (0–10)',
+                  ],
+                },
+                {
+                  timing: 'D-1',
+                  items: [
+                    'Time confirmation',
+                    'Home return organization',
+                    'Instruction reminder',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Post-operative phase',
+              milestones: [
+                {
+                  timing: 'D+1',
+                  items: ['Pain (0–10)', 'Unusual bleeding?', 'Temperature'],
+                },
+                {
+                  timing: 'D+7',
+                  items: ['Edema intensity', 'Discharge', 'Overall feeling'],
+                },
+                {
+                  timing: 'D+30',
+                  items: [
+                    'Result perception',
+                    'Satisfaction (0–10)',
+                    'Practice recommendation',
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Premium patient experience',
+          description:
+            'Structured support that strengthens trust and satisfaction.',
+          patientPerception: {
+            label: 'Patient perceives',
+            items: [
+              'Continuous support',
+              'Reassuring presence',
+              'Structured attention',
+              'Personalized follow-up',
+            ],
+          },
+          clinicBenefits: {
+            label: 'This strengthens',
+            items: ['Trust', 'Satisfaction', 'Practice reputation'],
+          },
+        },
+        clinicalBenefits: {
+          title: 'Solution and benefits',
+          subtitle:
+            'An infrastructure that structures follow-up and enhances your practice.',
+          items: [
+            {
+              title: 'Structure and traceability',
+              body: 'All interactions are documented, timestamped, and structured for complete visibility of the patient journey.',
+            },
+            {
+              title: 'Prioritization of sensitive situations',
+              body: 'Weak signals are detected according to your criteria and escalated to the medical team for action.',
+            },
+            {
+              title: 'Reduction of unpredictable calls',
+              body: 'Proactive follow-up reduces spontaneous calls and enables better organization of care team time.',
+            },
+            {
+              title: 'Differentiating premium image',
+              body: 'Structured support that strengthens quality perception and your practice reputation.',
+            },
+          ],
+        },
+      },
+      liposuction: {
+        hero: {
+          badge: 'Illustrative scenario',
+          title: 'Configured pathway example — Liposuction',
+        },
+        statement:
+          'Intensive follow-up and extended vigilance to ensure safe recovery and optimize results.',
+        challengeItems: [
+          {
+            label: 'Context',
+            title: 'Liposuction involves:',
+            listItems: [
+              'Variable pain',
+              'Hematoma risk',
+              'Mobility monitoring',
+              'Progressive recovery',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'Structured and extended follow-up to support recovery.',
+          },
+        ],
+        protocolConfiguration: {
+          title: 'Possible protocol configuration',
+          disclaimer:
+            'Illustrative scenario. Protocols are defined by the medical team.',
+          phases: [
+            {
+              title: 'Pre-operative phase',
+              milestones: [
+                {
+                  timing: 'Pre-op',
+                  items: [
+                    'Home care assistance verification',
+                    'Mobility instructions reminder',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Post-operative phase',
+              milestones: [
+                {
+                  timing: 'D+1 / D+3 / D+7',
+                  items: [
+                    'Pain',
+                    'Excessive tension',
+                    'Redness',
+                    'Mobilization',
+                  ],
+                },
+                {
+                  timing: 'D+30',
+                  items: [
+                    'Satisfaction',
+                    'Silhouette perception',
+                    'Possible extended follow-up until D+60',
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        clinicalBenefits: {
+          title: 'Solution and benefits',
+          subtitle:
+            'An infrastructure that structures follow-up and enhances your practice.',
+          items: [
+            {
+              title: 'Structure and traceability',
+              body: 'All interactions are documented, timestamped, and structured for complete visibility of the patient journey.',
+            },
+            {
+              title: 'Prioritization of sensitive situations',
+              body: 'Weak signals are detected according to your criteria and escalated to the medical team for action.',
+            },
+            {
+              title: 'Reduction of unpredictable calls',
+              body: 'Proactive follow-up reduces spontaneous calls and enables better organization of care team time.',
+            },
+            {
+              title: 'Differentiating premium image',
+              body: 'Structured support that strengthens quality perception and your practice reputation.',
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Premium dimension',
+          description:
+            'Possibility to enrich patient experience with personalized elements.',
+          label: 'Possibility to add',
+          items: [
+            'Personalized message from surgeon',
+            'Recovery stages reminder',
+            'Progressive satisfaction tracking',
+          ],
+        },
+      },
+      hyaluronicInjection: {
+        hero: {
+          badge: 'Illustrative scenario',
+          title: 'Configured pathway example — Hyaluronic acid injection',
+        },
+        statement:
+          'Light follow-up and experience enhancement to strengthen loyalty and premium image.',
+        challengeItems: [
+          {
+            label: 'Context',
+            title: 'Non-surgical procedure, but:',
+            listItems: [
+              'Possible edema',
+              'Bruising',
+              'High expectations',
+              'Touch-up requests',
+            ],
+          },
+          {
+            label: 'Challenge',
+            title: 'In aesthetic medicine, follow-up becomes an image tool.',
+          },
+        ],
+        protocolConfiguration: {
+          title: 'Possible protocol configuration',
+          disclaimer:
+            'Illustrative scenario. Protocols are defined by the medical team.',
+          phases: [
+            {
+              title: 'Pre-injection phase',
+              milestones: [
+                {
+                  timing: 'D-1',
+                  items: [
+                    'Contraindications reminder',
+                    'Active infection absence verification',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Post-injection phase',
+              milestones: [
+                {
+                  timing: 'D+1',
+                  items: ['Unusual edema?', 'Pain', 'Significant bruising?'],
+                },
+                {
+                  timing: 'D+7',
+                  items: ['Satisfaction', 'Touch-up request?'],
+                },
+              ],
+            },
+          ],
+        },
+        clinicalBenefits: {
+          title: 'Solution and benefits',
+          subtitle:
+            'An infrastructure that structures follow-up and enhances your practice.',
+          items: [
+            {
+              title: 'Structure and traceability',
+              body: 'All interactions are documented, timestamped, and structured for complete visibility of the patient journey.',
+            },
+            {
+              title: 'Prioritization of sensitive situations',
+              body: 'Weak signals are detected according to your criteria and escalated to the medical team for action.',
+            },
+            {
+              title: 'Reduction of unpredictable calls',
+              body: 'Proactive follow-up reduces spontaneous calls and enables better organization of care team time.',
+            },
+            {
+              title: 'Differentiating premium image',
+              body: 'Structured support that strengthens quality perception and your practice reputation.',
+            },
+          ],
+        },
+        premiumExperience: {
+          title: 'Very strong premium dimension here',
+          description: 'Follow-up becomes a differentiation and loyalty lever.',
+          label: 'Impact',
+          items: [
+            'Follow-up perceived as high-end',
+            'Increased return rate',
+            'Better loyalty',
+            'Marketing differentiation',
+          ],
+        },
+      },
+      integratedCenters: {
+        hero: {
+          badge: 'Multidisciplinary centers',
+          title: 'Integrated Sports Medicine Centers',
+        },
+        statement:
+          'A cross-functional infrastructure for multidisciplinary centers',
+        centerChallenge: {
+          label: 'In integrated centers bringing together',
+          title: '',
+          actors: [
+            'Physicians',
+            'Surgeons',
+            'Physiotherapists',
+            'Physical trainers',
+          ],
+          challenge: 'The challenge is coherence.',
+        },
+        deviceCapabilities: {
+          title: 'The system enables',
+          items: [
+            'Shared visibility of declarative indicators',
+            'Common pathway structuring',
+            'Milestone harmonization',
+            'Centralized prioritization of sensitive signals',
+          ],
+        },
+        centerBenefits: {
+          title: 'Benefits for the center',
+          items: [
+            'Improved coordination',
+            'Recovery objectification',
+            'Innovative and structured image',
+            'Market differentiation',
+            'Organizational optimization',
+          ],
+        },
+        useCases: {
+          title: 'Typical use cases',
+          cases: [
+            'ACL reconstruction',
+            'Rotator cuff repair',
+            'Chronic tendinopathy',
+            'Progressive return to sport',
+          ],
+        },
+        deploymentPathway: {
+          title: 'Possible deployment',
+          steps: [
+            {
+              title: 'Center-specific configuration',
+              description:
+                'Configuration adapted to center protocols and stakeholders',
+            },
+            {
+              title: 'Multi-stakeholder setup',
+              description:
+                'Definition of roles and visibility for each participant',
+            },
+            {
+              title: 'Progressive integration',
+              description: 'Step-by-step deployment with continuous support',
+            },
+            {
+              title: 'Supervised pilot phase',
+              description: 'Testing on pilot cases with iterative adjustments',
+            },
+          ],
+        },
+      },
+      proms: {
+        hero: {
+          badge: 'PROMS & Questionnaires',
+          title: 'PROMS & Post-procedure questionnaires',
+        },
+        intro: {
+          title:
+            'Transform your questionnaires into structured and longitudinal voice follow-up.',
+          description:
+            'Apply your existing PROMS via a specialized voice AI infrastructure, increase completion rates and structure data over time — under medical supervision.',
+          primaryCta: 'Evaluate a pilot project',
+          secondaryCta: 'Transform an existing questionnaire',
+        },
+        statement: 'PROMS are essential. Their implementation remains fragile.',
+        challengeItems: [
+          {
+            label: 'Heterogeneous completion rates',
+            title:
+              'Post-procedure questionnaires are often partially completed or ignored.',
+          },
+          {
+            label: 'Digital dependency',
+            title:
+              'Patient portals and applications require availability and digital proficiency.',
+          },
+          {
+            label: 'Isolated data',
+            title:
+              'Responses are collected punctually, without longitudinal structuring.',
+          },
+          {
+            label: 'Organizational burden',
+            title: 'Teams manually follow up or abandon tracking.',
+          },
+        ],
+        approach: {
+          title: 'Apply your questionnaires differently.',
+          description: 'The system enables:',
+          items: [
+            'Import your existing PROMS',
+            'Transform them into structured voice protocol',
+            'Automatically schedule milestones (D+7, D+30…)',
+            'Structure responses over time',
+            'Prioritize according to thresholds defined by your team',
+          ],
+          disclaimer:
+            'No modification of clinical content. No autonomous decision-making algorithm.',
+        },
+        beforeAfter: {
+          heading: 'From punctual questionnaire to longitudinal follow-up.',
+          left: {
+            label: 'Classic approach',
+            items: [
+              'Email sending',
+              'Isolated form',
+              'Punctual data',
+              'Manual follow-up',
+              'Late human prioritization',
+            ],
+          },
+          right: {
+            label: 'Structured approach',
+            items: [
+              'Scheduled call',
+              'Structured dialogue',
+              'Longitudinal history',
+              'Automatic scheduling',
+              'Parameterized thresholds',
+            ],
+          },
+        },
+        conversion: {
+          title: 'How does PROMS conversion work?',
+          steps: [
+            {
+              title: 'Import',
+              description: 'Import your PROMS in PDF / Excel / JSON.',
+            },
+            {
+              title: 'Intelligent transformation',
+              items: [
+                'Conditional question logic',
+                'Question order',
+                'Alert thresholds',
+                'Conversational adaptation',
+              ],
+            },
+            {
+              title: 'Scheduling',
+              description: 'Definition of temporal milestones.',
+            },
+            {
+              title: 'Restitution',
+              items: ['Response visualization', 'Follow-up graph', 'Export'],
+            },
+          ],
+        },
+        useCases: {
+          title: 'Concrete use cases',
+          cases: [
+            {
+              title: 'Ambulatory surgery',
+              description: 'Pain + satisfaction PROMS.',
+            },
+            {
+              title: 'Orthopedics',
+              description: 'Mobility + functional recovery.',
+            },
+            {
+              title: 'Oncology',
+              description: 'Inter-cycle symptoms.',
+            },
+            {
+              title: 'Dermatology',
+              description: 'Long treatment side effects.',
+            },
+          ],
+        },
+        benefits: {
+          title: 'Organizational benefits',
+          items: [
+            {
+              title: 'Improved completion',
+              body: 'Universal voice channel.',
+            },
+            {
+              title: 'Exploitable longitudinal data',
+              body: 'Patient evolution vision over time.',
+            },
+            {
+              title: 'Seamless integration',
+              body: 'Compatible with your existing tools.',
+            },
+          ],
+        },
+        hospitals: {
+          title: 'Structure quality indicators.',
+          items: [
+            'Better traceability',
+            'Exportable documentation',
+            'Complete historization',
+            'Coherent pathway vision',
+          ],
+        },
+        editors: {
+          title: 'Integrate a voice module into your digital PROMS.',
+          items: [
+            'Simple API',
+            'Structured webhooks',
+            'Automated conversion',
+            'Usage-based billing',
+          ],
+          cta: 'View API documentation',
+        },
+      },
+      patientSupport: {
+        hero: {
+          title: 'Patient Support Programs',
+          subtitle:
+            'A hybrid system that frees up time for your support teams by automating routine calls, while keeping critical decisions and empathy under human control.',
+          cta1: 'Evaluate a pilot project',
+          cta2: 'Explore an integration',
+        },
+        challenge: {
+          title:
+            'Patient support relies on continuity that is difficult to maintain.',
+          items: [
+            {
+              title: 'In many support programs:',
+              listItems: [
+                'patients are followed for several weeks or months',
+                'teams must maintain regular contact',
+                'indicators are collected at defined intervals',
+              ],
+            },
+            {
+              title: 'But in practice:',
+              listItems: [
+                'manual follow-ups are time-consuming',
+                'engagement decreases over time',
+                'data is heterogeneous',
+                'interactions are poorly structured',
+              ],
+            },
+            {
+              title: 'Impact on teams:',
+              listItems: [
+                'considerable time spent on repetitive routine calls',
+                'less availability for complex cases requiring expertise and empathy',
+                'difficulty prioritizing patients who truly need attention',
+              ],
+            },
+          ],
+        },
+        protocol: {
+          title: 'Apply your support protocols at scale.',
+          subtitle:
+            'The system enables structured follow-up by applying protocols defined by your program. Each program can define:',
+          items: [
+            {
+              title: 'call frequency',
+              description: 'Rhythm adapted to protocol',
+            },
+            {
+              title: 'declarative indicators to track',
+              description: 'Structured data',
+            },
+            {
+              title: 'alert thresholds',
+              description: 'Vigilance criteria',
+            },
+            {
+              title: 'program duration',
+              description: 'Defined follow-up period',
+            },
+          ],
+          footer:
+            'The system automatically applies this protocol to routine calls, freeing your teams to focus on patients requiring special attention.',
+        },
+        engagement: {
+          sectionTitle: 'Maintain engagement over time',
+          title: 'The voice channel: a simple and universal link',
+          description:
+            'Digital tools (apps, portals, web questionnaires) assume availability, motivation, and digital familiarity. The phone remains accessible to all patient profiles.',
+          items: [
+            'No app to install',
+            'Simple and natural interaction',
+            'Accessible regardless of digital literacy',
+          ],
+          description2: 'For your teams:',
+          items2: [
+            'Time saved on routine calls',
+            'Focus on cases requiring empathy and expertise',
+            'Supervision of priority alerts only',
+          ],
+        },
+        structuredReturns: {
+          title:
+            'Transform exchanges into exploitable longitudinal data.',
+          description: 'Each interaction collects:',
+          items: [
+            'declarative symptoms',
+            'treatment perception',
+            'protocol adherence',
+            'declarative side effects',
+            'quality of life indicators',
+          ],
+          description2: 'Responses are:',
+          items2: ['structured', 'historized', 'analyzable over time'],
+        },
+        useCases: {
+          title: 'Typical use cases',
+          cards: [
+            {
+              title: 'Therapeutic adherence programs',
+              description:
+                'Treatment adherence monitoring in chronic pathologies.',
+              gradient: 'var(--gradient-accent-warm)',
+            },
+            {
+              title: 'Post-hospitalization support',
+              description: 'Follow-up after home return.',
+              gradient: 'var(--gradient-accent-cool)',
+            },
+            {
+              title: 'Therapeutic education',
+              description: 'Indicator tracking between sessions.',
+              gradient: 'var(--gradient-accent-warm-terra)',
+            },
+            {
+              title: 'Pharma support programs',
+              description:
+                'Maintaining patient connection in PSP programs.',
+              gradient: 'var(--gradient-accent-cool-overlay)',
+            },
+          ],
+        },
+        teams: {
+          sectionTitle: 'For support teams',
+          title: 'A hybrid human-AI system',
+          description:
+            'AI handles standardized routine calls. Teams remain essential for empathy, critical decisions, and complex situations.',
+          items: [
+            'Automated routine calls (D+7, D+14, D+30...)',
+            'Indicator collection and structuring',
+            'Alert signal detection according to your criteria',
+          ],
+          description2: 'Teams focus on:',
+          items2: [
+            'Patients triggering alerts',
+            'Situations requiring empathy and expertise',
+            'Medical decisions and protocol adjustments',
+          ],
+          footer:
+            'AI automates repetitive tasks, humans keep control over what matters.',
+        },
+        platforms: {
+          sectionTitle: 'For platforms and operators',
+          title: 'Infrastructure integrable into your systems',
+          description:
+            'Standalone solution, integrable module, or complementary channel to existing applications.',
+          items: [
+            'Secure API and structured data export',
+            'Dashboard integration and protocol planning',
+            'Configurable human supervision',
+          ],
+        },
+      },
+      prevention: {
+        hero: {
+          title:
+            'Multiply engagement in your prevention programs by 5',
+          subtitle:
+            'Transform your workplace health initiatives into structured programs with automated voice follow-up achieving over 75% engagement rate. Collect reliable longitudinal data without overloading your teams.',
+          cta1: 'Request a demo',
+          cta2: 'Discuss your context',
+        },
+        metrics: [
+          {
+            value: '75%',
+            label: 'Participation rate',
+            description: 'instead of 15% for classic apps',
+          },
+          {
+            value: '5x',
+            label: 'More engagement',
+            description: 'Maintained over time',
+          },
+          {
+            value: '-40%',
+            label: 'MSDs sick leave',
+            description: 'After 6 months of follow-up',
+          },
+        ],
+        fieldObservation: {
+          title:
+            'Prevention programs fail due to lack of engagement',
+          intro:
+            'You invest in prevention programs, but results don\'t follow. 85% of employees abandon health apps after 3 weeks. Manual follow-up is time-consuming and irregular.',
+          blocks: [
+            {
+              title: '15% average engagement rate',
+              description:
+                'Prevention apps lose 85% of users after 3 weeks. Impossible to collect reliable longitudinal data.',
+            },
+            {
+              title: 'Fragmented and unusable data',
+              description:
+                'Punctual questionnaires don\'t allow tracking evolution over time. Impossible to identify trends or adapt programs.',
+            },
+            {
+              title: 'Significant administrative burden',
+              description:
+                'HR and OSH teams spend hours following up with participants and manually compiling data. Program ROI becomes negative.',
+            },
+            {
+              title: 'Exclusion of vulnerable populations',
+              description:
+                'Employees uncomfortable with digital or without smartphones are excluded from programs. You lose 30% of your target.',
+            },
+          ],
+          footer:
+            'Without regular engagement and structured data, your prevention programs generate no measurable impact.',
+        },
+        approach: {
+          title: 'Automated follow-up generating 75% participation',
+          intro:
+            'The phone is universal, familiar, and requires no installation. Scheduled voice calls enable regular follow-up without effort for your teams.',
+          steps: [
+            {
+              title: 'Program co-construction (1 week)',
+              description:
+                'We define together follow-up indicators, call frequency, and alert criteria according to your business objectives.',
+            },
+            {
+              title: 'Participant enrollment (2 days)',
+              description:
+                'Clear information about the system, informed consent, and registration with just a phone number. No app to download.',
+            },
+            {
+              title: 'Automated voice calls',
+              description:
+                'Regular calls (weekly, bi-monthly...) collect defined indicators. Average duration: 3-5 minutes. Response rate: 75%.',
+            },
+            {
+              title: 'Real-time structuring and analysis',
+              description:
+                'Responses are automatically transcribed, structured, and analyzed according to your criteria. Automatic alerts if thresholds exceeded.',
+            },
+            {
+              title: 'Dashboards and exports',
+              description:
+                'Real-time access to aggregated and individual data. CSV exports for your analyses. Automatic monthly reports.',
+            },
+          ],
+        },
+        whyVoice: {
+          title: 'Why voice generates 5x more engagement than apps',
+          blocks: [
+            {
+              title: '100% accessibility',
+              description:
+                'All your employees have a phone. No smartphone required, no installation, no forgotten password.',
+            },
+            {
+              title: 'Zero friction',
+              description:
+                'The employee receives a call, picks up, and answers. 3 minutes flat. No login, no navigation, no abandonment.',
+            },
+            {
+              title: 'Natural and rich expression',
+              description:
+                'Voice allows nuancing responses and expressing feelings that a multiple-choice questionnaire cannot capture.',
+            },
+            {
+              title: 'Integrated automatic reminders',
+              description:
+                'The scheduled call acts as a reminder. No need to manually follow up. Response rate maintained over time.',
+            },
+          ],
+          footer:
+            'Result: 75% participation rate vs 15% for classic prevention apps.',
+        },
+        useCases: {
+          title: 'Use cases with expected results',
+          cards: [
+            {
+              title: 'MSD prevention (industry, logistics)',
+              description:
+                'Weekly collection of pain and discomfort. Early identification of at-risk situations. 40% reduction in MSD-related sick leave after 6 months.',
+            },
+            {
+              title: 'Stress management programs (tertiary)',
+              description:
+                'Bi-monthly self-assessment of stress, fatigue, and mental workload. Automatic alerts if deterioration. Participation rate: 78% over 12 months.',
+            },
+            {
+              title: 'Physical activity programs (all sectors)',
+              description:
+                'Declarative tracking of activity, motivation, and obstacles. Personalized voice coaching. Engagement maintained 3x higher than apps.',
+            },
+            {
+              title: 'Return to work post-leave (HR/OSH)',
+              description:
+                'Progressive return support. Early detection of difficulties. 30% reduction in relapses and prolonged leaves.',
+            },
+            {
+              title: 'Global wellness programs (QWL)',
+              description:
+                'Perceived health, sleep, nutrition indicators. Longitudinal vision of QWL action impact. Measurable program ROI.',
+            },
+          ],
+        },
+        beyondAgent: {
+          title:
+            'Exploitable data that proves your program impact',
+          description:
+            'Unlike punctual questionnaires, regular voice follow-up generates structured longitudinal data. You can finally:',
+          items: [
+            'measure real indicator evolution over time (before/after)',
+            'identify at-risk populations and trends by department/site',
+            'prove your prevention program ROI with quantified data',
+            'adapt your actions in real-time based on field feedback',
+            'produce automatic reports for management and employee representatives',
+          ],
+        },
+        organizations: {
+          title: 'Who deploys these voice follow-up programs',
+          cards: [
+            {
+              title: 'Companies (HR, QWL, HSE)',
+              description:
+                'MSD, stress, wellness prevention programs. Post-leave follow-up. QWL action impact measurement. Employee representative and management reporting.',
+            },
+            {
+              title: 'Occupational health services (OHS)',
+              description:
+                'Exposed employee cohort follow-up. Longitudinal studies. Early risk detection. Medical visit optimization.',
+            },
+            {
+              title: 'Insurers and mutuals',
+              description:
+                'Prevention programs for insured. Claims reduction. Health pathway engagement. Competitive differentiation.',
+            },
+            {
+              title: 'Health and wellness providers',
+              description:
+                'Offer enrichment with voice follow-up. Competitive differentiation. Impact data for your clients. Scalability without hiring.',
+            },
+          ],
+        },
+        regulatory: {
+          title: 'Compliance and data security',
+          description:
+            'An organizational tool compliant with GDPR and occupational health requirements',
+          certifications: [
+            {
+              badge: 'HDS',
+              label: 'Certified host',
+            },
+            {
+              badge: 'GDPR',
+              label: 'Compliant',
+            },
+            {
+              badge: 'HIPAA',
+              label: 'Compliant',
+            },
+          ],
+          items: [
+            'HDS-certified health data hosting (Health Data Host)',
+            'GDPR compliance: informed consent, right of access, rectification, and erasure',
+            'Labor Code compliance: aggregated data anonymization, confidentiality',
+            'Organizational tool (not medical device): declarative information collection',
+            'No medical diagnosis: data are prevention indicators',
+            'Complementary to health professionals: does not replace medical follow-up',
+          ],
+        },
+        pilot: {
+          title: '3-month pilot to measure impact on your population',
+          description:
+            'We deploy a pilot on a sample of employees (50-200 people) to measure engagement, data quality, and ROI before large-scale deployment.',
+          steps: [
+            'Program and indicator co-construction (1 week)',
+            'Technical setup and participant enrollment (1 week)',
+            'Experimentation phase with regular voice follow-up (3 months)',
+            'Results analysis and deployment recommendations (1 week)',
+          ],
+          objectives: 'Measured objectives:',
+          objectiveItems: [
+            'Participation and engagement rate over time',
+            'Quality and usability of collected data',
+            'Participant and HR/OSH team satisfaction',
+            'Estimated ROI of large-scale deployment',
+          ],
+        },
+        finalCta: {
+          title: 'Deploy a 3-month pilot in your organization',
+          subtitle:
+            'Let\'s discuss your context and prevention challenges for 30 minutes. We\'ll propose an adapted pilot with measurable objectives and projected ROI.',
+          primaryCta: 'Schedule a confidential discussion',
+          secondaryCta: 'Receive documentation',
+        },
+      },
+    },
     editorsApi: {
       preparationNotice: 'Offering in preparation, open to pilot partnerships.',
       hero: {
