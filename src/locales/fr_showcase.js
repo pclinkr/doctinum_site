@@ -155,8 +155,8 @@ const frShowcase = {
        et signé avant publication. */
     quote: {
       text: 'Doctinum a changé notre quotidien. Nos équipes sont libérées et nos patients sont mieux accompagnés.',
-      author: 'Dr. Marc Blanchard',
-      role: 'Cardiologue',
+      author: 'Docteur Marc Blanchard',
+      role: 'Chirurgien esthétique',
     },
   },
 };
