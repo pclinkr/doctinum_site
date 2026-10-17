@@ -20,9 +20,11 @@ const enHomeStory = {
       'Front desk',
       'Overload',
       'No-shows',
+      'After hours',
       'Paperwork',
       'Clara',
       'Consultation',
+      'Any hour',
       'Front desk at ease',
       'Your turn',
     ],
@@ -31,9 +33,11 @@ const enHomeStory = {
   titles: [
     'Is your front desk overwhelmed?',
     'No-shows that cost you',
+    'A new patient is looking for you. The practice is closed.',
     'Time spent filling in the consultation file for every new patient',
     'Meet Clara, your AI assistant',
     'Better care during the consultation',
+    'It is 10 p.m. Your patient already has her answer.',
     'A front desk that is available and at ease',
   ],
 
@@ -45,6 +49,24 @@ const enHomeStory = {
     inf1: { t1: 'Booking online has become effortless' },
     inf2: { t1: 'Appointments are easily forgotten' },
     inf3: { t1: 'Reminder texts go unread' },
+    nig1: {
+      t1: 'She calls, nobody picks up',
+    },
+    nig2: {
+      t1: 'She searches your website, no answer',
+    },
+    nig3: {
+      t1: 'She contacts another practice',
+    },
+    av1: {
+      t1: 'An immediate answer, at any hour',
+    },
+    av2: {
+      t1: 'A patient informed, reassured, cared for',
+    },
+    av3: {
+      t1: 'Her request is already waiting, qualified',
+    },
     adm1: { t1: 'A file to open and fill in' },
     adm2: { t1: 'Medical history to collect during the consultation' },
     adm3: { t1: 'Minutes taken away from the conversation' },
@@ -85,6 +107,10 @@ const enHomeStory = {
     waiting: 'An empty waiting room',
     admin:
       'A practitioner focused on their screen, filling in a consultation file',
+    afterHours:
+      'A patient at home in the evening, on the phone with a closed practice',
+    answered:
+      'The same patient, the same evening, in conversation with her assistant',
     consult:
       'A smiling practitioner listening to a patient during a consultation',
     serene: 'A smiling receptionist welcoming a patient at the front desk',

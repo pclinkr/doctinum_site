@@ -21,9 +21,11 @@ const frHomeStory = {
       'Accueil',
       'Surcharge',
       'Non honorés',
+      'Hors horaires',
       'Administratif',
       'Clara',
       'Consultation',
+      'À toute heure',
       'Secrétariat',
       'Et vous ?',
     ],
@@ -32,9 +34,11 @@ const frHomeStory = {
   titles: [
     'Votre secrétariat est surchargé ?',
     'Des rendez-vous non honorés coûteux',
+    'Un nouveau patient vous cherche. Le cabinet est fermé.',
     'Un temps administratif à remplir le dossier de consultation à chaque nouveau patient',
     'Voici Clara, votre assistante IA',
     'Une meilleure prise en charge pendant la consultation',
+    'Il est 22 h. Votre patiente a déjà sa réponse.',
     'Un secrétariat disponible et apaisé',
   ],
 
@@ -46,6 +50,24 @@ const frHomeStory = {
     inf1: { t1: 'La prise de rendez-vous en ligne est devenue simple' },
     inf2: { t1: 'Les oublis sont fréquents' },
     inf3: { t1: 'Les SMS de rappel non lus' },
+    nig1: {
+      t1: 'Elle appelle, personne ne décroche',
+    },
+    nig2: {
+      t1: 'Elle cherche sur votre site, sans réponse',
+    },
+    nig3: {
+      t1: 'Elle contacte un autre cabinet',
+    },
+    av1: {
+      t1: 'Une réponse immédiate, à toute heure',
+    },
+    av2: {
+      t1: 'Une patiente informée, rassurée, prise en charge',
+    },
+    av3: {
+      t1: 'Sa demande vous attend déjà qualifiée',
+    },
     adm1: { t1: 'Le dossier à ouvrir et à remplir' },
     adm2: { t1: 'Les antécédents à recueillir en consultation' },
     adm3: { t1: "Autant de minutes prises sur l'échange" },
@@ -89,6 +111,10 @@ const frHomeStory = {
     waiting: "Une salle d'attente vide",
     admin:
       'Un praticien concentré sur son écran, remplissant un dossier de consultation',
+    afterHours:
+      "Une patiente, le soir chez elle, au téléphone avec un cabinet fermé",
+    answered:
+      'La même patiente, le même soir, en conversation avec son assistante',
     consult: "Un praticien souriant, à l'écoute d'une patiente en consultation",
     serene: 'Une secrétaire souriante accueillant une patiente au comptoir',
     orb: "Clara, l'assistante Doctinum",

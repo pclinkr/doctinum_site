@@ -528,10 +528,30 @@ export default function useHomeStoryMotion(rootRef) {
         TIMING.rooms[0].dissolve
       );
 
-      // La salle d'attente cède au cabinet: le temps administratif.
+      /* La salle d'attente cède au salon d'une patiente, le soir: le cabinet
+         est fermé et personne ne décroche. La caméra part vers la droite,
+         à l'inverse des autres transitions — c'est un aparté hors du
+         cabinet, pas la suite du même lieu. */
       roomChange(
         TIMING.rooms[1],
         ['[data-set="waiting"]'],
+        ['[data-set="afterHours"]', '[data-full="afterHours"]'],
+        { scale: 1.07, x: 142, y: 18, z: 20, rotationY: 1.8, rotationX: 0.4 }
+      );
+      timeline.to(
+        '[data-full="afterHours"]',
+        {
+          autoAlpha: 0,
+          duration: TIMING.dissolveDur,
+          ease: 'veil',
+        },
+        TIMING.rooms[1].dissolve
+      );
+
+      // Le soir cède au cabinet: le temps administratif.
+      roomChange(
+        TIMING.rooms[2],
+        ['[data-set="afterHours"]'],
         ['[data-set="admin"]', '[data-full="admin"]'],
         { scale: 1.09, x: -70, y: 14, z: 30, rotationY: -1.8, rotationX: 0.5 }
       );
@@ -542,10 +562,10 @@ export default function useHomeStoryMotion(rootRef) {
           duration: TIMING.dissolveDur,
           ease: 'veil',
         },
-        TIMING.rooms[1].dissolve
+        TIMING.rooms[2].dissolve
       );
 
-      roomChange(TIMING.rooms[2], ['[data-set="admin"]'], null, {
+      roomChange(TIMING.rooms[3], ['[data-set="admin"]'], null, {
         scale: 1.02,
         x: 0,
         y: 0,
@@ -555,7 +575,7 @@ export default function useHomeStoryMotion(rootRef) {
       });
 
       roomChange(
-        TIMING.rooms[3],
+        TIMING.rooms[4],
         null,
         ['[data-set="consult"]', '[data-full="consult"]'],
         { scale: 1.06, x: 0, y: 20, z: 0, rotationY: -1.6, rotationX: 0 }
@@ -567,13 +587,33 @@ export default function useHomeStoryMotion(rootRef) {
           duration: TIMING.dissolveDur,
           ease: 'veil',
         },
-        TIMING.rooms[3].dissolve
+        TIMING.rooms[4].dissolve
+      );
+
+      /* Retour au salon de l'acte 03: même pièce, même soir, même femme, mais
+         elle a sa réponse. Le mouvement de caméra REPREND celui de l'aller en
+         l'inversant — c'est ce qui fait lire les deux scènes comme un
+         avant et un après, et non comme deux décors différents. */
+      roomChange(
+        TIMING.rooms[5],
+        ['[data-set="consult"]'],
+        ['[data-set="answered"]', '[data-full="answered"]'],
+        { scale: 1.05, x: 48, y: 14, z: 16, rotationY: 1.4, rotationX: 0.3 }
+      );
+      timeline.to(
+        '[data-full="answered"]',
+        {
+          autoAlpha: 0,
+          duration: TIMING.dissolveDur,
+          ease: 'veil',
+        },
+        TIMING.rooms[5].dissolve
       );
 
       // Retour à l'accueil: le même comptoir qu'à l'acte 01, mais apaisé.
       roomChange(
-        TIMING.rooms[4],
-        ['[data-set="consult"]'],
+        TIMING.rooms[6],
+        ['[data-set="answered"]'],
         ['[data-set="serene"]', '[data-full="serene"]'],
         { scale: 1.07, x: -40, y: 16, z: 24, rotationY: 1.4, rotationX: 0.4 }
       );
@@ -581,12 +621,12 @@ export default function useHomeStoryMotion(rootRef) {
         .to(
           '[data-full="serene"]',
           { autoAlpha: 0, duration: TIMING.dissolveDur, ease: 'veil' },
-          TIMING.rooms[4].dissolve
+          TIMING.rooms[6].dissolve
         )
         .to(
           '[data-set="serene"]',
           { autoAlpha: 0, duration: 1.4, ease: 'veil' },
-          TIMING.rooms[4].out
+          TIMING.rooms[6].out
         );
 
       timeline.to(
