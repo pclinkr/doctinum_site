@@ -1385,6 +1385,22 @@
   position: relative;
   display: block;
 }
+
+/* Piste RACCOURCIE au doigt. Elle est exprimée en `vh`, donc elle suit la
+   taille de l'écran — mais la course du pouce, elle, ne suit rien: un coup de
+   pavé tactile couvre des milliers de pixels, un glissement de pouce quelques
+   centaines. À 4400 il fallait 44 écrans et près de mille pixels rien que
+   pour faire arriver une photo. `pointer: coarse` vise le bon critère, le
+   moyen de pointage et non la largeur: un téléphone couché reste un pouce,
+   un portable tactile piloté au pavé reste `fine`. */
+@media (pointer: coarse) {
+  .home-story.track {
+    /* Une FRACTION de la base, pas une seconde valeur en dur: TIMING.trackVh
+       reste le seul réglage du rythme, la requête de média ne dit que « au
+       doigt, les trois cinquièmes ». */
+    --story-track: calc(var(--story-track-base) * 0.59);
+  }
+}
 .home-story .sticky {
   position: sticky;
   top: 0;
