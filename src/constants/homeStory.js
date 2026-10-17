@@ -73,7 +73,7 @@ export const TIMING = {
   dissolveDur: 3.6,
   camMoveDur: 4.4,
 
-  titles: [10.4, 32.4, 47.6, 66.8, 85.0, 110.8, 131.4, 151.0],
+  titles: [10.4, 32.4, 47.6, 66.8, 85.0, 110.8, 134.4, 151.0],
   titleInDur: 1.9,
   titleOutDur: 1.0,
   /* Marge de repos ajoutée au repère du rail : le scrub poursuit la position
@@ -82,9 +82,18 @@ export const TIMING = {
   cueSettle: 1.4,
   // Sortie propre à chaque acte : le titre part avant ses blocs, sauf à l'acte
   // 02 où il part après eux et où la salle d'attente s'efface en dernier.
-  titleOut: [21.6, 41.2, 60.8, 78.6, 103.0, 125.8, 144.8, 168.0],
+  titleOut: [21.6, 41.2, 60.8, 78.6, 103.0, 125.8, 145.4, 168.0],
 
-  actOut: { 1: 21.4, 2: 40.4, 3: 60.4, 4: 78.8, 5: 103.4, 6: 125.2, 7: 144.4, 8: 166.6 },
+  actOut: {
+    1: 21.4,
+    2: 40.4,
+    3: 60.4,
+    4: 78.8,
+    5: 103.4,
+    6: 125.2,
+    7: 145.0,
+    8: 166.6,
+  },
   blockInDur: 1.35,
   blockOutDur: 1.0,
 
@@ -119,10 +128,12 @@ export const TIMING = {
     r1: { at: 116.6, dur: 2.2, out: 124.6 },
     r2: { at: 118.0, dur: 2.2, out: 124.9 },
     r3: { at: 119.4, dur: 2.2, out: 125.2 },
-    // Acte 07 : la réponse arrive, le même soir, dans le même salon.
-    av1: { at: 134.4, out: 144.4 },
-    av2: { at: 135.8, out: 144.4 },
-    av3: { at: 137.2, out: 144.4 },
+    // Acte 07 : la réponse arrive, le même soir, dans le même salon. La
+    // scène n'ayant aucun voile, titre et blocs attendent la fin de la
+    // dissolution (132,6 + 3,6) pour se poser sur l'ivoire et non sur la nuit.
+    av1: { at: 137.6, out: 145.0 },
+    av2: { at: 138.8, out: 145.0 },
+    av3: { at: 140.0, out: 145.0 },
     // Acte 06 : la scène d'accueil apaisée a son propre titre, la cascade peut
     // donc respirer davantage que celle qui partageait l'écran avec le compteur.
     r4: { at: 157.6, out: 166.6 },
@@ -158,7 +169,12 @@ export const TIMING = {
     { at: 70.0, v: 0.6 },
     { at: 80.6, v: 0.26 },
     { at: 107.0, v: 0.82 },
-    { at: 127.0, v: 0.46 },
+    /* Acte 07 : AUCUN voile. Le voile délavait toute la scène, alors que
+       c'est elle, la réponse, qui doit se lire en couleurs franches. Il
+       s'éteint dès que le titre de l'acte 06 part (125,8), donc avant que la
+       nouvelle photo n'entre (127,6), et le titre attend la dissolution pour
+       se poser sur l'ivoire, où il n'a besoin d'aucune aide. */
+    { at: 125.8, v: 0 },
     { at: 146.8, v: 0.68 },
     /* Le voile reste haut pendant tout l'accueil apaisé : le titre passe
              sur le comptoir et l'écran, très clairs, et s'y perdait. */
@@ -598,7 +614,6 @@ export const SILK = [
   { cy: 0.58, amp: 0.06, f: 1.75, ph: 5.1, sp: 0.86, th: 0.04 },
   { cy: 0.36, amp: 0.055, f: 2.1, ph: 2.4, sp: 0.63, th: 0.028 },
 ];
-
 
 /* Décors: chaque scène a sa photo complète et son détourage. Les DEUX couches
    partagent la même boîte 1920x1080 en `object-fit:cover`, c'est ce qui donne

@@ -244,7 +244,7 @@
   transform: scale(var(--cover, 1));
   transform-origin: 50% 50%;
   background: linear-gradient(
-    96deg,
+    var(--veil-angle, 96deg),
     rgba(var(--ground-rgb), 0.98) 0%,
     rgba(var(--ground-rgb), 0.96) 34%,
     rgba(var(--ground-rgb), 0.82) 52%,
@@ -253,16 +253,10 @@
   );
 }
 
-/* Jumeau du voile, retourné: même dégradé, même rôle, côté droit. */
+/* Jumeau du voile : même dégradé, même rôle, retourné côté droit. Seul
+   l'angle change, le reste est hérité de .scrim. */
 .home-story .scrim-right {
-  background: linear-gradient(
-    276deg,
-    rgba(var(--ground-rgb), 0.98) 0%,
-    rgba(var(--ground-rgb), 0.96) 34%,
-    rgba(var(--ground-rgb), 0.82) 52%,
-    rgba(var(--ground-rgb), 0.34) 66%,
-    rgba(var(--ground-rgb), 0) 82%
-  );
+  --veil-angle: 276deg;
 }
 
 /* ============================================================ sphère ====== */
@@ -1115,8 +1109,19 @@
 }
 /* Titre long : un cran plus bas, il tient sur une ligne de moins et
    dégage le visage du praticien. */
-.home-story.is-portrait .act[data-act='3'] h2 {
+.home-story.is-portrait .act[data-act='4'] h2 {
   font-size: 84px;
+}
+
+/* En portrait le titre est EN HAUT et le voile descend verticalement : le
+   décalage à droite de l'acte 03, pensé pour le paysage, sortirait le texte
+   du cadre. Il reprend donc la colonne commune. */
+.home-story.is-portrait .act[data-act='3'] {
+  left: 0;
+  width: 100%;
+}
+.home-story.is-portrait .act[data-act='3'] h2 {
+  text-align: left;
 }
 
 .home-story.is-portrait .hero {
@@ -1276,8 +1281,21 @@
   font-size: 84px;
   max-width: 1240px;
 }
+.home-story.is-compact .act[data-act='4'] h2 {
+  max-width: 1080px;
+}
+/* Idem : en compact la colonne est déjà étroite, le titre reste à gauche, et
+   le jumeau du voile reprend donc l'axe de gauche. */
+.home-story.is-compact .scrim-right {
+  --veil-angle: 96deg;
+}
+.home-story.is-compact .act[data-act='3'] {
+  left: 0;
+  width: 100%;
+}
 .home-story.is-compact .act[data-act='3'] h2 {
   max-width: 1080px;
+  text-align: left;
 }
 .home-story.is-compact .hero h1 {
   font-size: 96px;
