@@ -156,7 +156,7 @@ const frShowcase = {
     quote: {
       text: 'Doctinum a changé notre quotidien. Nos équipes sont libérées et nos patients sont mieux accompagnés.',
       author: 'Docteur Marc Blanchard',
-      role: 'Chirurgien esthétique',
+      role: 'Chirurgien',
     },
   },
 };

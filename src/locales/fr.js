@@ -2438,7 +2438,7 @@ const fr = {
           {
             icon: '🏥',
             title: 'Hébergement HDS certifié',
-            text: "Les données de santé sont hébergées en France auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
+            text: "Les données de santé ne sont pas stockées et sont traitées en France sur des serveurx hébergés auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
             tag: 'France · Données de santé',
           },
           {
@@ -2468,7 +2468,7 @@ const fr = {
           {
             icon: '🔍',
             title: "Vérification d'identité patient",
-            text: "L'identité du patient est vérifiée avant toute collecte de données. Le système intègre des mécanismes anti-usurpation pour garantir que les données collectées correspondent bien à la bonne personne.",
+            text: "L'identité du patient est vérifiée avant toute collecte de données. Le système intègre des mécanismes anti-usurpation pour sécuriser la conversation avec le patient.",
             tag: 'Anti-usurpation · Identité vérifiée',
           },
         ],
