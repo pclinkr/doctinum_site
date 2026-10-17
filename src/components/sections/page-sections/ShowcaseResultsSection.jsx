@@ -32,24 +32,32 @@ export default function ShowcaseResultsSection() {
         {t('sections.showcase.results.title')}
       </h2>
 
+      {/* Sur une seule colonne, la carte se COUCHE: le pictogramme passe à
+          gauche et le chiffre se pose à côté. Empilée, elle laissait les deux
+          tiers droits vides sur toute sa hauteur, et quatre cartes de ce
+          gabarit faisaient défiler des boîtes presque vides. À partir de deux
+          colonnes la largeur devient la ressource rare et l'empilement reprend
+          ses droits. */}
       <ul className="grid grid-cols-1 gap-4 min-[620px]:grid-cols-2 min-[1080px]:grid-cols-4">
         {(Array.isArray(stats) ? stats : []).map((stat) => (
           <li
             key={stat.label}
-            className="rounded-[16px] bg-[var(--color-panel-card)] px-6 py-6"
+            className="flex items-center gap-4 rounded-[16px] bg-[var(--color-panel-card)] px-5 py-4 min-[620px]:block min-[620px]:px-6 min-[620px]:py-6"
           >
             {/* Le pictogramme se pose à nu: plus de pastille, donc plus de
                 rembourrage à compenser, et il peut prendre sa vraie taille. */}
             <ShowcaseIcon
               name={stat.icon}
-              className="mb-4 h-7 w-7 text-[var(--color-accent-1)]"
+              className="h-7 w-7 flex-none text-[var(--color-accent-1)] min-[620px]:mb-4"
             />
-            <p className="mb-1.5 font-serif text-[clamp(1.7rem,2.6vw,2.2rem)] font-[600] leading-none text-[var(--color-text)] [font-variant-numeric:tabular-nums]">
-              {stat.value}
-            </p>
-            <p className="text-[13px] leading-[1.5] text-[var(--color-muted)]">
-              {stat.label}
-            </p>
+            <div className="min-w-0">
+              <p className="font-serif text-[clamp(1.7rem,2.6vw,2.2rem)] font-[600] leading-none text-[var(--color-text)] [font-variant-numeric:tabular-nums] min-[620px]:mb-1.5">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[13px] leading-[1.5] text-[var(--color-muted)] min-[620px]:mt-0">
+                {stat.label}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
