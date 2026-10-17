@@ -14,7 +14,12 @@ export default function VisionQuoteSection() {
 
     heights.forEach((h) => {
       const bar = document.createElement('div');
-      bar.className = 'w-[3px] rounded-sm bg-color-white-40';
+      /* bg-white-40, et pas bg-color-white-40: le jeton s'appelle `white-40`
+         dans tailwind.config.js. L'ancienne classe n'existait pas, Tailwind
+         ne générait donc aucune règle et les barres restaient transparentes.
+         Écrite en dur ici, elle échappe à toute vérification: si ce libellé
+         redevient un gabarit, le scanner de Tailwind ne la verra plus. */
+      bar.className = 'w-[3px] rounded-sm bg-white-40';
       const duration = 0.8 + Math.random() * 0.8;
       const delay = Math.random() * 1.2;
       bar.style.cssText = `height:${h}px; animation: waveAnimation ${duration}s ease-in-out ${delay}s infinite alternate;`;
