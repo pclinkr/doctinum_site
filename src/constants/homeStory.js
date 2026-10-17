@@ -604,12 +604,19 @@ export const FRAMING = [
   { at: 22.6, bias: -4 }, // salle d'attente: le canapé est centré
   /* Les deux scènes du soir sont les SEULES où la patiente est à gauche, donc
      du côté du titre: le biais y est positif, il écarte le décor vers la
-     droite au lieu de le ramener vers le texte. */
-  { at: 42.6, bias: 16 }, // le soir: la patiente dégagée du titre
+     droite au lieu de le ramener vers le texte.
+
+     Valeurs REVUES pour les photos actuelles: les précédentes (16 et 14)
+     plaçaient les patientes plus à droite, et en portrait elles sortaient du
+     cadre — à 16 l'acte 03 ne montrait plus que le bras et l'ordinateur.
+     Elles rendaient aussi le glissement de sortie énorme: l'écart avec le
+     cabinet (-23) valait 39 points, soit une fois et demie la largeur
+     visible, parcourue en moins d'une seconde. */
+  { at: 42.6, bias: 4 }, // le soir: la patiente dégagée du titre
   { at: 62.0, bias: -23 }, // cabinet: le praticien décalé vers la droite
   { at: 80.0, bias: -4 }, // ivoire, plus de photo
   { at: 103.8, bias: -29 }, // consultation: le praticien entier dans le cadre
-  { at: 126.6, bias: 14 }, // le même soir, répondue
+  { at: 126.6, bias: 6 }, // le même soir, répondue
   { at: 146.6, bias: -12 }, // accueil apaisé: la secrétaire dégagée
 ];
 

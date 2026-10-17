@@ -1217,6 +1217,16 @@
    dégradé est mis à l'échelle par --cover ; en portrait ce facteur mappe la
    hauteur du repère presque exactement sur celle de l'écran, l'axe vertical
    reste donc fidèle là où l'axe horizontal serait étiré quatre fois. */
+/* Le recadrage dure plus longtemps en PORTRAIT. La fenêtre n'y montre qu'un
+   quart du décor, donc un même écart de biais y déplace la photo de plus
+   d'une largeur visible, là où en paysage il la décale à peine. Joué sur les
+   0,9 s du paysage, le passage d'une scène du soir au cabinet se lisait comme
+   un à-coup vers la gauche. Même geste, étalé, et une courbe qui démarre et
+   s'arrête en douceur au lieu du `ease` par défaut, dont la fin est raide. */
+.home-story.is-portrait .decor {
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .home-story.is-portrait .scrim {
   background: linear-gradient(
     184deg,
