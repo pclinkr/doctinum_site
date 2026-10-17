@@ -530,14 +530,24 @@ export default function useHomeStoryMotion(rootRef) {
       );
 
       /* La salle d'attente cède au salon d'une patiente, le soir: le cabinet
-         est fermé et personne ne décroche. La caméra part vers la droite,
-         à l'inverse des autres transitions — c'est un aparté hors du
-         cabinet, pas la suite du même lieu. */
+         est fermé et personne ne décroche.
+
+         Le panoramique est BORNÉ par l'échelle: sur un écran plus large que
+         16:9, `--cover` ne laisse aucune marge horizontale — la photo fait
+         exactement la largeur de la fenêtre — et seul le zoom de la caméra en
+         dégage. Un `x` qui dépasse `(scale - 1) / 2 x 1920` découvre donc
+         l'ivoire d'un côté. Le précédent, 142 pour 67 de marge, laissait une
+         bande de trente pixels à gauche une fois la photo dissoute, là où le
+         bord franc du détourage la rendait visible.
+
+         Il va désormais vers la GAUCHE: le titre est passé à droite, et c'est
+         de ce côté qu'il faut dégager la place. Avec x = -46 il faut 92 de
+         marge, le zoom en donne 99 une fois la perspective comptée. */
       roomChange(
         TIMING.rooms[1],
         ['[data-set="waiting"]'],
         ['[data-set="afterHours"]', '[data-full="afterHours"]'],
-        { scale: 1.07, x: 142, y: 18, z: 20, rotationY: 1.8, rotationX: 0.4 }
+        { scale: 1.1, x: -46, y: 18, z: 20, rotationY: 1.8, rotationX: 0.4 }
       );
       timeline.to(
         '[data-full="afterHours"]',
