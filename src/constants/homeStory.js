@@ -276,12 +276,22 @@ export const BLOCKS = [
     g: 'call',
   },
   // 02
-  { k: 'inf1', act: 2, x: 541, y: 498, w: 560, ico: 'calendar', g: 'inf' },
+  {
+    k: 'inf1',
+    act: 2,
+    sm: 1,
+    x: 841,
+    y: 510,
+    w: 560,
+    ico: 'calendar',
+    g: 'inf',
+  },
   {
     k: 'inf2',
     act: 2,
-    x: 1417,
-    y: 612,
+    sm: 1,
+    x: 1280,
+    y: 360,
     w: 420,
     tone: 'warn',
     ico: 'bell',
@@ -290,8 +300,9 @@ export const BLOCKS = [
   {
     k: 'inf3',
     act: 2,
-    x: 770,
-    y: 793,
+    sm: 1,
+    x: 1417,
+    y: 500,
     w: 520,
     tone: 'warn',
     ico: 'chat',
@@ -302,8 +313,8 @@ export const BLOCKS = [
     k: 'nig1',
     act: 3,
     sm: 1,
-    x: 1180,
-    y: 470,
+    x: 1320,
+    y: 500,
     w: 500,
     tone: 'warn',
     ico: 'phoneOff',
@@ -313,8 +324,8 @@ export const BLOCKS = [
     k: 'nig2',
     act: 3,
     sm: 1,
-    x: 1180,
-    y: 612,
+    x: 1400,
+    y: 640,
     w: 540,
     tone: 'warn',
     ico: 'globe',
@@ -324,8 +335,8 @@ export const BLOCKS = [
     k: 'nig3',
     act: 3,
     sm: 1,
-    x: 1180,
-    y: 754,
+    x: 1320,
+    y: 760,
     w: 520,
     tone: 'warn',
     ico: 'bell',
@@ -336,8 +347,8 @@ export const BLOCKS = [
     k: 'adm1',
     act: 4,
     sm: 1,
-    x: 0,
-    y: 845,
+    x: 384,
+    y: 800,
     w: 470,
     tone: 'warn',
     ico: 'clipboard',
@@ -347,8 +358,8 @@ export const BLOCKS = [
     k: 'adm2',
     act: 4,
     sm: 1,
-    x: 0,
-    y: 845,
+    x: 935,
+    y: 745,
     w: 560,
     tone: 'warn',
     ico: 'folder',
@@ -358,7 +369,7 @@ export const BLOCKS = [
     k: 'adm3',
     act: 4,
     sm: 1,
-    x: 0,
+    x: 1511,
     y: 845,
     w: 520,
     tone: 'warn',
@@ -566,8 +577,13 @@ export const STACKS = [
 /* Rangées paysage. `k` est la hauteur du groupe en FRACTION du repère, dont la
    hauteur suit celle de la fenêtre: une valeur absolue héritée d'un repère de
    1080 se retrouverait plaquée en haut dès que la fenêtre s'allonge. */
+/* Une rangée IGNORE les x/y de ses blocs: elle se recentre sur 960 et se cale
+   sur `k`, largeurs mesurées à l'appui. C'est ce qu'il faut quand la longueur
+   du libellé change avec la langue, mais cela interdit tout placement à la
+   main — en paysage plein, `jitter` valant zéro, les blocs s'alignent même au
+   cordeau. L'acte 04 en est sorti pour être composé librement, comme les
+   actes 01 à 03. */
 export const ROWS = [
-  { keys: ['adm1', 'adm2', 'adm3'], k: 0.782, gap: 36 },
   { keys: ['ctx1', 'ctx2', 'ctx3'], k: 0.768, gap: 36 },
   /* Les cinq missions étaient deux groupes calés sur deux hauteurs fixes: dès
      que l'un se repliait, il descendait dans l'autre. Un seul flux, et le

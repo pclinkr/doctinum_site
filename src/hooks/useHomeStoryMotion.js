@@ -782,6 +782,94 @@ export default function useHomeStoryMotion(rootRef) {
         );
 
       /* ------------------------------------------------------- blocs ----- */
+
+      /* Dérive lente: une fois posé, un bloc respire au lieu d'attendre sa
+         sortie, figé. Elle joue sur le SLOT, pas sur le bloc: entrée et
+         sortie animent toutes deux x/y du bloc, et deux tweens sur la même
+         propriété se voleraient la main.
+
+         Le DÉLAI est en secondes RÉELLES, pas en repères de défilement: la
+         dérive est le seul mouvement du récit à ne pas être scrubbé. Elle
+         tourne dès le chargement, invisible tant que le bloc est transparent.
+
+         Direction tirée au sort plutôt que x et y indépendants: deux tirages
+         séparés tombent souvent tous les deux près de zéro et le bloc reste
+         sur place. Un angle et une portée garantissent un mouvement à chacun.
+         Le facteur 0,84 sur y garde la dérive plus large que haute, dans
+         l'axe de lecture.
+
+         AMPLITUDE: 15 unités du repère au plus, et moins dès que le voisinage
+         l'exige — voir `clearanceOf`. */
+      const DRIFT = 15;
+      const makeDrift = (amplitude) => {
+        const heading = gsap.utils.random(0, Math.PI * 2);
+        const reach = gsap.utils.random(amplitude * 0.6, amplitude);
+        return {
+          x: Math.cos(heading) * reach,
+          y: Math.sin(heading) * reach * 0.84,
+          duration: gsap.utils.random(6, 9),
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+          delay: gsap.utils.random(0, 4),
+        };
+      };
+
+      /* Marge réelle autour d'un bloc: la plus courte distance qui le sépare
+         d'un voisin de son GROUPE, lue sur la mise en page une fois `fit()`
+         passé. Les coordonnées des blocs libres sont tenues à la main et
+         bougent à chaque retouche de scène: la mesurer ici évite d'avoir à
+         réaccorder l'amplitude après chaque déplacement, et évite surtout
+         qu'un resserrement fasse silencieusement se chevaucher deux blocs.
+         Le rapport largeur écran / largeur repère ramène la mesure dans les
+         unités du repère, les seules où la dérive s'exprime. */
+      const clearanceOf = (block) => {
+        const peers = knownBlocks.filter(
+          (other) => other !== block && other.g === block.g
+        );
+        if (peers.length === 0) return Infinity;
+        const own = node[block.k].getBoundingClientRect();
+        const scale = own.width / (node[block.k].offsetWidth || own.width || 1);
+        const gap = Math.min(
+          ...peers.map((other) => {
+            const rect = node[other.k].getBoundingClientRect();
+            return Math.max(
+              Math.max(own.left, rect.left) - Math.min(own.right, rect.right),
+              Math.max(own.top, rect.top) - Math.min(own.bottom, rect.bottom)
+            );
+          })
+        );
+        return scale > 0 ? gap / scale : Infinity;
+      };
+
+      /* Une rangée reçoit UN SEUL vecteur, partagé par ses blocs. Les rangées
+         sont tassées à partir des largeurs MESURÉES, et en gabarit compact
+         elles se replient en cascade: il n'y reste qu'un pixel entre deux
+         voisins (adm2 finit à 560, adm3 commence à 561). Aucune indépendance,
+         ni de phase ni de direction, n'y tient. Le groupe respire donc d'un
+         seul corps: son tassement reste intact quelle que soit l'amplitude,
+         et c'est la seule famille qui garde la pleine.
+
+         Les blocs placés à la main gardent chacun le sien, plafonné à 45 % de
+         leur marge: deux voisins qui convergent en consomment 1,68 fois
+         l'amplitude, soit les trois quarts de la marge — le dernier quart est
+         ce qui sépare « ça respire » de « ça se cogne ». */
+      const rowDrifts = new Map();
+      const driftFor = (block) => {
+        const row = ROWS.find((entry) => entry.keys.includes(block.k));
+        if (row) {
+          if (!rowDrifts.has(row)) rowDrifts.set(row, makeDrift(DRIFT));
+          return rowDrifts.get(row);
+        }
+        /* Marge négative = blocs déjà imbriqués VOLONTAIREMENT: la pile de
+           l'acte 01 se chevauche de douze pixels sans la moindre dérive,
+           c'est le désordre de la surcharge. Les plafonner reviendrait à les
+           figer, alors que ce sont justement ceux dont le flottement se voit
+           le mieux: la marge ne les concerne pas, ils gardent la pleine. */
+        const room = clearanceOf(block);
+        return makeDrift(room <= 0 ? DRIFT : Math.min(DRIFT, room * 0.45));
+      };
+
       knownBlocks.forEach((block) => {
         const element = node[block.k];
         const direction = ENTER_FROM[block.from || 'up'];
@@ -823,18 +911,12 @@ export default function useHomeStoryMotion(rootRef) {
           out
         );
 
-        // La dérive lente joue sur le SLOT, pas sur le bloc: elle ne se
-        // dispute donc jamais les mêmes propriétés que l'entrée et la sortie.
-        if (block.act === 2 && !prefersReducedMotion) {
-          gsap.to(slot[block.k], {
-            x: gsap.utils.random(-24, 24),
-            y: gsap.utils.random(-20, 20),
-            duration: gsap.utils.random(6, 9),
-            yoyo: true,
-            repeat: -1,
-            ease: 'sine.inOut',
-            delay: block.at,
-          });
+        /* L'ancien repère ne couvrait que l'acte 02, et son `delay: block.at`
+           confondait secondes réelles et repères de défilement: pour les
+           derniers actes il aurait repoussé le départ à plus de deux minutes
+           après le chargement, soit jamais. */
+        if (!prefersReducedMotion) {
+          gsap.to(slot[block.k], { ...driftFor(block) });
         }
       });
 
