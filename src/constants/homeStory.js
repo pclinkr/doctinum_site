@@ -145,7 +145,10 @@ export const TIMING = {
      dès qu'elle s'est dissoute sur l'ivoire. */
   scrim: [
     { at: 25.0, v: 0.26 },
-    { at: 43.6, v: 0.74 },
+    /* Les deux scènes du soir sont déjà sombres: le voile n'a qu'à lever
+       assez de contraste sous le titre, pas à blanchir la pièce. Au-delà de
+       0,5 la nuit disparaît et c'est elle qui porte le propos. */
+    { at: 43.6, v: 0.42 },
     /* Le voile ne redescend PAS après la dissolution de la scène 03 :
              la chevelure sombre de la patiente passe derrière le titre et le
              rend illisible. Le dégradé étant opaque à gauche, c'est justement
@@ -155,7 +158,7 @@ export const TIMING = {
     { at: 70.0, v: 0.6 },
     { at: 80.6, v: 0.26 },
     { at: 107.0, v: 0.82 },
-    { at: 127.0, v: 0.78 },
+    { at: 127.0, v: 0.46 },
     { at: 146.8, v: 0.68 },
     /* Le voile reste haut pendant tout l'accueil apaisé : le titre passe
              sur le comptoir et l'écran, très clairs, et s'y perdait. */

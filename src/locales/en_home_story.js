@@ -33,7 +33,7 @@ const enHomeStory = {
   titles: [
     'Is your front desk overwhelmed?',
     'No-shows that cost you',
-    'A new patient is looking for you. The practice is closed.',
+    'It is 10 p.m. A patient is looking for an answer.',
     'Time spent filling in the consultation file for every new patient',
     'Meet Clara, your AI assistant',
     'Better care during the consultation',

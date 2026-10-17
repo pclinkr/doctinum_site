@@ -34,7 +34,7 @@ const frHomeStory = {
   titles: [
     'Votre secrétariat est surchargé ?',
     'Des rendez-vous non honorés coûteux',
-    'Un nouveau patient vous cherche. Le cabinet est fermé.',
+    'Il est 22 h. Une patiente cherche une réponse.',
     'Un temps administratif à remplir le dossier de consultation à chaque nouveau patient',
     'Voici Clara, votre assistante IA',
     'Une meilleure prise en charge pendant la consultation',
