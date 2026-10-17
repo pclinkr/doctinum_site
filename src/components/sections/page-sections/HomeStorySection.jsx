@@ -208,6 +208,7 @@ export default function HomeStorySection({ onNavigate }) {
               </div>
 
               <div className="scrim" data-scrim />
+              <div className="scrim scrim-right" data-scrim-right />
             </div>
           </div>
 

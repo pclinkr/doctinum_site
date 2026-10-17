@@ -253,6 +253,18 @@
   );
 }
 
+/* Jumeau du voile, retourné: même dégradé, même rôle, côté droit. */
+.home-story .scrim-right {
+  background: linear-gradient(
+    276deg,
+    rgba(var(--ground-rgb), 0.98) 0%,
+    rgba(var(--ground-rgb), 0.96) 34%,
+    rgba(var(--ground-rgb), 0.82) 52%,
+    rgba(var(--ground-rgb), 0.34) 66%,
+    rgba(var(--ground-rgb), 0) 82%
+  );
+}
+
 /* ============================================================ sphère ====== */
 .home-story .orb-slot {
   position: absolute;
@@ -708,8 +720,21 @@
 }
 /* Le titre du temps administratif est long : sur une colonne plus étroite il
    reste sur la moitié gauche et ne traverse pas le praticien. */
+.home-story .act[data-act='4'] h2 {
+  max-width: 880px;
+}
+
+/* Acte 03, le soir: la patiente est à GAUCHE, seule scène du récit où le
+   sujet occupe le côté du titre. Le titre passe donc à droite, et le voile
+   s'inverse avec lui — sinon il éclaircit le vide et laisse le texte sur
+   la partie sombre. */
+.home-story .act[data-act='3'] {
+  left: 832px;
+  width: 880px;
+}
 .home-story .act[data-act='3'] h2 {
   max-width: 880px;
+  text-align: right;
 }
 
 /* ============================================================== hero ====== */

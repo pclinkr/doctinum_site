@@ -397,6 +397,7 @@ export default function useHomeStoryMotion(rootRef) {
         autoAlpha: 0,
       });
       gsap.set('[data-scrim]', { autoAlpha: 0 });
+      gsap.set('[data-scrim-right]', { autoAlpha: 0 });
       gsap.set('.act', { autoAlpha: 0, y: 26 });
       gsap.set('.clara-ring', { autoAlpha: 0 });
       // la sphère commence petite et haute, en retrait derrière l'accueil
@@ -647,6 +648,13 @@ export default function useHomeStoryMotion(rootRef) {
       TIMING.scrim.forEach((step) =>
         timeline.to(
           '[data-scrim]',
+          { autoAlpha: step.v, duration: 1.6, ease: 'veil' },
+          step.at
+        )
+      );
+      TIMING.scrimRight.forEach((step) =>
+        timeline.to(
+          '[data-scrim-right]',
           { autoAlpha: step.v, duration: 1.6, ease: 'veil' },
           step.at
         )

@@ -145,10 +145,10 @@ export const TIMING = {
      dès qu'elle s'est dissoute sur l'ivoire. */
   scrim: [
     { at: 25.0, v: 0.26 },
-    /* Les deux scènes du soir sont déjà sombres: le voile n'a qu'à lever
-       assez de contraste sous le titre, pas à blanchir la pièce. Au-delà de
-       0,5 la nuit disparaît et c'est elle qui porte le propos. */
-    { at: 43.6, v: 0.42 },
+    /* Le voile de gauche est éteint AVANT l'arrivée de la scène du soir
+       (changement de pièce à 42,6): la photo doit entrer en couleurs nettes,
+       sans la moindre pellicule héritée de l'acte précédent. */
+    { at: 40.4, v: 0 },
     /* Le voile ne redescend PAS après la dissolution de la scène 03 :
              la chevelure sombre de la patiente passe derrière le titre et le
              rend illisible. Le dégradé étant opaque à gauche, c'est justement
@@ -165,6 +165,17 @@ export const TIMING = {
     { at: 154.6, v: 0.58 },
     { at: 169.0, v: 0 },
   ],
+  /* Voile retourné: il ne sert qu'à l'acte 03, où le titre est à droite. Le
+     voile de gauche descend à zéro pendant ce temps-là, les deux ne se
+     superposent jamais. */
+  scrimRight: [
+    /* Il n'entre PAS avec la photo: la scène s'installe d'abord telle quelle,
+       en couleurs franches, et le voile ne monte qu'au dernier moment pour
+       porter le titre (47,6) — il est posé à 47,4, juste avant lui. */
+    { at: 45.8, v: 0.44 },
+    { at: 60.8, v: 0 },
+  ],
+
   /* Le compteur doit se lire comme une conséquence du défilement : `countDur`
      est sa part de timeline (donc de scroll), et l'ease reste linéaire — une
      courbe « out » consommerait presque tout le compte dans les premiers
