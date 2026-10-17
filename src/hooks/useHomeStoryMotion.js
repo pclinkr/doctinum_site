@@ -397,6 +397,7 @@ export default function useHomeStoryMotion(rootRef) {
         autoAlpha: 0,
       });
       gsap.set('[data-scrim]', { autoAlpha: 0 });
+      gsap.set('[data-scrim-right]', { autoAlpha: 0 });
       gsap.set('.act', { autoAlpha: 0, y: 26 });
       gsap.set('.clara-ring', { autoAlpha: 0 });
       // la sphère commence petite et haute, en retrait derrière l'accueil
@@ -528,10 +529,40 @@ export default function useHomeStoryMotion(rootRef) {
         TIMING.rooms[0].dissolve
       );
 
-      // La salle d'attente cède au cabinet: le temps administratif.
+      /* La salle d'attente cède au salon d'une patiente, le soir: le cabinet
+         est fermé et personne ne décroche.
+
+         Le panoramique est BORNÉ par l'échelle: sur un écran plus large que
+         16:9, `--cover` ne laisse aucune marge horizontale — la photo fait
+         exactement la largeur de la fenêtre — et seul le zoom de la caméra en
+         dégage. Un `x` qui dépasse `(scale - 1) / 2 x 1920` découvre donc
+         l'ivoire d'un côté. Le précédent, 142 pour 67 de marge, laissait une
+         bande de trente pixels à gauche une fois la photo dissoute, là où le
+         bord franc du détourage la rendait visible.
+
+         Il va désormais vers la GAUCHE: le titre est passé à droite, et c'est
+         de ce côté qu'il faut dégager la place. Avec x = -46 il faut 92 de
+         marge, le zoom en donne 99 une fois la perspective comptée. */
       roomChange(
         TIMING.rooms[1],
         ['[data-set="waiting"]'],
+        ['[data-set="afterHours"]', '[data-full="afterHours"]'],
+        { scale: 1.1, x: -46, y: 18, z: 20, rotationY: 1.8, rotationX: 0.4 }
+      );
+      timeline.to(
+        '[data-full="afterHours"]',
+        {
+          autoAlpha: 0,
+          duration: TIMING.dissolveDur,
+          ease: 'veil',
+        },
+        TIMING.rooms[1].dissolve
+      );
+
+      // Le soir cède au cabinet: le temps administratif.
+      roomChange(
+        TIMING.rooms[2],
+        ['[data-set="afterHours"]'],
         ['[data-set="admin"]', '[data-full="admin"]'],
         { scale: 1.09, x: -70, y: 14, z: 30, rotationY: -1.8, rotationX: 0.5 }
       );
@@ -542,10 +573,10 @@ export default function useHomeStoryMotion(rootRef) {
           duration: TIMING.dissolveDur,
           ease: 'veil',
         },
-        TIMING.rooms[1].dissolve
+        TIMING.rooms[2].dissolve
       );
 
-      roomChange(TIMING.rooms[2], ['[data-set="admin"]'], null, {
+      roomChange(TIMING.rooms[3], ['[data-set="admin"]'], null, {
         scale: 1.02,
         x: 0,
         y: 0,
@@ -555,7 +586,7 @@ export default function useHomeStoryMotion(rootRef) {
       });
 
       roomChange(
-        TIMING.rooms[3],
+        TIMING.rooms[4],
         null,
         ['[data-set="consult"]', '[data-full="consult"]'],
         { scale: 1.06, x: 0, y: 20, z: 0, rotationY: -1.6, rotationX: 0 }
@@ -567,13 +598,33 @@ export default function useHomeStoryMotion(rootRef) {
           duration: TIMING.dissolveDur,
           ease: 'veil',
         },
-        TIMING.rooms[3].dissolve
+        TIMING.rooms[4].dissolve
+      );
+
+      /* Retour au salon de l'acte 03: même pièce, même soir, même femme, mais
+         elle a sa réponse. Le mouvement de caméra REPREND celui de l'aller en
+         l'inversant — c'est ce qui fait lire les deux scènes comme un
+         avant et un après, et non comme deux décors différents. */
+      roomChange(
+        TIMING.rooms[5],
+        ['[data-set="consult"]'],
+        ['[data-set="answered"]', '[data-full="answered"]'],
+        { scale: 1.05, x: 48, y: 14, z: 16, rotationY: 1.4, rotationX: 0.3 }
+      );
+      timeline.to(
+        '[data-full="answered"]',
+        {
+          autoAlpha: 0,
+          duration: TIMING.dissolveDur,
+          ease: 'veil',
+        },
+        TIMING.rooms[5].dissolve
       );
 
       // Retour à l'accueil: le même comptoir qu'à l'acte 01, mais apaisé.
       roomChange(
-        TIMING.rooms[4],
-        ['[data-set="consult"]'],
+        TIMING.rooms[6],
+        ['[data-set="answered"]'],
         ['[data-set="serene"]', '[data-full="serene"]'],
         { scale: 1.07, x: -40, y: 16, z: 24, rotationY: 1.4, rotationX: 0.4 }
       );
@@ -581,12 +632,12 @@ export default function useHomeStoryMotion(rootRef) {
         .to(
           '[data-full="serene"]',
           { autoAlpha: 0, duration: TIMING.dissolveDur, ease: 'veil' },
-          TIMING.rooms[4].dissolve
+          TIMING.rooms[6].dissolve
         )
         .to(
           '[data-set="serene"]',
           { autoAlpha: 0, duration: 1.4, ease: 'veil' },
-          TIMING.rooms[4].out
+          TIMING.rooms[6].out
         );
 
       timeline.to(
@@ -607,6 +658,13 @@ export default function useHomeStoryMotion(rootRef) {
       TIMING.scrim.forEach((step) =>
         timeline.to(
           '[data-scrim]',
+          { autoAlpha: step.v, duration: 1.6, ease: 'veil' },
+          step.at
+        )
+      );
+      TIMING.scrimRight.forEach((step) =>
+        timeline.to(
+          '[data-scrim-right]',
           { autoAlpha: step.v, duration: 1.6, ease: 'veil' },
           step.at
         )
@@ -734,6 +792,94 @@ export default function useHomeStoryMotion(rootRef) {
         );
 
       /* ------------------------------------------------------- blocs ----- */
+
+      /* Dérive lente: une fois posé, un bloc respire au lieu d'attendre sa
+         sortie, figé. Elle joue sur le SLOT, pas sur le bloc: entrée et
+         sortie animent toutes deux x/y du bloc, et deux tweens sur la même
+         propriété se voleraient la main.
+
+         Le DÉLAI est en secondes RÉELLES, pas en repères de défilement: la
+         dérive est le seul mouvement du récit à ne pas être scrubbé. Elle
+         tourne dès le chargement, invisible tant que le bloc est transparent.
+
+         Direction tirée au sort plutôt que x et y indépendants: deux tirages
+         séparés tombent souvent tous les deux près de zéro et le bloc reste
+         sur place. Un angle et une portée garantissent un mouvement à chacun.
+         Le facteur 0,84 sur y garde la dérive plus large que haute, dans
+         l'axe de lecture.
+
+         AMPLITUDE: 15 unités du repère au plus, et moins dès que le voisinage
+         l'exige — voir `clearanceOf`. */
+      const DRIFT = 15;
+      const makeDrift = (amplitude) => {
+        const heading = gsap.utils.random(0, Math.PI * 2);
+        const reach = gsap.utils.random(amplitude * 0.6, amplitude);
+        return {
+          x: Math.cos(heading) * reach,
+          y: Math.sin(heading) * reach * 0.84,
+          duration: gsap.utils.random(6, 9),
+          yoyo: true,
+          repeat: -1,
+          ease: 'sine.inOut',
+          delay: gsap.utils.random(0, 4),
+        };
+      };
+
+      /* Marge réelle autour d'un bloc: la plus courte distance qui le sépare
+         d'un voisin de son GROUPE, lue sur la mise en page une fois `fit()`
+         passé. Les coordonnées des blocs libres sont tenues à la main et
+         bougent à chaque retouche de scène: la mesurer ici évite d'avoir à
+         réaccorder l'amplitude après chaque déplacement, et évite surtout
+         qu'un resserrement fasse silencieusement se chevaucher deux blocs.
+         Le rapport largeur écran / largeur repère ramène la mesure dans les
+         unités du repère, les seules où la dérive s'exprime. */
+      const clearanceOf = (block) => {
+        const peers = knownBlocks.filter(
+          (other) => other !== block && other.g === block.g
+        );
+        if (peers.length === 0) return Infinity;
+        const own = node[block.k].getBoundingClientRect();
+        const scale = own.width / (node[block.k].offsetWidth || own.width || 1);
+        const gap = Math.min(
+          ...peers.map((other) => {
+            const rect = node[other.k].getBoundingClientRect();
+            return Math.max(
+              Math.max(own.left, rect.left) - Math.min(own.right, rect.right),
+              Math.max(own.top, rect.top) - Math.min(own.bottom, rect.bottom)
+            );
+          })
+        );
+        return scale > 0 ? gap / scale : Infinity;
+      };
+
+      /* Une rangée reçoit UN SEUL vecteur, partagé par ses blocs. Les rangées
+         sont tassées à partir des largeurs MESURÉES, et en gabarit compact
+         elles se replient en cascade: il n'y reste qu'un pixel entre deux
+         voisins (adm2 finit à 560, adm3 commence à 561). Aucune indépendance,
+         ni de phase ni de direction, n'y tient. Le groupe respire donc d'un
+         seul corps: son tassement reste intact quelle que soit l'amplitude,
+         et c'est la seule famille qui garde la pleine.
+
+         Les blocs placés à la main gardent chacun le sien, plafonné à 45 % de
+         leur marge: deux voisins qui convergent en consomment 1,68 fois
+         l'amplitude, soit les trois quarts de la marge — le dernier quart est
+         ce qui sépare « ça respire » de « ça se cogne ». */
+      const rowDrifts = new Map();
+      const driftFor = (block) => {
+        const row = ROWS.find((entry) => entry.keys.includes(block.k));
+        if (row) {
+          if (!rowDrifts.has(row)) rowDrifts.set(row, makeDrift(DRIFT));
+          return rowDrifts.get(row);
+        }
+        /* Marge négative = blocs déjà imbriqués VOLONTAIREMENT: la pile de
+           l'acte 01 se chevauche de douze pixels sans la moindre dérive,
+           c'est le désordre de la surcharge. Les plafonner reviendrait à les
+           figer, alors que ce sont justement ceux dont le flottement se voit
+           le mieux: la marge ne les concerne pas, ils gardent la pleine. */
+        const room = clearanceOf(block);
+        return makeDrift(room <= 0 ? DRIFT : Math.min(DRIFT, room * 0.45));
+      };
+
       knownBlocks.forEach((block) => {
         const element = node[block.k];
         const direction = ENTER_FROM[block.from || 'up'];
@@ -775,18 +921,12 @@ export default function useHomeStoryMotion(rootRef) {
           out
         );
 
-        // La dérive lente joue sur le SLOT, pas sur le bloc: elle ne se
-        // dispute donc jamais les mêmes propriétés que l'entrée et la sortie.
-        if (block.act === 2 && !prefersReducedMotion) {
-          gsap.to(slot[block.k], {
-            x: gsap.utils.random(-24, 24),
-            y: gsap.utils.random(-20, 20),
-            duration: gsap.utils.random(6, 9),
-            yoyo: true,
-            repeat: -1,
-            ease: 'sine.inOut',
-            delay: block.at,
-          });
+        /* L'ancien repère ne couvrait que l'acte 02, et son `delay: block.at`
+           confondait secondes réelles et repères de défilement: pour les
+           derniers actes il aurait repoussé le départ à plus de deux minutes
+           après le chargement, soit jamais. */
+        if (!prefersReducedMotion) {
+          gsap.to(slot[block.k], { ...driftFor(block) });
         }
       });
 

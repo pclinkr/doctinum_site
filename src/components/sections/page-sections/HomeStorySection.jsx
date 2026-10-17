@@ -54,7 +54,18 @@ export default function HomeStorySection({ onNavigate }) {
     <section
       className="home-story track"
       ref={rootRef}
-      style={{ height: `calc(100vh + ${TIMING.trackVh}vh)` }}
+      /* La piste passe par deux variables. `--story-track-base` porte la
+         valeur de TIMING, qui reste la seule à régler le rythme. La hauteur
+         lit `--story-track`, que SEULE la feuille de styles renseigne, pour le
+         tactile (voir home-story.css): une déclaration inline l'emportant sur
+         n'importe quel sélecteur, une requête de média ne pourrait pas
+         reprendre la main si la valeur était posée ici. Et une requête de
+         média décide sans brancher sur `window` au rendu, ce qui donnerait un
+         balisage serveur différent du client. */
+      style={{
+        '--story-track-base': `${TIMING.trackVh}vh`,
+        height: 'calc(100vh + var(--story-track, var(--story-track-base)))',
+      }}
       aria-label={t('sections.homeStory.rail.label')}
     >
       <div className="sticky">
@@ -208,6 +219,7 @@ export default function HomeStorySection({ onNavigate }) {
               </div>
 
               <div className="scrim" data-scrim />
+              <div className="scrim scrim-right" data-scrim-right />
             </div>
           </div>
 

@@ -12,22 +12,24 @@
    ========================================================================= */
 
 export const TIMING = {
-  total: 136,
+  total: 176,
   /* Retard du scrub : la timeline rejoint la position de défilement en ce
      temps-là. Au-delà d'une demi-seconde, un élément CHIFFRÉ continue de
      tourner après l'arrêt du geste et paraît jouer tout seul. */
   scrub: 0.4,
-  trackVh: 3400, // à répercuter dans page.template.html (le build le vérifie)
+  trackVh: 4400,
 
   acts: [
     { t: 0, end: 6 }, // 00 accueil
     { t: 6, end: 24 }, // 01 secrétariat surchargé
     { t: 24, end: 42 }, // 02 rendez-vous non honorés
-    { t: 42, end: 60 }, // 03 temps administratif
-    { t: 60, end: 84 }, // 04 Clara
-    { t: 84, end: 106 }, // 05 consultation
-    { t: 106, end: 130 }, // 06 secrétariat apaisé
-    { t: 130, end: 136 }, // 07 et vous ?
+    { t: 42, end: 62 }, // 03 cabinet fermé, personne ne répond
+    { t: 62, end: 80 }, // 04 temps administratif
+    { t: 80, end: 104 }, // 05 Clara
+    { t: 104, end: 126 }, // 06 consultation
+    { t: 126, end: 146 }, // 07 disponible à toute heure
+    { t: 146, end: 170 }, // 08 secrétariat apaisé
+    { t: 170, end: 176 }, // 09 et vous ?
   ],
 
   /* Ouverture au CHARGEMENT : la pièce entière apparaît seule, l'overlay monte,
@@ -54,22 +56,24 @@ export const TIMING = {
      geste au lieu de deux mouvements concurrents. */
   heroDissolve: { at: 5.6, dur: 3.4, move: 9.4, moveDur: 5.2, shiftX: 104 },
 
-  camera: { act1: 9.4, act1Dur: 5.2, last: 129.4, lastDur: 3.4 },
+  camera: { act1: 9.4, act1Dur: 5.2, last: 169.4, lastDur: 3.4 },
 
   /* `zoomFrom` : échelle de départ de la pièce entrante. Plus la valeur est
      grande, plus le recul est prononcé — on part serré et on s'éloigne. */
   rooms: [
     { at: 22.6, zoomFrom: 1.95, inDur: 5.4, dissolve: 28.8 }, // salle d'attente
-    { at: 42.0, zoomFrom: 1.3, inDur: 4.6, dissolve: 48.4 }, // cabinet, dossier à remplir
-    { at: 60.0, zoomFrom: 1.2, inDur: 3.0 }, // vers l'ivoire, pas de pièce
-    { at: 83.8, zoomFrom: 1.45, inDur: 4.2, dissolve: 89.0 }, // consultation
-    { at: 106.6, zoomFrom: 1.35, inDur: 4.6, dissolve: 112.6, out: 128.6 }, // accueil apaisé
+    { at: 42.6, zoomFrom: 1.5, inDur: 4.6, dissolve: 48.6 }, // le soir, chez la patiente
+    { at: 62.0, zoomFrom: 1.3, inDur: 4.6, dissolve: 68.4 }, // cabinet, dossier à remplir
+    { at: 80.0, zoomFrom: 1.2, inDur: 3.0 }, // vers l'ivoire, pas de pièce
+    { at: 103.8, zoomFrom: 1.45, inDur: 4.2, dissolve: 109.0 }, // consultation
+    { at: 126.6, zoomFrom: 1.4, inDur: 4.6, dissolve: 132.6 }, // le même soir, répondue
+    { at: 146.6, zoomFrom: 1.35, inDur: 4.6, dissolve: 152.6, out: 168.6 }, // accueil apaisé
   ],
   roomOutDur: 2.4,
   dissolveDur: 3.6,
   camMoveDur: 4.4,
 
-  titles: [10.4, 32.4, 46.8, 65.0, 90.8, 111.0],
+  titles: [10.4, 32.4, 47.6, 66.8, 85.0, 110.8, 134.4, 151.0],
   titleInDur: 1.9,
   titleOutDur: 1.0,
   /* Marge de repos ajoutée au repère du rail : le scrub poursuit la position
@@ -78,9 +82,18 @@ export const TIMING = {
   cueSettle: 1.4,
   // Sortie propre à chaque acte : le titre part avant ses blocs, sauf à l'acte
   // 02 où il part après eux et où la salle d'attente s'efface en dernier.
-  titleOut: [21.6, 41.2, 58.6, 83.0, 105.8, 128.0],
+  titleOut: [21.6, 41.2, 60.8, 78.6, 103.0, 125.8, 145.4, 168.0],
 
-  actOut: { 1: 21.4, 2: 40.4, 3: 58.8, 4: 83.4, 5: 105.2, 6: 126.6 },
+  actOut: {
+    1: 21.4,
+    2: 40.4,
+    3: 60.4,
+    4: 78.8,
+    5: 103.4,
+    6: 125.2,
+    7: 145.0,
+    8: 166.6,
+  },
   blockInDur: 1.35,
   blockOutDur: 1.0,
 
@@ -92,41 +105,50 @@ export const TIMING = {
     inf1: { at: 34.0, out: 40.4 },
     inf2: { at: 35.4, out: 40.7 },
     inf3: { at: 36.8, out: 41.0 },
-    adm1: { at: 49.6 },
-    adm2: { at: 51.0 },
-    adm3: { at: 52.4 },
-    ctx1: { at: 66.6, out: 73.4 },
-    ctx2: { at: 67.4, out: 73.7 },
-    ctx3: { at: 68.2, out: 74.0 },
-    cap1: { at: 74.6 },
-    cap2: { at: 75.5 },
-    cap3: { at: 76.4 },
-    cap4: { at: 77.3 },
-    cap5: { at: 78.2 },
+    nig1: { at: 50.6, out: 60.4 },
+    nig2: { at: 52.0, out: 60.4 },
+    nig3: { at: 53.4, out: 60.4 },
+    adm1: { at: 69.6 },
+    adm2: { at: 71.0 },
+    adm3: { at: 72.4 },
+    ctx1: { at: 86.6, out: 93.4 },
+    ctx2: { at: 87.4, out: 93.7 },
+    ctx3: { at: 88.2, out: 94.0 },
+    cap1: { at: 94.6 },
+    cap2: { at: 95.5 },
+    cap3: { at: 96.4 },
+    cap4: { at: 97.3 },
+    cap5: { at: 98.2 },
     // Les résultats arrivent en deux temps. La première série sort, puis le
     // compteur ; la seconde n'entre qu'ensuite, en cascade rapprochée, et
     // reste cinq secondes en lecture avant de partir.
     // Première série : elle attend que le compteur ait fini de tourner. Entre
     // son entrée (73,4) et la sienne, cinq secondes de timeline où rien
     // n'arrive — la pause de lecture. `dur` allonge son apparition.
-    r1: { at: 96.6, dur: 2.2, out: 104.6 },
-    r2: { at: 98.0, dur: 2.2, out: 104.9 },
-    r3: { at: 99.4, dur: 2.2, out: 105.2 },
+    r1: { at: 116.6, dur: 2.2, out: 124.6 },
+    r2: { at: 118.0, dur: 2.2, out: 124.9 },
+    r3: { at: 119.4, dur: 2.2, out: 125.2 },
+    // Acte 07 : la réponse arrive, le même soir, dans le même salon. La
+    // scène n'ayant aucun voile, titre et blocs attendent la fin de la
+    // dissolution (132,6 + 3,6) pour se poser sur l'ivoire et non sur la nuit.
+    av1: { at: 137.6, out: 145.0 },
+    av2: { at: 138.8, out: 145.0 },
+    av3: { at: 140.0, out: 145.0 },
     // Acte 06 : la scène d'accueil apaisée a son propre titre, la cascade peut
     // donc respirer davantage que celle qui partageait l'écran avec le compteur.
-    r4: { at: 117.6, out: 126.6 },
-    r5: { at: 118.6, out: 126.6 },
-    r6: { at: 119.6, out: 126.6 },
+    r4: { at: 157.6, out: 166.6 },
+    r5: { at: 158.6, out: 166.6 },
+    r6: { at: 159.6, out: 166.6 },
   },
 
   orb: {
-    in: 61.6,
+    in: 81.6,
     inDur: 3.4,
-    lid: 63.6,
-    rings: 64.4,
-    glow: 64.4,
-    out: 83.8,
-    back: 129.4,
+    lid: 83.6,
+    rings: 84.4,
+    glow: 84.4,
+    out: 103.8,
+    back: 169.4,
     backDur: 3.4,
   },
 
@@ -134,21 +156,42 @@ export const TIMING = {
      dès qu'elle s'est dissoute sur l'ivoire. */
   scrim: [
     { at: 25.0, v: 0.26 },
-    { at: 43.6, v: 0.7 },
+    /* Le voile de gauche est éteint AVANT l'arrivée de la scène du soir
+       (changement de pièce à 42,6): la photo doit entrer en couleurs nettes,
+       sans la moindre pellicule héritée de l'acte précédent. */
+    { at: 40.4, v: 0 },
     /* Le voile ne redescend PAS après la dissolution de la scène 03 :
              la chevelure sombre de la patiente passe derrière le titre et le
              rend illisible. Le dégradé étant opaque à gauche, c'est justement
              là qu'il faut le garder. Il ne s'allège qu'à l'arrivée de
              l'ivoire, où plus aucune photo ne porte de texte. */
-    { at: 50.0, v: 0.6 },
-    { at: 60.6, v: 0.26 },
-    { at: 87.0, v: 0.82 },
-    { at: 106.8, v: 0.68 },
+    { at: 63.6, v: 0.7 },
+    { at: 70.0, v: 0.6 },
+    { at: 80.6, v: 0.26 },
+    { at: 107.0, v: 0.82 },
+    /* Acte 07 : AUCUN voile. Le voile délavait toute la scène, alors que
+       c'est elle, la réponse, qui doit se lire en couleurs franches. Il
+       s'éteint dès que le titre de l'acte 06 part (125,8), donc avant que la
+       nouvelle photo n'entre (127,6), et le titre attend la dissolution pour
+       se poser sur l'ivoire, où il n'a besoin d'aucune aide. */
+    { at: 125.8, v: 0 },
+    { at: 146.8, v: 0.68 },
     /* Le voile reste haut pendant tout l'accueil apaisé : le titre passe
              sur le comptoir et l'écran, très clairs, et s'y perdait. */
-    { at: 114.6, v: 0.58 },
-    { at: 129.0, v: 0 },
+    { at: 154.6, v: 0.58 },
+    { at: 169.0, v: 0 },
   ],
+  /* Voile retourné: il ne sert qu'à l'acte 03, où le titre est à droite. Le
+     voile de gauche descend à zéro pendant ce temps-là, les deux ne se
+     superposent jamais. */
+  scrimRight: [
+    /* Il n'entre PAS avec la photo: la scène s'installe d'abord telle quelle,
+       en couleurs franches, et le voile ne monte qu'au dernier moment pour
+       porter le titre (47,6) — il est posé à 47,4, juste avant lui. */
+    { at: 45.8, v: 0.44 },
+    { at: 60.8, v: 0 },
+  ],
+
   /* Le compteur doit se lire comme une conséquence du défilement : `countDur`
      est sa part de timeline (donc de scroll), et l'ease reste linéaire — une
      courbe « out » consommerait presque tout le compte dans les premiers
@@ -158,14 +201,14 @@ export const TIMING = {
      `count`, les dix minutes défilent d'elles-mêmes, que l'on continue de
      faire défiler ou non. */
   stat: {
-    act: 5,
-    in: 91.2,
-    count: 91.4,
+    act: 6,
+    in: 111.2,
+    count: 111.4,
     runSeconds: 1.8,
     runEase: 'power2.out',
-    out: 105.6,
+    out: 125.6,
   },
-  finale: { in: 131.0, stagger: 0.22, first: 131.4 },
+  finale: { in: 171.0, stagger: 0.22, first: 171.4 },
 };
 
 /* Chemin des médias. Ils étaient inlinés en data: URI parce que la CSP des
@@ -233,12 +276,22 @@ export const BLOCKS = [
     g: 'call',
   },
   // 02
-  { k: 'inf1', act: 2, x: 541, y: 498, w: 560, ico: 'calendar', g: 'inf' },
+  {
+    k: 'inf1',
+    act: 2,
+    sm: 1,
+    x: 841,
+    y: 510,
+    w: 560,
+    ico: 'calendar',
+    g: 'inf',
+  },
   {
     k: 'inf2',
     act: 2,
-    x: 1417,
-    y: 612,
+    sm: 1,
+    x: 1280,
+    y: 360,
     w: 420,
     tone: 'warn',
     ico: 'bell',
@@ -247,20 +300,55 @@ export const BLOCKS = [
   {
     k: 'inf3',
     act: 2,
-    x: 770,
-    y: 793,
+    sm: 1,
+    x: 1417,
+    y: 500,
     w: 520,
     tone: 'warn',
     ico: 'chat',
     g: 'inf',
   },
-  // 03 — le temps administratif: bande basse, le praticien est à droite
+  // 03 — le soir, personne ne répond: la perte se lit en trois temps
   {
-    k: 'adm1',
+    k: 'nig1',
     act: 3,
     sm: 1,
-    x: 0,
-    y: 845,
+    x: 1320,
+    y: 500,
+    w: 500,
+    tone: 'warn',
+    ico: 'phoneOff',
+    g: 'nig',
+  },
+  {
+    k: 'nig2',
+    act: 3,
+    sm: 1,
+    x: 1400,
+    y: 640,
+    w: 540,
+    tone: 'warn',
+    ico: 'globe',
+    g: 'nig',
+  },
+  {
+    k: 'nig3',
+    act: 3,
+    sm: 1,
+    x: 1320,
+    y: 760,
+    w: 520,
+    tone: 'warn',
+    ico: 'bell',
+    g: 'nig',
+  },
+  // 04 — le temps administratif: bande basse, le praticien est à droite
+  {
+    k: 'adm1',
+    act: 4,
+    sm: 1,
+    x: 384,
+    y: 800,
     w: 470,
     tone: 'warn',
     ico: 'clipboard',
@@ -268,10 +356,10 @@ export const BLOCKS = [
   },
   {
     k: 'adm2',
-    act: 3,
+    act: 4,
     sm: 1,
-    x: 0,
-    y: 845,
+    x: 935,
+    y: 745,
     w: 560,
     tone: 'warn',
     ico: 'folder',
@@ -279,9 +367,9 @@ export const BLOCKS = [
   },
   {
     k: 'adm3',
-    act: 3,
+    act: 4,
     sm: 1,
-    x: 0,
+    x: 1511,
     y: 845,
     w: 520,
     tone: 'warn',
@@ -289,10 +377,10 @@ export const BLOCKS = [
     g: 'adm',
   },
   // 04a — le contexte, avant ce qu'elle fait
-  { k: 'ctx1', act: 4, sm: 1, x: 560, y: 829, w: 350, ico: 'globe', g: 'ctx' },
+  { k: 'ctx1', act: 5, sm: 1, x: 560, y: 829, w: 350, ico: 'globe', g: 'ctx' },
   {
     k: 'ctx2',
-    act: 4,
+    act: 5,
     sm: 1,
     x: 960,
     y: 829,
@@ -300,13 +388,13 @@ export const BLOCKS = [
     ico: 'calendar',
     g: 'ctx',
   },
-  { k: 'ctx3', act: 4, sm: 1, x: 1330, y: 829, w: 250, ico: 'clock', g: 'ctx' },
+  { k: 'ctx3', act: 5, sm: 1, x: 1330, y: 829, w: 250, ico: 'clock', g: 'ctx' },
   // 04b — les cinq missions, sous la sphère et centrées
-  { k: 'cap1', act: 4, sm: 1, x: 500, y: 829, w: 430, ico: 'chat', g: 'cap' },
-  { k: 'cap2', act: 4, sm: 1, x: 960, y: 829, w: 460, ico: 'filter', g: 'cap' },
+  { k: 'cap1', act: 5, sm: 1, x: 500, y: 829, w: 430, ico: 'chat', g: 'cap' },
+  { k: 'cap2', act: 5, sm: 1, x: 960, y: 829, w: 460, ico: 'filter', g: 'cap' },
   {
     k: 'cap3',
-    act: 4,
+    act: 5,
     sm: 1,
     x: 1420,
     y: 829,
@@ -314,10 +402,10 @@ export const BLOCKS = [
     ico: 'clipboard',
     g: 'cap',
   },
-  { k: 'cap4', act: 4, sm: 1, x: 660, y: 958, w: 460, ico: 'folder', g: 'cap' },
+  { k: 'cap4', act: 5, sm: 1, x: 660, y: 958, w: 460, ico: 'folder', g: 'cap' },
   {
     k: 'cap5',
-    act: 4,
+    act: 5,
     sm: 1,
     x: 1240,
     y: 958,
@@ -325,10 +413,44 @@ export const BLOCKS = [
     ico: 'phoneIn',
     g: 'cap',
   },
-  // 05 et 06 — bande basse: le plan du bureau est neutre, aucun visage couvert
+  // 07 — la réponse arrive, le même soir: trois temps en regard des trois pertes
+  {
+    k: 'av1',
+    act: 7,
+    sm: 1,
+    x: 450,
+    y: 861,
+    w: 470,
+    tone: 'good',
+    ico: 'clock',
+    g: 'av',
+  },
+  {
+    k: 'av2',
+    act: 7,
+    sm: 1,
+    x: 903,
+    y: 861,
+    w: 520,
+    tone: 'good',
+    ico: 'heart',
+    g: 'av',
+  },
+  {
+    k: 'av3',
+    act: 7,
+    sm: 1,
+    x: 1309,
+    y: 861,
+    w: 470,
+    tone: 'good',
+    ico: 'check',
+    g: 'av',
+  },
+  // 06 et 08 — bande basse: le plan du bureau est neutre, aucun visage couvert
   {
     k: 'r1',
-    act: 5,
+    act: 6,
     sm: 1,
     x: 450,
     y: 861,
@@ -339,7 +461,7 @@ export const BLOCKS = [
   },
   {
     k: 'r2',
-    act: 5,
+    act: 6,
     sm: 1,
     x: 903,
     y: 861,
@@ -350,7 +472,7 @@ export const BLOCKS = [
   },
   {
     k: 'r3',
-    act: 5,
+    act: 6,
     sm: 1,
     x: 1309,
     y: 861,
@@ -361,7 +483,7 @@ export const BLOCKS = [
   },
   {
     k: 'r4',
-    act: 6,
+    act: 8,
     sm: 1,
     x: 450,
     y: 861,
@@ -372,7 +494,7 @@ export const BLOCKS = [
   },
   {
     k: 'r5',
-    act: 6,
+    act: 8,
     sm: 1,
     x: 903,
     y: 861,
@@ -383,7 +505,7 @@ export const BLOCKS = [
   },
   {
     k: 'r6',
-    act: 6,
+    act: 8,
     sm: 1,
     x: 1309,
     y: 861,
@@ -404,6 +526,12 @@ const PORTRAIT_POSITIONS = {
   inf1: [540, 1004, 940],
   inf2: [540, 1246, 940],
   inf3: [540, 1488, 940],
+  nig1: [540, 1214, 920],
+  nig2: [540, 1372, 920],
+  nig3: [540, 1530, 920],
+  av1: [540, 1214, 920],
+  av2: [540, 1372, 920],
+  av3: [540, 1530, 920],
   adm1: [540, 1214, 920],
   adm2: [540, 1372, 920],
   adm3: [540, 1530, 920],
@@ -438,6 +566,8 @@ export const STACKS = [
   { g: 'call', cy: 1240, gap: 34 },
   { g: 'adm', cy: 1400, gap: 34 },
   { g: 'inf', cy: 1250, gap: 40 },
+  { g: 'nig', cy: 1400, gap: 34 },
+  { g: 'av', cy: 1400, gap: 34 },
   { g: 'ctx', cy: 1430, gap: 34 },
   { g: 'cap', cy: 1400, gap: 30 },
   { g: 'rA', cy: 1420, gap: 34 },
@@ -447,14 +577,20 @@ export const STACKS = [
 /* Rangées paysage. `k` est la hauteur du groupe en FRACTION du repère, dont la
    hauteur suit celle de la fenêtre: une valeur absolue héritée d'un repère de
    1080 se retrouverait plaquée en haut dès que la fenêtre s'allonge. */
+/* Une rangée IGNORE les x/y de ses blocs: elle se recentre sur 960 et se cale
+   sur `k`, largeurs mesurées à l'appui. C'est ce qu'il faut quand la longueur
+   du libellé change avec la langue, mais cela interdit tout placement à la
+   main — en paysage plein, `jitter` valant zéro, les blocs s'alignent même au
+   cordeau. L'acte 04 en est sorti pour être composé librement, comme les
+   actes 01 à 03. */
 export const ROWS = [
-  { keys: ['adm1', 'adm2', 'adm3'], k: 0.782, gap: 36 },
   { keys: ['ctx1', 'ctx2', 'ctx3'], k: 0.768, gap: 36 },
   /* Les cinq missions étaient deux groupes calés sur deux hauteurs fixes: dès
      que l'un se repliait, il descendait dans l'autre. Un seul flux, et le
      repli s'en charge — sur grand écran il retrouve la répartition 3 + 2. */
   { keys: ['cap1', 'cap2', 'cap3', 'cap4', 'cap5'], k: 0.83, gap: 36 },
   { keys: ['r1', 'r2', 'r3'], k: 0.797, gap: 36 },
+  { keys: ['av1', 'av2', 'av3'], k: 0.797, gap: 36 },
   { keys: ['r4', 'r5', 'r6'], k: 0.797, gap: 36 },
 ];
 
@@ -466,10 +602,22 @@ export const ROWS = [
 export const FRAMING = [
   { at: 0, bias: -9 }, // accueil: la secrétaire dégagée du titre
   { at: 22.6, bias: -4 }, // salle d'attente: le canapé est centré
-  { at: 42.0, bias: -23 }, // cabinet: le praticien décalé vers la droite
-  { at: 60.0, bias: -4 }, // ivoire, plus de photo
-  { at: 83.8, bias: -29 }, // consultation: le praticien entier dans le cadre
-  { at: 106.6, bias: -12 }, // accueil apaisé: la secrétaire dégagée
+  /* Les deux scènes du soir sont les SEULES où la patiente est à gauche, donc
+     du côté du titre: le biais y est positif, il écarte le décor vers la
+     droite au lieu de le ramener vers le texte.
+
+     Valeurs REVUES pour les photos actuelles: les précédentes (16 et 14)
+     plaçaient les patientes plus à droite, et en portrait elles sortaient du
+     cadre — à 16 l'acte 03 ne montrait plus que le bras et l'ordinateur.
+     Elles rendaient aussi le glissement de sortie énorme: l'écart avec le
+     cabinet (-23) valait 39 points, soit une fois et demie la largeur
+     visible, parcourue en moins d'une seconde. */
+  { at: 42.6, bias: 4 }, // le soir: la patiente dégagée du titre
+  { at: 62.0, bias: -23 }, // cabinet: le praticien décalé vers la droite
+  { at: 80.0, bias: -4 }, // ivoire, plus de photo
+  { at: 103.8, bias: -29 }, // consultation: le praticien entier dans le cadre
+  { at: 126.6, bias: 6 }, // le même soir, répondue
+  { at: 146.6, bias: -12 }, // accueil apaisé: la secrétaire dégagée
 ];
 
 /* Entrées des blocs: chaque bloc arrive depuis une direction propre, avec une
@@ -489,7 +637,6 @@ export const SILK = [
   { cy: 0.58, amp: 0.06, f: 1.75, ph: 5.1, sp: 0.86, th: 0.04 },
   { cy: 0.36, amp: 0.055, f: 2.1, ph: 2.4, sp: 0.63, th: 0.028 },
 ];
-
 
 /* Décors: chaque scène a sa photo complète et son détourage. Les DEUX couches
    partagent la même boîte 1920x1080 en `object-fit:cover`, c'est ce qui donne
@@ -516,6 +663,13 @@ export const SCENES = [
     cutSize: [2200, 1200],
   },
   {
+    id: 'afterHours',
+    full: 'afterHoursFull',
+    fullSize: [2000, 1116],
+    cut: 'afterHours',
+    cutSize: [2000, 1116],
+  },
+  {
     id: 'admin',
     full: 'adminFull',
     fullSize: [2000, 1091],
@@ -528,6 +682,13 @@ export const SCENES = [
     fullSize: [2000, 1091],
     cut: 'doctor',
     cutSize: [2000, 1091],
+  },
+  {
+    id: 'answered',
+    full: 'answeredFull',
+    fullSize: [2000, 1116],
+    cut: 'answered',
+    cutSize: [2000, 1116],
   },
   {
     id: 'serene',
