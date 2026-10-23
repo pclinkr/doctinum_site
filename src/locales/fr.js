@@ -2438,7 +2438,7 @@ const fr = {
           {
             icon: '🏥',
             title: 'Hébergement HDS certifié',
-            text: "Les données de santé ne sont pas stockées et sont traitées en France sur des serveurx hébergés auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
+            text: "Les données de santé ne sont pas stockées et sont traitées en France sur des serveurs hébergés auprès d'un prestataire certifié Hébergeur de Données de Santé (HDS), conformément aux exigences de la réglementation française.",
             tag: 'France · Données de santé',
           },
           {
